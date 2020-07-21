@@ -4,6 +4,7 @@
   %title  UWA MATH3022
   %title-suffix  <## nothing ##>
   %date-modified  2020-07-22
+  \resources:no-maths
 %%
 
 # %title #
