@@ -29,7 +29,7 @@ p{%
   \Z
 %
   <footer>
-    Last modified: %last-modified \+
+    Last modified: %date-modified \+
     Content on this site is [released into the public domain](
       https://creativecommons.org/publicdomain/zero/1.0/
     ).
