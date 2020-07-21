@@ -17,3 +17,21 @@ p{%%
     \g<content>
   \g<percent_signs>
 %%}
+
+
+<##
+  ----------------------------------------------------------------
+  Footer
+  ----------------------------------------------------------------
+##>
+
+p{%
+  \Z
+%
+  <footer>
+    Last modified: %last-modified \+
+    Content on this site is [released into the public domain](
+      https://creativecommons.org/publicdomain/zero/1.0/
+    ).
+  </footer>
+%}

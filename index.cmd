@@ -2,7 +2,8 @@
 
 %%
   %title  UWA MATH3022
-  %title-suffix <## nothing ##>
+  %title-suffix  <## nothing ##>
+  %last-modified  2020-07-22
 %%
 
 # %title #
