@@ -9,6 +9,10 @@
 
 # %title #
 
+||||
+(Scientific and Industrial Modelling)
+||||
+
 ## Introduction to Mathematica ##
 
 ----
