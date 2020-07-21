@@ -1,5 +1,8 @@
+{+ resources/syntax.cmd +}
+
 %%
   %title  UWA MATH3022
+  %title-suffix <## nothing ##>
 %%
 
 # %title #
