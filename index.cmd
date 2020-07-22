@@ -24,5 +24,5 @@ For details see the [`mathematica-intro` repository][m intro].
 
 @[intro.nb]
   https://github.com/uwa-math3022/mathematica-intro/\
-    releases/download/v0.1.0/intro.nb @
+    releases/download/v0.1.1/intro.nb @
 @[m intro] https://github.com/uwa-math3022/mathematica-intro @
