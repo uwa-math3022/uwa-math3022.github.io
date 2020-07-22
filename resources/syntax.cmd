@@ -53,7 +53,7 @@ p{::
   \resources:no-maths
 ::
   %resources a~~
-    <link rel="stylesheet" href="/resources/main.css">
+    <link rel="stylesheet" href="/resources/main.min.css">
   ~~
 ::}
 
