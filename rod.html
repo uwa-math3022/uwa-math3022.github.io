@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/main.min.css">
+<script defer src="/resources/maths.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
+<title>Heating a rod | UWA MATH3022</title>
+</head>
+<body>
+<h1>Heating a rod</h1>
+<noscript>Enable JavaScript for equation rendering to work.</noscript>
+<p>
+A fully worked heat-equation example.
+<strong>Your work doesn't need to be as detailed as this.</strong>
+</p>
+<h2>Problem</h2>
+<p>
+Consider a uniform rod with length <span class="js-maths">L</span>, density <span class="js-maths">\rho</span>, specific heat <span class="js-maths">c</span>,
+and thermal conductivity <span class="js-maths">k</span>.
+</p>
+<p>
+Suppose the rod is initially at temperature <span class="js-maths">T_0</span> throughout.
+At time <span class="js-maths">t = 0</span>:
+</p>
+<ul>
+<li>Fix the left end at lower temperature <span class="js-maths">T = T_0</span>
+</li>
+<li>Fix the right end at higher temperature <span class="js-maths">T = T_1</span>
+</li>
+</ul>
+<p>
+What happens?
+</p>
+<h2>Quantities</h2>
+<table>
+<tr>
+<th colspan="2">Independent variables</th>
+</tr>
+<tr>
+<td><span class="js-maths">x</span></td>
+<td>position (<span class="js-maths">0 \le x \le L</span>)</td>
+</tr>
+<tr>
+<td><span class="js-maths">t</span></td>
+<td>time (<span class="js-maths">t \ge 0</span>)</td>
+</tr>
+<tr>
+<th colspan="2">Dependent variable</th>
+</tr>
+<tr>
+<td><span class="js-maths">T</span></td>
+<td>temperature</td>
+</tr>
+<tr>
+<th colspan="2">Constants</th>
+</tr>
+<tr>
+<td><span class="js-maths">L</span></td>
+<td>length</td>
+</tr>
+<tr>
+<td><span class="js-maths">\rho</span></td>
+<td>density</td>
+</tr>
+<tr>
+<td><span class="js-maths">c</span></td>
+<td>specific heat</td>
+</tr>
+<tr>
+<td><span class="js-maths">k</span></td>
+<td>thermal conductivity</td>
+</tr>
+<tr>
+<td><span class="js-maths">T_0</span></td>
+<td>lower temperature</td>
+</tr>
+<tr>
+<td><span class="js-maths">T_1</span></td>
+<td>higher temperature</td>
+</tr>
+</table>
+<h2>Defining equations</h2>
+<h3>Partial differential equation (PDE)</h3>
+<p>
+Heat equation in <span class="js-maths">T = T (x, t)</span>:
+</p>
+<div class="js-maths important">\frac{\rho c}{k} \frac{\pd T}{\pd t} = \frac{\pd^2 T}{{\pd x}^2}
+</div>
+<h3>Boundary conditions (BCs)</h3>
+<p>
+Fixed temperature at the two ends, for all time:
+</p>
+<div class="js-maths important">\begin{aligned}
+  \eval{T}_{x = 0} &amp;= T_0 \\
+  \eval{T}_{x = L} &amp;= T_1
+\end{aligned}
+</div>
+<h3>Initial condition (IC)</h3>
+<p>
+Temperature is <span class="js-maths">T_0</span> throughout the rod, initially:
+</p>
+<div class="js-maths important">\eval{T}_{t = 0} = T_0
+</div>
+<h2>Scaling</h2>
+<p>
+Units like metres and feet, or Celsius and Fahrenheit are <em>arbitrary</em>,
+and it is better to work in the <em>natural</em> units
+which arise from the physical constants provided in the problem.
+</p>
+<p>
+We move from <span class="colour-g">dimensional (unscaled)</span> variables
+to <span class="colour-v">dimensionless (scaled) variables (marked with a prime)</span>:
+</p>
+<span class="js-maths">\gdef \unscaled #1 {\colg{#1}}
+  \gdef \scaled #1 {\colv{#1'}}</span>
+<h3>Temperature</h3>
+<p>
+The natural temperature scale in the problem is <span class="js-maths">T_1 - T_0</span>,
+the difference between the two prescribed temperatures.
+Choose scaled temperature
+</p>
+<div class="js-maths important">\unscaled{T} = T_0 + (T_1 - T_0) \scaled{T}
+</div>
+<p>
+so that in scaled terms, the lower temperature is <span class="js-maths">\scaled{T} = 0</span>
+and the higher temperature is <span class="js-maths">\scaled{T} = 1</span>.
+</p>
+<h3>Position</h3>
+<p>
+The natural length scale in the problem is <span class="js-maths">L</span>, the length of the rod.
+Choose scaled position
+</p>
+<div class="js-maths important">\unscaled{x} = L \scaled{x}
+</div>
+<p>
+so that in scaled terms, the left end of the rod is <span class="js-maths">\scaled{x} = 0</span>
+and the right end of the rod is <span class="js-maths">\scaled{x} = 1</span>.
+</p>
+<h3>Time</h3>
+<p>
+The time scale isn't immediately obvious, so choose scaled time
+</p>
+<div class="js-maths important">\unscaled{t} = \tau \scaled{t}
+</div>
+<p>
+with the time scale <span class="js-maths">\tau</span> to be determined.
+</p>
+<h2>Dimensionless groups</h2>
+<p>
+We take the heat equation
+</p>
+<div class="js-maths">\frac{\rho c}{k} \frac{\pd\unscaled{T}}{\pd\unscaled{t}} =
+  \frac{\pd^2 \unscaled{T}}{{\pd\unscaled{x}}^2}
+</div>
+<p>
+and move from <span class="colour-g">unscaled</span> to <span class="colour-v">scaled</span> variables
+(use the chain rule):
+</p>
+<div class="js-maths">\frac{\rho c}{k}
+\frac{(T_1 - T_0)}{\tau}
+\frac{\pd\scaled{T}}{\pd\scaled{t}}
+  =
+\frac{(T_1 - T_0)}{L^2}
+\frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
+</div>
+<p>
+Rearrange:
+</p>
+<span class="js-maths">\gdef \group #1 {\colr{\squarebr{#1}}}</span>
+<div class="js-maths">\group{\frac{\rho c L^2}{k \tau}}
+\frac{\pd\scaled{T}}{\pd\scaled{t}}
+  =
+\frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
+</div>
+<p>
+All of the <span class="colour-v">scaled variables</span> are <span class="colour-v">dimensionless</span>,
+therefore the bracketed term is a <span class="colour-r">dimensionsless group</span>,
+i.e.&nbsp;just a number.
+</p>
+<h3>Time scale</h3>
+<p>
+Currently the time scale <span class="js-maths">\tau</span> is <em>free</em>;
+it is not prescribed in the problem and we haven't defined it yet.
+Because we have <strong>one free scale</strong> <span class="js-maths">\tau</span> and <strong>one dimensionless group</strong>,
+we can eliminate the dimensionless group* by setting it equal to one
+and solving for <span class="js-maths">\tau</span>:
+</p>
+<div class="js-maths">\group{\frac{\rho c L^2}{k \tau}} = 1
+</div>
+<div class="js-maths important">\tau = \frac{\rho c L^2}{k}
+</div>
+<p>
+(*NOTE:
+if a problem has <em>more</em> dimensionless groups than there are free scales,
+you won't be able to eliminate <em>all</em> of the dimensionless groups.)
+</p>
+<h3>Making sense</h3>
+<p>
+At this point we pause to check:
+does the time scale we have found make sense?
+</p>
+<ul>
+<li><span class="js-maths">\tau \propto L^2</span><br>
+If the rod is longer, it takes a longer time to reach equilibrium.
+</li>
+<li><span class="js-maths">\tau \propto 1 / k</span><br>
+If the rod is a better conductor, then <span class="js-maths">k</span> is larger,
+so <span class="js-maths">\tau</span> is smaller and it takes a shorter time to reach equilibrium.
+</li>
+</ul>
+<p>
+Yes this makes sense.
+</p>
+<h2>Finish scaling</h2>
+<p>
+Having eliminated the dimensionless group,
+our heat equation is now
+</p>
+<div class="js-maths">\frac{\pd\scaled{T}}{\pd\scaled{t}}
+  =
+\frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}.
+</div>
+<p>
+We should also scale the boundary conditions and initial condition:
+</p>
+<div class="js-maths">\begin{aligned}
+  \eval{\scaled{T}}_{\scaled{x} = 0} &amp;= 0 \\
+  \eval{\scaled{T}}_{\scaled{x} = 1} &amp;= 1 \\
+  \eval{\scaled{T}}_{\scaled{t} = 0} &amp;= 0
+\end{aligned}
+</div>
+<p>
+Writing primes everywhere is annoying,
+so from here onward we <strong>drop the primes</strong>.
+Altogether:
+</p>
+<div class="js-maths important">\begin{gathered}
+  \frac{\pd T}{\pd t}
+    =
+  \frac{\pd^2 T}{{\pd x}^2}. \\[\tallspace]
+  \eval{T}_{x = 0} = 0 \\
+  \eval{T}_{x = 1} = 1 \\
+  \eval{T}_{t = 0} = 0
+\end{gathered}
+</div>
+<div class="end">
+END
+</div>
+<p>
+<a href="/">Return to the home page.</a>
+</p>
+<footer>
+Last modified: 2020-07-24<br>
+Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.
+</footer>
+</body>
+</html>
