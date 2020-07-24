@@ -1,3 +1,17 @@
+.colour-r {
+  color: #e00;
+}
+.colour-g {
+  color: green;
+}
+.colour-b {
+  color: blue;
+}
+.colour-v {
+  color: darkviolet;
+}
+
+
 .end {
   font-size: x-large;
   font-weight: bold;
