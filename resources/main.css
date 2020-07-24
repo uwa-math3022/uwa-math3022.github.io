@@ -27,6 +27,11 @@ footer {
   padding-top: 0.5em;
 }
 
+noscript {
+  color: crimson;
+  font-weight: bold;
+}
+
 table {
   background-color: white;
   border-spacing: 0;
