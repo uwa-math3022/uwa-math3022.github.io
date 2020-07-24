@@ -1,3 +1,9 @@
+.end {
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+}
+
 .katex-display > .katex {
   overflow-x: auto;
   overflow-y: hidden;
