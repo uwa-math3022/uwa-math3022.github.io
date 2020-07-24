@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Minify main CSS using CSSO
+# <https://github.com/css/csso-cli>
+# npm install -g csso-cli
+csso resources/main.css -o resources/main.min.css
+
+# Minify KaTeX JS using terser
+# <https://github.com/terser/terser>
+# npm install -g terser
+terser resources/maths.js -c -m -o resources/maths.min.js
