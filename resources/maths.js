@@ -27,6 +27,9 @@ function renderMaths() {
     '\\roundbr': '\\delimwrap{(}{#1}{)}',
     '\\squarebr': '\\delimwrap{[}{#1}{]}',
     
+    // Evaluated at
+    '\\eval': '\\delimwrap{.}{#1}{\\rvert}',
+    
     // Fencing
     '\\abs': '\\delimwrap{\\lvert}{#1}{\\rvert}', /* or, '\\situps' */
     '\\norm': '\\delimwrap{\\lVert}{#1}{\\rVert}',
