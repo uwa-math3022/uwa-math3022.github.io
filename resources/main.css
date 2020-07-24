@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.important {
+  border: 2px solid black;
+}
+
 .katex-display > .katex {
   overflow-x: auto;
   overflow-y: hidden;
