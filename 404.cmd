@@ -11,6 +11,5 @@
 ----
 **The requested page was not found.**
 ----
-----
-Head back to the [home page](/).
-----
+
+\home
