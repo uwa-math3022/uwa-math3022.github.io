@@ -486,7 +486,7 @@ __A.__
   in your own time and never do it again. Just put $-\lambda^2$.
 ----
 ----
-Thus the have separated the PDE into two ODEs:
+Thus we have separated the PDE into two ODEs:
 ----
 
 #### Time ####
@@ -502,12 +502,12 @@ $$
 
 $$
 \begin{aligned}
-  \pos{\frac{\td^2 X}{{\td x}^2}} &= \con{-\lambda^2} \time{X} \\[\tallspace]
+  \pos{\frac{\td^2 X}{{\td x}^2}} &= \con{-\lambda^2} \pos{X} \\[\tallspace]
   \pos{X (x)} &= A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)
 \end{aligned}
 $$
 
-#### Combined ####
+#### Altogether ####
 
 $$
   \Ttr (x, t) =
