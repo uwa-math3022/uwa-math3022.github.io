@@ -638,6 +638,30 @@ Putting everything together, the solution is
       }.
 \end{aligned}
 </div>
+<h3>Remarks on convergence</h3>
+<ol>
+<li><strong>This is an exact result, but it is an infinite series.</strong><br>
+Whether an infinite series is <em>useful</em> depends on how fast it converges
+(and how many terms you need for a given accuracy).
+<ul>
+<li>Needs a few terms: good
+</li>
+<li>Needs a dozen terms: meh
+</li>
+<li>Needs a hundred terms: crap
+</li>
+</ul>
+</li>
+<li><strong>For <span class="js-maths">t = 0</span>, this series takes ages to converge.</strong><br>
+This is because there is no exponential decay,
+and we have an alternating series with coefficients going like <span class="js-maths">1 / n</span>.
+Sure it converges, but it is much too slow to be practical.
+</li>
+<li><strong>For moderate to large <span class="js-maths">t</span>, convergence is very fast.</strong><br>
+This is because <span class="js-maths">\ee ^ {-n^2 \pi^2 t}</span> decays exponentially quickly.
+Only a few terms are needed (or even just one term).
+</li>
+</ol>
 <div class="end">
 END
 </div>

@@ -790,6 +790,29 @@ $${.important}
 \end{aligned}
 $$
 
+### Remarks on convergence ###
+
+++++++++
+1. **This is an exact result, but it is an infinite series.** \+
+   Whether an infinite series is *useful* depends on how fast it converges
+   (and how many terms you need for a given accuracy).
+   ====
+   * Needs a few terms: good
+   * Needs a dozen terms: meh
+   * Needs a hundred terms: crap
+   ====
+
+2. **For $t = 0$, this series takes ages to converge.** \+
+   This is because there is no exponential decay,
+   and we have an alternating series with coefficients going like $1 / n$.
+   Sure it converges, but it is much too slow to be practical.
+
+3. **For moderate to large $t$, convergence is very fast.** \+
+   This is because $\ee ^ {-n^2 \pi^2 t}$ decays exponentially quickly.
+   Only a few terms are needed (or even just one term).
+++++++++
+
+
 
 \END
 
