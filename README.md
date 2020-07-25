@@ -1,9 +1,10 @@
-# uwa-math3022.github.io
+# <uwa-math3022.github.io>
 
-Some stuff for MATH3022 Scientific and Industrial Modelling
-at the University of Western Australia (UWA),
-because PDFs are a pain to read on small screens,
-and because equations don't look terribly good on LMS.
+Some stuff for MATH3022 Scientific and Industrial Modelling,
+at the University of Western Australia (UWA).
+
+PDFs are a pain to read on small screens,
+and also equations don't look terribly good on LMS.
 
 ## License
 
