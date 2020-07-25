@@ -323,6 +323,89 @@ Since <span class="js-maths">\eval{\Teq}_{t = 0} = \eval{x}_{t = 0} = x</span>, 
   \eval{\Ttr}_{t = 0} = -x.
 \end{gathered}
 </div>
+<h3>Separation of variables</h3>
+<span class="js-maths">\gdef \pos #1 {\colg{#1}}
+  \gdef \time #1 {\colv{#1}}
+  \gdef \con #1 {\colb{#1}}</span>
+<p>
+Suppose that the <span class="colour-r">transient solution</span>
+is the product of a <span class="colour-g">function of position only</span>
+and a <span class="colour-v">function of time only</span>,
+</p>
+<div class="js-maths">\Ttr (x, t) = \pos{X (x)} \time{Y (t)}.
+</div>
+<p>
+(This may seem restrictive, but since the heat equation is linear
+we can take linear combinations afterwards.)
+Substituting this into the PDE for <span class="js-maths">\Ttr</span>, we get
+</p>
+<div class="js-maths">\begin{aligned}
+  \frac{\pd (\pos{X} \time{Y})}{\pd \time{t}}
+    &amp;=
+  \frac{\pd^2 (\pos{X} \time{Y})}{{\pd \pos{x}}^2}
+    \\[\tallspace]
+  \pos{X} \time{\frac{\td Y}{\td t}}
+    &amp;=
+  \pos{\frac{\td^2 X}{{\td x}^2}} \time{Y}.
+\end{aligned}
+</div>
+<p>
+Dividing through by <span class="js-maths">\pos{X} \time{Y}</span>:
+</p>
+<div class="js-maths">\time{\frac{1}{Y} \frac{\td Y}{\td t}}
+  =
+\pos{\frac{1}{X} \frac{\td^2 X}{{\td x}^2}}
+</div>
+<p>
+This says that <span class="colour-v">a function of <span class="js-maths">t</span> only</span>
+is equal to <span class="colour-g">a function of <span class="js-maths">x</span> only</span>,
+and this is supposed to be true for all <span class="js-maths">\time{t}</span> and all <span class="js-maths">\pos{x}</span>.
+</p>
+<p>
+<b>Q.</b>
+How can <span class="colour-v">a function of <span class="js-maths">t</span></span> be equal to <span class="colour-g">a function of <span class="js-maths">x</span></span>?<br>
+<b>A.</b>
+Both must equal the <span class="colour-b"><em>same</em> constant</span>:
+</p>
+<div class="js-maths important">\time{\frac{1}{Y} \frac{\td Y}{\td t}}
+  =
+\pos{\frac{1}{X} \frac{\td^2 X}{{\td x}^2}}
+  =
+\con{-\lambda^2}.
+</div>
+<p>
+<b>Q.</b>
+Why can't the constant be zero or positive?<br>
+<b>A.</b>
+Because those cases don't give useful solutions.
+In other units at UWA you're probably expected to show this every time,
+but here at MATH3022 we don't like wasting your time.
+Convince yourself why the zero and positive cases don't work
+in your own time and never do it again. Just put <span class="js-maths">-\lambda^2</span>.
+</p>
+<p>
+Thus the have separated the PDE into two ODEs:
+</p>
+<h4>Time</h4>
+<div class="js-maths">\begin{aligned}
+  \time{\frac{\td Y}{\td t}} &amp;= \con{-\lambda^2} \time{Y} \\[\tallspace]
+  \time{Y (t)} &amp;= C \ee ^ {\con{-\lambda^2} t}
+\end{aligned}
+</div>
+<h4>Position</h4>
+<div class="js-maths">\begin{aligned}
+  \pos{\frac{\td^2 X}{{\td x}^2}} &amp;= \con{-\lambda^2} \time{X} \\[\tallspace]
+  \pos{X (x)} &amp;= A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)
+\end{aligned}
+</div>
+<h4>Combined</h4>
+<div class="js-maths">\Ttr (x, t) =
+  \ee ^ {\con{-\lambda^2} t}
+  \squarebr{A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)}
+</div>
+<p>
+(Here the constant <span class="js-maths">C</span> has been absorbed into <span class="js-maths">A</span> and <span class="js-maths">B</span>.)
+</p>
 <div class="end">
 END
 </div>

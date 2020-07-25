@@ -405,6 +405,121 @@ $${.important}
 \end{gathered}
 $$
 
+### Separation of variables ###
+
+<##
+  Styles
+  * position: colour-g
+  * time: colour-v
+  * constant: colour-b
+##>
+$
+  \gdef \pos #1 {\colg{#1}}
+  \gdef \time #1 {\colv{#1}}
+  \gdef \con #1 {\colb{#1}}
+$
+{% \[ pos / (.*?) / \] % [g/ \1 /] %}
+{% \[ time / (.*?) / \] % [v/ \1 /] %}
+{% \[ con / (.*?) / \] % [b/ \1 /] %}
+
+----
+Suppose that the [tr/ transient solution /]
+is the product of a [pos/ function of position only /]
+and a [time/ function of time only /],
+----
+$$
+  \Ttr (x, t) = \pos{X (x)} \time{Y (t)}.
+$$
+
+----
+(This may seem restrictive, but since the heat equation is linear
+we can take linear combinations afterwards.)
+Substituting this into the PDE for $\Ttr$, we get
+----
+$$
+\begin{aligned}
+  \frac{\pd (\pos{X} \time{Y})}{\pd \time{t}}
+    &=
+  \frac{\pd^2 (\pos{X} \time{Y})}{{\pd \pos{x}}^2}
+    \\[\tallspace]
+  \pos{X} \time{\frac{\td Y}{\td t}}
+    &=
+  \pos{\frac{\td^2 X}{{\td x}^2}} \time{Y}.
+\end{aligned}
+$$
+----
+Dividing through by $\pos{X} \time{Y}$:
+----
+$$
+  \time{\frac{1}{Y} \frac{\td Y}{\td t}}
+    =
+  \pos{\frac{1}{X} \frac{\td^2 X}{{\td x}^2}}
+$$
+----
+This says that [time/ a function of $t$ only /]
+is equal to [pos/ a function of $x$ only /],
+and this is supposed to be true for all $\time{t}$ and all $\pos{x}$.
+----
+----
+__Q.__
+  How can [time/ a function of $t$ /] be equal to [pos/ a function of $x$ /]?
+\+
+__A.__
+  Both must equal the [con/ *same* constant /]:
+----
+$${.important}
+  \time{\frac{1}{Y} \frac{\td Y}{\td t}}
+    =
+  \pos{\frac{1}{X} \frac{\td^2 X}{{\td x}^2}}
+    =
+  \con{-\lambda^2}.
+$$
+----
+__Q.__
+  Why can't the constant be zero or positive?
+\+
+__A.__
+  Because those cases don't give useful solutions.
+  In other units at UWA you're probably expected to show this every time,
+  but here at MATH3022 we don't like wasting your time.
+  Convince yourself why the zero and positive cases don't work
+  in your own time and never do it again. Just put $-\lambda^2$.
+----
+----
+Thus the have separated the PDE into two ODEs:
+----
+
+#### Time ####
+
+$$
+\begin{aligned}
+  \time{\frac{\td Y}{\td t}} &= \con{-\lambda^2} \time{Y} \\[\tallspace]
+  \time{Y (t)} &= C \ee ^ {\con{-\lambda^2} t}
+\end{aligned}
+$$
+
+#### Position ####
+
+$$
+\begin{aligned}
+  \pos{\frac{\td^2 X}{{\td x}^2}} &= \con{-\lambda^2} \time{X} \\[\tallspace]
+  \pos{X (x)} &= A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)
+\end{aligned}
+$$
+
+#### Combined ####
+
+$$
+  \Ttr (x, t) =
+    \ee ^ {\con{-\lambda^2} t}
+    \squarebr{A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)}
+$$
+----
+(Here the constant $C$ has been absorbed into $A$ and $B$.)
+----
+
+
+
 \END
 
 \home
