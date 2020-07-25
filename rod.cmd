@@ -771,6 +771,26 @@ $$
 $$
 
 
+## Result ##
+
+----
+Putting everything together, the solution is
+----
+$${.important}
+\begin{aligned}
+  T
+    &= \Teq + \Ttr \\
+    &=
+      \equil{x} +
+      \trans{
+        \sum_{n = 1}^{\infty}
+          \frac{2 (-1) ^ n}{n \pi}
+          \ee ^ {-n^2 \pi^2 t} \sin (n \pi x)
+      }.
+\end{aligned}
+$$
+
+
 \END
 
 \home
