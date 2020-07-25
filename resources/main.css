@@ -41,6 +41,10 @@ footer {
   padding-top: 0.5em;
 }
 
+li {
+  margin-bottom: 0.2em;
+}
+
 noscript {
   color: crimson;
   font-weight: bold;

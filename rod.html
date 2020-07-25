@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/main.min.css">
+<script defer src="/resources/maths.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
+<title>Heating a rod | UWA MATH3022</title>
+</head>
+<body>
+<h1>Heating a rod</h1>
+<noscript>Enable JavaScript for equation rendering to work.</noscript>
+<p>
+A fully worked heat-equation example.
+<strong>Your work doesn't need to be as detailed as this.</strong>
+</p>
+<h2>Problem</h2>
+<p>
+Consider a uniform rod with length <span class="js-maths">L</span>, density <span class="js-maths">\rho</span>, specific heat <span class="js-maths">c</span>,
+and thermal conductivity <span class="js-maths">k</span>.
+</p>
+<p>
+Suppose the rod is initially at temperature <span class="js-maths">T_0</span> throughout.
+At time <span class="js-maths">t = 0</span>:
+</p>
+<ul>
+<li>Fix the left end at lower temperature <span class="js-maths">T = T_0</span>
+</li>
+<li>Fix the right end at higher temperature <span class="js-maths">T = T_1</span>
+</li>
+</ul>
+<p>
+What happens?
+</p>
+<h2>Quantities</h2>
+<table>
+<tr>
+<th colspan="2">Independent variables</th>
+</tr>
+<tr>
+<td><span class="js-maths">x</span></td>
+<td>position (<span class="js-maths">0 \le x \le L</span>)</td>
+</tr>
+<tr>
+<td><span class="js-maths">t</span></td>
+<td>time (<span class="js-maths">t \ge 0</span>)</td>
+</tr>
+<tr>
+<th colspan="2">Dependent variable</th>
+</tr>
+<tr>
+<td><span class="js-maths">T</span></td>
+<td>temperature</td>
+</tr>
+<tr>
+<th colspan="2">Constants</th>
+</tr>
+<tr>
+<td><span class="js-maths">L</span></td>
+<td>length</td>
+</tr>
+<tr>
+<td><span class="js-maths">\rho</span></td>
+<td>density</td>
+</tr>
+<tr>
+<td><span class="js-maths">c</span></td>
+<td>specific heat</td>
+</tr>
+<tr>
+<td><span class="js-maths">k</span></td>
+<td>thermal conductivity</td>
+</tr>
+<tr>
+<td><span class="js-maths">T_0</span></td>
+<td>lower temperature</td>
+</tr>
+<tr>
+<td><span class="js-maths">T_1</span></td>
+<td>higher temperature</td>
+</tr>
+</table>
+<h2>Defining equations</h2>
+<h3>Partial differential equation (PDE)</h3>
+<p>
+Heat equation in <span class="js-maths">T = T (x, t)</span>, throughout the rod, for all time:
+</p>
+<div class="js-maths important">\frac{\rho c}{k} \frac{\pd T}{\pd t} = \frac{\pd^2 T}{{\pd x}^2}
+</div>
+<h3>Boundary conditions (BCs)</h3>
+<p>
+Fixed temperature at the two ends, for all time:
+</p>
+<div class="js-maths important">\begin{aligned}
+  \eval{T}_{x = 0} &amp;= T_0 \\
+  \eval{T}_{x = L} &amp;= T_1
+\end{aligned}
+</div>
+<h3>Initial condition (IC)</h3>
+<p>
+Temperature is <span class="js-maths">T_0</span> throughout the rod, initially:
+</p>
+<div class="js-maths important">\eval{T}_{t = 0} = T_0
+</div>
+<h2>Scaling</h2>
+<span class="js-maths">\gdef \unscaled #1 {\colg{#1}}
+  \gdef \scaled #1 {\colv{#1'}}</span>
+<p>
+Units like metres and feet or Celsius and Fahrenheit are <em>arbitrary</em>,
+and it is better to work in the <em>natural</em> units
+which arise from the physical constants provided in the problem.
+</p>
+<p>
+We move from <span class="colour-g">dimensional (unscaled)</span> variables
+to <span class="colour-v">dimensionless (scaled) variables (marked with a prime)</span>:
+</p>
+<h3>Temperature</h3>
+<p>
+The natural temperature scale in the problem is <span class="js-maths">T_1 - T_0</span>,
+the difference between the two prescribed temperatures.
+Define scaled temperature <span class="js-maths">\scaled{T}</span> by
+</p>
+<div class="js-maths important">\unscaled{T} = T_0 + (T_1 - T_0) \scaled{T},
+</div>
+<p>
+so that in scaled terms, the lower temperature is <span class="js-maths">\scaled{T} = 0</span>
+and the higher temperature is <span class="js-maths">\scaled{T} = 1</span>.
+</p>
+<h3>Position</h3>
+<p>
+The natural length scale in the problem is <span class="js-maths">L</span>, the length of the rod.
+Define scaled position <span class="js-maths">\scaled{x}</span> by
+</p>
+<div class="js-maths important">\unscaled{x} = L \scaled{x},
+</div>
+<p>
+so that in scaled terms, the left end of the rod is <span class="js-maths">\scaled{x} = 0</span>
+and the right end of the rod is <span class="js-maths">\scaled{x} = 1</span>.
+</p>
+<h3>Time</h3>
+<p>
+The time scale isn't immediately obvious,
+so define scaled time <span class="js-maths">\scaled{t}</span> by
+</p>
+<div class="js-maths important">\unscaled{t} = \tau \scaled{t},
+</div>
+<p>
+with the time scale <span class="js-maths">\tau</span> yet to be determined.
+</p>
+<h2>Dimensionless groups</h2>
+<span class="js-maths">\gdef \group #1 {\colr{\squarebr{#1}}}</span>
+<p>
+We take the heat equation
+</p>
+<div class="js-maths">\frac{\rho c}{k} \frac{\pd\unscaled{T}}{\pd\unscaled{t}} =
+  \frac{\pd^2 \unscaled{T}}{{\pd\unscaled{x}}^2}
+</div>
+<p>
+and move from <span class="colour-g">unscaled</span> to <span class="colour-v">scaled</span> variables
+(use the chain rule):
+</p>
+<div class="js-maths">\frac{\rho c}{k}
+\frac{(T_1 - T_0)}{\tau}
+\frac{\pd\scaled{T}}{\pd\scaled{t}}
+  =
+\frac{(T_1 - T_0)}{L^2}
+\frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
+</div>
+<p>
+Rearrange:
+</p>
+<div class="js-maths">\group{\frac{\rho c L^2}{k \tau}}
+\frac{\pd\scaled{T}}{\pd\scaled{t}}
+  =
+\frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
+</div>
+<p>
+All of the <span class="colour-v">scaled variables</span> are <span class="colour-v">dimensionless</span>,
+therefore the bracketed term is a <span class="colour-r">dimensionsless group</span>,
+i.e.&nbsp;just a number.
+</p>
+<h3>Time scale</h3>
+<p>
+Currently the time scale <span class="js-maths">\tau</span> is <em>free</em>;
+it is not prescribed in the problem and we haven't defined it yet.
+Because we have <strong>one free scale</strong> <span class="js-maths">\tau</span> and <strong>one dimensionless group</strong>,
+we can eliminate the dimensionless group* by setting it equal to one
+and solving for <span class="js-maths">\tau</span>:
+</p>
+<div class="js-maths">\group{\frac{\rho c L^2}{k \tau}} = 1
+</div>
+<div class="js-maths important">\tau = \frac{\rho c L^2}{k}
+</div>
+<p>
+(*NOTE:
+if a problem has <em>fewer</em> free scales than dimensionless groups,
+you won't be able to eliminate <em>all</em> of the dimensionless groups.)
+</p>
+<h3>Making sense</h3>
+<p>
+At this point we pause to check:
+does the time scale we have found make sense?
+</p>
+<ul>
+<li><span class="js-maths">\tau \propto L^2</span><br>
+If the rod is longer, it takes a longer time to reach equilibrium.
+</li>
+<li><span class="js-maths">\tau \propto 1 / k</span><br>
+If the rod is a better conductor, then <span class="js-maths">k</span> is larger,
+so <span class="js-maths">\tau</span> is smaller and it takes a shorter time to reach equilibrium.
+</li>
+</ul>
+<p>
+Yes this makes sense.
+</p>
+<h2>Finish scaling</h2>
+<p>
+Having eliminated the dimensionless group,
+our heat equation is now
+</p>
+<div class="js-maths">\frac{\pd\scaled{T}}{\pd\scaled{t}}
+  =
+\frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}.
+</div>
+<p>
+We should also scale the boundary conditions and initial condition:
+</p>
+<div class="js-maths">\begin{aligned}
+  \eval{\scaled{T}}_{\scaled{x} = 0} &amp;= 0 \\
+  \eval{\scaled{T}}_{\scaled{x} = 1} &amp;= 1 \\
+  \eval{\scaled{T}}_{\scaled{t} = 0} &amp;= 0
+\end{aligned}
+</div>
+<p>
+Writing primes everywhere is annoying,
+so from here onward we <strong>drop the primes</strong>.
+Altogether:
+</p>
+<div class="js-maths important">\begin{gathered}
+  \frac{\pd T}{\pd t}
+    =
+  \frac{\pd^2 T}{{\pd x}^2} \\[\tallspace]
+  \eval{T}_{x = 0} = 0 \\
+  \eval{T}_{x = 1} = 1 \\
+  \eval{T}_{t = 0} = 0
+\end{gathered}
+</div>
+<h2>Equilibrium solution</h2>
+<span class="js-maths">\gdef \trans #1 {\colr{#1}}
+  \gdef \equil #1 {\colb{#1}}
+  \gdef \Ttr {\trans{T_\mathrm{tr}}}
+  \gdef \Teq {\equil{T_\mathrm{eq}}}</span>
+<p>
+After a long time, the heat going in at the right hand <span class="js-maths">\scaled{x} = 1</span>
+will be in balance with the heat lost at the left hand <span class="js-maths">\scaled{x} = 0</span>.
+The temperature profile <span class="js-maths">T</span> will reach an equilibium profile <span class="js-maths">\Teq</span>,
+which may depend on the position <span class="js-maths">x</span> but <em>not</em> on the time <span class="js-maths">t</span>.
+In symbols,
+</p>
+<div class="js-maths">\lim_{t \to \infty} T (x, t) = \Teq (x).
+</div>
+<p>
+Thus the PDE and boundary conditions simplify to
+</p>
+<div class="js-maths important">\begin{gathered}
+  0 = \frac{\td^2 \Teq}{{\td x}^2} \\[\tallspace]
+  \eval{\Teq}_{x = 0} = 0 \\
+  \eval{\Teq}_{x = 1} = 1.
+\end{gathered}
+</div>
+<p>
+(The initial condition (<span class="js-maths">t = 0</span>) is irrelevant at equilibrium.)
+</p>
+<p>
+The three equations above say that
+<span class="js-maths">\Teq (x)</span> is a straight line function of <span class="js-maths">x</span>
+passing throught <span class="js-maths">(x, \Teq) = (0, 0)</span> and <span class="js-maths">(x, \Teq) = (1, 1)</span>,
+so by inspection the equilibrium temperature profile is
+</p>
+<div class="js-maths important">\Teq (x) = x.
+</div>
+<h2>Transient solution</h2>
+<h3>Subtract out equilibrium solution</h3>
+<p>
+<em>Before</em> doing separation of variables,
+make sure to <strong>subtract out the equilibrium solution</strong>
+so that the boundary conditions are <em>homogeneous</em>.
+To do this, write the solution as a sum
+of <span class="colour-b">equilibrium</span> and <span class="colour-r">transient</span> parts,
+</p>
+<div class="js-maths important">T (x, t) = \Teq (x) + \Ttr (x, t)
+</div>
+<p>
+or
+</p>
+<div class="js-maths">T = \Teq + \Ttr.
+</div>
+<p>
+Substituting these into the scaled equations, we get
+</p>
+<div class="js-maths">\begin{gathered}
+  \cancel{\frac{\pd \Teq}{\pd t}} + \frac{\pd \Ttr}{\pd t}
+    =
+  \cancel{\frac{\pd^2 \Teq}{{\pd x}^2}} + \frac{\pd^2 \Ttr}{{\pd x}^2}
+    \\[\tallspace]
+  \cancel{\eval{\Teq}_{x = 0}} + \eval{\Ttr}_{x = 0} = \cancel{0} \\
+  \cancel{\eval{\Teq}_{x = 1}} + \eval{\Ttr}_{x = 1} = \cancel{1} \\
+  \eval{\Teq}_{t = 0} + \eval{\Ttr}_{t = 0} = 0.
+\end{gathered}
+</div>
+<p>
+Since <span class="js-maths">\eval{\Teq}_{t = 0} = \eval{x}_{t = 0} = x</span>, these become
+</p>
+<div class="js-maths important">\begin{gathered}
+  \frac{\pd \Ttr}{\pd t}
+    =
+  \frac{\pd^2 \Ttr}{{\pd x}^2}
+    \\[\tallspace]
+  \eval{\Ttr}_{x = 0} = 0 \\
+  \eval{\Ttr}_{x = 1} = 1 \\
+  \eval{\Ttr}_{t = 0} = -x.
+\end{gathered}
+</div>
+<h3>Separation of variables</h3>
+<span class="js-maths">\gdef \pos #1 {\colg{#1}}
+  \gdef \time #1 {\colv{#1}}
+  \gdef \con #1 {\colb{#1}}</span>
+<p>
+Suppose that the <span class="colour-r">transient solution</span>
+is the product of a <span class="colour-g">function of position only</span>
+and a <span class="colour-v">function of time only</span>,
+</p>
+<div class="js-maths">\Ttr (x, t) = \pos{X (x)} \time{Y (t)}.
+</div>
+<p>
+(This may seem restrictive, but since the heat equation is linear
+we can take linear combinations afterwards.)
+Substituting this into the PDE for <span class="js-maths">\Ttr</span>, we get
+</p>
+<div class="js-maths">\begin{aligned}
+  \frac{\pd (\pos{X} \time{Y})}{\pd \time{t}}
+    &amp;=
+  \frac{\pd^2 (\pos{X} \time{Y})}{{\pd \pos{x}}^2}
+    \\[\tallspace]
+  \pos{X} \time{\frac{\td Y}{\td t}}
+    &amp;=
+  \pos{\frac{\td^2 X}{{\td x}^2}} \time{Y}.
+\end{aligned}
+</div>
+<p>
+Dividing through by <span class="js-maths">\pos{X} \time{Y}</span>:
+</p>
+<div class="js-maths">\time{\frac{1}{Y} \frac{\td Y}{\td t}}
+  =
+\pos{\frac{1}{X} \frac{\td^2 X}{{\td x}^2}}
+</div>
+<p>
+This says that <span class="colour-v">a function of <span class="js-maths">t</span> only</span>
+is equal to <span class="colour-g">a function of <span class="js-maths">x</span> only</span>,
+and this is supposed to be true for all <span class="js-maths">\time{t}</span> and all <span class="js-maths">\pos{x}</span>.
+</p>
+<p>
+<b>Q.</b>
+How can <span class="colour-v">a function of <span class="js-maths">t</span></span> be equal to <span class="colour-g">a function of <span class="js-maths">x</span></span>
+for all <span class="js-maths">\time{t}</span> and all <span class="js-maths">\pos{x}</span>?<br>
+<b>A.</b>
+Both must equal the <span class="colour-b"><em>same</em> constant</span>:
+</p>
+<div class="js-maths important">\time{\frac{1}{Y} \frac{\td Y}{\td t}}
+  =
+\pos{\frac{1}{X} \frac{\td^2 X}{{\td x}^2}}
+  =
+\con{-\lambda^2}.
+</div>
+<p>
+<b>Q.</b>
+Why can't the constant be zero or positive?<br>
+<b>A.</b>
+Because those cases don't give useful solutions.
+In other units at UWA you're probably expected to show this every time,
+but here at MATH3022 we don't like wasting your time.
+Convince yourself why the zero and positive cases don't work
+in your own time and never do it again. Just put <span class="js-maths">-\lambda^2</span>.
+</p>
+<p>
+Thus we have separated the PDE into two ODEs:
+</p>
+<h4>Time</h4>
+<div class="js-maths">\begin{aligned}
+  \time{\frac{\td Y}{\td t}} &amp;= \con{-\lambda^2} \time{Y} \\[\tallspace]
+  \time{Y (t)} &amp;= C \ee ^ {\con{-\lambda^2} t}
+\end{aligned}
+</div>
+<h4>Position</h4>
+<div class="js-maths">\begin{aligned}
+  \pos{\frac{\td^2 X}{{\td x}^2}} &amp;= \con{-\lambda^2} \pos{X} \\[\tallspace]
+  \pos{X (x)} &amp;= A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)
+\end{aligned}
+</div>
+<h4>Altogether</h4>
+<div class="js-maths">\Ttr (x, t) =
+  \ee ^ {\con{-\lambda^2} t}
+  \squarebr{A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)}
+</div>
+<p>
+(Here the constant <span class="js-maths">C</span> has been absorbed into <span class="js-maths">A</span> and <span class="js-maths">B</span>.)
+</p>
+<h3>Boundary conditions</h3>
+<p>
+We then apply the boundary conditions at the two ends of the rod:
+</p>
+<h4>Left end</h4>
+<p>
+We have
+</p>
+<div class="js-maths">\eval{\Ttr}_{x = 0} = \ee ^ {\con{-\lambda^2} t} \cdot A = 0
+</div>
+<p>
+which implies <span class="js-maths">A = 0</span>.
+Therefore
+</p>
+<div class="js-maths">\Ttr (x, t) = B \ee ^ {\con{-\lambda^2} t} \sin (\con{\lambda} x).
+</div>
+<h4>Right end</h4>
+<p>
+We have
+</p>
+<div class="js-maths">\eval{\Ttr}_{x = 1}
+= B \ee ^ {\con{-\lambda^2} t} \sin \con{\lambda}
+= 0
+</div>
+<p>
+and since we don't want <span class="js-maths">B = 0</span> (which is boring),
+we must have
+</p>
+<div class="js-maths">\sin \con{\lambda} = 0
+</div>
+<div class="js-maths important">\con{\lambda} = \con{n} \pi, \quad n = 1, 2, 3, \dots.
+</div>
+<h3>Physical sense</h3>
+<p>
+To recap, our transient solution is the product of
+an exponential decay in time and a sinusoid in position,
+linked through the constant <span class="js-maths">\con{\lambda} = \con{n} \pi</span>:
+</p>
+<div class="js-maths">\Ttr (x, t) = B \ee ^ {\con{-n^2} \pi^2 t} \sin (\con{n} \pi x)
+</div>
+<p>
+What does this mean physically?
+</p>
+<ul>
+<li><b>Large <span class="js-maths">\con{n}</span></b><br>
+Components which are highly oscillatory in position
+decay <strong>very</strong> quickly.
+(Note that the <span class="js-maths">\con{n^2}</span> in the exponent
+increases <em>much</em> faster than the <span class="js-maths">\con{n}</span> in the sine.)
+</li>
+<li><b>Small <span class="js-maths">\con{n}</span></b><br>
+Components which have long wavelength decay more slowly.
+</li>
+</ul>
+<h3>Initial condition</h3>
+<p>
+So far our transient solution <span class="js-maths">\Ttr</span>
+satisfies the PDE and boundary conditions.
+But what about the initial condition,
+</p>
+<div class="js-maths">\eval{\Ttr}_{t = 0} = -x?
+</div>
+<p>
+Clearly the single product
+<span class="js-maths">\Ttr (x, t) = B \ee ^ {\con{-n^2} \pi^2 t} \sin (\con{n} \pi x)</span>
+isn't going to work.
+We need something a bit more general:
+</p>
+<h4>Fourier series</h4>
+<span class="js-maths">\gdef \B #1 {B_{\con{#1}}}
+  \gdef \sine #1 {\sin (\con{#1} \pi x)}</span>
+<p>
+Recall that:
+</p>
+<ol>
+<li>The <strong>heat equation is linear</strong>
+</li>
+<li>The <strong>boundary conditions</strong> for <span class="js-maths">\Ttr</span> at <span class="js-maths">x = 0</span> and <span class="js-maths">x = 1</span>
+<strong>are homogeneous</strong> (because we subtracted out the equilibrium solution)
+</li>
+</ol>
+<p>
+Therefore, linear combinations of the product
+<span class="js-maths">\Ttr (x, t) = B \ee ^ {\con{-n^2} \pi^2 t} \sine{n}</span>
+will also satisfy the heat equation and the boundary conditions.
+Writing <span class="js-maths">\B{n}</span> instead of <span class="js-maths">B</span>, a more general form for <span class="js-maths">\Ttr</span> is
+</p>
+<div class="js-maths">\Ttr (x, t) =
+  \sum_{\con{n} = 1}^{\infty}
+    \B{n} \ee ^ {\con{-n^2} \pi^2 t}
+    \sine{n}.
+</div>
+<p>
+The initial condition becomes
+</p>
+<div class="js-maths important">\eval{\Ttr}_{t = 0}
+  = \sum_{\con{n} = 1}^{\infty} \B{n} \sine{n}
+  = -x,
+</div>
+<p>
+and we need to find a Fourier series for the function <span class="js-maths">-x</span>,
+i.e.&nbsp;determine the coefficients <span class="js-maths">\B{1}, \B{2}, \dots</span>.
+</p>
+<h4>Inner product spaces</h4>
+<span class="js-maths">\gdef \innerp #1 #2 {\delimwrap{\langle}{#1,#2}{\rangle}}
+  \gdef \vece #1 {\vec{e}_{\con{#1}}}</span>
+<p>
+It turns out that finding a Fourier series is very similar to
+the problem of writing a vector <span class="js-maths">\vec{v}</span>
+in terms of the orthogonal basis <span class="js-maths">\curlybr{\vece{1}, \vece{2}, \dots}</span>:
+</p>
+<div class="js-maths">\begin{aligned}
+  \vec{v} &amp;= \B{1} \vece{1} + \B{2} \vece{2} + \dots \\
+  -x &amp;= \B{1} \sine{1} + \B{2} \sine{2} + \dots
+\end{aligned}
+</div>
+<p>
+In the case of the Fourier series,
+the "vector space" is called an <b>inner product space</b>,
+the "vector" is the function <span class="js-maths">-x</span>,
+and the "orthogonal basis" is the sequence of functions
+<span class="js-maths">\curlybr{\sine{1}, \sine{2}, \dots}</span>.
+In both cases we want to determine the coefficients <span class="js-maths">\B{1}, \B{2}, \dots</span>.
+</p>
+<p>
+In the familiar vector space, the dot product of two vectors <span class="js-maths">f</span> and <span class="js-maths">g</span>
+is given by
+</p>
+<div class="js-maths">\vec{f} \dotp \vec{g} = f_1 g_1 + f_2 g_2 + \dots.
+</div>
+<p>
+In an inner product space,
+the analogue to the dot product is the <b>inner product</b>.
+In the current problem*,
+the inner product of two functions <span class="js-maths">f (x)</span> and <span class="js-maths">g (x)</span> is given by
+</p>
+<div class="js-maths">\innerp{f}{g} = \int_0^1 f (x) g (x) \td x.
+</div>
+<p>
+(*NOTE: More generally you need to include a weighting function
+inside the integral; only here the weighting function happens to be <span class="js-maths">1</span>.
+The endpoints of the integral come
+from the endpoints of the two boundary conditions.)
+</p>
+<p>
+The dot/inner product is useful because of the <b>orthogonality</b> property;
+the dot/inner product between two basis vectors is non-zero
+if and only if they are the same basis vector:
+</p>
+<div class="js-maths">\begin{gathered}
+  \vece{m} \dotp \vece{n} =
+    \begin{cases}
+      \norm{\vece{m}} ^ 2, &amp; \con{m} = \con{n} \\
+      0, &amp; \con{m} \ne \con{n}
+    \end{cases}
+      \\[\tallspace]
+  \int_0^1 \sine{m} \sine{n} \td x =
+    \begin{cases}
+      1/2, &amp; \con{m} = \con{n} \\
+      0, &amp; \con{m} \ne \con{n}
+    \end{cases}
+\end{gathered}
+</div>
+<p>
+To find the coefficient for a particular basis vector,
+simple take the dot/inner product of the series with that vector
+to kill off all the other components.
+For example, to find <span class="js-maths">\B{2}</span>, take the dot product with <span class="js-maths">\vece{2}</span>:
+</p>
+<div class="js-maths">\begin{aligned}
+  \vec{v} &amp;= \B{1} \vece{1} + \B{2} \vece{2} + \dots \\
+  \vec{v} \dotp \vece{2} &amp;=
+    \cancel{\B{1} \vece{1} \dotp \vece{2}}
+    + \B{2} \vece{2} \dotp \vece{2}
+    + \cancel{\dots} \\[\tallspace]
+  \B{2} &amp;= \frac{\vec{v} \dotp \vece{2}}{\norm{\vece{2}} ^ 2}
+\end{aligned}
+</div>
+<p>
+Translating this to the context of Fourier series:
+</p>
+<div class="js-maths">\begin{aligned}
+  -x
+    &amp;= \B{1} \sine{1} \\
+      &amp; \quad + \B{2} \sine{2} \\
+      &amp; \quad + \dots \\
+  \int_0^1 -x \sine{2} \td x
+    &amp;= \cancel{\B{1} \int_0^1 \sine{1} \sine{2} \td x} \\
+      &amp; \quad + \B{2} \int_0^1 \sine{2} \sine{2} \td x \\
+      &amp; \quad + \cancel{\dots} \\[\tallspace]
+  \B{2} &amp;=
+    \frac{\int_0^1 -x \sine{2} \td x}{\int_0^1 \sin^2 (\con{2} \pi x) \td x}.
+\end{aligned}
+</div>
+<p>
+In general, the <span class="js-maths">\con{n}</span>th coefficient is given by
+</p>
+<div class="js-maths important">\B{n} =
+  \frac{\int_0^1 -x \sine{n} \td x}{\int_0^1 \sin^2 (\con{n} \pi x) \td x}
+</div>
+<p>
+We're not in first year anymore, so get Mathematica to do this for us:
+</p>
+<pre><code>FullSimplify[
+  Divide[
+    Integrate[-x Sin[n Pi x], {x, 0, 1}],
+    Integrate[Sin[n Pi x] ^ 2, {x, 0, 1}]
+  ],
+  Element[n, Integers]
+]
+</code></pre>
+<p>
+Thus
+</p>
+<div class="js-maths">\B{n} = \frac{2 (-1) ^ {\con{n}}}{\con{n} \pi}.
+</div>
+<h2>Result</h2>
+<p>
+Putting everything together, the solution is
+</p>
+<div class="js-maths important">\begin{aligned}
+  T
+    &amp;= \Teq + \Ttr \\
+    &amp;=
+      \equil{x} +
+      \trans{
+        \sum_{n = 1}^{\infty}
+          \frac{2 (-1) ^ n}{n \pi}
+          \ee ^ {-n^2 \pi^2 t} \sin (n \pi x)
+      }.
+\end{aligned}
+</div>
+<h3>Remarks on convergence</h3>
+<ol>
+<li><strong>This is an exact result, but it is an infinite series.</strong><br>
+Whether an infinite series is <em>useful</em> depends on how fast it converges
+(and how many terms you need for a given accuracy).
+<ul>
+<li>Needs a few terms: good
+</li>
+<li>Needs a dozen terms: meh
+</li>
+<li>Needs a hundred terms: crap
+</li>
+</ul>
+</li>
+<li><strong>For <span class="js-maths">t = 0</span>, this series takes ages to converge.</strong><br>
+This is because there is no exponential decay when <span class="js-maths">t = 0</span>,
+and we have an alternating series with coefficients going like <span class="js-maths">1 / n</span>.
+Sure, it converges, but it is much too slow to be practical.
+</li>
+<li><strong>For moderate to large <span class="js-maths">t</span>, convergence is very fast.</strong><br>
+This is because <span class="js-maths">\ee ^ {-n^2 \pi^2 t}</span> decays exponentially quickly.
+Only a few terms are needed (or even just one term).
+</li>
+</ol>
+<h3>How long to reach equilibrium?</h3>
+<p>
+While "infinity" is technically correct, it isn't a <em>useful</em> answer.
+For example, infinity is technically the time it takes
+for nuclear radiation to clear out at <a href="https://en.wikipedia.org/wiki/British_nuclear_tests_at_Maralinga">Maralinga</a>,
+but a much more practical measure is the half-life of 24100&nbsp;years
+for plutonium-239.
+</p>
+<p>
+If you should learn anything from this page, it's that you should
+<strong>never answer "how long till equilibrium" with "infinity"</strong>.
+Don't do it.
+(Also, don't bother including a pretentious remark like
+"technically the answer is infinity". We know already.)
+</p>
+<p>
+The rule of thumb we use in applied maths
+is that we're practically at equilibrium
+when the exponent reaches <span class="js-maths">4</span> (or <span class="js-maths">5</span>, depending on who you ask),
+<span class="js-maths">\ee ^ {-4}</span> being just under <span class="js-maths">2\%</span>.
+Now, when <span class="js-maths">t &gt; 0</span>, our series is dominated by the first term <span class="js-maths">n = 1</span>
+(the terms with higher <span class="js-maths">n</span> are much much smaller).
+Therefore, a practical measure of equilibrium time
+is obtained by setting the exponent to <span class="js-maths">4</span> for <span class="js-maths">n = 1</span>:
+</p>
+<div class="js-maths">\begin{aligned}
+  1^2 \pi^2 t &amp;\sim 4 \\
+  t &amp;\sim \frac{4}{\pi^2}
+\end{aligned}
+</div>
+<p>
+Finally, don't forget that we are
+still working in <span class="colour-v">scaled (dimensionless)</span> variables;
+the <span class="js-maths">t</span> above is what we once called <span class="js-maths">\scaled{t}</span>,
+equal to <span class="js-maths">\unscaled{t} / \tau</span>.
+The <span class="colour-g">unscaled (dimensional)</span> equilibrium time is therefore
+</p>
+<div class="js-maths important">\unscaled{t}
+  \sim \frac{4 \tau}{\pi^2}
+  = \frac{4 \rho c L^2}{\pi^2 k}.
+</div>
+<div class="end">
+END
+</div>
+<p>
+<a href="/">Return to the home page.</a>
+</p>
+<footer>
+Last modified: 2020-07-24<br>
+Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.
+</footer>
+</body>
+</html>
