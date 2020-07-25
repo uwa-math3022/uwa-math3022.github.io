@@ -120,7 +120,7 @@ to <span class="colour-v">dimensionless (scaled) variables (marked with a prime)
 <p>
 The natural temperature scale in the problem is <span class="js-maths">T_1 - T_0</span>,
 the difference between the two prescribed temperatures.
-Choose scaled temperature <span class="js-maths">\scaled{T}</span> according to
+Define scaled temperature <span class="js-maths">\scaled{T}</span> by
 </p>
 <div class="js-maths important">\unscaled{T} = T_0 + (T_1 - T_0) \scaled{T},
 </div>
@@ -131,7 +131,7 @@ and the higher temperature is <span class="js-maths">\scaled{T} = 1</span>.
 <h3>Position</h3>
 <p>
 The natural length scale in the problem is <span class="js-maths">L</span>, the length of the rod.
-Choose scaled position <span class="js-maths">\scaled{x}</span> according to
+Define scaled position <span class="js-maths">\scaled{x}</span> by
 </p>
 <div class="js-maths important">\unscaled{x} = L \scaled{x},
 </div>
@@ -142,12 +142,12 @@ and the right end of the rod is <span class="js-maths">\scaled{x} = 1</span>.
 <h3>Time</h3>
 <p>
 The time scale isn't immediately obvious,
-so choose scaled time <span class="js-maths">\scaled{t}</span> according to
+so define scaled time <span class="js-maths">\scaled{t}</span> by
 </p>
 <div class="js-maths important">\unscaled{t} = \tau \scaled{t},
 </div>
 <p>
-with the time scale <span class="js-maths">\tau</span> to be determined.
+with the time scale <span class="js-maths">\tau</span> yet to be determined.
 </p>
 <h2>Dimensionless groups</h2>
 <span class="js-maths">\gdef \group #1 {\colr{\squarebr{#1}}}</span>
@@ -195,7 +195,7 @@ and solving for <span class="js-maths">\tau</span>:
 </div>
 <p>
 (*NOTE:
-if a problem has <em>more</em> dimensionless groups than there are free scales,
+if a problem has <em>fewer</em> free scales than dimensionless groups,
 you won't be able to eliminate <em>all</em> of the dimensionless groups.)
 </p>
 <h3>Making sense</h3>
@@ -255,7 +255,7 @@ Altogether:
 <p>
 After a long time, the heat going in at the right hand <span class="js-maths">\scaled{x} = 1</span>
 will be in balance with the heat lost at the left hand <span class="js-maths">\scaled{x} = 0</span>.
-The temperature profile <span class="js-maths">T</span> will reach an equilibium profile <span class="js-maths">\Teq</span>
+The temperature profile <span class="js-maths">T</span> will reach an equilibium profile <span class="js-maths">\Teq</span>,
 which may depend on the position <span class="js-maths">x</span> but <em>not</em> on the time <span class="js-maths">t</span>.
 In symbols,
 </p>
@@ -363,7 +363,8 @@ and this is supposed to be true for all <span class="js-maths">\time{t}</span> a
 </p>
 <p>
 <b>Q.</b>
-How can <span class="colour-v">a function of <span class="js-maths">t</span></span> be equal to <span class="colour-g">a function of <span class="js-maths">x</span></span>?<br>
+How can <span class="colour-v">a function of <span class="js-maths">t</span></span> be equal to <span class="colour-g">a function of <span class="js-maths">x</span></span>
+for all <span class="js-maths">\time{t}</span> and all <span class="js-maths">\pos{x}</span>?<br>
 <b>A.</b>
 Both must equal the <span class="colour-b"><em>same</em> constant</span>:
 </p>
@@ -506,8 +507,8 @@ The initial condition becomes
   = -x,
 </div>
 <p>
-i.e.&nbsp;we need to find a Fourier series for the function <span class="js-maths">-x</span>
-by determining the coefficients <span class="js-maths">\B{1}, \B{2}, \dots</span>.
+and we need to find a Fourier series for the function <span class="js-maths">-x</span>,
+i.e.&nbsp;determine the coefficients <span class="js-maths">\B{1}, \B{2}, \dots</span>.
 </p>
 <h4>Inner product spaces</h4>
 <span class="js-maths">\gdef \innerp #1 #2 {\delimwrap{\langle}{#1,#2}{\rangle}}
@@ -570,10 +571,10 @@ if and only if they are the same basis vector:
 \end{gathered}
 </div>
 <p>
-To find the coefficient of a particular basis vector,
+To find the coefficient for a particular basis vector,
 simple take the dot/inner product of the series with that vector
 to kill off all the other components.
-For example, to find <span class="js-maths">\B{2}</span>,
+For example, to find <span class="js-maths">\B{2}</span>, take the dot product with <span class="js-maths">\vece{2}</span>:
 </p>
 <div class="js-maths">\begin{aligned}
   \vec{v} &amp;= \B{1} \vece{1} + \B{2} \vece{2} + \dots \\
@@ -581,11 +582,11 @@ For example, to find <span class="js-maths">\B{2}</span>,
     \cancel{\B{1} \vece{1} \dotp \vece{2}}
     + \B{2} \vece{2} \dotp \vece{2}
     + \cancel{\dots} \\[\tallspace]
-  \B{2} &amp;= \frac{\vec{v} \dotp \vece{2}}{\norm{\vece{2}} ^ 2},
+  \B{2} &amp;= \frac{\vec{v} \dotp \vece{2}}{\norm{\vece{2}} ^ 2}
 \end{aligned}
 </div>
 <p>
-or in the context of Fourier series,
+Translating this to the context of Fourier series:
 </p>
 <div class="js-maths">\begin{aligned}
   -x
@@ -604,7 +605,7 @@ or in the context of Fourier series,
 In general, the <span class="js-maths">\con{n}</span>th coefficient is given by
 </p>
 <div class="js-maths important">\B{n} =
-  \frac{\int_0^1 -x \sine{n} \td x}{\int_0^1 \sin^2 (\con{n} \pi x) \td x}.
+  \frac{\int_0^1 -x \sine{n} \td x}{\int_0^1 \sin^2 (\con{n} \pi x) \td x}
 </div>
 <p>
 We're not in first year anymore, so get Mathematica to do this for us:
@@ -653,9 +654,9 @@ Whether an infinite series is <em>useful</em> depends on how fast it converges
 </ul>
 </li>
 <li><strong>For <span class="js-maths">t = 0</span>, this series takes ages to converge.</strong><br>
-This is because there is no exponential decay,
+This is because there is no exponential decay when <span class="js-maths">t = 0</span>,
 and we have an alternating series with coefficients going like <span class="js-maths">1 / n</span>.
-Sure it converges, but it is much too slow to be practical.
+Sure, it converges, but it is much too slow to be practical.
 </li>
 <li><strong>For moderate to large <span class="js-maths">t</span>, convergence is very fast.</strong><br>
 This is because <span class="js-maths">\ee ^ {-n^2 \pi^2 t}</span> decays exponentially quickly.
@@ -665,14 +666,22 @@ Only a few terms are needed (or even just one term).
 <h3>How long to reach equilibrium?</h3>
 <p>
 While "infinity" is technically correct, it isn't a <em>useful</em> answer.
-(For example, infinity is the time it takes
+For example, infinity is technically the time it takes
 for nuclear radiation to clear out at <a href="https://en.wikipedia.org/wiki/British_nuclear_tests_at_Maralinga">Maralinga</a>,
 but a much more practical measure is the half-life of 24100&nbsp;years
-for plutonium-239.)
+for plutonium-239.
+</p>
+<p>
+If you should learn anything from this page, it's that you should
+<strong>never answer "how long till equilibrium" with "infinity"</strong>.
+Don't do it.
+(Also, don't bother including a pretentious remark like
+"technically the answer is infinity". We know already.)
 </p>
 <p>
 The rule of thumb we use in applied maths
-is that we're practically at equilibrium when the exponent reaches <span class="js-maths">4</span>,
+is that we're practically at equilibrium
+when the exponent reaches <span class="js-maths">4</span> (or <span class="js-maths">5</span>, depending on who you ask),
 <span class="js-maths">\ee ^ {-4}</span> being just under <span class="js-maths">2\%</span>.
 Now, when <span class="js-maths">t &gt; 0</span>, our series is dominated by the first term <span class="js-maths">n = 1</span>
 (the terms with higher <span class="js-maths">n</span> are much much smaller).
@@ -688,7 +697,7 @@ is obtained by setting the exponent to <span class="js-maths">4</span> for <span
 Finally, don't forget that we are
 still working in <span class="colour-v">scaled (dimensionless)</span> variables;
 the <span class="js-maths">t</span> above is what we once called <span class="js-maths">\scaled{t}</span>,
-which is equal to <span class="js-maths">\unscaled{t} / \tau</span>.
+equal to <span class="js-maths">\unscaled{t} / \tau</span>.
 The <span class="colour-g">unscaled (dimensional)</span> equilibrium time is therefore
 </p>
 <div class="js-maths important">\unscaled{t}

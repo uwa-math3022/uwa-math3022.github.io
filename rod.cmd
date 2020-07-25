@@ -140,7 +140,7 @@ to [scaled/ dimensionless (scaled) variables (marked with a prime) /]:
 ----
 The natural temperature scale in the problem is $T_1 - T_0$,
 the difference between the two prescribed temperatures.
-Choose scaled temperature $\scaled{T}$ according to
+Define scaled temperature $\scaled{T}$ by
 ----
 $${.important}
   \unscaled{T} = T_0 + (T_1 - T_0) \scaled{T},
@@ -154,7 +154,7 @@ and the higher temperature is $\scaled{T} = 1$.
 
 ----
 The natural length scale in the problem is $L$, the length of the rod.
-Choose scaled position $\scaled{x}$ according to
+Define scaled position $\scaled{x}$ by
 ----
 $${.important}
   \unscaled{x} = L \scaled{x},
@@ -168,13 +168,13 @@ and the right end of the rod is $\scaled{x} = 1$.
 
 ----
 The time scale isn't immediately obvious,
-so choose scaled time $\scaled{t}$ according to
+so define scaled time $\scaled{t}$ by
 ----
 $${.important}
   \unscaled{t} = \tau \scaled{t},
 $$
 ----
-with the time scale $\tau$ to be determined.
+with the time scale $\tau$ yet to be determined.
 ----
 
 
@@ -242,7 +242,7 @@ $${.important}
 $$
 ----
 (\*NOTE:
-if a problem has *more* dimensionless groups than there are free scales,
+if a problem has *fewer* free scales than dimensionless groups,
 you won't be able to eliminate *all* of the dimensionless groups.)
 ----
 
@@ -323,7 +323,7 @@ $
 ----
 After a long time, the heat going in at the right hand $\scaled{x} = 1$
 will be in balance with the heat lost at the left hand $\scaled{x} = 0$.
-The temperature profile $T$ will reach an equilibium profile $\Teq$
+The temperature profile $T$ will reach an equilibium profile $\Teq$,
 which may depend on the position $x$ but *not* on the time $t$.
 In symbols,
 ----
@@ -462,7 +462,8 @@ and this is supposed to be true for all $\time{t}$ and all $\pos{x}$.
 ----
 ----
 __Q.__
-  How can [time/ a function of $t$ /] be equal to [pos/ a function of $x$ /]?
+  How can [time/ a function of $t$ /] be equal to [pos/ a function of $x$ /]
+  for all $\time{t}$ and all $\pos{x}$?
 \+
 __A.__
   Both must equal the [con/ *same* constant /]:
@@ -636,8 +637,8 @@ $${.important}
     = -x,
 $$
 ----
-i.e.~we need to find a Fourier series for the function $-x$
-by determining the coefficients $\B{1}, \B{2}, \dots$.
+and we need to find a Fourier series for the function $-x$,
+i.e.~determine the coefficients $\B{1}, \B{2}, \dots$.
 ----
 
 #### Inner product spaces ####
@@ -711,10 +712,10 @@ $$
 $$
 
 ----
-To find the coefficient of a particular basis vector,
+To find the coefficient for a particular basis vector,
 simple take the dot/inner product of the series with that vector
 to kill off all the other components.
-For example, to find $\B{2}$,
+For example, to find $\B{2}$, take the dot product with $\vece{2}$:
 ----
 $$
 \begin{aligned}
@@ -723,11 +724,11 @@ $$
     \cancel{\B{1} \vece{1} \dotp \vece{2}}
     + \B{2} \vece{2} \dotp \vece{2}
     + \cancel{\dots} \\[\tallspace]
-  \B{2} &= \frac{\vec{v} \dotp \vece{2}}{\norm{\vece{2}} ^ 2},
+  \B{2} &= \frac{\vec{v} \dotp \vece{2}}{\norm{\vece{2}} ^ 2}
 \end{aligned}
 $$
 ----
-or in the context of Fourier series,
+Translating this to the context of Fourier series:
 ----
 $$
 \begin{aligned}
@@ -748,7 +749,7 @@ In general, the $\con{n}$th coefficient is given by
 ----
 $${.important}
   \B{n} =
-    \frac{\int_0^1 -x \sine{n} \td x}{\int_0^1 \sin^2 (\con{n} \pi x) \td x}.
+    \frac{\int_0^1 -x \sine{n} \td x}{\int_0^1 \sin^2 (\con{n} \pi x) \td x}
 $$
 
 ----
@@ -803,9 +804,9 @@ $$
    ====
 
 2. **For $t = 0$, this series takes ages to converge.** \+
-   This is because there is no exponential decay,
+   This is because there is no exponential decay when $t = 0$,
    and we have an alternating series with coefficients going like $1 / n$.
-   Sure it converges, but it is much too slow to be practical.
+   Sure, it converges, but it is much too slow to be practical.
 
 3. **For moderate to large $t$, convergence is very fast.** \+
    This is because $\ee ^ {-n^2 \pi^2 t}$ decays exponentially quickly.
@@ -816,16 +817,25 @@ $$
 
 ----
 While "infinity" is technically correct, it isn't a *useful* answer.
-(For example, infinity is the time it takes
+For example, infinity is technically the time it takes
 for nuclear radiation to clear out at [Maralinga],
 but a much more practical measure is the half-life of 24100~years
-for plutonium-239.)
+for plutonium-239.
 ----
 @[Maralinga] https://en.wikipedia.org/wiki/British_nuclear_tests_at_Maralinga @ 
 
 ----
+If you should learn anything from this page, it's that you should
+**never answer "how long till equilibrium" with "infinity"**.
+Don't do it.
+(Also, don't bother including a pretentious remark like
+"technically the answer is infinity". We know already.)
+----
+
+----
 The rule of thumb we use in applied maths
-is that we're practically at equilibrium when the exponent reaches $4$,
+is that we're practically at equilibrium
+when the exponent reaches $4$ (or $5$, depending on who you ask),
 $\ee ^ {-4}$ being just under $2\%$.
 Now, when $t > 0$, our series is dominated by the first term $n = 1$
 (the terms with higher $n$ are much much smaller).
@@ -842,7 +852,7 @@ $$
 Finally, don't forget that we are
 still working in [scaled/ scaled (dimensionless) /] variables;
 the $t$ above is what we once called $\scaled{t}$,
-which is equal to $\unscaled{t} / \tau$.
+equal to $\unscaled{t} / \tau$.
 The [unscaled/ unscaled (dimensional) /] equilibrium time is therefore
 ----
 $${.important}
