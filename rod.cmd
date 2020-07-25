@@ -80,7 +80,7 @@ What happens?
 ### Partial differential equation (PDE) ###
 
 ----
-Heat equation in $T = T (x, t)$:
+Heat equation in $T = T (x, t)$, throughout the rod, for all time:
 ----
 
 $${.important}
