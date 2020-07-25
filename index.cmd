@@ -20,7 +20,11 @@
 For details see the [`mathematica-intro` repository][m intro].
 ----
 
-## More stuff coming soon ##
+## Heat equation ##
+
+----
+[Rod example (fully worked).](/rod)
+----
 
 @[intro.nb]
   https://github.com/uwa-math3022/mathematica-intro/\
