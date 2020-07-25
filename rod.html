@@ -406,6 +406,38 @@ Thus we have separated the PDE into two ODEs:
 <p>
 (Here the constant <span class="js-maths">C</span> has been absorbed into <span class="js-maths">A</span> and <span class="js-maths">B</span>.)
 </p>
+<h3>Boundary conditions</h3>
+<p>
+We then apply the boundary conditions at the two ends of the rod:
+</p>
+<h4>Left end</h4>
+<p>
+We have
+</p>
+<div class="js-maths">\eval{\Ttr}_{x = 0} = \ee ^ {\con{-\lambda^2} t} \cdot A = 0
+</div>
+<p>
+which implies <span class="js-maths">A = 0</span>.
+Therefore
+</p>
+<div class="js-maths">\Ttr (x, t) = B \ee ^ {\con{-\lambda^2} t} \sin (\con{\lambda} x).
+</div>
+<h4>Right end</h4>
+<p>
+We have
+</p>
+<div class="js-maths">\eval{\Ttr}_{x = 1}
+= B \ee ^ {\con{-\lambda^2} t} \sin \con{\lambda}
+= 0
+</div>
+<p>
+and since we don't want <span class="js-maths">B = 0</span> (which is boring),
+we must have
+</p>
+<div class="js-maths">\sin \con{\lambda} = 0
+</div>
+<div class="js-maths important">\con{\lambda} = n \pi, \quad n = 1, 2, 3, \dots.
+</div>
 <div class="end">
 END
 </div>

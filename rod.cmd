@@ -518,6 +518,48 @@ $$
 (Here the constant $C$ has been absorbed into $A$ and $B$.)
 ----
 
+### Boundary conditions ###
+
+----
+We then apply the boundary conditions at the two ends of the rod:
+----
+
+#### Left end ####
+
+----
+We have
+----
+$$
+  \eval{\Ttr}_{x = 0} = \ee ^ {\con{-\lambda^2} t} \cdot A = 0
+$$
+----
+which implies $A = 0$.
+Therefore
+----
+$$
+  \Ttr (x, t) = B \ee ^ {\con{-\lambda^2} t} \sin (\con{\lambda} x).
+$$
+
+#### Right end ####
+
+----
+We have
+----
+$$
+  \eval{\Ttr}_{x = 1}
+  = B \ee ^ {\con{-\lambda^2} t} \sin \con{\lambda}
+  = 0
+$$
+----
+and since we don't want $B = 0$ (which is boring),
+we must have
+----
+$$
+  \sin \con{\lambda} = 0
+$$
+$${.important}
+  \con{\lambda} = n \pi, \quad n = 1, 2, 3, \dots.
+$$
 
 
 \END
