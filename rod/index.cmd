@@ -484,7 +484,7 @@ __A.__
   In other units at UWA you're probably expected to show this every time,
   but here at MATH3022 we don't like wasting your time.
   Convince yourself why the zero and positive cases don't work
-  in your own time and never do it again. Just put $-\lambda^2$.
+  (in your own time) and never do it again. Just put $-\lambda^2$.
 ----
 ----
 Thus we have separated the PDE into two ODEs:
@@ -828,8 +828,8 @@ for plutonium-239.
 If you should learn anything from this page, it's that you should
 **never answer "how long till equilibrium" with "infinity"**.
 Don't do it.
-(Also, don't bother including a pretentious remark like
-"technically the answer is infinity". We know already.)
+(Also don't bother including a smart remark like
+"technically the answer is infinity"; we know already.)
 ----
 
 ----
