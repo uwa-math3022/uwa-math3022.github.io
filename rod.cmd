@@ -304,6 +304,57 @@ $${.important}
 $$
 
 
+## Equilibrium solution ##
+
+<##
+  Styles
+  * transient: colour-r
+  * equilibrium: colour-b
+##>
+$
+  \gdef \trans #1 {\colr{#1}}
+  \gdef \equil #1 {\colb{#1}}
+  \gdef \Ttr {\trans{T_\mathrm{tr}}}
+  \gdef \Teq {\equil{T_\mathrm{eq}}}
+$
+{% \[ tr / (.*?) / \] % [r/ \1 /] %}
+{% \[ eq / (.*?) / \] % [b/ \1 /] %}
+
+----
+After a long time, the heat going in at the right hand $\scaled{x} = 1$
+will be in balance with the heat lost at the left hand $\scaled{x} = 0$.
+The temperature profile $T$ will reach an equilibium profile $\Teq$
+which may depend on the position $x$ but *not* on the time $t$.
+In symbols,
+----
+$$
+  \lim_{t \to \infty} T (x, t) = \Teq (x).
+$$
+
+----
+Thus the PDE and boundary conditions simplify to
+----
+$${.important}
+\begin{gathered}
+  0 = \frac{\td^2 \Teq}{{\td x}^2} \\[\tallspace]
+  \eval{\Teq}_{x = 0} = 0 \\
+  \eval{\Teq}_{x = 1} = 1.
+\end{gathered}
+$$
+----
+(The initial condition ($t = 0$) is irrelevant at equilibrium.)
+----
+----
+The three equations above say that
+$\Teq (x)$ is a straight line function of $x$
+passing throught $(x, \Teq) = (0, 0)$ and $(x, \Teq) = (1, 1)$,
+so by inspection the equilibrium temperature profile is
+----
+$${.important}
+  \Teq (x) = x.
+$$
+
+
 \END
 
 \home

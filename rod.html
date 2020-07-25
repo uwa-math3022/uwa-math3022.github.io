@@ -247,6 +247,40 @@ Altogether:
   \eval{T}_{t = 0} = 0
 \end{gathered}
 </div>
+<h2>Equilibrium solution</h2>
+<span class="js-maths">\gdef \trans #1 {\colr{#1}}
+  \gdef \equil #1 {\colb{#1}}
+  \gdef \Ttr {\trans{T_\mathrm{tr}}}
+  \gdef \Teq {\equil{T_\mathrm{eq}}}</span>
+<p>
+After a long time, the heat going in at the right hand <span class="js-maths">\scaled{x} = 1</span>
+will be in balance with the heat lost at the left hand <span class="js-maths">\scaled{x} = 0</span>.
+The temperature profile <span class="js-maths">T</span> will reach an equilibium profile <span class="js-maths">\Teq</span>
+which may depend on the position <span class="js-maths">x</span> but <em>not</em> on the time <span class="js-maths">t</span>.
+In symbols,
+</p>
+<div class="js-maths">\lim_{t \to \infty} T (x, t) = \Teq (x).
+</div>
+<p>
+Thus the PDE and boundary conditions simplify to
+</p>
+<div class="js-maths important">\begin{gathered}
+  0 = \frac{\td^2 \Teq}{{\td x}^2} \\[\tallspace]
+  \eval{\Teq}_{x = 0} = 0 \\
+  \eval{\Teq}_{x = 1} = 1.
+\end{gathered}
+</div>
+<p>
+(The initial condition (<span class="js-maths">t = 0</span>) is irrelevant at equilibrium.)
+</p>
+<p>
+The three equations above say that
+<span class="js-maths">\Teq (x)</span> is a straight line function of <span class="js-maths">x</span>
+passing throught <span class="js-maths">(x, \Teq) = (0, 0)</span> and <span class="js-maths">(x, \Teq) = (1, 1)</span>,
+so by inspection the equilibrium temperature profile is
+</p>
+<div class="js-maths important">\Teq (x) = x.
+</div>
 <div class="end">
 END
 </div>
