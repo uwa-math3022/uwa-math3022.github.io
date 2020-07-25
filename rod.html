@@ -460,6 +460,168 @@ increases <em>much</em> faster than the <span class="js-maths">\con{n}</span> in
 Components which have long wavelength decay more slowly.
 </li>
 </ul>
+<h3>Initial condition</h3>
+<p>
+So far our transient solution <span class="js-maths">\Ttr</span>
+satisfies the PDE and boundary conditions.
+But what about the initial condition,
+</p>
+<div class="js-maths">\eval{\Ttr}_{t = 0} = -x?
+</div>
+<p>
+Clearly the single product
+<span class="js-maths">\Ttr (x, t) = B \ee ^ {\con{-n^2} \pi^2 t} \sin (\con{n} \pi x)</span>
+isn't going to work.
+We need something a bit more general:
+</p>
+<h4>Fourier series</h4>
+<span class="js-maths">\gdef \B #1 {B_{\con{#1}}}
+  \gdef \sine #1 {\sin (\con{#1} \pi x)}</span>
+<p>
+Recall that:
+</p>
+<ol>
+<li>The <strong>heat equation is linear</strong>
+</li>
+<li>The <strong>boundary conditions</strong> for <span class="js-maths">\Ttr</span> at <span class="js-maths">x = 0</span> and <span class="js-maths">x = 1</span>
+<strong>are homogeneous</strong> (because we subtracted out the equilibrium solution)
+</li>
+</ol>
+<p>
+Therefore, linear combinations of the product
+<span class="js-maths">\Ttr (x, t) = B \ee ^ {\con{-n^2} \pi^2 t} \sine{n}</span>
+will also satisfy the heat equation and the boundary conditions.
+Writing <span class="js-maths">\B{n}</span> instead of <span class="js-maths">B</span>, a more general form for <span class="js-maths">\Ttr</span> is
+</p>
+<div class="js-maths">\Ttr (x, t) =
+  \sum_{\con{n} = 1}^{\infty}
+    \B{n} \ee ^ {\con{-n^2} \pi^2 t}
+    \sine{n}.
+</div>
+<p>
+The initial condition becomes
+</p>
+<div class="js-maths important">\eval{\Ttr}_{t = 0}
+  = \sum_{\con{n} = 1}^{\infty} \B{n} \sine{n}
+  = -x,
+</div>
+<p>
+i.e.&nbsp;we need to find a Fourier series for the function <span class="js-maths">-x</span>
+by determining the coefficients <span class="js-maths">\B{1}, \B{2}, \dots</span>.
+</p>
+<h4>Inner product spaces</h4>
+<span class="js-maths">\gdef \innerp #1 #2 {\delimwrap{\langle}{#1,#2}{\rangle}}
+  \gdef \vece #1 {\vec{e}_{\con{#1}}}</span>
+<p>
+It turns out that finding a Fourier series is very similar to
+the problem of writing a vector <span class="js-maths">\vec{v}</span>
+in terms of the orthogonal basis <span class="js-maths">\curlybr{\vece{1}, \vece{2}, \dots}</span>:
+</p>
+<div class="js-maths">\begin{aligned}
+  \vec{v} &amp;= \B{1} \vece{1} + \B{2} \vece{2} + \dots \\
+  -x &amp;= \B{1} \sine{1} + \B{2} \sine{2} + \dots
+\end{aligned}
+</div>
+<p>
+In the case of the Fourier series,
+the "vector space" is called an <b>inner product space</b>,
+the "vector" is the function <span class="js-maths">-x</span>,
+and the "orthogonal basis" is the sequence of functions
+<span class="js-maths">\curlybr{\sine{1}, \sine{2}, \dots}</span>.
+In both cases we want to determine the coefficients <span class="js-maths">\B{1}, \B{2}, \dots</span>.
+</p>
+<p>
+In the familiar vector space, the dot product of two vectors <span class="js-maths">f</span> and <span class="js-maths">g</span>
+is given by
+</p>
+<div class="js-maths">\vec{f} \dotp \vec{g} = f_1 g_1 + f_2 g_2 + \dots.
+</div>
+<p>
+In an inner product space,
+the analogue to the dot product is the <b>inner product</b>.
+In the current problem*,
+the inner product of two functions <span class="js-maths">f (x)</span> and <span class="js-maths">g (x)</span> is given by
+</p>
+<div class="js-maths">\innerp{f}{g} = \int_0^1 f (x) g (x) \td x.
+</div>
+<p>
+(*NOTE: More generally you need to include a weighting function
+inside the integral; only here the weighting function happens to be <span class="js-maths">1</span>.
+The endpoints of the integral come
+from the endpoints of the two boundary conditions.)
+</p>
+<p>
+The dot/inner product is useful because of the <b>orthogonality</b> property;
+the dot/inner product between two basis vectors is non-zero
+if and only if they are the same basis vector:
+</p>
+<div class="js-maths">\begin{gathered}
+  \vece{m} \dotp \vece{n} =
+    \begin{cases}
+      \norm{\vece{m}} ^ 2, &amp; \con{m} = \con{n} \\
+      0, &amp; \con{m} \ne \con{n}
+    \end{cases}
+      \\[\tallspace]
+  \int_0^1 \sine{m} \sine{n} \td x =
+    \begin{cases}
+      1/2, &amp; \con{m} = \con{n} \\
+      0, &amp; \con{m} \ne \con{n}
+    \end{cases}
+\end{gathered}
+</div>
+<p>
+To find the coefficient of a particular basis vector,
+simple take the dot/inner product of the series with that vector
+to kill off all the other components.
+For example, to find <span class="js-maths">\B{2}</span>,
+</p>
+<div class="js-maths">\begin{aligned}
+  \vec{v} &amp;= \B{1} \vece{1} + \B{2} \vece{2} + \dots \\
+  \vec{v} \dotp \vece{2} &amp;=
+    \cancel{\B{1} \vece{1} \dotp \vece{2}}
+    + \B{2} \vece{2} \dotp \vece{2}
+    + \cancel{\dots} \\[\tallspace]
+  \B{2} &amp;= \frac{\vec{v} \dotp \vece{2}}{\norm{\vece{2}} ^ 2},
+\end{aligned}
+</div>
+<p>
+or in the context of Fourier series,
+</p>
+<div class="js-maths">\begin{aligned}
+  -x
+    &amp;= \B{1} \sine{1} \\
+      &amp; \quad + \B{2} \sine{2} \\
+      &amp; \quad + \dots \\
+  \int_0^1 -x \sine{2} \td x
+    &amp;= \cancel{\B{1} \int_0^1 \sine{1} \sine{2} \td x} \\
+      &amp; \quad + \B{2} \int_0^1 \sine{2} \sine{2} \td x \\
+      &amp; \quad + \cancel{\dots} \\[\tallspace]
+  \B{2} &amp;=
+    \frac{\int_0^1 -x \sine{2} \td x}{\int_0^1 \sin^2 (\con{2} \pi x) \td x}.
+\end{aligned}
+</div>
+<p>
+In general, the <span class="js-maths">\con{n}</span>th coefficient is given by
+</p>
+<div class="js-maths important">\B{n} =
+  \frac{\int_0^1 -x \sine{n} \td x}{\int_0^1 \sin^2 (\con{n} \pi x) \td x}.
+</div>
+<p>
+We're not in first year anymore, so get Mathematica to do this for us:
+</p>
+<pre><code>FullSimplify[
+  Divide[
+    Integrate[-x Sin[n Pi x], {x, 0, 1}],
+    Integrate[Sin[n Pi x] ^ 2, {x, 0, 1}]
+  ],
+  Element[n, Integers]
+]
+</code></pre>
+<p>
+Thus
+</p>
+<div class="js-maths">\B{n} = \frac{2 (-1) ^ {\con{n}}}{\con{n} \pi}.
+</div>
 <div class="end">
 END
 </div>

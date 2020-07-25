@@ -584,6 +584,191 @@ What does this mean physically?
   Components which have long wavelength decay more slowly.
 ====
 
+### Initial condition ###
+
+----
+So far our transient solution $\Ttr$
+satisfies the PDE and boundary conditions.
+But what about the initial condition,
+----
+$$
+  \eval{\Ttr}_{t = 0} = -x?
+$$
+----
+Clearly the single product
+$\Ttr (x, t) = B \ee ^ {\con{-n^2} \pi^2 t} \sin (\con{n} \pi x)$
+isn't going to work.
+We need something a bit more general:
+----
+
+#### Fourier series ####
+$
+  \gdef \B #1 {B_{\con{#1}}}
+  \gdef \sine #1 {\sin (\con{#1} \pi x)}
+$
+
+----
+Recall that:
+----
+++++
+1. The **heat equation is linear**
+2. The **boundary conditions** for $\Ttr$ at $x = 0$ and $x = 1$
+ \/**are homogeneous** (because we subtracted out the equilibrium solution)
+++++
+----
+Therefore, linear combinations of the product
+$\Ttr (x, t) = B \ee ^ {\con{-n^2} \pi^2 t} \sine{n}$
+will also satisfy the heat equation and the boundary conditions.
+Writing $\B{n}$ instead of $B$, a more general form for $\Ttr$ is
+----
+$$
+  \Ttr (x, t) =
+    \sum_{\con{n} = 1}^{\infty}
+      \B{n} \ee ^ {\con{-n^2} \pi^2 t}
+      \sine{n}.
+$$
+----
+The initial condition becomes
+----
+$${.important}
+  \eval{\Ttr}_{t = 0}
+    = \sum_{\con{n} = 1}^{\infty} \B{n} \sine{n}
+    = -x,
+$$
+----
+i.e.~we need to find a Fourier series for the function $-x$
+by determining the coefficients $\B{1}, \B{2}, \dots$.
+----
+
+#### Inner product spaces ####
+$
+  \gdef \innerp #1 #2 {\delimwrap{\langle}{#1,#2}{\rangle}}
+  \gdef \vece #1 {\vec{e}_{\con{#1}}}
+$
+
+----
+It turns out that finding a Fourier series is very similar to
+the problem of writing a vector $\vec{v}$
+in terms of the orthogonal basis $\curlybr{\vece{1}, \vece{2}, \dots}$:
+----
+$$
+\begin{aligned}
+  \vec{v} &= \B{1} \vece{1} + \B{2} \vece{2} + \dots \\
+  -x &= \B{1} \sine{1} + \B{2} \sine{2} + \dots
+\end{aligned}
+$$
+----
+In the case of the Fourier series,
+the "vector space" is called an __inner product space__,
+the "vector" is the function $-x$,
+and the "orthogonal basis" is the sequence of functions
+$\curlybr{\sine{1}, \sine{2}, \dots}$.
+In both cases we want to determine the coefficients $\B{1}, \B{2}, \dots$.
+----
+
+----
+In the familiar vector space, the dot product of two vectors $f$ and $g$
+is given by
+----
+$$
+  \vec{f} \dotp \vec{g} = f_1 g_1 + f_2 g_2 + \dots.
+$$
+----
+In an inner product space,
+the analogue to the dot product is the __inner product__.
+In the current problem\*,
+the inner product of two functions $f (x)$ and $g (x)$ is given by
+----
+$$
+  \innerp{f}{g} = \int_0^1 f (x) g (x) \td x.
+$$
+----
+(\*NOTE: More generally you need to include a weighting function
+inside the integral; only here the weighting function happens to be $1$.
+The endpoints of the integral come
+from the endpoints of the two boundary conditions.)
+----
+
+----
+The dot/inner product is useful because of the __orthogonality__ property;
+the dot/inner product between two basis vectors is non-zero
+if and only if they are the same basis vector:
+----
+$$
+\begin{gathered}
+  \vece{m} \dotp \vece{n} =
+    \begin{cases}
+      \norm{\vece{m}} ^ 2, & \con{m} = \con{n} \\
+      0, & \con{m} \ne \con{n}
+    \end{cases}
+      \\[\tallspace]
+  \int_0^1 \sine{m} \sine{n} \td x =
+    \begin{cases}
+      1/2, & \con{m} = \con{n} \\
+      0, & \con{m} \ne \con{n}
+    \end{cases}
+\end{gathered}
+$$
+
+----
+To find the coefficient of a particular basis vector,
+simple take the dot/inner product of the series with that vector
+to kill off all the other components.
+For example, to find $\B{2}$,
+----
+$$
+\begin{aligned}
+  \vec{v} &= \B{1} \vece{1} + \B{2} \vece{2} + \dots \\
+  \vec{v} \dotp \vece{2} &=
+    \cancel{\B{1} \vece{1} \dotp \vece{2}}
+    + \B{2} \vece{2} \dotp \vece{2}
+    + \cancel{\dots} \\[\tallspace]
+  \B{2} &= \frac{\vec{v} \dotp \vece{2}}{\norm{\vece{2}} ^ 2},
+\end{aligned}
+$$
+----
+or in the context of Fourier series,
+----
+$$
+\begin{aligned}
+  -x
+    &= \B{1} \sine{1} \\
+      & \quad + \B{2} \sine{2} \\
+      & \quad + \dots \\
+  \int_0^1 -x \sine{2} \td x
+    &= \cancel{\B{1} \int_0^1 \sine{1} \sine{2} \td x} \\
+      & \quad + \B{2} \int_0^1 \sine{2} \sine{2} \td x \\
+      & \quad + \cancel{\dots} \\[\tallspace]
+  \B{2} &=
+    \frac{\int_0^1 -x \sine{2} \td x}{\int_0^1 \sin^2 (\con{2} \pi x) \td x}.
+\end{aligned}
+$$
+----
+In general, the $\con{n}$th coefficient is given by
+----
+$${.important}
+  \B{n} =
+    \frac{\int_0^1 -x \sine{n} \td x}{\int_0^1 \sin^2 (\con{n} \pi x) \td x}.
+$$
+
+----
+We're not in first year anymore, so get Mathematica to do this for us:
+----
+````
+FullSimplify[
+  Divide[
+    Integrate[-x Sin[n Pi x], {x, 0, 1}],
+    Integrate[Sin[n Pi x] ^ 2, {x, 0, 1}]
+  ],
+  Element[n, Integers]
+]
+````
+----
+Thus
+----
+$$
+  \B{n} = \frac{2 (-1) ^ {\con{n}}}{\con{n} \pi}.
+$$
 
 
 \END
