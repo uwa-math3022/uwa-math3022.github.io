@@ -662,6 +662,39 @@ This is because <span class="js-maths">\ee ^ {-n^2 \pi^2 t}</span> decays expone
 Only a few terms are needed (or even just one term).
 </li>
 </ol>
+<h3>How long to reach equilibrium?</h3>
+<p>
+While "infinity" is technically correct, it isn't a <em>useful</em> answer.
+(For example, infinity is the time it takes
+for nuclear radiation to clear out at <a href="https://en.wikipedia.org/wiki/British_nuclear_tests_at_Maralinga">Maralinga</a>,
+but a much more practical measure is the half-life of 24100&nbsp;years
+for plutonium-239.)
+</p>
+<p>
+The rule of thumb we use in applied maths
+is that we're practically at equilibrium when the exponent reaches <span class="js-maths">4</span>,
+<span class="js-maths">\ee ^ {-4}</span> being just under <span class="js-maths">2\%</span>.
+Now, when <span class="js-maths">t &gt; 0</span>, our series is dominated by the first term <span class="js-maths">n = 1</span>
+(the terms with higher <span class="js-maths">n</span> are much much smaller).
+Therefore, a practical measure of equilibrium time
+is obtained by setting the exponent to <span class="js-maths">4</span> for <span class="js-maths">n = 1</span>:
+</p>
+<div class="js-maths">\begin{aligned}
+  1^2 \pi^2 t &amp;\sim 4 \\
+  t &amp;\sim \frac{4}{\pi^2}
+\end{aligned}
+</div>
+<p>
+Finally, don't forget that we are
+still working in <span class="colour-v">scaled (dimensionless)</span> variables;
+the <span class="js-maths">t</span> above is what we once called <span class="js-maths">\scaled{t}</span>,
+which is equal to <span class="js-maths">\unscaled{t} / \tau</span>.
+The <span class="colour-g">unscaled (dimensional)</span> equilibrium time is therefore
+</p>
+<div class="js-maths important">\unscaled{t}
+  \sim \frac{4 \tau}{\pi^2}
+  = \frac{4 \rho c L^2}{\pi^2 k}.
+</div>
 <div class="end">
 END
 </div>

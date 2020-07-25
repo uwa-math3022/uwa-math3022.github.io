@@ -812,7 +812,44 @@ $$
    Only a few terms are needed (or even just one term).
 ++++++++
 
+### How long to reach equilibrium? ###
 
+----
+While "infinity" is technically correct, it isn't a *useful* answer.
+(For example, infinity is the time it takes
+for nuclear radiation to clear out at [Maralinga],
+but a much more practical measure is the half-life of 24100~years
+for plutonium-239.)
+----
+@[Maralinga] https://en.wikipedia.org/wiki/British_nuclear_tests_at_Maralinga @ 
+
+----
+The rule of thumb we use in applied maths
+is that we're practically at equilibrium when the exponent reaches $4$,
+$\ee ^ {-4}$ being just under $2\%$.
+Now, when $t > 0$, our series is dominated by the first term $n = 1$
+(the terms with higher $n$ are much much smaller).
+Therefore, a practical measure of equilibrium time
+is obtained by setting the exponent to $4$ for $n = 1$:
+----
+$$
+\begin{aligned}
+  1^2 \pi^2 t &\sim 4 \\
+  t &\sim \frac{4}{\pi^2}
+\end{aligned}
+$$
+----
+Finally, don't forget that we are
+still working in [scaled/ scaled (dimensionless) /] variables;
+the $t$ above is what we once called $\scaled{t}$,
+which is equal to $\unscaled{t} / \tau$.
+The [unscaled/ unscaled (dimensional) /] equilibrium time is therefore
+----
+$${.important}
+  \unscaled{t}
+    \sim \frac{4 \tau}{\pi^2}
+    = \frac{4 \rho c L^2}{\pi^2 k}.
+$$
 
 \END
 
