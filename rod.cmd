@@ -355,6 +355,56 @@ $${.important}
 $$
 
 
+## Transient solution ##
+
+### Subtract out equilibrium solution ###
+
+----
+*Before* doing separation of variables,
+make sure to **subtract out the equilibrium solution**
+so that the boundary conditions are *homogeneous*.
+To do this, write the solution as a sum
+of [eq/ equilibrium /] and [tr/ transient /] parts,
+----
+$${.important}
+  T (x, t) = \Teq (x) + \Ttr (x, t)
+$$
+----
+or
+----
+$$
+  T = \Teq + \Ttr.
+$$
+
+----
+Substituting these into the scaled equations, we get
+----
+$$
+\begin{gathered}
+  \cancel{\frac{\pd \Teq}{\pd t}} + \frac{\pd \Ttr}{\pd t}
+    =
+  \cancel{\frac{\pd^2 \Teq}{{\pd x}^2}} + \frac{\pd^2 \Ttr}{{\pd x}^2}
+    \\[\tallspace]
+  \cancel{\eval{\Teq}_{x = 0}} + \eval{\Ttr}_{x = 0} = \cancel{0} \\
+  \cancel{\eval{\Teq}_{x = 1}} + \eval{\Ttr}_{x = 1} = \cancel{1} \\
+  \eval{\Teq}_{t = 0} + \eval{\Ttr}_{t = 0} = 0.
+\end{gathered}
+$$
+----
+Since $\eval{\Teq}_{t = 0} = \eval{x}_{t = 0} = x$, these become
+----
+$${.important}
+\begin{gathered}
+  \frac{\pd \Ttr}{\pd t}
+    =
+  \frac{\pd^2 \Ttr}{{\pd x}^2}
+    \\[\tallspace]
+  \eval{\Ttr}_{x = 0} = 0 \\
+  \eval{\Ttr}_{x = 1} = 1 \\
+  \eval{\Ttr}_{t = 0} = -x.
+\end{gathered}
+$$
+
 \END
 
 \home
