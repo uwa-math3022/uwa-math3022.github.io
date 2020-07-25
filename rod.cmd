@@ -114,7 +114,7 @@ $$
 ## Scaling ##
 
 ----
-Units like metres and feet, or Celsius and Fahrenheit are *arbitrary*,
+Units like metres and feet or Celsius and Fahrenheit are *arbitrary*,
 and it is better to work in the *natural* units
 which arise from the physical constants provided in the problem.
 ----
