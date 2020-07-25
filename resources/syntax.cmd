@@ -131,9 +131,18 @@ p{%
   \Z
 %
   <footer>
-    Last modified: %date-modified \+
+    Last modified: %date-modified
+      \\+
     Content on this site is [released into the public domain](
       https://creativecommons.org/publicdomain/zero/1.0/
     ).
+      \\+
+    Mistakes/queries:
+    [email me][email], [raise an issue][issue], or [make a pull request][pr].
   </footer>
+  @@[email] mailto:conway.li@research.uwa.edu.au @@
+  @[issue]
+    https://github.com/uwa-math3022/uwa-math3022.github.io/issues @
+  @[pr]
+    https://github.com/uwa-math3022/uwa-math3022.github.io/pulls @
 %}
