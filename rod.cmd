@@ -140,10 +140,10 @@ $
 ----
 The natural temperature scale in the problem is $T_1 - T_0$,
 the difference between the two prescribed temperatures.
-Choose scaled temperature
+Choose scaled temperature $\scaled{T}$ according to
 ----
 $${.important}
-  \unscaled{T} = T_0 + (T_1 - T_0) \scaled{T}
+  \unscaled{T} = T_0 + (T_1 - T_0) \scaled{T},
 $$
 ----
 so that in scaled terms, the lower temperature is $\scaled{T} = 0$
@@ -154,10 +154,10 @@ and the higher temperature is $\scaled{T} = 1$.
 
 ----
 The natural length scale in the problem is $L$, the length of the rod.
-Choose scaled position
+Choose scaled position $\scaled{x}$ according to
 ----
 $${.important}
-  \unscaled{x} = L \scaled{x}
+  \unscaled{x} = L \scaled{x},
 $$
 ----
 so that in scaled terms, the left end of the rod is $\scaled{x} = 0$
@@ -167,10 +167,11 @@ and the right end of the rod is $\scaled{x} = 1$.
 ### Time ###
 
 ----
-The time scale isn't immediately obvious, so choose scaled time
+The time scale isn't immediately obvious,
+so choose scaled time $\scaled{t}$ according to
 ----
 $${.important}
-  \unscaled{t} = \tau \scaled{t}
+  \unscaled{t} = \tau \scaled{t},
 $$
 ----
 with the time scale $\tau$ to be determined.
