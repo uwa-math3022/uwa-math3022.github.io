@@ -436,8 +436,30 @@ we must have
 </p>
 <div class="js-maths">\sin \con{\lambda} = 0
 </div>
-<div class="js-maths important">\con{\lambda} = n \pi, \quad n = 1, 2, 3, \dots.
+<div class="js-maths important">\con{\lambda} = \con{n} \pi, \quad n = 1, 2, 3, \dots.
 </div>
+<h3>Physical sense</h3>
+<p>
+To recap, our transient solution is the product of
+an exponential decay in time and a sinusoid in position,
+linked through the constant <span class="js-maths">\con{\lambda} = \con{n} \pi</span>:
+</p>
+<div class="js-maths">\Ttr (x, t) = B \ee ^ {\con{-n^2} \pi^2 t} \sin (\con{n} \pi x)
+</div>
+<p>
+What does this mean physically?
+</p>
+<ul>
+<li><b>Large <span class="js-maths">\con{n}</span></b><br>
+Components which are highly oscillatory in position
+decay <strong>very</strong> quickly.
+(Note that the <span class="js-maths">\con{n^2}</span> in the exponent
+increases <em>much</em> faster than the <span class="js-maths">\con{n}</span> in the sine.)
+</li>
+<li><b>Small <span class="js-maths">\con{n}</span></b><br>
+Components which have long wavelength decay more slowly.
+</li>
+</ul>
 <div class="end">
 END
 </div>

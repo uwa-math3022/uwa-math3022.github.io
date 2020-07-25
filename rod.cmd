@@ -558,8 +558,32 @@ $$
   \sin \con{\lambda} = 0
 $$
 $${.important}
-  \con{\lambda} = n \pi, \quad n = 1, 2, 3, \dots.
+  \con{\lambda} = \con{n} \pi, \quad n = 1, 2, 3, \dots.
 $$
+
+### Physical sense ###
+
+----
+To recap, our transient solution is the product of
+an exponential decay in time and a sinusoid in position,
+linked through the constant $\con{\lambda} = \con{n} \pi$:
+----
+$$
+  \Ttr (x, t) = B \ee ^ {\con{-n^2} \pi^2 t} \sin (\con{n} \pi x)
+$$
+----
+What does this mean physically?
+----
+====
+* __Large $\con{n}$__ \+
+  Components which are highly oscillatory in position
+  decay **very** quickly.
+  (Note that the $\con{n^2}$ in the exponent
+  increases *much* faster than the $\con{n}$ in the sine.)
+* __Small $\con{n}$__ \+
+  Components which have long wavelength decay more slowly.
+====
+
 
 
 \END
