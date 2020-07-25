@@ -113,16 +113,6 @@ $$
 
 ## Scaling ##
 
-----
-Units like metres and feet or Celsius and Fahrenheit are *arbitrary*,
-and it is better to work in the *natural* units
-which arise from the physical constants provided in the problem.
-----
-----
-We move from [unscaled/ dimensional (unscaled) /] variables
-to [scaled/ dimensionless (scaled) variables (marked with a prime) /]:
-----
-
 <##
   Styles
   * unscaled (dimensional): colour-g
@@ -134,6 +124,16 @@ $
 $
 {% \[ unscaled / (.*?) / \] % [g/ \1 /] %}
 {% \[ scaled / (.*?) / \] % [v/ \1 /] %}
+
+----
+Units like metres and feet or Celsius and Fahrenheit are *arbitrary*,
+and it is better to work in the *natural* units
+which arise from the physical constants provided in the problem.
+----
+----
+We move from [unscaled/ dimensional (unscaled) /] variables
+to [scaled/ dimensionless (scaled) variables (marked with a prime) /]:
+----
 
 ### Temperature ###
 
@@ -180,6 +180,15 @@ with the time scale $\tau$ to be determined.
 
 ## Dimensionless groups ##
 
+<##
+  Styles
+  * dimensionless group: colour-r
+##>
+$
+  \gdef \group #1 {\colr{\squarebr{#1}}}
+$
+{% \[ group / (.*?) / \] % [r/ \1 /] %}
+
 ----
 We take the heat equation
 ----
@@ -202,15 +211,6 @@ $$
 ----
 Rearrange:
 ----
-
-<##
-  Styles
-  * dimensionless group: colour-r
-##>
-$
-  \gdef \group #1 {\colr{\squarebr{#1}}}
-$
-{% \[ group / (.*?) / \] % [r/ \1 /] %}
 
 $$
   \group{\frac{\rho c L^2}{k \tau}}

@@ -105,6 +105,8 @@ Temperature is <span class="js-maths">T_0</span> throughout the rod, initially:
 <div class="js-maths important">\eval{T}_{t = 0} = T_0
 </div>
 <h2>Scaling</h2>
+<span class="js-maths">\gdef \unscaled #1 {\colg{#1}}
+  \gdef \scaled #1 {\colv{#1'}}</span>
 <p>
 Units like metres and feet or Celsius and Fahrenheit are <em>arbitrary</em>,
 and it is better to work in the <em>natural</em> units
@@ -114,8 +116,6 @@ which arise from the physical constants provided in the problem.
 We move from <span class="colour-g">dimensional (unscaled)</span> variables
 to <span class="colour-v">dimensionless (scaled) variables (marked with a prime)</span>:
 </p>
-<span class="js-maths">\gdef \unscaled #1 {\colg{#1}}
-  \gdef \scaled #1 {\colv{#1'}}</span>
 <h3>Temperature</h3>
 <p>
 The natural temperature scale in the problem is <span class="js-maths">T_1 - T_0</span>,
@@ -150,6 +150,7 @@ so choose scaled time <span class="js-maths">\scaled{t}</span> according to
 with the time scale <span class="js-maths">\tau</span> to be determined.
 </p>
 <h2>Dimensionless groups</h2>
+<span class="js-maths">\gdef \group #1 {\colr{\squarebr{#1}}}</span>
 <p>
 We take the heat equation
 </p>
@@ -170,7 +171,6 @@ and move from <span class="colour-g">unscaled</span> to <span class="colour-v">s
 <p>
 Rearrange:
 </p>
-<span class="js-maths">\gdef \group #1 {\colr{\squarebr{#1}}}</span>
 <div class="js-maths">\group{\frac{\rho c L^2}{k \tau}}
 \frac{\pd\scaled{T}}{\pd\scaled{t}}
   =
