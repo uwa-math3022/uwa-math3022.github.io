@@ -2,7 +2,7 @@
 
 %%
   %title  Heating a rod
-  %date-modified  2020-07-24
+  %date-modified  2020-07-26
   \resources:maths
 %%
 

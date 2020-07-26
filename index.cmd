@@ -3,7 +3,7 @@
 %%
   %title  UWA MATH3022
   %title-suffix  <## nothing ##>
-  %date-modified  2020-07-22
+  %date-modified  2020-07-26
   \resources:no-maths
 %%
 
