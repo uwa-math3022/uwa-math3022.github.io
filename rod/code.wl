@@ -141,3 +141,60 @@ FullSimplify[
   ],
   Element[n, Integers]
 ]
+
+
+(* ::Section:: *)
+(*Solution*)
+
+
+Module[
+  {
+    symbol,
+    tempInitial, tempSeries, tempEquilibrium,
+    xPlotMin, xPlotMax, tempPlotMin, tempPlotMax,
+    dummyForTrailingCommas
+  },
+  (* Style functions *)
+  symbol[expr_] := Style[expr, Italic];
+  (* Temperature profile initial (analytic approximation) *)
+  tempInitial[eps_][x_] := x ^ (1 / eps);
+  (* Temperature profile Fourier series *)
+  tempSeries[nMax_][x_, t_] :=
+    x + Sum[2 (-1)^n / (n Pi) Exp[-n^2 Pi^2 t] Sin[n Pi x], {n, nMax}];
+  (* Temperature profile equilibrium *)
+  tempEquilibrium[x_] := x;
+  (* Plot *)
+  {xPlotMin, xPlotMax} = {-0.07, 1.07};
+  {tempPlotMin, tempPlotMax} = {-0.1, 1.1};
+  Plot[
+    {
+      tempEquilibrium[x],
+      tempSeries[3][x, 0.07], (* 3 terms are sufficient for the chosen t *)
+      tempInitial[10^-4][x] (* Gives underflow warning, but works *)
+    } // Evaluate,
+    {x, 0, 1}
+    , AxesLabel -> symbol /@ {"x", "T"}
+    , AxesOrigin -> {xPlotMin, tempPlotMin}
+    , Exclusions -> None
+    , LabelStyle -> Directive[Black, 15]
+    , PlotRange -> {{xPlotMin, xPlotMax}, {tempPlotMin, tempPlotMax}}
+    , Ticks -> {
+        {
+          {0, 0},
+          {1, symbol["L"]}
+        },
+        {
+          {0, Subscript[symbol["T"], 0]},
+          {1, Subscript[symbol["T"], 1]}
+        }
+      }
+    , PlotLegends -> {"Equilibrium", "In-between", "Initial"}
+    , PlotStyle -> {Automatic, Dashed, Automatic}
+  ]
+] // Export[
+  FileNameJoin @ {NotebookDirectory[], "solution.png"},
+  #
+] &
+
+
+

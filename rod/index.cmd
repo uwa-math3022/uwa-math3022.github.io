@@ -813,6 +813,7 @@ $${.important}
 \end{aligned}
 $$
 
+
 ### Remarks on convergence ###
 
 ++++++++
@@ -882,6 +883,21 @@ $${.important}
     \sim \frac{4 \tau}{\pi^2}
     = \frac{4 \rho c L^2}{\pi^2 k}.
 $$
+
+### Visualising the solution ###
+
+----
+In summary, the rod is initially at temperature $T_0$ throughout,
+but has its right end raised to and held at a higher temperature $T_1$.
+The left end is held at the original temperature $T_0$.
+As time passes, the temperature profile rises towards
+a straight-line profile at equilibrium.
+----
+
+----
+![Plot of initial, in-between, and equilibrium temperature profile]\
+  (solution.png)
+----
 
 \END
 
