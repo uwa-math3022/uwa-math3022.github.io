@@ -350,8 +350,8 @@ $
 {% \[ eq / (.*?) / \] % [b/ \1 /] %}
 
 ----
-After a long time, the heat going in at the right hand $\scaled{x} = 1$
-will be in balance with the heat lost at the left hand $\scaled{x} = 0$.
+After a long time, the heat going in at the right end $\scaled{x} = 1$
+will be in balance with the heat lost at the left end $\scaled{x} = 0$.
 The temperature profile $T$ will reach an equilibium profile $\Teq$,
 which may depend on the position $x$ but *not* on the time $t$.
 In symbols,
