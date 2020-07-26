@@ -90,7 +90,7 @@ What happens?
 ### Partial differential equation (PDE) ###
 
 ----
-Heat equation in $T = T (x, t)$, throughout the rod, for all time:
+__Heat equation__ in $T = T (x, t)$, throughout the rod, for all time:
 ----
 
 $${.important}
@@ -98,7 +98,7 @@ $${.important}
 $$
 
 ----
-Before we do anything, we should understand what the heat equation is saying:
+Before we do anything, we should understand what this means:
 ----
 ====
 * The left hand side is the time rate of change of temperature.
@@ -107,7 +107,8 @@ Before we do anything, we should understand what the heat equation is saying:
   if the temperature profile is concave up/down.
 ====
 ----
-Basically the temperature profile tries to level out any bumps as time passes.
+Basically, the heat equation says that
+as time passes, bumps in the temperature profile are levelled out.
 ----
 
 ----
