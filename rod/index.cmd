@@ -28,11 +28,15 @@ Suppose the rod is initially at temperature $T_0$ throughout.
 At time $t = 0$:
 ----
 ====
-* Fix the left end at lower temperature $T = T_0$
-* Fix the right end at higher temperature $T = T_1$
+* Fix the left end at lower temperature $T = T_0$ (e.g.~ice)
+* Fix the right end at higher temperature $T = T_1$ (e.g.~boiling water)
 ====
 ----
 What happens?
+----
+
+----
+![Diagram for rod heating example](diagram.png)
 ----
 
 
