@@ -742,7 +742,7 @@ $$
 
 ----
 To find the coefficient for a particular basis vector,
-simple take the dot/inner product of the series with that vector
+simply take the dot/inner product of the series with that vector
 to kill off all the other components.
 For example, to find $\B{2}$, take the dot product with $\vece{2}$:
 ----
