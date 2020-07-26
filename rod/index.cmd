@@ -16,6 +16,12 @@ A fully worked heat-equation example.
 **Your work doesn't need to be as detailed as this.**
 ----
 
+----
+Source code for the images: [code.wl]
+----
+@[code.wl]
+  https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
+    rod/code.wl @
 
 ## Problem ##
 
