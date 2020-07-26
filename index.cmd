@@ -23,7 +23,7 @@ For details see the [`mathematica-intro` repository][m intro].
 ## Heat equation ##
 
 ----
-[Rod example (fully worked).](/rod/)
+[Example: Heating a rod](/rod/)
 ----
 
 @[intro.nb]

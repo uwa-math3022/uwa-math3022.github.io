@@ -1,7 +1,7 @@
 {+ resources/syntax.cmd +}
 
 %%
-  %title  Heating a rod
+  %title  Example: Heating a rod
   %date-modified  2020-07-26
   \resources:maths
 %%
