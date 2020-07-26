@@ -44,6 +44,11 @@ footer {
   padding-top: 0.5em;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 li {
   margin-bottom: 0.2em;
 }
