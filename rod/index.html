@@ -92,6 +92,23 @@ Heat equation in <span class="js-maths">T = T (x, t)</span>, throughout the rod,
 </p>
 <div class="js-maths important">\frac{\rho c}{k} \frac{\pd T}{\pd t} = \frac{\pd^2 T}{{\pd x}^2}
 </div>
+<p>
+Before we do anything, we should understand what the heat equation is saying:
+</p>
+<ul>
+<li>The left hand side is the time rate of change of temperature.
+</li>
+<li>The right hand side is a linear version of curvature.
+In particular, <span class="js-maths">\pd^2 T / {\pd x}^2</span> is positive/negative
+if the temperature profile is concave up/down.
+</li>
+</ul>
+<p>
+Basically the temperature profile tries to level out any bumps as time passes.
+</p>
+<p>
+<img alt="Diagram showing temperature profile levelling out with time" src="heat-equation.png">
+</p>
 <h3>Boundary conditions (BCs)</h3>
 <p>
 Fixed temperature at the two ends, for all time:

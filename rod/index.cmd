@@ -91,6 +91,24 @@ $${.important}
   \frac{\rho c}{k} \frac{\pd T}{\pd t} = \frac{\pd^2 T}{{\pd x}^2}
 $$
 
+----
+Before we do anything, we should understand what the heat equation is saying:
+----
+====
+* The left hand side is the time rate of change of temperature.
+* The right hand side is a linear version of curvature.
+  In particular, $\pd^2 T / {\pd x}^2$ is positive/negative
+  if the temperature profile is concave up/down.
+====
+----
+Basically the temperature profile tries to level out any bumps as time passes.
+----
+
+----
+![Diagram showing temperature profile levelling out with time]\
+  (heat-equation.png)
+----
+
 ### Boundary conditions (BCs) ###
 
 ----

@@ -84,6 +84,52 @@ Module[
 
 
 (* ::Section:: *)
+(*Heat equation*)
+
+
+Module[
+  {
+    symbol,
+    n, temp,
+    tNow, tLater,
+    dummyForTrailingCommas
+  },
+  (* Style functions *)
+  symbol[expr_] := Style[expr, Italic];
+  (* Temperature profile *)
+  n = 3;
+  temp[x_, t_] := Exp[-n^2 Pi^2 t] Sin[n Pi x];
+  (* Times *)
+  tNow = 0.01;
+  tLater = 0.015;
+  (* Plot *)
+  Plot[{temp[x, tNow], temp[x, tLater]}, {x, 0, 1}
+    , AxesLabel -> symbol /@ {"x", "T"}
+    , AxesOrigin -> {Automatic, 1.3 temp[3/(2n), tNow]}
+    , Epilog -> Table[
+        Module[{xArrowBase, tempArrowBase, tempArrowTip},
+          xArrowBase = (i - 1/2) / n;
+          tempArrowBase = temp[xArrowBase, tNow];
+          tempArrowTip = temp[xArrowBase, tLater];
+          Arrow @ {
+            {xArrowBase, tempArrowBase},
+            {xArrowBase, tempArrowTip}
+          }
+        ]
+        , {i, n}
+      ]
+    , LabelStyle -> Directive[Black, 15]
+    , Ticks -> None
+    , PlotLegends -> {"Now", "Later"}
+    , PlotStyle -> {Automatic, Dashed}
+  ]
+] // Export[
+  FileNameJoin @ {NotebookDirectory[], "heat-equation.png"},
+  #
+] &
+
+
+(* ::Section:: *)
 (*Fourier coefficients*)
 
 
