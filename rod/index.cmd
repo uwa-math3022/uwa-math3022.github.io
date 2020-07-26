@@ -400,7 +400,7 @@ $${.important}
   \frac{\pd^2 \Ttr}{{\pd x}^2}
     \\[\tallspace]
   \eval{\Ttr}_{x = 0} = 0 \\
-  \eval{\Ttr}_{x = 1} = 1 \\
+  \eval{\Ttr}_{x = 1} = 0 \\
   \eval{\Ttr}_{t = 0} = -x.
 \end{gathered}
 $$
