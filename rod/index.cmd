@@ -23,7 +23,7 @@ Source code for the images: [code.wl]
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
     rod/code.wl @
 
-## Problem ##
+##{#problem} Problem ##
 
 ----
 Consider a uniform rod with length $L$ and [thermal diffusivity] $\kappa$.
@@ -48,7 +48,7 @@ What happens?
 ----
 
 
-## Quantities ##
+##{#quantities} Quantities ##
 
 ''''
 ==
@@ -81,9 +81,9 @@ What happens?
 ''''
 
 
-## Defining equations ##
+##{#defining-equations} Defining equations ##
 
-### Partial differential equation (PDE) ###
+###{#pde} Partial differential equation (PDE) ###
 
 ----
 __Heat equation__ in $T = T (x, t)$, throughout the rod, for all time:
@@ -112,7 +112,7 @@ as time passes, bumps in the temperature profile are levelled out.
   (heat-equation.png)
 ----
 
-### Boundary conditions (BCs) ###
+###{#boundary-conditions} Boundary conditions (BCs) ###
 
 ----
 Fixed temperature at the two ends, for all time:
@@ -125,7 +125,7 @@ $${.important}
 \end{aligned}
 $$
 
-### Initial condition (IC) ###
+###{#initial-condition} Initial condition (IC) ###
 
 ----
 Temperature is $T_0$ throughout the rod, initially:
@@ -136,7 +136,7 @@ $${.important}
 $$
 
 
-## Scaling ##
+##{#scaling} Scaling ##
 
 <##
   Styles
@@ -160,7 +160,7 @@ We move from [unscaled/ dimensional (unscaled) /] variables
 to [scaled/ dimensionless (scaled) variables (marked with a prime) /]:
 ----
 
-### Temperature ###
+###{#scaling-temperature} Temperature ###
 
 ----
 The natural temperature scale in the problem is $T_1 - T_0$,
@@ -175,7 +175,7 @@ so that in scaled terms, the lower temperature is $\scaled{T} = 0$
 and the higher temperature is $\scaled{T} = 1$.
 ----
 
-### Position ###
+###{#scaling-position} Position ###
 
 ----
 The natural length scale in the problem is $L$, the length of the rod.
@@ -189,7 +189,7 @@ so that in scaled terms, the left end of the rod is $\scaled{x} = 0$
 and the right end of the rod is $\scaled{x} = 1$.
 ----
 
-### Time ###
+###{#scaling-time} Time ###
 
 ----
 The time scale isn't immediately obvious,
@@ -203,7 +203,7 @@ with the time scale $\tau$ yet to be determined.
 ----
 
 
-## Dimensionless groups ##
+##{#dimensionless-groups} Dimensionless groups ##
 
 <##
   Styles
@@ -250,7 +250,7 @@ therefore the bracketed term is a [group/ dimensionsless group /],
 i.e.~just a number.
 ----
 
-### Time scale ###
+###{#time-scale} Time scale ###
 
 ----
 Currently the time scale $\tau$ is *free*;
@@ -271,7 +271,7 @@ if a problem has *fewer* free scales than dimensionless groups,
 you won't be able to eliminate *all* of the dimensionless groups.)
 ----
 
-### Making sense ###
+###{#making-sense} Making sense ###
 
 ----
 At this point we pause to check:
@@ -289,7 +289,7 @@ Yes this makes sense.
 ----
 
 
-## Finish scaling ##
+##{#finish-scaling} Finish scaling ##
 
 ----
 Having eliminated the dimensionless group,
@@ -329,7 +329,7 @@ $${.important}
 $$
 
 
-## Equilibrium solution ##
+##{#equilibrium-solution} Equilibrium solution ##
 
 <##
   Styles
@@ -380,9 +380,9 @@ $${.important}
 $$
 
 
-## Transient solution ##
+##{#transient-solution} Transient solution ##
 
-### Subtract out equilibrium solution ###
+###{#subtract-out} Subtract out equilibrium solution ###
 
 ----
 *Before* doing separation of variables,
@@ -430,7 +430,7 @@ $${.important}
 \end{gathered}
 $$
 
-### Separation of variables ###
+###{#separation-of-variables} Separation of variables ###
 
 <##
   Styles
@@ -518,7 +518,7 @@ __A.__
 Thus we have separated the PDE into two ODEs:
 ----
 
-#### Time ####
+####{#ode-time} Time ####
 
 $$
 \begin{aligned}
@@ -527,7 +527,7 @@ $$
 \end{aligned}
 $$
 
-#### Position ####
+####{#ode-position} Position ####
 
 $$
 \begin{aligned}
@@ -536,7 +536,7 @@ $$
 \end{aligned}
 $$
 
-#### Altogether ####
+####{#transient-product} Altogether ####
 
 $$
   \Ttr (x, t) =
@@ -547,13 +547,13 @@ $$
 (Here the constant $C$ has been absorbed into $A$ and $B$.)
 ----
 
-### Boundary conditions ###
+###{#transient-boundary-conditions} Boundary conditions ###
 
 ----
 We then apply the boundary conditions at the two ends of the rod:
 ----
 
-#### Left end ####
+####{#transient-left-end} Left end ####
 
 ----
 We have
@@ -569,7 +569,7 @@ $$
   \Ttr (x, t) = B \ee ^ {\con{-\lambda^2} t} \sin (\con{\lambda} x).
 $$
 
-#### Right end ####
+####{#transient-right-end} Right end ####
 
 ----
 We have
@@ -590,7 +590,7 @@ $${.important}
   \con{\lambda} = \con{n} \pi, \quad n = 1, 2, 3, \dots.
 $$
 
-### Physical sense ###
+###{#physical-sense} Physical sense ###
 
 ----
 To recap, our transient solution is the product of
@@ -613,7 +613,7 @@ What does this mean physically?
   Components which have long wavelength decay more slowly.
 ====
 
-### Initial condition ###
+###{#transient-initial-condition} Initial condition ###
 
 ----
 So far our transient solution $\Ttr$
@@ -630,7 +630,7 @@ isn't going to work.
 We need something a bit more general:
 ----
 
-#### Fourier series ####
+####{#fourier-series} Fourier series ####
 $
   \gdef \B #1 {B_{\con{#1}}}
   \gdef \sine #1 {\sin (\con{#1} \pi x)}
@@ -669,7 +669,7 @@ and we need to find a Fourier series for the function $-x$,
 i.e.~determine the coefficients $\B{1}, \B{2}, \dots$.
 ----
 
-#### Inner product spaces ####
+####{#inner-products} Inner product spaces ####
 $
   \gdef \innerp #1 #2 {\delimwrap{\langle}{#1,#2}{\rangle}}
   \gdef \vece #1 {\vec{e}_{\con{#1}}}
@@ -800,7 +800,7 @@ $$
 $$
 
 
-## Result ##
+##{#result} Result ##
 
 ----
 Putting everything together, the solution is
@@ -820,7 +820,7 @@ $${.important}
 $$
 
 
-### Remarks on convergence ###
+###{#convergence} Remarks on convergence ###
 
 ++++++++
 1. **This is an exact result, but it is an infinite series.** \+
@@ -890,7 +890,7 @@ $${.important}
     = \frac{4 L^2}{\pi^2 \kappa}.
 $$
 
-### Visualising the solution ###
+###{#visualising} Visualising the solution ###
 
 ----
 In summary, the rod is initially at temperature $T_0$ throughout,
