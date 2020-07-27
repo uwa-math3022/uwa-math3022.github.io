@@ -511,6 +511,8 @@ __A.__
   Convince yourself why the zero and positive cases don't work
   (in your own time) and never do it again in this unit.
   Just put $-\lambda^2$.
+  (If separation of variables results in total derivatives with opposite signs,
+  put $-\lambda^2$ for the ODE which has the homogeneous boundary conditions.)
 ----
 ----
 Thus we have separated the PDE into two ODEs:
