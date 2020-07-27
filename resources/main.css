@@ -34,6 +34,14 @@
   padding-bottom: 0.25em;
 }
 
+.permalink {
+  background-image: url(/resources/permalink.svg);
+  background-position: center left;
+  background-repeat: no-repeat;
+  background-size: 1em;
+  padding-left: 1.5em;
+}
+
 body {
   line-height: 1.4;
 }
