@@ -13,14 +13,14 @@
 (Scientific and Industrial Modelling)
 ||||
 
-## Introduction to Mathematica ##
+##{#mathematica-intro} Introduction to Mathematica ##
 
 ----
 [Download `intro.nb`][intro.nb] and have a play around.
 For details see the [`mathematica-intro` repository][m intro].
 ----
 
-## Heat equation ##
+##{#heat-equation} Heat equation ##
 
 ----
 [Example: Heating a rod](/rod/)
