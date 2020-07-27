@@ -2,7 +2,7 @@
 
 %%
   %title  Example: Heating a rod
-  %date-modified  2020-07-26
+  %date-modified  2020-07-27
   \resources:maths
 %%
 
@@ -26,8 +26,7 @@ Source code for the images: [code.wl]
 ## Problem ##
 
 ----
-Consider a uniform rod with length $L$, density $\rho$, specific heat $c$,
-and thermal conductivity $k$.
+Consider a uniform rod with length $L$ and [thermal diffusivity] $\kappa$.
 ----
 ----
 Suppose the rod is initially at temperature $T_0$ throughout.
@@ -40,6 +39,9 @@ At time $t = 0$:
 ----
 What happens?
 ----
+
+@[thermal diffusivity]
+  https://en.wikipedia.org/wiki/Thermal_diffusivity @
 
 ----
 ![Diagram for rod heating example](diagram.png)
@@ -68,14 +70,8 @@ What happens?
   , $L$
   , length
 ==
-  , $\rho$
-  , density
-==
-  , $c$
-  , specific heat
-==
-  , $k$
-  , thermal conductivity
+  , $\kappa$
+  , thermal diffusivity
 ==
   , $T_0$
   , lower temperature
@@ -94,7 +90,7 @@ __Heat equation__ in $T = T (x, t)$, throughout the rod, for all time:
 ----
 
 $${.important}
-  \frac{\rho c}{k} \frac{\pd T}{\pd t} = \frac{\pd^2 T}{{\pd x}^2}
+  \frac{\pd T}{\pd t} = \kappa \frac{\pd^2 T}{{\pd x}^2}
 $$
 
 ----
@@ -222,18 +218,18 @@ $
 We take the heat equation
 ----
 $$
-  \frac{\rho c}{k} \frac{\pd\unscaled{T}}{\pd\unscaled{t}} =
-    \frac{\pd^2 \unscaled{T}}{{\pd\unscaled{x}}^2}
+  \frac{\pd\unscaled{T}}{\pd\unscaled{t}} =
+    \kappa \frac{\pd^2 \unscaled{T}}{{\pd\unscaled{x}}^2}
 $$
 ----
 and move from [unscaled/ unscaled /] to [scaled/ scaled /] variables
 (use the chain rule):
 ----
 $$
-  \frac{\rho c}{k}
   \frac{(T_1 - T_0)}{\tau}
   \frac{\pd\scaled{T}}{\pd\scaled{t}}
     =
+  \kappa
   \frac{(T_1 - T_0)}{L^2}
   \frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
 $$
@@ -242,7 +238,7 @@ Rearrange:
 ----
 
 $$
-  \group{\frac{\rho c L^2}{k \tau}}
+  \group{\frac{L^2}{\kappa \tau}}
   \frac{\pd\scaled{T}}{\pd\scaled{t}}
     =
   \frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
@@ -264,10 +260,10 @@ we can eliminate the dimensionless group\* by setting it equal to one
 and solving for $\tau$:
 ----
 $$
-  \group{\frac{\rho c L^2}{k \tau}} = 1
+  \group{\frac{L^2}{\kappa \tau}} = 1
 $$
 $${.important}
-  \tau = \frac{\rho c L^2}{k}
+  \tau = \frac{L^2}{\kappa}
 $$
 ----
 (\*NOTE:
@@ -284,8 +280,8 @@ does the time scale we have found make sense?
 ====
 * $\tau \propto L^2$ \+
   If the rod is longer, it takes a longer time to reach equilibrium.
-* $\tau \propto 1 / k$ \+
-  If the rod is a better conductor, then $k$ is larger,
+* $\tau \propto 1 / \kappa$ \+
+  If the rod is a better conductor, then $\kappa$ is larger,
   so $\tau$ is smaller and it takes a shorter time to reach equilibrium.
 ====
 ----
@@ -513,7 +509,8 @@ __A.__
   In other units at UWA you're probably expected to show this every time,
   but here at MATH3022 we don't like wasting your time.
   Convince yourself why the zero and positive cases don't work
-  (in your own time) and never do it again. Just put $-\lambda^2$.
+  (in your own time) and never do it again in this unit.
+  Just put $-\lambda^2$.
 ----
 ----
 Thus we have separated the PDE into two ODEs:
@@ -643,7 +640,7 @@ Recall that:
 ++++
 1. The **heat equation is linear**
 2. The **boundary conditions** for $\Ttr$ at $x = 0$ and $x = 1$
- \/**are homogeneous** (because we subtracted out the equilibrium solution)
+ \/**are homogeneous** because we subtracted out the equilibrium solution
 ++++
 ----
 Therefore, linear combinations of the product
@@ -888,7 +885,7 @@ The [unscaled/ unscaled (dimensional) /] equilibrium time is therefore
 $${.important}
   \unscaled{t}
     \sim \frac{4 \tau}{\pi^2}
-    = \frac{4 \rho c L^2}{\pi^2 k}.
+    = \frac{4 L^2}{\pi^2 \kappa}.
 $$
 
 ### Visualising the solution ###

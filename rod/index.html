@@ -21,8 +21,7 @@ Source code for the images: <a href="https://github.com/uwa-math3022/uwa-math302
 </p>
 <h2>Problem</h2>
 <p>
-Consider a uniform rod with length <span class="js-maths">L</span>, density <span class="js-maths">\rho</span>, specific heat <span class="js-maths">c</span>,
-and thermal conductivity <span class="js-maths">k</span>.
+Consider a uniform rod with length <span class="js-maths">L</span> and <a href="https://en.wikipedia.org/wiki/Thermal_diffusivity">thermal diffusivity</a> <span class="js-maths">\kappa</span>.
 </p>
 <p>
 Suppose the rod is initially at temperature <span class="js-maths">T_0</span> throughout.
@@ -68,16 +67,8 @@ What happens?
 <td>length</td>
 </tr>
 <tr>
-<td><span class="js-maths">\rho</span></td>
-<td>density</td>
-</tr>
-<tr>
-<td><span class="js-maths">c</span></td>
-<td>specific heat</td>
-</tr>
-<tr>
-<td><span class="js-maths">k</span></td>
-<td>thermal conductivity</td>
+<td><span class="js-maths">\kappa</span></td>
+<td>thermal diffusivity</td>
 </tr>
 <tr>
 <td><span class="js-maths">T_0</span></td>
@@ -93,7 +84,7 @@ What happens?
 <p>
 <b>Heat equation</b> in <span class="js-maths">T = T (x, t)</span>, throughout the rod, for all time:
 </p>
-<div class="js-maths important">\frac{\rho c}{k} \frac{\pd T}{\pd t} = \frac{\pd^2 T}{{\pd x}^2}
+<div class="js-maths important">\frac{\pd T}{\pd t} = \kappa \frac{\pd^2 T}{{\pd x}^2}
 </div>
 <p>
 Before we do anything, we should understand what this means:
@@ -178,24 +169,24 @@ with the time scale <span class="js-maths">\tau</span> yet to be determined.
 <p>
 We take the heat equation
 </p>
-<div class="js-maths">\frac{\rho c}{k} \frac{\pd\unscaled{T}}{\pd\unscaled{t}} =
-  \frac{\pd^2 \unscaled{T}}{{\pd\unscaled{x}}^2}
+<div class="js-maths">\frac{\pd\unscaled{T}}{\pd\unscaled{t}} =
+  \kappa \frac{\pd^2 \unscaled{T}}{{\pd\unscaled{x}}^2}
 </div>
 <p>
 and move from <span class="colour-g">unscaled</span> to <span class="colour-v">scaled</span> variables
 (use the chain rule):
 </p>
-<div class="js-maths">\frac{\rho c}{k}
-\frac{(T_1 - T_0)}{\tau}
+<div class="js-maths">\frac{(T_1 - T_0)}{\tau}
 \frac{\pd\scaled{T}}{\pd\scaled{t}}
   =
+\kappa
 \frac{(T_1 - T_0)}{L^2}
 \frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
 </div>
 <p>
 Rearrange:
 </p>
-<div class="js-maths">\group{\frac{\rho c L^2}{k \tau}}
+<div class="js-maths">\group{\frac{L^2}{\kappa \tau}}
 \frac{\pd\scaled{T}}{\pd\scaled{t}}
   =
 \frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
@@ -213,9 +204,9 @@ Because we have <strong>one free scale</strong> <span class="js-maths">\tau</spa
 we can eliminate the dimensionless group* by setting it equal to one
 and solving for <span class="js-maths">\tau</span>:
 </p>
-<div class="js-maths">\group{\frac{\rho c L^2}{k \tau}} = 1
+<div class="js-maths">\group{\frac{L^2}{\kappa \tau}} = 1
 </div>
-<div class="js-maths important">\tau = \frac{\rho c L^2}{k}
+<div class="js-maths important">\tau = \frac{L^2}{\kappa}
 </div>
 <p>
 (*NOTE:
@@ -231,8 +222,8 @@ does the time scale we have found make sense?
 <li><span class="js-maths">\tau \propto L^2</span><br>
 If the rod is longer, it takes a longer time to reach equilibrium.
 </li>
-<li><span class="js-maths">\tau \propto 1 / k</span><br>
-If the rod is a better conductor, then <span class="js-maths">k</span> is larger,
+<li><span class="js-maths">\tau \propto 1 / \kappa</span><br>
+If the rod is a better conductor, then <span class="js-maths">\kappa</span> is larger,
 so <span class="js-maths">\tau</span> is smaller and it takes a shorter time to reach equilibrium.
 </li>
 </ul>
@@ -406,7 +397,8 @@ Because those cases don't give useful solutions.
 In other units at UWA you're probably expected to show this every time,
 but here at MATH3022 we don't like wasting your time.
 Convince yourself why the zero and positive cases don't work
-(in your own time) and never do it again. Just put <span class="js-maths">-\lambda^2</span>.
+(in your own time) and never do it again in this unit.
+Just put <span class="js-maths">-\lambda^2</span>.
 </p>
 <p>
 Thus we have separated the PDE into two ODEs:
@@ -509,7 +501,7 @@ Recall that:
 <li>The <strong>heat equation is linear</strong>
 </li>
 <li>The <strong>boundary conditions</strong> for <span class="js-maths">\Ttr</span> at <span class="js-maths">x = 0</span> and <span class="js-maths">x = 1</span>
-<strong>are homogeneous</strong> (because we subtracted out the equilibrium solution)
+<strong>are homogeneous</strong> because we subtracted out the equilibrium solution
 </li>
 </ol>
 <p>
@@ -726,7 +718,7 @@ The <span class="colour-g">unscaled (dimensional)</span> equilibrium time is the
 </p>
 <div class="js-maths important">\unscaled{t}
   \sim \frac{4 \tau}{\pi^2}
-  = \frac{4 \rho c L^2}{\pi^2 k}.
+  = \frac{4 L^2}{\pi^2 \kappa}.
 </div>
 <h3>Visualising the solution</h3>
 <p>
@@ -746,7 +738,7 @@ END
 <a href="/">Return to the home page.</a>
 </p>
 <footer>
-Last modified: 2020-07-26<br>
+Last modified: 2020-07-27<br>
 Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
 Mistakes/queries:
 <a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.
