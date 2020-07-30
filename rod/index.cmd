@@ -2,7 +2,7 @@
 
 %%
   %title  Example: Heating a rod
-  %date-modified  2020-07-27
+  %date-modified  2020-07-30
   \resources:maths
 %%
 
@@ -903,6 +903,14 @@ a straight-line profile at equilibrium.
 ----
 ![Plot of initial, in-between, and equilibrium temperature profile]\
   (solution.png)
+----
+
+----
+In animated form  (deliberately made small to save bandwidth):
+----
+
+----
+![Animation of temperature profile](animation.gif)
 ----
 
 \END

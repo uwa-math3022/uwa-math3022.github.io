@@ -197,4 +197,83 @@ Module[
 ] &
 
 
+(* ::Section:: *)
+(*Animation*)
+
+
+Module[
+  {
+    symbol,
+    tempInitial, tempSeries, temp,
+    nMaxRequired,
+    xPlotMin, xPlotMax, tempPlotMin, tempPlotMax,
+    tMin, tMax, tStep, tValues,
+    frameList,
+    dummyForTrailingCommas
+  },
+  (* Style functions *)
+  symbol[expr_] := Style[expr, Italic];
+  (* Temperature profile initial (analytic approximation) *)
+  tempInitial[eps_][x_] := x ^ (1 / eps);
+  (* Temperature profile Fourier series *)
+  tempSeries[nMax_][x_, t_] :=
+    x + Sum[2 (-1)^n / (n Pi) Exp[-n^2 Pi^2 t] Sin[n Pi x], {n, nMax}];
+  (* Required number of terms for a given t (for exponent > 4) *)
+  nMaxRequired[t_] := Ceiling @ Sqrt[4 / (Pi^2 t)];
+  (* Temperature profile *)
+  temp[x_, t_] :=
+    If[t > 0,
+      tempSeries[nMaxRequired[t]][x, t],
+      tempInitial[10^-4][x]
+    ];
+  (* Plot range *)
+  {xPlotMin, xPlotMax} = {-0.07, 1.07};
+  {tempPlotMin, tempPlotMax} = {-0.1, 1.1};
+  (* Values of t *)
+  tMin = 0;
+  tMax = 4 / Pi^2;
+  tStep = 0.01;
+  tValues = Range[tMin, tMax, tStep];
+  (* List of frames *)
+  frameList =
+    Table[
+      Show[
+        Plot[
+          temp[x, t] // Evaluate,
+          {x, 0, 1}
+          , AxesLabel -> symbol /@ {"x", "T"}
+          , AxesOrigin -> {xPlotMin, tempPlotMin}
+          , ColorFunctionScaling -> False
+          , ColorFunction -> "TemperatureMap"
+          , Exclusions -> None
+          , Filling -> 0
+          , ImageSize -> 240 (* so that the GIF file size isn't too big *)
+          , LabelStyle -> Directive[Black, 15]
+          , PlotLabel -> Framed[
+            symbol["t"]' == NumberForm[N[t], {Infinity, 2}]
+            ]
+          , PlotRange -> {{xPlotMin, xPlotMax}, {tempPlotMin, tempPlotMax}}
+          , Ticks -> {
+              {
+                {0, 0},
+                {1, symbol["L"]}
+              },
+              {
+                {0, Subscript[symbol["T"], 0]},
+                {1, Subscript[symbol["T"], 1]}
+              }
+            }
+        ],
+        {}
+      ]
+    , {t, tValues}];
+  Export[
+    FileNameJoin @ {NotebookDirectory[], "animation.gif"},
+    frameList
+    , "AnimationRepetitions" -> Infinity
+    , "DisplayDurations" -> 0.1
+  ]
+]
+
+
 
