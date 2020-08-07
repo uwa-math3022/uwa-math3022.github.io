@@ -199,7 +199,7 @@ $${.important}
   \unscaled{t} = \tau \scaled{t},
 $$
 ----
-with the time scale $\tau$ yet to be determined.
+**with the time scale $\tau$ yet to be determined, i.e.~*free***.
 ----
 
 
