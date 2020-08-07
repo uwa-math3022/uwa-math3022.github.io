@@ -3,7 +3,7 @@
 %%
   %title  UWA MATH3022
   %title-suffix  <## nothing ##>
-  %date-modified  2020-07-26
+  %date-modified  2020-08-07
   \resources:no-maths
 %%
 
@@ -23,7 +23,7 @@ For details see the [`mathematica-intro` repository][m intro].
 ##{#heat-equation} Heat equation ##
 
 ----
-[Example: Heating a rod](/rod/)
+[Heating a rod](/rod/)
 ----
 
 @[intro.nb]

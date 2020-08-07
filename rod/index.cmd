@@ -1,8 +1,8 @@
 {+ resources/syntax.cmd +}
 
 %%
-  %title  Example: Heating a rod
-  %date-modified  2020-07-30
+  %title  Heat equation: Heating a rod
+  %date-modified  2020-08-07
   \resources:maths
 %%
 
@@ -12,7 +12,6 @@
 \noscript
 
 ----
-A fully worked heat-equation example.
 **Your work doesn't need to be as detailed as this.**
 ----
 
