@@ -282,3 +282,15 @@ $${.important}
   \end{aligned}
 \end{gathered}
 $$
+
+
+##{#equilibrium-solution} Equilibrium solution ##
+
+----
+Unlike the [rod example](/rod/#transient-solution),
+here the PDE and the two boundary conditions are *already* homogeneous.
+There is no need to subtract out the equilibrium solution
+because the equilibrium solution is identically zero
+(corresponding to the slab completely cooling to the environment temperature).
+So we may proceed to separation of variables:
+----
