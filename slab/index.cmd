@@ -28,7 +28,7 @@ Consider a uniform slab of thickness $2L$, [thermal conductivity][k] $k$,
 ----
 ----
 Suppose the slab is initially at temperature $\TI$ throughout,
-and thereafter loses heat to the environment at temperature $\TE$
+and thereafter loses heat to the environment at (lower) temperature $\TE$
 via [Newtonian cooling][newton] through its two faces,
 with a [heat transfer coefficient][h] of $h$.
 ----
@@ -119,7 +119,9 @@ $${.important}
 $$
 
 ----
-[Newtonian cooling][newton] along the right-hand face $x = L$:
+[Newtonian cooling][newton] along the right-hand face $x = L$
+(flux through the surface is proportional to the difference
+between the surface temperature and the environment temperature):
 ----
 
 $${.important}
@@ -141,3 +143,54 @@ Temperature is $\TI$ throughout the slab, initially:
 $${.important}
   \eval{T}_{t = 0} = \TI
 $$
+
+
+##{#scaling} Scaling ##
+
+<##
+  Styles
+  * unscaled (dimensional): colour-g
+  * scaled (dimensionless): colour-v
+##>
+$
+  \gdef \unscaled #1 {\colg{#1}}
+  \gdef \scaled #1 {\colv{#1'}}
+$
+{% \[ unscaled / (.*?) / \] % [g/ \1 /] %}
+{% \[ scaled / (.*?) / \] % [v/ \1 /] %}
+
+###{#scaling-temperature} Temperature ###
+
+----
+As in the [rod problem](/rod/#scaling-temperature)
+we are given two temperatures, in this case
+the initial temperature $\TI$ and the environment temperature $\TE$.
+We put
+----
+$${.important}
+  \unscaled{T} = \TE + (\TI - \TE) \scaled{T}
+$$
+----
+so that the scaled initial temperature is $\scaled{T} = 1$
+and the scaled environment temperature is $\scaled{T} = 0$.
+----
+
+###{#scaling-position} Position ###
+
+$${.important}
+  \unscaled{x} = L \scaled{x}
+$$
+
+###{#scaling-time} Time ###
+
+----
+As in the [rod problem](/rod/#scaling-time)
+the time scale isn't immediately obvious,
+so we put
+----
+$${.important}
+  \unscaled{t} = \tau \scaled{t},
+$$
+----
+**with the time scale $\tau$ yet to be determined, i.e.~*free***.
+----

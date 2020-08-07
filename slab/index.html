@@ -24,7 +24,7 @@ Consider a uniform slab of thickness <span class="js-maths">2L</span>, <a href="
 </p>
 <p>
 Suppose the slab is initially at temperature <span class="js-maths">\TI</span> throughout,
-and thereafter loses heat to the environment at temperature <span class="js-maths">\TE</span>
+and thereafter loses heat to the environment at (lower) temperature <span class="js-maths">\TE</span>
 via <a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling">Newtonian cooling</a> through its two faces,
 with a <a href="https://en.wikipedia.org/wiki/Heat_transfer_coefficient">heat transfer coefficient</a> of <span class="js-maths">h</span>.
 </p>
@@ -106,7 +106,9 @@ Symmetry along the central plane <span class="js-maths">x = 0</span>:
 <div class="js-maths important">\eval{\frac{\pd T}{\pd x}}_{x = 0} = 0
 </div>
 <p>
-<a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling">Newtonian cooling</a> along the right-hand face <span class="js-maths">x = L</span>:
+<a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling">Newtonian cooling</a> along the right-hand face <span class="js-maths">x = L</span>
+(flux through the surface is proportional to the difference
+between the surface temperature and the environment temperature):
 </p>
 <div class="js-maths important">\eval{-k \frac{\pd T}{\pd x}}_{x = L} = \eval{h (T - \TE)}_{x = L}
 </div>
@@ -121,6 +123,36 @@ Temperature is <span class="js-maths">\TI</span> throughout the slab, initially:
 </p>
 <div class="js-maths important">\eval{T}_{t = 0} = \TI
 </div>
+<h2 id="scaling"><a class="permalink" href="#scaling" aria-label="Permalink"></a>Scaling</h2>
+<span class="js-maths">\gdef \unscaled #1 {\colg{#1}}
+  \gdef \scaled #1 {\colv{#1'}}</span>
+<h3 id="scaling-temperature"><a class="permalink" href="#scaling-temperature" aria-label="Permalink"></a>Temperature</h3>
+<p>
+As in the <a href="/rod/#scaling-temperature">rod problem</a>
+we are given two temperatures, in this case
+the initial temperature <span class="js-maths">\TI</span> and the environment temperature <span class="js-maths">\TE</span>.
+We put
+</p>
+<div class="js-maths important">\unscaled{T} = \TE + (\TI - \TE) \scaled{T}
+</div>
+<p>
+so that the scaled initial temperature is <span class="js-maths">\scaled{T} = 1</span>
+and the scaled environment temperature is <span class="js-maths">\scaled{T} = 0</span>.
+</p>
+<h3 id="scaling-position"><a class="permalink" href="#scaling-position" aria-label="Permalink"></a>Position</h3>
+<div class="js-maths important">\unscaled{x} = L \scaled{x}
+</div>
+<h3 id="scaling-time"><a class="permalink" href="#scaling-time" aria-label="Permalink"></a>Time</h3>
+<p>
+As in the <a href="/rod/#scaling-time">rod problem</a>
+the time scale isn't immediately obvious,
+so we put
+</p>
+<div class="js-maths important">\unscaled{t} = \tau \scaled{t},
+</div>
+<p>
+<strong>with the time scale <span class="js-maths">\tau</span> yet to be determined, i.e.&nbsp;<em>free</strong></em>.
+</p>
 <footer>
 Last modified: 2020-08-xx<br>
 Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
