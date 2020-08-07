@@ -70,7 +70,7 @@ What happens?
   , length
 ==
   , $\kappa$
-  , thermal diffusivity
+  , [thermal diffusivity]
 ==
   , $T_0$
   , lower temperature
