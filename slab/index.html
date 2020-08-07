@@ -92,6 +92,35 @@ We have the following:
 <td><a href="https://en.wikipedia.org/wiki/Heat_transfer_coefficient">heat transfer coefficient</a></td>
 </tr>
 </table>
+<h2 id="defining-equations"><a class="permalink" href="#defining-equations" aria-label="Permalink"></a>Defining equations</h2>
+<h3 id="pde"><a class="permalink" href="#pde" aria-label="Permalink"></a>Partial differential equation (PDE)</h3>
+<p>
+<b>Heat equation</b> in <span class="js-maths">T = T (x, t)</span>, throughout the slab, for all time:
+</p>
+<div class="js-maths important">\rho c \frac{\pd T}{\pd t} = k \frac{\pd^2 T}{{\pd x}^2}
+</div>
+<h3 id="boundary-conditions"><a class="permalink" href="#boundary-conditions" aria-label="Permalink"></a>Boundary conditions (BCs)</h3>
+<p>
+Symmetry along the central plane <span class="js-maths">x = 0</span>:
+</p>
+<div class="js-maths important">\eval{\frac{\pd T}{\pd x}}_{x = 0} = 0
+</div>
+<p>
+<a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling">Newtonian cooling</a> along the right-hand face <span class="js-maths">x = L</span>:
+</p>
+<div class="js-maths important">\eval{-k \frac{\pd T}{\pd x}}_{x = L} = \eval{h (T - \TE)}_{x = L}
+</div>
+<p>
+Both sides of the equation have dimensions of power per area.
+The <a href="https://en.wikipedia.org/wiki/Heat_transfer_coefficient">heat transfer coefficient</a> <span class="js-maths">h</span> has dimensions of
+power per area per temperature.
+</p>
+<h3 id="initial-condition"><a class="permalink" href="#initial-condition" aria-label="Permalink"></a>Initial condition (IC)</h3>
+<p>
+Temperature is <span class="js-maths">\TI</span> throughout the slab, initially:
+</p>
+<div class="js-maths important">\eval{T}_{t = 0} = \TI
+</div>
 <footer>
 Last modified: 2020-08-xx<br>
 Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>

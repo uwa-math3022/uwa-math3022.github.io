@@ -94,3 +94,50 @@ We have the following:
   , $h$
   , [heat transfer coefficient][h]
 ''''
+
+
+##{#defining-equations} Defining equations ##
+
+###{#pde} Partial differential equation (PDE) ###
+
+----
+__Heat equation__ in $T = T (x, t)$, throughout the slab, for all time:
+----
+
+$${.important}
+  \rho c \frac{\pd T}{\pd t} = k \frac{\pd^2 T}{{\pd x}^2}
+$$
+
+###{#boundary-conditions} Boundary conditions (BCs) ###
+
+----
+Symmetry along the central plane $x = 0$:
+----
+
+$${.important}
+  \eval{\frac{\pd T}{\pd x}}_{x = 0} = 0
+$$
+
+----
+[Newtonian cooling][newton] along the right-hand face $x = L$:
+----
+
+$${.important}
+  \eval{-k \frac{\pd T}{\pd x}}_{x = L} = \eval{h (T - \TE)}_{x = L}
+$$
+
+----
+Both sides of the equation have dimensions of power per area.
+The [heat transfer coefficient][h] $h$ has dimensions of
+power per area per temperature.
+----
+
+###{#initial-condition} Initial condition (IC) ###
+
+----
+Temperature is $\TI$ throughout the slab, initially:
+----
+
+$${.important}
+  \eval{T}_{t = 0} = \TI
+$$
