@@ -22,9 +22,10 @@ For details see the [`mathematica-intro` repository][m intro].
 
 ##{#heat-equation} Heat equation ##
 
-----
-[Heating a rod](/rod/)
-----
+====
+* [Heating a rod](/rod/)
+* [A slab cooling](/slab/)
+====
 
 @[intro.nb]
   https://github.com/uwa-math3022/mathematica-intro/\
