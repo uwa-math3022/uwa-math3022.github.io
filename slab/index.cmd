@@ -27,7 +27,7 @@ Consider a uniform slab of thickness $2L$, [thermal conductivity][k] $k$,
 [specific heat capacity][c] $c$, and [density][rho] $\rho$ .
 ----
 ----
-Suppose the rod is initially at temperature $\TI$ throughout,
+Suppose the slab is initially at temperature $\TI$ throughout,
 and thereafter loses heat to the environment at temperature $\TE$
 via [Newtonian cooling][newton] through its two faces,
 with a [heat transfer coefficient][h] of $h$.
