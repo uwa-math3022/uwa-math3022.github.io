@@ -42,3 +42,55 @@ What happens?
 
 @[newton] https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling @
 @[h] https://en.wikipedia.org/wiki/Heat_transfer_coefficient @
+
+
+##{#quantities} Quantities ##
+
+----
+Take the slab to be the region $-L \le x \le L$.
+By symmetry, the temperature profile will be an even function of $x$,
+so we need only consider the right half $0 \le x \le L$
+by using a zero-slope (or insulating) boundary condition at $x = 0$.
+----
+----
+We have the following:
+----
+
+''''
+==
+  ;{c2} Independent variables
+==
+  , $x$
+  , position ($0 \le x \le L$)
+==
+  , $t$
+  , time ($t \ge 0$)
+==
+  ;{c2} Dependent variable
+==
+  , $T$
+  , temperature
+==
+  ;{c2} Constants
+==
+  , $L$
+  , semi-thickness
+==
+  , $k$
+  , [thermal conductivity][k]
+==
+  , $c$
+  , [specific heat capacity][c]
+==
+  , $\rho$
+  , density
+==
+  , $\TI$
+  , initial temperature
+==
+  , $\TE$
+  , environment temperature
+==
+  , $h$
+  , [heat transfer coefficient][h]
+''''
