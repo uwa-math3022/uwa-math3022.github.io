@@ -151,8 +151,76 @@ so we put
 <div class="js-maths important">\unscaled{t} = \tau \scaled{t},
 </div>
 <p>
-<strong>with the time scale <span class="js-maths">\tau</span> yet to be determined, i.e.&nbsp;<em>free</strong></em>.
+<strong>with the time scale <span class="js-maths">\tau</span> yet to be determined, i.e.&nbsp;<em>free</em></strong>.
 </p>
+<h2 id="dimensionless-groups"><a class="permalink" href="#dimensionless-groups" aria-label="Permalink"></a>Dimensionless groups</h2>
+<span class="js-maths">\gdef \group #1 {\colr{\squarebr{#1}}}</span>
+<p>
+After moving from <span class="colour-g">unscaled</span> to <span class="colour-v">scaled</span> variables,
+the PDE, boundary conditions, and initial condition become the following:
+</p>
+<div class="js-maths">\begin{gathered}
+
+  \frac{\pd\scaled{T}}{\pd\scaled{t}}
+    =
+  \group{\frac{k \tau}{\rho c L^2}}
+  \frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
+    \\[\tallspace]
+  \begin{aligned}
+
+    \eval{\frac{\pd\scaled{T}}{\pd\scaled{x}}}_{\scaled{x} = 0} &amp;= 0
+      \\[\tallspace]
+    \eval{-\frac{\pd\scaled{T}}{\pd\scaled{x}}}_{\scaled{x} = 1}
+      &amp;=
+    \eval{\group{\frac{h L}{k}} \scaled{T}}_{\scaled{x} = 1}
+      \\[\tallspace]
+
+    \eval{\scaled{T}}_{\scaled{t} = 0} &amp;= 1
+  \end{aligned}
+\end{gathered}
+</div>
+<p>
+Since there are <strong>two dimensionless groups</strong>
+but only <strong>one free scale</strong> <span class="js-maths">\tau</span>,
+only one of the groups can be eliminated.
+In particular, <span class="js-maths">\tau</span> only appears in the PDE group,
+so only it can be eliminated:
+</p>
+<div class="js-maths">\group{\frac{k \tau}{\rho c L^2}} = 1
+</div>
+<div class="js-maths important">\tau = \frac{\rho c L^2}{k}
+</div>
+<p>
+(Quick mental check: Thicker slab implies longer time scale?
+Better conductor implies shorter time scale?
+Yes to both.)
+</p>
+<p>
+The second dimensionless group <span class="js-maths">\group{h L / k}</span>
+(called the <a href="https://en.wikipedia.org/wiki/Biot_number">Biot number</a>)
+cannot be eliminated because <span class="js-maths">h</span>, <span class="js-maths">L</span>, and <span class="js-maths">k</span> are all <em>given</em>, and NOT free.
+To save writing, let us call it <span class="js-maths">\gamma</span> for short:
+</p>
+<div class="js-maths important">\gamma = \group{\frac{h L}{k}}
+</div>
+<p>
+Finally we <strong>drop the primes</strong>:
+</p>
+<div class="js-maths important">\begin{gathered}
+
+  \frac{\pd T}{\pd t} = \frac{\pd^2 T}{{\pd x}^2}
+    \\[\tallspace]
+  \begin{aligned}
+
+    \eval{\frac{\pd T}{\pd x}}_{x = 0} &amp;= 0
+      \\[\tallspace]
+    \eval{-\frac{\pd T}{\pd x}}_{x = 1} &amp;= \eval{\gamma T}_{x = 1}
+      \\[\tallspace]
+
+    \eval{T}_{t = 0} &amp;= 1
+  \end{aligned}
+\end{gathered}
+</div>
 <footer>
 Last modified: 2020-08-xx<br>
 Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>

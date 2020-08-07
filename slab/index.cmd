@@ -192,5 +192,93 @@ $${.important}
   \unscaled{t} = \tau \scaled{t},
 $$
 ----
-**with the time scale $\tau$ yet to be determined, i.e.~*free***.
+**with the time scale $\tau$ yet to be determined, i.e.~*free*\/**.
 ----
+
+
+##{#dimensionless-groups} Dimensionless groups ##
+
+<##
+  Styles
+  * dimensionless group: colour-r
+##>
+$
+  \gdef \group #1 {\colr{\squarebr{#1}}}
+$
+{% \[ group / (.*?) / \] % [r/ \1 /] %}
+
+----
+After moving from [unscaled/ unscaled /] to [scaled/ scaled /] variables,
+the PDE, boundary conditions, and initial condition become the following:
+----
+$$
+\begin{gathered}
+  <## PDE ##>
+  \frac{\pd\scaled{T}}{\pd\scaled{t}}
+    =
+  \group{\frac{k \tau}{\rho c L^2}}
+  \frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
+    \\[\tallspace]
+  \begin{aligned}
+    <## BCs ##>
+    \eval{\frac{\pd\scaled{T}}{\pd\scaled{x}}}_{\scaled{x} = 0} &= 0
+      \\[\tallspace]
+    \eval{-\frac{\pd\scaled{T}}{\pd\scaled{x}}}_{\scaled{x} = 1}
+      &=
+    \eval{\group{\frac{h L}{k}} \scaled{T}}_{\scaled{x} = 1}
+      \\[\tallspace]
+    <## IC ##>
+    \eval{\scaled{T}}_{\scaled{t} = 0} &= 1
+  \end{aligned}
+\end{gathered}
+$$
+
+----
+Since there are **two dimensionless groups**
+but only **one free scale** $\tau$,
+only one of the groups can be eliminated.
+In particular, $\tau$ only appears in the PDE group,
+so only it can be eliminated:
+----
+$$
+  \group{\frac{k \tau}{\rho c L^2}} = 1
+$$
+$${.important}
+  \tau = \frac{\rho c L^2}{k}
+$$
+----
+(Quick mental check: Thicker slab implies longer time scale?
+Better conductor implies shorter time scale?
+Yes to both.)
+----
+----
+The second dimensionless group $\group{h L / k}$
+(called the [Biot number][gamma])
+cannot be eliminated because $h$, $L$, and $k$ are all *given*, and NOT free.
+To save writing, let us call it $\gamma$ for short:
+----
+$${.important}
+  \gamma = \group{\frac{h L}{k}}
+$$
+
+@[gamma] https://en.wikipedia.org/wiki/Biot_number @
+
+----
+Finally we **drop the primes**:
+----
+$${.important}
+\begin{gathered}
+  <## PDE ##>
+  \frac{\pd T}{\pd t} = \frac{\pd^2 T}{{\pd x}^2}
+    \\[\tallspace]
+  \begin{aligned}
+    <## BCs ##>
+    \eval{\frac{\pd T}{\pd x}}_{x = 0} &= 0
+      \\[\tallspace]
+    \eval{-\frac{\pd T}{\pd x}}_{x = 1} &= \eval{\gamma T}_{x = 1}
+      \\[\tallspace]
+    <## IC ##>
+    \eval{T}_{t = 0} &= 1
+  \end{aligned}
+\end{gathered}
+$$
