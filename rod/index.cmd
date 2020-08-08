@@ -50,8 +50,10 @@ What happens?
 ##{#quantities} Quantities ##
 
 ''''
+|^
 ==
   ;{c2} Independent variables
+|:
 ==
   , $x$
   , position ($0 \le x \le L$)
