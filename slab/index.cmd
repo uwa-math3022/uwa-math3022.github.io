@@ -404,6 +404,10 @@ $$
 
 ###{#eigenvalues} Eigenvalues ###
 
+$
+  \gdef \lam #1 {\lambda_\con{#1}}
+$
+
 ----
 The equation for $\con{\lambda}$ is [transcendental][tran],
 so the roots can only be determined numerically.
@@ -418,19 +422,19 @@ so the roots can only be determined numerically.
 
 ----
 From [Sturm--Liouville theory][SL] we already know that
-the roots will be $\lambda_\con{1} < \lambda_\con{2} < \dots$ to infinity,
+the roots will be $\lam{1} < \lam{2} < \dots$ to infinity,
 and by looking at the equation
 (or a plot of $\tan\con{\lambda}$ and $\gamma / \con{\lambda}$)
-we see that each $\lambda_\con{n}$
+we see that each $\lam{n}$
 lies between the $\con{n}$th root and the $\con{n}$th pole of tan, i.e.
 ----
 $$
-  (\con{n} - 1) \pi < \lambda_\con{n} < (\con{n} - 1/2) \pi.
+  (\con{n} - 1) \pi < \lam{n} < (\con{n} - 1/2) \pi.
 $$
 ----
 In Mathematica you will want to use `FindRoot`,
 and the bound above suggests $(\con{n} - 3/4) \pi$ as a reasonable
-initial guess for $\lambda_\con{n}$
+initial guess for $\lam{n}$
 (although for large $\con{n}$ the lower bound would be better).
 E.g.~for $\gamma = 2$,
 ----
@@ -454,7 +458,7 @@ gives the following:
 |^
 ==
   ; $\con{n}$
-  ; $\lambda_\con{n}$
+  ; $\lam{n}$
 |:
 ==
   , 1
@@ -484,3 +488,38 @@ to see if it makes sense.
 ----
 
 @[black box] https://en.wikipedia.org/wiki/Black_box @
+
+
+###{#fourier-series} Fourier series ###
+
+----
+Thus given any $\gamma$ we can find the $\lam{n}$ numerically.
+By linearity, we have
+----
+$${.important}
+  T (x, t) =
+    \sum_{\con{n} = 1}^{\infty}
+      A_\con{n} \ee ^ {{\lam{n}}^2 t} \cos (\lam{n} x).
+$$
+----
+The coefficients are determined from the initial condition,
+----
+$$
+  \eval{T}_{t = 0}
+    = \sum_{\con{n} = 1}^{\infty} A_\con{n} \cos (\lam{n} x)
+    = 1.
+$$
+----
+Therefore
+----
+$${.important}
+  A_\con{n} =
+    \frac{
+      \int_0^1 1 \cdot \cos (\lam{n} x) \td x
+    }{
+      \int_0^1 \cos^2 (\lam{n} x) \td x
+    },
+$$
+----
+and we are done.
+----
