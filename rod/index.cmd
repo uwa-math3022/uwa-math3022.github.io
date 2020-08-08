@@ -2,7 +2,7 @@
 
 %%
   %title  Heat equation: Heating a rod
-  %date-modified  2020-08-07
+  %date-modified  2020-08-08
   \resources:maths
 %%
 
@@ -70,7 +70,7 @@ What happens?
   , length
 ==
   , $\kappa$
-  , thermal diffusivity
+  , [thermal diffusivity]
 ==
   , $T_0$
   , lower temperature
@@ -198,7 +198,7 @@ $${.important}
   \unscaled{t} = \tau \scaled{t},
 $$
 ----
-**with the time scale $\tau$ yet to be determined, i.e.~*free***.
+**with the time scale $\tau$ yet to be determined, i.e.~|*free***.
 ----
 
 
@@ -345,8 +345,8 @@ $
 {% \[ eq / (.*?) / \] % [b/ \1 /] %}
 
 ----
-After a long time, the heat going in at the right end $\scaled{x} = 1$
-will be in balance with the heat lost at the left end $\scaled{x} = 0$.
+After a long time, the heat going in at the right end $x = 1$
+will be in balance with the heat lost at the left end $x = 0$.
 The temperature profile $T$ will reach an equilibium profile $\Teq$,
 which may depend on the position $x$ but *not* on the time $t$.
 In symbols,
@@ -384,9 +384,12 @@ $$
 ###{#subtract-out} Subtract out equilibrium solution ###
 
 ----
+Since the equilibrium solution isn't zero,
+this means that the PDE and boundary conditions aren't all *homogeneous*
+(in our case the boundary condition at $x = 1$ isn't homogeneous).
 *Before* doing separation of variables,
 make sure to **subtract out the equilibrium solution**
-so that the boundary conditions are *homogeneous*.
+so that the boundary conditions become homogeneous.
 To do this, write the solution as a sum
 of [eq/ equilibrium /] and [tr/ transient /] parts,
 ----
