@@ -50,17 +50,24 @@ Module[
     dummyForTrailingCommas
   },
   (* Constants *)
-  gamma = 1;
+  gamma = 2;
   nMax = 4;
   lamMax = (nMax - 1/2) * Pi;
   (* Eigenvalues to be plotted *)
   lambdaList = Table[lambda[gamma][n], {n, nMax}];
   (* Plot *)
   Plot[{Tan[lam], gamma / lam}, {lam, 0, lamMax}
+    , AspectRatio -> 1 / 1.3
     , Epilog -> {Red,
         (* Roots (at intersections of curves) *)
         PointSize[Large],
         Point @ Table[{lam, Tan[lam]}, {lam, lambdaList}],
+        (* Roots (guide lines to horizontal axis) *)
+        Dashed,
+        Table[
+          Line @ {{lam, Tan[lam]}, {lam, 0}}
+          , {lam, lambdaList}
+        ],
         {}
       }
     , LabelStyle -> Directive[Black, 15]
