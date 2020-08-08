@@ -230,6 +230,85 @@ because the equilibrium solution is identically zero
 (corresponding to the slab completely cooling to the environment temperature).
 So we may proceed directly to separation of variables:
 </p>
+<h2 id="separation-of-variables"><a class="permalink" href="#separation-of-variables" aria-label="Permalink"></a>Separation of variables</h2>
+<span class="js-maths">\gdef \pos #1 {\colg{#1}}
+  \gdef \time #1 {\colv{#1}}
+  \gdef \con #1 {\colb{#1}}</span>
+<p>
+After putting
+</p>
+<div class="js-maths">T (x, t) = \pos{X (x)} \time{Y (t)}
+</div>
+<p>
+and following the <a href="/rod/#separation-of-variables">usual procedure</a>,
+we obtain the form
+</p>
+<div class="js-maths">T (x, t) =
+  \ee ^ {\con{-\lambda^2} t}
+  \squarebr{A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)}.
+</div>
+<h3 id="separation-boundary-conditions"><a class="permalink" href="#separation-boundary-conditions" aria-label="Permalink"></a>Boundary conditions</h3>
+<h4 id="separation-central-plane"><a class="permalink" href="#separation-central-plane" aria-label="Permalink"></a>Central plane</h4>
+<p>
+Along the plane of symmetry <span class="js-maths">x = 0</span> we have symmetry (zero slope),
+</p>
+<div class="js-maths">\begin{aligned}
+  \eval{\frac{\pd T}{\pd x}}_{x = 0}
+    &amp;=
+      \ee ^ {-\con{\lambda}^2 t}
+      \eval{
+        \squarebr{
+          -\con{\lambda} A \sin (\con{\lambda} x)
+          + \con{\lambda} B \cos (\con{\lambda} x)
+        }
+      }_{x = 0}
+        \\
+    &amp;= \con{\lambda} B \ee ^ {-\con{\lambda}^2 t} \\
+    &amp;= 0,
+\end{aligned}
+</div>
+<p>
+which implies <span class="js-maths">B = 0</span>.
+Therefore
+</p>
+<div class="js-maths">T = A \ee ^ {-\con{\lambda}^2 t} \cos (\con{\lambda} x).
+</div>
+<h4 id="separation-right-face"><a class="permalink" href="#separation-right-face" aria-label="Permalink"></a>Right face</h4>
+<p>
+Along the right face we have the Newtonian cooling condition.
+The left hand side is
+</p>
+<div class="js-maths">\begin{aligned}
+  \eval{-\frac{\pd T}{\pd x}}_{x = 1}
+    &amp;=
+      A \ee ^ {-\con{\lambda}^2 t}
+        \cdot
+      \eval{\con{\lambda} \sin (\con{\lambda} x)}_{x = 1}
+        \\
+    &amp;=
+      A \ee ^ {-\con{\lambda}^2 t}
+        \cdot
+      \con{\lambda} \sin\con{\lambda}
+\end{aligned}
+</div>
+<p>
+and the right hand side is
+</p>
+<div class="js-maths">\eval{\gamma T}_{x = 1} =
+  A \ee ^ {-\con{\lambda}^2 t}
+    \cdot
+  \gamma \cos\con{\lambda}.
+</div>
+<p>
+Therefore <span class="js-maths">\con{\lambda} \sin\con{\lambda} = \gamma \cos\con{\lambda}</span>,
+or
+</p>
+<div class="js-maths important">\tan\con{\lambda} = \frac{\gamma}{\con{\lambda}}.
+</div>
+<p>
+This is a <a href="https://en.wikipedia.org/wiki/Transcendental_equation">transcendental equation</a>,
+so the roots can only be determined numerically.
+</p>
 <footer>
 Last modified: 2020-08-xx<br>
 Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>

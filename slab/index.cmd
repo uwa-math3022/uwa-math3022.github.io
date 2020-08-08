@@ -294,3 +294,108 @@ because the equilibrium solution is identically zero
 (corresponding to the slab completely cooling to the environment temperature).
 So we may proceed directly to separation of variables:
 ----
+
+
+##{#separation-of-variables} Separation of variables ##
+
+<##
+  Styles
+  * position: colour-g
+  * time: colour-v
+  * constant: colour-b
+##>
+$
+  \gdef \pos #1 {\colg{#1}}
+  \gdef \time #1 {\colv{#1}}
+  \gdef \con #1 {\colb{#1}}
+$
+
+----
+After putting
+----
+$$
+  T (x, t) = \pos{X (x)} \time{Y (t)}
+$$
+----
+and following the [usual procedure](/rod/#separation-of-variables),
+we obtain the form
+----
+$$
+  T (x, t) =
+    \ee ^ {\con{-\lambda^2} t}
+    \squarebr{A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)}.
+$$
+
+###{#separation-boundary-conditions} Boundary conditions ###
+
+####{#separation-central-plane} Central plane ####
+
+----
+Along the plane of symmetry $x = 0$ we have symmetry (zero slope),
+----
+$$
+\begin{aligned}
+  \eval{\frac{\pd T}{\pd x}}_{x = 0}
+    &=
+      \ee ^ {-\con{\lambda}^2 t}
+      \eval{
+        \squarebr{
+          -\con{\lambda} A \sin (\con{\lambda} x)
+          + \con{\lambda} B \cos (\con{\lambda} x)
+        }
+      }_{x = 0}
+        \\
+    &= \con{\lambda} B \ee ^ {-\con{\lambda}^2 t} \\
+    &= 0,
+\end{aligned}
+$$
+----
+which implies $B = 0$.
+Therefore
+----
+$$
+  T = A \ee ^ {-\con{\lambda}^2 t} \cos (\con{\lambda} x).
+$$
+
+####{#separation-right-face} Right face ####
+
+----
+Along the right face we have the Newtonian cooling condition.
+The left hand side is
+----
+$$
+\begin{aligned}
+  \eval{-\frac{\pd T}{\pd x}}_{x = 1}
+    &=
+      A \ee ^ {-\con{\lambda}^2 t}
+        \cdot
+      \eval{\con{\lambda} \sin (\con{\lambda} x)}_{x = 1}
+        \\
+    &=
+      A \ee ^ {-\con{\lambda}^2 t}
+        \cdot
+      \con{\lambda} \sin\con{\lambda}
+\end{aligned}
+$$
+----
+and the right hand side is
+----
+$$
+  \eval{\gamma T}_{x = 1} =
+    A \ee ^ {-\con{\lambda}^2 t}
+      \cdot
+    \gamma \cos\con{\lambda}.
+$$
+----
+Therefore $\con{\lambda} \sin\con{\lambda} = \gamma \cos\con{\lambda}$,
+or
+----
+$${.important}
+  \tan\con{\lambda} = \frac{\gamma}{\con{\lambda}}.
+$$
+----
+This is a [transcendental equation][tran],
+so the roots can only be determined numerically.
+----
+
+@[tran] https://en.wikipedia.org/wiki/Transcendental_equation @
