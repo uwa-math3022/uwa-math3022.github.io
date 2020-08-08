@@ -58,7 +58,7 @@ Module[
   (* Plot *)
   Plot[{Tan[lam], gamma / lam}, {lam, 0, lamMax}
     , AspectRatio -> 1 / 1.3
-    , AxesLabel -> {"\[Lambda]", Null}
+    , AxesLabel -> {"\[Lambda]", Automatic}
     , Epilog -> {Red,
         (* Roots (at intersections of curves) *)
         PointSize[Large],
