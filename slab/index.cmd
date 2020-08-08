@@ -20,7 +20,7 @@ Source code for the images: [code.wl]
 ----
 @[code.wl]
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
-    rod/code.wl @
+    slab/code.wl @
 
 ##{#problem} Problem ##
 
