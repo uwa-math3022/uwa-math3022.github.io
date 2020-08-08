@@ -36,3 +36,34 @@ transcendental[gamma_][n_] :=
   ];
 (* Eigenvalue lambda_n *)
 lambda[gamma_][n_] := InverseFunction[transcendental[gamma][n]][0];
+
+
+(* ::Section:: *)
+(*Eigenvalue plot*)
+
+
+Module[
+  {
+    gamma,
+    nMax, lamMax,
+    lambdaList,
+    dummyForTrailingCommas
+  },
+  (* Constants *)
+  gamma = 1;
+  nMax = 4;
+  lamMax = (nMax - 1/2) * Pi;
+  (* Eigenvalues to be plotted *)
+  lambdaList = Table[lambda[gamma][n], {n, nMax}];
+  (* Plot *)
+  Plot[{Tan[lam], gamma / lam}, {lam, 0, lamMax}
+    , Epilog -> {Red,
+        (* Roots (at intersections of curves) *)
+        PointSize[Large],
+        Point @ Table[{lam, Tan[lam]}, {lam, lambdaList}],
+        {}
+      }
+    , LabelStyle -> Directive[Black, 15]
+    , PlotLegends -> {Tan["\[Lambda]"], "\[Gamma]" / "\[Lambda]"}
+  ]
+]
