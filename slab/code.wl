@@ -68,6 +68,15 @@ Module[
           Line @ {{lam, Tan[lam]}, {lam, 0}}
           , {lam, lambdaList}
         ],
+        (* Roots (horizontal axis labels) *)
+        Table[
+          Text[
+            Subscript["\[Lambda]", n] // Style[#, 18] &
+            , {lambdaList[[n]], 0}
+            , {0, 1.5}
+          ]
+          , {n, nMax}
+        ],
         {}
       }
     , LabelStyle -> Directive[Black, 15]
