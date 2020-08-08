@@ -15,6 +15,13 @@
 **Your work doesn't need to be as detailed as this.**
 ----
 
+----
+Source code for the images: [code.wl]
+----
+@[code.wl]
+  https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
+    rod/code.wl @
+
 ##{#problem} Problem ##
 
 $
@@ -393,9 +400,87 @@ or
 $${.important}
   \tan\con{\lambda} = \frac{\gamma}{\con{\lambda}}.
 $$
+
+
+###{#eigenvalues} Eigenvalues ###
+
 ----
-This is a [transcendental equation][tran],
+The equation for $\con{\lambda}$ is [transcendental][tran],
 so the roots can only be determined numerically.
 ----
 
 @[tran] https://en.wikipedia.org/wiki/Transcendental_equation @
+@[SL] https://en.wikipedia.org/wiki/Sturm–Liouville_theory @
+
+----
+![Eigenvalues for gamma equals 2](eigenvalues.png)
+----
+
+----
+From [Sturm--Liouville theory][SL] we already know that
+the roots will be $\lambda_\con{1} < \lambda_\con{2} < \dots$ to infinity,
+and by looking at the equation
+(or a plot of $\tan\con{\lambda}$ and $\gamma / \con{\lambda}$)
+we see that each $\lambda_\con{n}$
+lies between the $\con{n}$th root and the $\con{n}$th pole of tan, i.e.
+----
+$$
+  (\con{n} - 1) \pi < \lambda_\con{n} < (\con{n} - 1/2) \pi.
+$$
+----
+In Mathematica you will want to use `FindRoot`,
+and the bound above suggests $(\con{n} - 3/4) \pi$ as a reasonable
+initial guess for $\lambda_\con{n}$
+(although for large $\con{n}$ the lower bound would be better).
+E.g.~for $\gamma = 2$,
+----
+````
+Module[{gamma, nMax, initialGuess, root},
+  gamma = 2;
+  nMax = 5;
+  Table[
+    initialGuess = (n - 3/4) Pi;
+    root = FindRoot[Tan[#] - gamma / # &, {initialGuess}];
+    {n, root}
+  , {n, nMax}
+  ] // TableForm
+]
+````
+----
+gives the following:
+----
+
+''''
+|^
+==
+  ; $\con{n}$
+  ; $\lambda_\con{n}$
+|:
+==
+  , 1
+  , \01.07687
+==
+  , 2
+  , \03.6436
+==
+  , 3
+  , \06.57833
+==
+  , 4
+  , \09.62956
+==
+  , 5
+  , 12.7223
+''''
+
+----
+Since `FindRoot` is more or less a [black box],
+there is no guarantee that each root found
+corresponds to the specified $\con{n}$.
+If the initial guess is poor, it could have jumped to a root
+corresponding to a different value of $\con{n}$.
+Therefore, **always check the result of numerical root finding with a plot**
+to see if it makes sense.
+----
+
+@[black box] https://en.wikipedia.org/wiki/Black_box @

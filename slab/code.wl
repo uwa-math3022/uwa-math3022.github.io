@@ -84,7 +84,10 @@ Module[
     , PlotLabel -> Row @ {"Eigenvalues for ", HoldForm["\[Gamma]"] == gamma}
     , PlotLegends -> {Tan["\[Lambda]"], "\[Gamma]" / "\[Lambda]"}
   ]
-]
+] // Export[
+  FileNameJoin @ {NotebookDirectory[], "eigenvalues.png"},
+  #
+] &
 
 
 (* ::Section:: *)
@@ -100,4 +103,17 @@ Module[
   gamma = 2;
   nMax = 5;
   Table[{n, lambda[gamma][n] // N}, {n, nMax}] // TableForm
+]
+
+
+(* Using FindRoot (which is the "intended" method) *)
+Module[{gamma, nMax, initialGuess, root},
+  gamma = 2;
+  nMax = 5;
+  Table[
+    initialGuess = (n - 3/4) Pi;
+    root = FindRoot[Tan[#] - gamma / # &, {initialGuess}];
+    {n, root}
+  , {n, nMax}
+  ] // TableForm
 ]

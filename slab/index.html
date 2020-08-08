@@ -15,6 +15,9 @@
 <p>
 <strong>Your work doesn't need to be as detailed as this.</strong>
 </p>
+<p>
+Source code for the images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/rod/code.wl">code.wl</a>
+</p>
 <h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
 <span class="js-maths">\gdef \TI {T_\mathrm{I}}
   \gdef \TE {T_\mathrm{E}}</span>
@@ -305,9 +308,83 @@ or
 </p>
 <div class="js-maths important">\tan\con{\lambda} = \frac{\gamma}{\con{\lambda}}.
 </div>
+<h3 id="eigenvalues"><a class="permalink" href="#eigenvalues" aria-label="Permalink"></a>Eigenvalues</h3>
 <p>
-This is a <a href="https://en.wikipedia.org/wiki/Transcendental_equation">transcendental equation</a>,
+The equation for <span class="js-maths">\con{\lambda}</span> is <a href="https://en.wikipedia.org/wiki/Transcendental_equation">transcendental</a>,
 so the roots can only be determined numerically.
+</p>
+<p>
+<img alt="Eigenvalues for gamma equals 2" src="eigenvalues.png">
+</p>
+<p>
+From <a href="https://en.wikipedia.org/wiki/Sturm–Liouville_theory">Sturm–Liouville theory</a> we already know that
+the roots will be <span class="js-maths">\lambda_\con{1} &lt; \lambda_\con{2} &lt; \dots</span> to infinity,
+and by looking at the equation
+(or a plot of <span class="js-maths">\tan\con{\lambda}</span> and <span class="js-maths">\gamma / \con{\lambda}</span>)
+we see that each <span class="js-maths">\lambda_\con{n}</span>
+lies between the <span class="js-maths">\con{n}</span>th root and the <span class="js-maths">\con{n}</span>th pole of tan, i.e.
+</p>
+<div class="js-maths">(\con{n} - 1) \pi &lt; \lambda_\con{n} &lt; (\con{n} - 1/2) \pi.
+</div>
+<p>
+In Mathematica you will want to use <code>FindRoot</code>,
+and the bound above suggests <span class="js-maths">(\con{n} - 3/4) \pi</span> as a reasonable
+initial guess for <span class="js-maths">\lambda_\con{n}</span>
+(although for large <span class="js-maths">\con{n}</span> the lower bound would be better).
+E.g.&nbsp;for <span class="js-maths">\gamma = 2</span>,
+</p>
+<pre><code>Module[{gamma, nMax, initialGuess, root},
+  gamma = 2;
+  nMax = 5;
+  Table[
+    initialGuess = (n - 3/4) Pi;
+    root = FindRoot[Tan[#] - gamma / # &amp;, {initialGuess}];
+    {n, root}
+  , {n, nMax}
+  ] // TableForm
+]
+</code></pre>
+<p>
+gives the following:
+</p>
+<table>
+<thead>
+<tr>
+<th><span class="js-maths">\con{n}</span></th>
+<th><span class="js-maths">\lambda_\con{n}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>&numsp;1.07687</td>
+</tr>
+<tr>
+<td>2</td>
+<td>&numsp;3.6436</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&numsp;6.57833</td>
+</tr>
+<tr>
+<td>4</td>
+<td>&numsp;9.62956</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12.7223</td>
+</tr>
+</tbody>
+</table>
+<p>
+Since <code>FindRoot</code> is more or less a <a href="https://en.wikipedia.org/wiki/Black_box">black box</a>,
+there is no guarantee that each root found
+corresponds to the specified <span class="js-maths">\con{n}</span>.
+If the initial guess is poor, it could have jumped to a root
+corresponding to a different value of <span class="js-maths">\con{n}</span>.
+Therefore, <strong>always check the result of numerical root finding with a plot</strong>
+to see if it makes sense.
 </p>
 <footer>
 Last modified: 2020-08-xx<br>
