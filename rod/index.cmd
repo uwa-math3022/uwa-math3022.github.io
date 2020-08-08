@@ -2,7 +2,7 @@
 
 %%
   %title  Heat equation: Heating a rod
-  %date-modified  2020-08-07
+  %date-modified  2020-08-08
   \resources:maths
 %%
 
@@ -384,9 +384,12 @@ $$
 ###{#subtract-out} Subtract out equilibrium solution ###
 
 ----
+Since the equilibrium solution isn't zero,
+this means that the PDE and boundary conditions aren't all *homogeneous*
+(in our case the boundary condition at $x = 1$ isn't homogeneous).
 *Before* doing separation of variables,
 make sure to **subtract out the equilibrium solution**
-so that the boundary conditions are *homogeneous*.
+so that the boundary conditions become homogeneous.
 To do this, write the solution as a sum
 of [eq/ equilibrium /] and [tr/ transient /] parts,
 ----

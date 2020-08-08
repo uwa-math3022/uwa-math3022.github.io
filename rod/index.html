@@ -298,9 +298,12 @@ so by inspection the equilibrium temperature profile is
 <h2 id="transient-solution"><a class="permalink" href="#transient-solution" aria-label="Permalink"></a>Transient solution</h2>
 <h3 id="subtract-out"><a class="permalink" href="#subtract-out" aria-label="Permalink"></a>Subtract out equilibrium solution</h3>
 <p>
+Since the equilibrium solution isn't zero,
+this means that the PDE and boundary conditions aren't all <em>homogeneous</em>
+(in our case the boundary condition at <span class="js-maths">x = 1</span> isn't homogeneous).
 <em>Before</em> doing separation of variables,
 make sure to <strong>subtract out the equilibrium solution</strong>
-so that the boundary conditions are <em>homogeneous</em>.
+so that the boundary conditions become homogeneous.
 To do this, write the solution as a sum
 of <span class="colour-b">equilibrium</span> and <span class="colour-r">transient</span> parts,
 </p>
@@ -745,7 +748,7 @@ END
 <a href="/">Return to the home page.</a>
 </p>
 <footer>
-Last modified: 2020-08-07<br>
+Last modified: 2020-08-08<br>
 Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
 Mistakes/queries:
 <a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.
