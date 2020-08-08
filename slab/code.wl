@@ -121,3 +121,101 @@ Module[{gamma, nMax, initialGuess, root},
   , {n, nMax}
   ] // TableForm
 ]
+
+
+(* ::Section:: *)
+(*Diagram*)
+
+
+Module[
+  {
+    symbol,
+    styledText,
+    slabHeight, slabSemiThickness, slabStyle,
+    slabDimensionOffset, slabDimensionStyle,
+    coolingArrowNumber, coolingArrowSquigglePoints, coolingArrow,
+    coolingArrowXCoordinates, coolingArrowYCoordinates, coolingArrowStyle,
+    environmentTemperatureXCoordinate,
+    dummyForTrailingCommas
+  },
+  (* Style functions *)
+  symbol[expr_] := Style[expr, Italic];
+  styledText[expr_, balance___] := Text[Style[expr, 18], balance];
+  (* Slab *)
+  slabHeight = 2;
+  slabSemiThickness = 0.15;
+  slabStyle = Directive[EdgeForm[Black], FaceForm[LightOrange]];
+  slabDimensionOffset = 0.05 slabHeight;
+  slabDimensionStyle = Arrowheads @ {-Medium, Medium};
+  (* Cooling arrows *)
+  coolingArrowNumber = 6;
+  coolingArrowSquigglePoints =
+    0.1 slabSemiThickness * {
+      {0, 0},
+      {2, 1},
+      {4, 0},
+      {6, -1},
+      {8, 0},
+      {10, 0},
+      {12, 0},
+      {14, 0},
+      Nothing
+    };
+  coolingArrow = Arrow @ BSplineCurve[coolingArrowSquigglePoints];
+  coolingArrowXCoordinates = 1.7 {-1, 1} slabSemiThickness;
+  coolingArrowYCoordinates =
+    slabHeight * (
+      1 / (2 coolingArrowNumber) + Subdivide[coolingArrowNumber]
+    ) // Most;
+  coolingArrowStyle = Directive[Arrowheads[Medium], Thick];
+  (* Environment temperature *)
+  environmentTemperatureXCoordinate = 0.4 slabHeight;
+  (* Diagram *)
+  Show[
+    (* Slab *)
+    Graphics @ {slabStyle,
+      Rectangle[
+        {-slabSemiThickness, 0},
+        {slabSemiThickness, slabHeight}
+      ]
+    },
+    Graphics @ {slabDimensionStyle,
+      Arrow @ {
+        {-slabSemiThickness, -slabDimensionOffset},
+        {slabSemiThickness, -slabDimensionOffset}
+      }
+    },
+    Graphics @ styledText[
+      2 symbol["L"]
+      , {0, -slabDimensionOffset}
+      , {0, 1.3}
+    ],
+    (* Cooling arrows *)
+    Graphics @ {coolingArrowStyle,
+      Table[
+        coolingArrow
+          // Rotate[#, Arg[x], {0, 0}] &
+          // Translate[#, {x, y}] &
+        , {x, coolingArrowXCoordinates}
+        , {y, coolingArrowYCoordinates}
+      ]
+    },
+    (* Initial temperature *)
+    Graphics @ styledText[
+      Subscript[symbol["T"], "I"]
+      , {0, slabHeight / 2}
+    ],
+    (* Environment temperature *)
+    Table[
+      Graphics @ styledText[
+        Subscript[symbol["T"], "E"]
+        , {x, slabHeight / 2}
+      ]
+    , {x, {-1, 1} environmentTemperatureXCoordinate}
+    ],
+    {}
+  ]
+] // Export[
+  FileNameJoin @ {NotebookDirectory[], "diagram.png"},
+  #
+] &

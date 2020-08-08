@@ -43,6 +43,10 @@ with a [heat transfer coefficient][h] of $h$.
 What happens?
 ----
 
+----
+![Diagram for slab cooling example](diagram.png)
+----
+
 @[k] https://en.wikipedia.org/wiki/Thermal_conductivity @
 @[c] https://en.wikipedia.org/wiki/Specific_heat_capacity @
 @[rho] https://en.wikipedia.org/wiki/Density @
