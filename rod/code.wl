@@ -274,6 +274,3 @@ Module[
     , "DisplayDurations" -> 0.1
   ]
 ]
-
-
-
