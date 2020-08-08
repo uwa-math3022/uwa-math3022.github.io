@@ -8,6 +8,10 @@ ClearAll["Global`*"];
 
 
 (*
+  ----------------------------------------------------------------
+  WARNING: the method in this cell is for advanced Mathematica users only.
+  Everyone else, JUST USE FindRoot AND CHECK THE RESULT WITH A PLOT.
+  ----------------------------------------------------------------
   The transcendental equation for the eigenvalues is
     tan(lambda) == gamma / lambda,
   or
@@ -20,7 +24,7 @@ ClearAll["Global`*"];
     (n - 1) pi < lambda_n < (n - 1/2) pi.
   In my opinion directly using FindRoot is not a good method
   because you need to manually supply an initial guess,
-  and if the guess is poor you might a root for a different n.
+  and if the guess is poor you might get a root for a different n.
   Instead the n-th root is better found by using InverseFunction
   over each of the intervals for lambda_n above.
   This is slower, but (1) represents each root symbolically
