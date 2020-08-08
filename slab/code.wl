@@ -81,6 +81,7 @@ Module[
         {}
       }
     , LabelStyle -> Directive[Black, 15]
+    , PlotLabel -> Row @ {"Eigenvalues for ", HoldForm["\[Gamma]"] == gamma}
     , PlotLegends -> {Tan["\[Lambda]"], "\[Gamma]" / "\[Lambda]"}
   ]
 ]
