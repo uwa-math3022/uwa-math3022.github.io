@@ -17,7 +17,7 @@ ClearAll["Global`*"];
   the roots will be lambda_1 < lambda_2 < ... to infinity,
   and by looking at the equation we see that lambda_n
   lies between the n-th root and the n-th pole of tan, i.e.
-    (n - 1) pi < lambda < (n - 1/2) pi.
+    (n - 1) pi < lambda_n < (n - 1/2) pi.
   In my opinion directly using FindRoot is not a good method
   because you need to manually supply an initial guess,
   and if the guess is poor you might a root for a different n.
