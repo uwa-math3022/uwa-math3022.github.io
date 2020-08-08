@@ -85,3 +85,19 @@ Module[
     , PlotLegends -> {Tan["\[Lambda]"], "\[Gamma]" / "\[Lambda]"}
   ]
 ]
+
+
+(* ::Section:: *)
+(*Eigenvalues table*)
+
+
+Module[
+  {
+    gamma,
+    nMax,
+    dummyForTrailingCommas
+  },
+  gamma = 2;
+  nMax = 5;
+  Table[{n, lambda[gamma][n] // N}, {n, nMax}] // TableForm
+]
