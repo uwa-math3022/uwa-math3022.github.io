@@ -43,7 +43,7 @@ What happens?
   https://en.wikipedia.org/wiki/Thermal_diffusivity @
 
 ----
-![Diagram for rod heating example](diagram.png)
+![Diagram for heating a rod example](diagram.png)
 ----
 
 
