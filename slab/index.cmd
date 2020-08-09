@@ -350,7 +350,7 @@ $$
 \begin{aligned}
   \eval{\frac{\pd T}{\pd x}}_{x = 0}
     &=
-      \ee ^ {-\con{\lambda}^2 t}
+      \ee ^ {\con{-\lambda^2} t}
       \eval{
         \squarebr{
           -\con{\lambda} A \sin (\con{\lambda} x)
@@ -358,7 +358,7 @@ $$
         }
       }_{x = 0}
         \\
-    &= \con{\lambda} B \ee ^ {-\con{\lambda}^2 t} \\
+    &= \con{\lambda} B \ee ^ {\con{-\lambda^2} t} \\
     &= 0,
 \end{aligned}
 $$
@@ -367,7 +367,7 @@ which implies $B = 0$.
 Therefore
 ----
 $$
-  T = A \ee ^ {-\con{\lambda}^2 t} \cos (\con{\lambda} x).
+  T = A \ee ^ {\con{-\lambda^2} t} \cos (\con{\lambda} x).
 $$
 
 ####{#separation-right-face} Right face ####
@@ -380,12 +380,12 @@ $$
 \begin{aligned}
   \eval{-\frac{\pd T}{\pd x}}_{x = 1}
     &=
-      A \ee ^ {-\con{\lambda}^2 t}
+      A \ee ^ {\con{-\lambda^2} t}
         \cdot
       \eval{\con{\lambda} \sin (\con{\lambda} x)}_{x = 1}
         \\
     &=
-      A \ee ^ {-\con{\lambda}^2 t}
+      A \ee ^ {\con{-\lambda^2} t}
         \cdot
       \con{\lambda} \sin\con{\lambda}
 \end{aligned}
@@ -395,7 +395,7 @@ and the right hand side is
 ----
 $$
   \eval{\gamma T}_{x = 1} =
-    A \ee ^ {-\con{\lambda}^2 t}
+    A \ee ^ {\con{-\lambda^2} t}
       \cdot
     \gamma \cos\con{\lambda}.
 $$
@@ -505,7 +505,7 @@ By linearity, we have
 $${.important}
   T (x, t) =
     \sum_{\con{n} = 1}^{\infty}
-      A_\con{n} \ee ^ {{\lam{n}}^2 t} \cos (\lam{n} x).
+      A_\con{n} \ee ^ {-{\lam{n}}^2 t} \cos (\lam{n} x).
 $$
 ----
 The coefficients are determined from the initial condition,
