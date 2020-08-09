@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/main.min.css">
+<script defer src="/resources/maths.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
+<title>Heat equation: A slab cooling | UWA MATH3022</title>
+</head>
+<body>
+<h1>Heat equation: A slab cooling</h1>
+<noscript>Enable JavaScript for equation rendering to work.</noscript>
+<p>
+<strong>Your work doesn't need to be as detailed as this.</strong>
+</p>
+<p>
+Source code for the images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/slab/code.wl">code.wl</a>
+</p>
+<h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
+<span class="js-maths">\gdef \TI {T_\mathrm{I}}
+  \gdef \TE {T_\mathrm{E}}</span>
+<p>
+Consider a uniform slab of thickness <span class="js-maths">2L</span>, <a href="https://en.wikipedia.org/wiki/Thermal_conductivity">thermal conductivity</a> <span class="js-maths">k</span>,
+<a href="https://en.wikipedia.org/wiki/Specific_heat_capacity">specific heat capacity</a> <span class="js-maths">c</span>, and <a href="https://en.wikipedia.org/wiki/Density">density</a> <span class="js-maths">\rho</span> .
+</p>
+<p>
+Suppose the slab is initially at temperature <span class="js-maths">\TI</span> throughout,
+and thereafter loses heat to the environment at (lower) temperature <span class="js-maths">\TE</span>
+via <a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling">Newtonian cooling</a> through its two faces,
+with a <a href="https://en.wikipedia.org/wiki/Heat_transfer_coefficient">heat transfer coefficient</a> of <span class="js-maths">h</span>.
+</p>
+<p>
+What happens?
+</p>
+<p>
+<img alt="Diagram for slab cooling example" src="diagram.png">
+</p>
+<h2 id="quantities"><a class="permalink" href="#quantities" aria-label="Permalink"></a>Quantities</h2>
+<p>
+Take the slab to be the region <span class="js-maths">-L \le x \le L</span>.
+By symmetry, the temperature profile will be an even function of <span class="js-maths">x</span>,
+so we need only consider the right half <span class="js-maths">0 \le x \le L</span>
+by using a zero-slope (or insulating) boundary condition at <span class="js-maths">x = 0</span>.
+</p>
+<p>
+We have the following:
+</p>
+<table>
+<thead>
+<tr>
+<th colspan="2">Independent variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="js-maths">x</span></td>
+<td>position (<span class="js-maths">0 \le x \le L</span>)</td>
+</tr>
+<tr>
+<td><span class="js-maths">t</span></td>
+<td>time (<span class="js-maths">t \ge 0</span>)</td>
+</tr>
+<tr>
+<th colspan="2">Dependent variable</th>
+</tr>
+<tr>
+<td><span class="js-maths">T</span></td>
+<td>temperature</td>
+</tr>
+<tr>
+<th colspan="2">Constants</th>
+</tr>
+<tr>
+<td><span class="js-maths">L</span></td>
+<td>semi-thickness</td>
+</tr>
+<tr>
+<td><span class="js-maths">k</span></td>
+<td><a href="https://en.wikipedia.org/wiki/Thermal_conductivity">thermal conductivity</a></td>
+</tr>
+<tr>
+<td><span class="js-maths">c</span></td>
+<td><a href="https://en.wikipedia.org/wiki/Specific_heat_capacity">specific heat capacity</a></td>
+</tr>
+<tr>
+<td><span class="js-maths">\rho</span></td>
+<td>density</td>
+</tr>
+<tr>
+<td><span class="js-maths">\TI</span></td>
+<td>initial temperature</td>
+</tr>
+<tr>
+<td><span class="js-maths">\TE</span></td>
+<td>environment temperature</td>
+</tr>
+<tr>
+<td><span class="js-maths">h</span></td>
+<td><a href="https://en.wikipedia.org/wiki/Heat_transfer_coefficient">heat transfer coefficient</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="defining-equations"><a class="permalink" href="#defining-equations" aria-label="Permalink"></a>Defining equations</h2>
+<h3 id="pde"><a class="permalink" href="#pde" aria-label="Permalink"></a>Partial differential equation (PDE)</h3>
+<p>
+<b>Heat equation</b> in <span class="js-maths">T = T (x, t)</span>, throughout the slab, for all time:
+</p>
+<div class="js-maths important">\rho c \frac{\pd T}{\pd t} = k \frac{\pd^2 T}{{\pd x}^2}
+</div>
+<h3 id="boundary-conditions"><a class="permalink" href="#boundary-conditions" aria-label="Permalink"></a>Boundary conditions (BCs)</h3>
+<p>
+Symmetry along the central plane <span class="js-maths">x = 0</span>:
+</p>
+<div class="js-maths important">\eval{\frac{\pd T}{\pd x}}_{x = 0} = 0
+</div>
+<p>
+<a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling">Newtonian cooling</a> along the right-hand face <span class="js-maths">x = L</span>
+(flux through the surface is proportional to the difference
+between the surface temperature and the environment temperature):
+</p>
+<div class="js-maths important">\eval{-k \frac{\pd T}{\pd x}}_{x = L} = \eval{h (T - \TE)}_{x = L}
+</div>
+<p>
+Both sides of the equation have dimensions of power per area.
+The <a href="https://en.wikipedia.org/wiki/Heat_transfer_coefficient">heat transfer coefficient</a> <span class="js-maths">h</span> has dimensions of
+power per area per temperature.
+</p>
+<h3 id="initial-condition"><a class="permalink" href="#initial-condition" aria-label="Permalink"></a>Initial condition (IC)</h3>
+<p>
+Temperature is <span class="js-maths">\TI</span> throughout the slab, initially:
+</p>
+<div class="js-maths important">\eval{T}_{t = 0} = \TI
+</div>
+<h2 id="scaling"><a class="permalink" href="#scaling" aria-label="Permalink"></a>Scaling</h2>
+<span class="js-maths">\gdef \unscaled #1 {\colg{#1}}
+  \gdef \scaled #1 {\colv{#1'}}</span>
+<h3 id="scaling-temperature"><a class="permalink" href="#scaling-temperature" aria-label="Permalink"></a>Temperature</h3>
+<p>
+As in the <a href="/rod/#scaling-temperature">rod problem</a>
+we are given two temperatures, in this case
+the initial temperature <span class="js-maths">\TI</span> and the environment temperature <span class="js-maths">\TE</span>.
+We put
+</p>
+<div class="js-maths important">\unscaled{T} = \TE + (\TI - \TE) \scaled{T}
+</div>
+<p>
+so that the scaled initial temperature is <span class="js-maths">\scaled{T} = 1</span>
+and the scaled environment temperature is <span class="js-maths">\scaled{T} = 0</span>.
+</p>
+<h3 id="scaling-position"><a class="permalink" href="#scaling-position" aria-label="Permalink"></a>Position</h3>
+<div class="js-maths important">\unscaled{x} = L \scaled{x}
+</div>
+<h3 id="scaling-time"><a class="permalink" href="#scaling-time" aria-label="Permalink"></a>Time</h3>
+<p>
+As in the <a href="/rod/#scaling-time">rod problem</a>
+the time scale isn't immediately obvious,
+so we put
+</p>
+<div class="js-maths important">\unscaled{t} = \tau \scaled{t},
+</div>
+<p>
+<strong>with the time scale <span class="js-maths">\tau</span> yet to be determined, i.e.&nbsp;<em>free</em></strong>.
+</p>
+<h2 id="dimensionless-groups"><a class="permalink" href="#dimensionless-groups" aria-label="Permalink"></a>Dimensionless groups</h2>
+<span class="js-maths">\gdef \group #1 {\colr{\squarebr{#1}}}</span>
+<p>
+After moving from <span class="colour-g">unscaled</span> to <span class="colour-v">scaled</span> variables,
+the PDE, boundary conditions, and initial condition become the following:
+</p>
+<div class="js-maths">\begin{gathered}
+
+  \frac{\pd\scaled{T}}{\pd\scaled{t}}
+    =
+  \group{\frac{k \tau}{\rho c L^2}}
+  \frac{\pd^2 \scaled{T}}{{\pd\scaled{x}}^2}
+    \\[\tallspace]
+  \begin{aligned}
+
+    \eval{\frac{\pd\scaled{T}}{\pd\scaled{x}}}_{\scaled{x} = 0} &amp;= 0
+      \\[\tallspace]
+    \eval{-\frac{\pd\scaled{T}}{\pd\scaled{x}}}_{\scaled{x} = 1}
+      &amp;=
+    \eval{\group{\frac{h L}{k}} \scaled{T}}_{\scaled{x} = 1}
+      \\[\tallspace]
+
+    \eval{\scaled{T}}_{\scaled{t} = 0} &amp;= 1
+  \end{aligned}
+\end{gathered}
+</div>
+<p>
+Since there are <strong>two dimensionless groups</strong>
+but only <strong>one free scale</strong> <span class="js-maths">\tau</span>,
+only one of the groups can be eliminated.
+In particular, <span class="js-maths">\tau</span> only appears in the PDE group,
+so only it can be eliminated:
+</p>
+<div class="js-maths">\group{\frac{k \tau}{\rho c L^2}} = 1
+</div>
+<div class="js-maths important">\tau = \frac{\rho c L^2}{k}
+</div>
+<p>
+(Quick mental check: Thicker slab implies longer time scale?
+Better conductor implies shorter time scale?
+Yes to both.)
+</p>
+<p>
+The second dimensionless group <span class="js-maths">\group{h L / k}</span>
+(called the <a href="https://en.wikipedia.org/wiki/Biot_number">Biot number</a>)
+cannot be eliminated because <span class="js-maths">h</span>, <span class="js-maths">L</span>, and <span class="js-maths">k</span> are all <em>given</em>, and NOT free.
+To save writing, let us call it <span class="js-maths">\gamma</span> for short:
+</p>
+<div class="js-maths important">\gamma = \group{\frac{h L}{k}}
+</div>
+<p>
+Finally we <strong>drop the primes</strong>:
+</p>
+<div class="js-maths important">\begin{gathered}
+
+  \frac{\pd T}{\pd t} = \frac{\pd^2 T}{{\pd x}^2}
+    \\[\tallspace]
+  \begin{aligned}
+
+    \eval{\frac{\pd T}{\pd x}}_{x = 0} &amp;= 0
+      \\[\tallspace]
+    \eval{-\frac{\pd T}{\pd x}}_{x = 1} &amp;= \eval{\gamma T}_{x = 1}
+      \\[\tallspace]
+
+    \eval{T}_{t = 0} &amp;= 1
+  \end{aligned}
+\end{gathered}
+</div>
+<h2 id="equilibrium-solution"><a class="permalink" href="#equilibrium-solution" aria-label="Permalink"></a>Equilibrium solution</h2>
+<p>
+Unlike the <a href="/rod/#transient-solution">rod example</a>,
+here the PDE and the two boundary conditions are <em>already</em> homogeneous.
+There is no need to subtract out the equilibrium solution
+because the equilibrium solution is identically zero
+(corresponding to the slab completely cooling to the environment temperature).
+So we may proceed directly to separation of variables:
+</p>
+<h2 id="separation-of-variables"><a class="permalink" href="#separation-of-variables" aria-label="Permalink"></a>Separation of variables</h2>
+<span class="js-maths">\gdef \pos #1 {\colg{#1}}
+  \gdef \time #1 {\colv{#1}}
+  \gdef \con #1 {\colb{#1}}</span>
+<p>
+After putting
+</p>
+<div class="js-maths">T (x, t) = \pos{X (x)} \time{Y (t)}
+</div>
+<p>
+and following the <a href="/rod/#separation-of-variables">usual procedure</a>,
+we obtain the form
+</p>
+<div class="js-maths">T (x, t) =
+  \ee ^ {\con{-\lambda^2} t}
+  \squarebr{A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)}.
+</div>
+<h3 id="separation-boundary-conditions"><a class="permalink" href="#separation-boundary-conditions" aria-label="Permalink"></a>Boundary conditions</h3>
+<h4 id="separation-central-plane"><a class="permalink" href="#separation-central-plane" aria-label="Permalink"></a>Central plane</h4>
+<p>
+Along the plane of symmetry <span class="js-maths">x = 0</span> we have symmetry (zero slope),
+</p>
+<div class="js-maths">\begin{aligned}
+  \eval{\frac{\pd T}{\pd x}}_{x = 0}
+    &amp;=
+      \ee ^ {\con{-\lambda^2} t}
+      \eval{
+        \squarebr{
+          -\con{\lambda} A \sin (\con{\lambda} x)
+          + \con{\lambda} B \cos (\con{\lambda} x)
+        }
+      }_{x = 0}
+        \\
+    &amp;= \con{\lambda} B \ee ^ {\con{-\lambda^2} t} \\
+    &amp;= 0,
+\end{aligned}
+</div>
+<p>
+which implies <span class="js-maths">B = 0</span>.
+Therefore
+</p>
+<div class="js-maths">T = A \ee ^ {\con{-\lambda^2} t} \cos (\con{\lambda} x).
+</div>
+<h4 id="separation-right-face"><a class="permalink" href="#separation-right-face" aria-label="Permalink"></a>Right face</h4>
+<p>
+Along the right face we have the Newtonian cooling condition.
+The left hand side is
+</p>
+<div class="js-maths">\begin{aligned}
+  \eval{-\frac{\pd T}{\pd x}}_{x = 1}
+    &amp;=
+      A \ee ^ {\con{-\lambda^2} t}
+        \cdot
+      \eval{\con{\lambda} \sin (\con{\lambda} x)}_{x = 1}
+        \\
+    &amp;=
+      A \ee ^ {\con{-\lambda^2} t}
+        \cdot
+      \con{\lambda} \sin\con{\lambda}
+\end{aligned}
+</div>
+<p>
+and the right hand side is
+</p>
+<div class="js-maths">\eval{\gamma T}_{x = 1} =
+  A \ee ^ {\con{-\lambda^2} t}
+    \cdot
+  \gamma \cos\con{\lambda}.
+</div>
+<p>
+Therefore <span class="js-maths">\con{\lambda} \sin\con{\lambda} = \gamma \cos\con{\lambda}</span>,
+or
+</p>
+<div class="js-maths important">\tan\con{\lambda} = \frac{\gamma}{\con{\lambda}}.
+</div>
+<h3 id="eigenvalues"><a class="permalink" href="#eigenvalues" aria-label="Permalink"></a>Eigenvalues</h3>
+<span class="js-maths">\gdef \lam #1 {\lambda_\con{#1}}</span>
+<p>
+The equation for <span class="js-maths">\con{\lambda}</span> is <a href="https://en.wikipedia.org/wiki/Transcendental_equation">transcendental</a>,
+so the roots can only be determined numerically.
+</p>
+<p>
+<img alt="Eigenvalues for gamma equals 2" src="eigenvalues.png">
+</p>
+<p>
+From <a href="https://en.wikipedia.org/wiki/Sturm–Liouville_theory">Sturm–Liouville theory</a> we already know that
+the roots will be <span class="js-maths">\lam{1} &lt; \lam{2} &lt; \dots</span> to infinity,
+and by looking at the equation
+(or a plot of <span class="js-maths">\tan\con{\lambda}</span> and <span class="js-maths">\gamma / \con{\lambda}</span>)
+we see that each <span class="js-maths">\lam{n}</span>
+lies between the <span class="js-maths">\con{n}</span>th root and the <span class="js-maths">\con{n}</span>th pole of tan, i.e.
+</p>
+<div class="js-maths">(\con{n} - 1) \pi &lt; \lam{n} &lt; (\con{n} - 1/2) \pi.
+</div>
+<p>
+In Mathematica you will want to use <code>FindRoot</code>,
+and the bound above suggests <span class="js-maths">(\con{n} - 3/4) \pi</span> as a reasonable
+initial guess for <span class="js-maths">\lam{n}</span>
+(although for large <span class="js-maths">\con{n}</span> the lower bound would be better).
+E.g.&nbsp;for <span class="js-maths">\gamma = 2</span>,
+</p>
+<pre><code>Module[{gamma, nMax, initialGuess, root},
+  gamma = 2;
+  nMax = 5;
+  Table[
+    initialGuess = (n - 3/4) Pi;
+    root = FindRoot[Tan[#] - gamma / # &amp;, {initialGuess}];
+    {n, root}
+  , {n, nMax}
+  ] // TableForm
+]
+</code></pre>
+<p>
+gives the following:
+</p>
+<table>
+<thead>
+<tr>
+<th><span class="js-maths">\con{n}</span></th>
+<th><span class="js-maths">\lam{n}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>&numsp;1.07687</td>
+</tr>
+<tr>
+<td>2</td>
+<td>&numsp;3.6436</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&numsp;6.57833</td>
+</tr>
+<tr>
+<td>4</td>
+<td>&numsp;9.62956</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12.7223</td>
+</tr>
+</tbody>
+</table>
+<p>
+Since <code>FindRoot</code> is more or less a <a href="https://en.wikipedia.org/wiki/Black_box">black box</a>,
+there is no guarantee that each root found
+corresponds to the specified <span class="js-maths">\con{n}</span>.
+If the initial guess is poor, it could have jumped to a root
+corresponding to a different value of <span class="js-maths">\con{n}</span>.
+Therefore, <strong>always check the result of numerical root finding with a plot</strong>
+to see if it makes sense.
+</p>
+<h3 id="fourier-series"><a class="permalink" href="#fourier-series" aria-label="Permalink"></a>Fourier series</h3>
+<p>
+Thus given any <span class="js-maths">\gamma</span> we can find the <span class="js-maths">\lam{n}</span> numerically.
+By linearity, we have
+</p>
+<div class="js-maths important">T (x, t) =
+  \sum_{\con{n} = 1}^{\infty}
+    A_\con{n} \ee ^ {-{\lam{n}}^2 t} \cos (\lam{n} x).
+</div>
+<p>
+The coefficients are determined from the initial condition,
+</p>
+<div class="js-maths">\eval{T}_{t = 0}
+  = \sum_{\con{n} = 1}^{\infty} A_\con{n} \cos (\lam{n} x)
+  = 1.
+</div>
+<p>
+Therefore
+</p>
+<div class="js-maths important">A_\con{n} =
+  \frac{
+    \int_0^1 1 \cdot \cos (\lam{n} x) \td x
+  }{
+    \int_0^1 \cos^2 (\lam{n} x) \td x
+  },
+</div>
+<p>
+and we are done.
+</p>
+<h3 id="equilibrium-time"><a class="permalink" href="#equilibrium-time" aria-label="Permalink"></a>How long to reach equilibrium?</h3>
+<p>
+We restore the dropped primes lest we confuse ourselves.
+At large times the solution will be dominated by the <span class="js-maths">\con{n} = 1</span> term
+(corresponding to the smallest eigenvalue <span class="js-maths">\lam{1}</span>).
+Setting the exponent to <span class="js-maths">4</span>,
+the <span class="colour-v">dimensionless equilibrium time</span> is given by
+</p>
+<div class="js-maths">\begin{aligned}
+  {\lam{1}}^2 \scaled{t} &amp;\sim 4 \\
+  \scaled{t} &amp;\sim \frac{4}{{\lam{1}}^2}.
+\end{aligned}
+</div>
+<p>
+The <span class="colour-g">unscaled equilibrium time</span> is therefore
+</p>
+<div class="js-maths">\unscaled{t}
+  \sim \frac{4\tau}{{\lam{1}}^2}
+  = \frac{4 \rho c L^2}{{\lam{1}}^2 k}.
+</div>
+<p>
+Note that <span class="js-maths">\lam{1}</span> is a function of <span class="js-maths">\gamma = \group{h L / k}</span>.
+</p>
+<div class="end">
+END
+</div>
+<p>
+<a href="/">Return to the home page.</a>
+</p>
+<footer>
+Last modified: 2020-08-xx<br>
+Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
+Mistakes/queries:
+<a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.
+</footer>
+</body>
+</html>

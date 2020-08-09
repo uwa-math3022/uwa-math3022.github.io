@@ -25,7 +25,7 @@ Source code for the images: [code.wl]
 ##{#problem} Problem ##
 
 ----
-Consider a uniform rod with length $L$ and [thermal diffusivity] $\kappa$.
+Consider a uniform rod of length $L$ and [thermal diffusivity] $\kappa$.
 ----
 ----
 Suppose the rod is initially at temperature $T_0$ throughout.
@@ -43,15 +43,17 @@ What happens?
   https://en.wikipedia.org/wiki/Thermal_diffusivity @
 
 ----
-![Diagram for rod heating example](diagram.png)
+![Diagram for heating a rod example](diagram.png)
 ----
 
 
 ##{#quantities} Quantities ##
 
 ''''
+|^
 ==
   ;{c2} Independent variables
+|:
 ==
   , $x$
   , position ($0 \le x \le L$)
