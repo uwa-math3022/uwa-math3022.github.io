@@ -529,3 +529,35 @@ $$
 ----
 and we are done.
 ----
+
+
+###{#equilibrium-time} How long to reach equilibrium? ###
+
+----
+We restore the dropped primes lest we confuse ourselves.
+At large times the solution will be dominated by the $\con{n} = 1$ term
+(corresponding to the smallest eigenvalue $\lam{1}$).
+Setting the exponent to $4$,
+the [scaled/ dimensionless equilibrium time /] is given by
+----
+$$
+\begin{aligned}
+  {\lam{1}}^2 \scaled{t} &\sim 4 \\
+  \scaled{t} &\sim \frac{4}{{\lam{1}}^2}.
+\end{aligned}
+$$
+----
+The [unscaled/ unscaled equilibrium time /] is therefore
+----
+$$
+  \unscaled{t}
+    \sim \frac{4\tau}{{\lam{1}}^2}
+    = \frac{4 \rho c L^2}{{\lam{1}}^2 k}.
+$$
+----
+Note that $\lam{1}$ is a function of $\gamma = \group{h L / k}$.
+----
+
+\END
+
+\home
