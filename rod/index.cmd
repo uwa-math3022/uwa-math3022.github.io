@@ -844,7 +844,7 @@ $$
    Only a few terms are needed (or even just one term).
 ++++++++
 
-### How long to reach equilibrium? ###
+###{#equilibrium-time} How long to reach equilibrium? ###
 
 ----
 While "infinity" is technically correct, it isn't a *useful* answer.
