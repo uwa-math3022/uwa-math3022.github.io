@@ -2,7 +2,7 @@
 
 %%
   %title  Heat equation: A slab cooling
-  %date-modified  2020-08-xx
+  %date-modified  2020-08-09
   \resources:maths
 %%
 
