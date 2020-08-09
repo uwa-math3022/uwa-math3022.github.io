@@ -66,6 +66,10 @@ noscript {
   font-weight: bold;
 }
 
+pre {
+  overflow-x: auto;
+}
+
 table {
   background-color: white;
   border-spacing: 0;
