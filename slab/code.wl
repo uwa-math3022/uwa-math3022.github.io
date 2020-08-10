@@ -214,6 +214,7 @@ Module[
     , {x, {-1, 1} environmentTemperatureXCoordinate}
     ],
     {}
+    , ImageSize -> 200
   ]
 ] // Export[
   FileNameJoin @ {NotebookDirectory[], "diagram.png"},
