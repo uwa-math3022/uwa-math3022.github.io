@@ -144,7 +144,7 @@ Module[
   (* Slab *)
   slabHeight = 2;
   slabSemiThickness = 0.15;
-  slabStyle = Directive[EdgeForm[Black], FaceForm[LightOrange]];
+  slabStyle = Directive[EdgeForm[Black], FaceForm @ Lighter[Red, 0.25]];
   slabDimensionOffset = 0.05 slabHeight;
   slabDimensionStyle = Arrowheads @ {-Medium, Medium};
   (* Cooling arrows *)
