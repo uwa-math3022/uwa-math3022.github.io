@@ -153,9 +153,9 @@ The only difference is the coordinate system used to express it.
 ----
 ----
 For a rough analogy,
-1000~metres and 1~kilometre are the *same* *physical* length
+1000~metres and 1~kilometre are the *same physical length*
 --- they are *equal*
---- even though 1000 is a thousand times as big as 1.
+--- even though they have been expressed in terms of different units.
 ----
 
 @[sh] https://sites.science.oregonstate.edu/math/bridge/ideas/functions/ @
