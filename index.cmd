@@ -3,7 +3,7 @@
 %%
   %title  UWA MATH3022
   %title-suffix  <## nothing ##>
-  %date-modified  2020-08-09
+  %date-modified  2020-08-14
   \resources:no-maths
 %%
 
@@ -16,7 +16,7 @@
 ##{#general} General ##
 
 ====
-* [Notation](/notation)
+* [Remarks on notation](/notation)
 ====
 
 ##{#mathematica-intro} Introduction to Mathematica ##

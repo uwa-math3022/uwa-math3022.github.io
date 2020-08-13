@@ -1,8 +1,8 @@
 {+ resources/syntax.cmd +}
 
 %%
-  %title  Notation
-  %date-modified  2020-08-13
+  %title  Remarks on notation
+  %date-modified  2020-08-14
   \resources:maths
 %%
 
