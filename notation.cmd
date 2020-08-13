@@ -151,6 +151,11 @@ the $T$ is the *same* *physical* temperature profile
 as when we write $T (x, y)$.
 The only difference is the coordinate system used to express it.
 ----
+----
+For a rough analogy,
+1000~metres and 1~kilometre are the *same* *physical* length
+--- even though 1000 is a thousand times as big as 1.
+----
 
 @[sh] https://sites.science.oregonstate.edu/math/bridge/ideas/functions/ @
 
