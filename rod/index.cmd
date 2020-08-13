@@ -16,7 +16,8 @@
 ----
 
 ----
-Source code for the images: [code.wl]
+Source code for the images: [code.wl] \+
+\home
 ----
 @[code.wl]
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
@@ -919,4 +920,6 @@ In animated form  (deliberately made small to save bandwidth):
 
 \END
 
+----
 \home
+----

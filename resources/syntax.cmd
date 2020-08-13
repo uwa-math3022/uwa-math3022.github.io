@@ -131,9 +131,7 @@ b{: \END :
 
 
 b{: \home :
-  ----
   [Return to the home page.](/)
-  ----
 :}
 
 
