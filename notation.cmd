@@ -136,8 +136,8 @@ What is $T (r, \theta)$?
 In MATH3022 (and in physics \& applied maths more generally),
 we choose the applied mathematician's answer.
 When we write $T = T (x, y)$,
-we are simply reminding ourselves that
-(1)~the dependent variable is the temperature $T$
+we are simply asserting that
+(1)~the dependent variable is the temperature $T$;
 and (2)~the independent variables are the coordinates $x$ and $y$.
 In particular:
 ----
@@ -154,6 +154,7 @@ The only difference is the coordinate system used to express it.
 ----
 For a rough analogy,
 1000~metres and 1~kilometre are the *same* *physical* length
+--- they are *equal*
 --- even though 1000 is a thousand times as big as 1.
 ----
 
