@@ -147,7 +147,7 @@ In particular:
 ====
 ----
 When we write $T (r, \theta)$,
-the $T$ is the *same* *physical* temperature profile
+the $T$ is the *same physical temperature profile*
 as when we write $T (x, y)$.
 The only difference is the coordinate system used to express it.
 ----
