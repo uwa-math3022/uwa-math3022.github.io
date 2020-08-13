@@ -13,6 +13,12 @@
 (Scientific and Industrial Modelling)
 ||||
 
+##{#general} General ##
+
+====
+* [Notation](/notation)
+====
+
 ##{#mathematica-intro} Introduction to Mathematica ##
 
 ----
