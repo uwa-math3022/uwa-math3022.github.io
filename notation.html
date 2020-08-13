@@ -11,6 +11,7 @@
 </head>
 <body>
 <h1>Remarks on notation</h1>
+<noscript>Enable JavaScript for equation rendering to work.</noscript>
 <p>
 <a href="/">Return to the home page.</a>
 </p>
@@ -19,7 +20,8 @@
   \gdef \scaled #1 {\colv{#1'}}
   \gdef \scale #1 {\colb{#1}}</span>
 <p>
-There are two ways to write derivatives: <b>subscripts</b> and <b>fractions</b>.
+You may have noticed two ways to write derivatives:
+<b>subscripts</b> and <b>fractions</b>.
 Nev prefers subscripts while I prefer fractions.
 </p>
 <p>
@@ -88,6 +90,63 @@ and the length scale is <span class="js-maths">\scale{L}</span>.
 (We can ignore <span class="js-maths">T_0</span> because it is an <em>offset</em>,
 which doesn't affect the derivative
 — the derivative of an added constant is zero.)
+</p>
+<h2 id="functions"><a class="permalink" href="#functions" aria-label="Permalink"></a>Functions</h2>
+<p>
+You may also have noticed that I regularly omit the variables
+which a function depends on,
+and that I prefer to use vertical-bar notation
+to denote evaluation of a function at a particular point.
+</p>
+<p>
+I will also write things like <span class="js-maths">T = T (x, t)</span>,
+which to a pure mathematician is an abuse of notation.
+</p>
+<p>
+The reason is that <strong>in physics &amp; applied maths,
+functions are viewed as <em>expressions</em> rather than as <em>maps</em></strong>.
+</p>
+<p>
+This is best demonstrated by <a href="https://sites.science.oregonstate.edu/math/bridge/ideas/functions/">Corinne's Shibboleth</a>
+(slightly paraphrased here):
+</p>
+<blockquote>
+Suppose the temperature on a rectangular slab of metal
+is given by <span class="js-maths">T (x, y) = k (x^2 + y^2)</span> where <span class="js-maths">k</span> is a constant.
+What is <span class="js-maths">T (r, \theta)</span>?
+<ul>
+<li>Pure mathematician: <span class="js-maths">T (r, \theta) = k (r^2 + \theta^2)</span>
+</li>
+<li>Applied mathematician: <span class="js-maths">T (r, \theta) = k r^2</span>
+</li>
+</ul>
+</blockquote>
+<p>
+In MATH3022 (and in physics &amp; applied maths more generally),
+we choose the applied mathematician's answer.
+When we write <span class="js-maths">T = T (x, y)</span>,
+we are simply reminding ourselves that
+(1)&nbsp;the dependent variable is the temperature <span class="js-maths">T</span>
+and (2)&nbsp;the independent variables are the coordinates <span class="js-maths">x</span> and <span class="js-maths">y</span>.
+In particular:
+</p>
+<ul>
+<li><span class="js-maths">T</span> is the <em>physical</em> temperature, NOT a map.
+</li>
+<li><span class="js-maths">x</span> and <span class="js-maths">y</span> are <em>physical</em> coordinates, NOT replaceable dummy variables.
+</li>
+</ul>
+<p>
+When we write <span class="js-maths">T (r, \theta)</span>,
+the <span class="js-maths">T</span> is the <em>same</em> <em>physical</em> temperature profile
+as when we write <span class="js-maths">T (x, y)</span>.
+The only difference is the coordinate system used to express it.
+</p>
+<div class="end">
+END
+</div>
+<p>
+<a href="/">Return to the home page.</a>
 </p>
 <footer>
 Last modified: 2020-08-14<br>

@@ -8,6 +8,8 @@
 
 # %title #
 
+\noscript
+
 ----
 \home
 ----
@@ -29,7 +31,8 @@ $
 {% \[ scale / (.*?) / \] % [b/ \1 /] %}
 
 ----
-There are two ways to write derivatives: __subscripts__ and __fractions__.
+You may have noticed two ways to write derivatives:
+__subscripts__ and __fractions__.
 Nev prefers subscripts while I prefer fractions.
 ----
 ----
@@ -97,4 +100,62 @@ and the length scale is $\scale{L}$.
 (We can ignore $T_0$ because it is an *offset*,
 which doesn't affect the derivative
 --- the derivative of an added constant is zero.)
+----
+
+##{#functions} Functions ##
+
+----
+You may also have noticed that I regularly omit the variables
+which a function depends on,
+and that I prefer to use vertical-bar notation
+to denote evaluation of a function at a particular point.
+----
+----
+I will also write things like $T = T (x, t)$,
+which to a pure mathematician is an abuse of notation.
+----
+----
+The reason is that **in physics \& applied maths,
+functions are viewed as *expressions* rather than as *maps***.
+----
+
+----
+This is best demonstrated by [Corinne's Shibboleth][sh]
+(slightly paraphrased here):
+----
+""""
+Suppose the temperature on a rectangular slab of metal
+is given by $T (x, y) = k (x^2 + y^2)$ where $k$ is a constant.
+What is $T (r, \theta)$?
+====
+* Pure mathematician: $T (r, \theta) = k (r^2 + \theta^2)$
+* Applied mathematician: $T (r, \theta) = k r^2$
+====
+""""
+----
+In MATH3022 (and in physics \& applied maths more generally),
+we choose the applied mathematician's answer.
+When we write $T = T (x, y)$,
+we are simply reminding ourselves that
+(1)~the dependent variable is the temperature $T$
+and (2)~the independent variables are the coordinates $x$ and $y$.
+In particular:
+----
+====
+* $T$ is the *physical* temperature, NOT a map.
+* $x$ and $y$ are *physical* coordinates, NOT replaceable dummy variables.
+====
+----
+When we write $T (r, \theta)$,
+the $T$ is the *same* *physical* temperature profile
+as when we write $T (x, y)$.
+The only difference is the coordinate system used to express it.
+----
+
+@[sh] https://sites.science.oregonstate.edu/math/bridge/ideas/functions/ @
+
+\END
+
+----
+\home
 ----
