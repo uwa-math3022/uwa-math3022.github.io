@@ -136,9 +136,8 @@ What is $T (r, \theta)$?
 In MATH3022 (and in physics \& applied maths more generally),
 we choose the applied mathematician's answer.
 When we write $T = T (x, y)$,
-we are simply asserting that
-(1)~the dependent variable is the temperature $T$;
-and (2)~the independent variables are the coordinates $x$ and $y$.
+we are simply asserting that the temperature $T$
+is to be expressed in terms of the coordinates $x$ and $y$.
 In particular:
 ----
 ====
