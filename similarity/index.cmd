@@ -800,6 +800,92 @@ $${.important}
 $$
 
 
+##{#ode} Solution to the ODE ##
+
+----
+To recap, we have reduced the problem to an ODE,
+an associated boundary condition,
+and an integral condition:
+----
+$${.important}
+\begin{gathered}
+  \frac{\new{\td^2} U}{\new{{\td \xi}^2}}
+  + \frac{\new{\xi}}{2} \frac{\new{\td} U}{\new{\td \xi}}
+  + \frac{U}{2}
+    = 0
+    \\[\tallspace]
+  \eval{U}_{\new{\xi} = \pm\infty} = 0
+    \\[\tallspace]
+  \int_{-\infty}^\infty U (\new{\xi}) \td\new{\xi} = 1
+\end{gathered}
+$$
+
+----
+Use Mathematica to solve the ODE:
+----
+````
+DSolveValue[u''[xi] + xi/2 * u'[xi] + u[xi]/2 == 0, u[xi], xi]
+````
+----
+This gives the linearly independent solutions
+----
+$$
+\gdef \erfi {\operatorname{erfi}}
+\gdef \Uodd {U_\mathrm{odd}}
+\gdef \Ueven {U_\mathrm{even}}
+\begin{aligned}
+  \Uodd &= \sqrt{\pi} \exp \frac{-\xi^2}{4} \erfi \frac{\xi}{2}
+    \\[\tallspace]
+  \Ueven &= \exp \frac{-\xi^2}{4},
+\end{aligned}
+$$
+----
+where $\erfi$ is the imagniary [error function].
+----
+
+@[error function] https://en.wikipedia.org/wiki/Error_function @
+
+----
+There are reasons why $\Uodd$ does not work
+for the plane-source problem:
+----
+====
+* The temperature profile must be symmetric about $x = 0$,
+  so $U$ must be an even function
+* $\Uodd$ goes negative when $\xi < 0$ (i.e.~when $x < 0$),
+  but the initial temperature profile was non-negative
+* $\int_0^\infty \Uodd (\xi) \td\xi$ does not converge,
+  so the integral condition cannot possibly be satisfied.
+====
+----
+Therefore the solution must consist of the even term only, i.e.
+----
+$${.important}
+  U (\new{\xi}) = C \exp \frac{-\new{\xi}^2}{4}.
+$$
+----
+The constant $C$ is determined by the integral condition
+----
+$$
+  \int_{-\infty}^\infty
+    C \exp \frac{-\new{\xi}^2}{4}
+  \td\new{\xi}
+    = 1,
+$$
+----
+which (using Mathematica to evaluate the integral) gives us
+----
+$$
+  C = \frac{1}{2 \sqrt{\pi}}.
+$$
+----
+Therefore:
+----
+$${.important}
+  U (\new{\xi}) = \frac{1}{2 \sqrt{\pi}} \exp \frac{-\new{\xi}^2}{4}.
+$$
+
+
 \END
 
 ----

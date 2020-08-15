@@ -671,6 +671,81 @@ i.e.
 </p>
 <div class="js-maths important">\int_{-\infty}^\infty U (\new{\xi}) \td\new{\xi} = 1.
 </div>
+<h2 id="ode"><a class="permalink" href="#ode" aria-label="Permalink"></a>Solution to the ODE</h2>
+<p>
+To recap, we have reduced the problem to an ODE,
+an associated boundary condition,
+and an integral condition:
+</p>
+<div class="js-maths important">\begin{gathered}
+  \frac{\new{\td^2} U}{\new{{\td \xi}^2}}
+  + \frac{\new{\xi}}{2} \frac{\new{\td} U}{\new{\td \xi}}
+  + \frac{U}{2}
+    = 0
+    \\[\tallspace]
+  \eval{U}_{\new{\xi} = \pm\infty} = 0
+    \\[\tallspace]
+  \int_{-\infty}^\infty U (\new{\xi}) \td\new{\xi} = 1
+\end{gathered}
+</div>
+<p>
+Use Mathematica to solve the ODE:
+</p>
+<pre><code>DSolveValue[u''[xi] + xi/2 * u'[xi] + u[xi]/2 == 0, u[xi], xi]
+</code></pre>
+<p>
+This gives the linearly independent solutions
+</p>
+<div class="js-maths">\gdef \erfi {\operatorname{erfi}}
+\gdef \Uodd {U_\mathrm{odd}}
+\gdef \Ueven {U_\mathrm{even}}
+\begin{aligned}
+  \Uodd &amp;= \sqrt{\pi} \exp \frac{-\xi^2}{4} \erfi \frac{\xi}{2}
+    \\[\tallspace]
+  \Ueven &amp;= \exp \frac{-\xi^2}{4},
+\end{aligned}
+</div>
+<p>
+where <span class="js-maths">\erfi</span> is the imagniary <a href="https://en.wikipedia.org/wiki/Error_function">error function</a>.
+</p>
+<p>
+There are reasons why <span class="js-maths">\Uodd</span> does not work
+for the plane-source problem:
+</p>
+<ul>
+<li>The temperature profile must be symmetric about <span class="js-maths">x = 0</span>,
+so <span class="js-maths">U</span> must be an even function
+</li>
+<li><span class="js-maths">\Uodd</span> goes negative when <span class="js-maths">\xi &lt; 0</span> (i.e.&nbsp;when <span class="js-maths">x &lt; 0</span>),
+but the initial temperature profile was non-negative
+</li>
+<li><span class="js-maths">\int_0^\infty \Uodd (\xi) \td\xi</span> does not converge,
+so the integral condition cannot possibly be satisfied.
+</li>
+</ul>
+<p>
+Therefore the solution must consist of the even term only, i.e.
+</p>
+<div class="js-maths important">U (\new{\xi}) = C \exp \frac{-\new{\xi}^2}{4}.
+</div>
+<p>
+The constant <span class="js-maths">C</span> is determined by the integral condition
+</p>
+<div class="js-maths">\int_{-\infty}^\infty
+  C \exp \frac{-\new{\xi}^2}{4}
+\td\new{\xi}
+  = 1,
+</div>
+<p>
+which (using Mathematica to evaluate the integral) gives us
+</p>
+<div class="js-maths">C = \frac{1}{2 \sqrt{\pi}}.
+</div>
+<p>
+Therefore:
+</p>
+<div class="js-maths important">U (\new{\xi}) = \frac{1}{2 \sqrt{\pi}} \exp \frac{-\new{\xi}^2}{4}.
+</div>
 <div class="end">
 END
 </div>
