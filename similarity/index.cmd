@@ -133,13 +133,9 @@ Nothing happens at (spatial) infinity, for all time:
 $${.important}
   \eval{T}_{x = \pm\infty} = 0
 $$
-
 ----
-If you prefer limits:
+If you prefer limit notation: $\lim_{x \to \pm\infty} T (x, t) = 0$.
 ----
-$$
-  \lim_{x \to \pm\infty} T (x, t) = 0
-$$
 
 ###{#initial-condition} Initial condition (IC) ###
 
@@ -156,6 +152,16 @@ $${.important}
       0, & x \ne 0
     \end{cases}
 $$
+----
+If you prefer limit notation:
+$
+  \lim_{t \to 0^+} T (x, t) =
+    \begin{cases}
+      \infty, & x = 0 \\
+      0, & x \ne 0
+    \end{cases}
+$.
+----
 
 ||||{.qa}
 __Q.__
@@ -716,6 +722,37 @@ $${.important}
 $$
 ----
 Thus we have reduced the [PDE](#pde) to an ODE.
+----
+
+###{#changing-boundary-condition}
+  Changing coordinates for the boundary/initial conditions
+###
+
+----
+If you stare at the equations
+----
+$$
+\begin{aligned}
+  T (\old{x}, \old{t}) &=
+    \frac{Q'}{\sqrt{\kappa \new{t}}}
+      \cdot
+    U (\new{\xi})
+    \\
+  \frac{\old{x}}{\sqrt{\kappa \old{t}}} &= \new{\xi}
+\end{aligned}
+$$
+----
+for long enough,
+you will see that the condition
+----
+$${.important}
+  \eval{U}_{\new{\xi} = \pm\infty} = 0
+$$
+----
+(or $\lim_{\new{\xi} \to \pm\infty} U (\new{\xi}, \new{t}) = 0$
+if you prefer limit notation)
+takes care of both the [boundary condition](#boundary-condition)
+and the [initial condition](#initial-condition).
 ----
 
 

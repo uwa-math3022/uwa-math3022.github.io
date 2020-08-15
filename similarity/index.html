@@ -114,10 +114,8 @@ Nothing happens at (spatial) infinity, for all time:
 <div class="js-maths important">\eval{T}_{x = \pm\infty} = 0
 </div>
 <p>
-If you prefer limits:
+If you prefer limit notation: <span class="js-maths">\lim_{x \to \pm\infty} T (x, t) = 0</span>.
 </p>
-<div class="js-maths">\lim_{x \to \pm\infty} T (x, t) = 0
-</div>
 <h3 id="initial-condition"><a class="permalink" href="#initial-condition" aria-label="Permalink"></a>Initial condition (IC)</h3>
 <span class="js-maths">\gdef \dimen #1 {\textsf{#1}}</span>
 <p>
@@ -129,6 +127,14 @@ All of the thermal energy is concentrated in the slice <span class="js-maths">x 
     0, &amp; x \ne 0
   \end{cases}
 </div>
+<p>
+If you prefer limit notation:
+<span class="js-maths">\lim_{t \to 0^+} T (x, t) =
+    \begin{cases}
+      \infty, &amp; x = 0 \\
+      0, &amp; x \ne 0
+    \end{cases}</span>.
+</p>
 <div class="qa">
 <b>Q.</b>
 What nonsense is this?<br>
@@ -602,6 +608,31 @@ we obtain (after a little algebra)
 </div>
 <p>
 Thus we have reduced the <a href="#pde">PDE</a> to an ODE.
+</p>
+<h3 id="changing-boundary-condition"><a class="permalink" href="#changing-boundary-condition" aria-label="Permalink"></a>Changing coordinates for the boundary/initial conditions</h3>
+<p>
+If you stare at the equations
+</p>
+<div class="js-maths">\begin{aligned}
+  T (\old{x}, \old{t}) &amp;=
+    \frac{Q'}{\sqrt{\kappa \new{t}}}
+      \cdot
+    U (\new{\xi})
+    \\
+  \frac{\old{x}}{\sqrt{\kappa \old{t}}} &amp;= \new{\xi}
+\end{aligned}
+</div>
+<p>
+for long enough,
+you will see that the condition
+</p>
+<div class="js-maths important">\eval{U}_{\new{\xi} = \pm\infty} = 0
+</div>
+<p>
+(or <span class="js-maths">\lim_{\new{\xi} \to \pm\infty} U (\new{\xi}, \new{t}) = 0</span>
+if you prefer limit notation)
+takes care of both the <a href="#boundary-condition">boundary condition</a>
+and the <a href="#initial-condition">initial condition</a>.
 </p>
 <div class="end">
 END
