@@ -31,7 +31,8 @@ Source code for the images: [code.wl] \+
 ##{#problem} Problem ##
 
 ----
-Consider an infinite block of [density] $\rho$, [specific heat capacity] $c$,
+Consider an infinite, uniform block of
+[density] $\rho$, [specific heat capacity] $c$,
 and [thermal conductivity] $k$.
 Its [thermal diffusivity] is therefore $\kappa = k / (\rho c)$.
 ----
@@ -40,7 +41,7 @@ Suppose the block is initially at zero temperature throughout.
 At time $t = 0$:
 ----
 ====
-* Inject thermal energy per area $Q$ into the plane $x = 0$.
+* Inject thermal energy per area, $Q$, into the plane $x = 0$.
 ====
 ----
 What happens?
@@ -51,6 +52,10 @@ What happens?
   https://en.wikipedia.org/wiki/Specific_heat_capacity @
 @[thermal conductivity] https://en.wikipedia.org/wiki/Thermal_conductivity @
 @[thermal diffusivity] https://en.wikipedia.org/wiki/Thermal_diffusivity @
+
+----
+![Diagram for fundamental plane-source problem](diagram.png)
+----
 
 ----{.qa}
 __Q.__
