@@ -23,13 +23,14 @@ Source code for the images: <a href="https://github.com/uwa-math3022/uwa-math302
 <p>
 Consider an infinite block of <a href="https://en.wikipedia.org/wiki/Density">density</a> <span class="js-maths">\rho</span>, <a href="https://en.wikipedia.org/wiki/Specific_heat_capacity">specific heat capacity</a> <span class="js-maths">c</span>,
 and <a href="https://en.wikipedia.org/wiki/Thermal_conductivity">thermal conductivity</a> <span class="js-maths">k</span>.
+Its <a href="https://en.wikipedia.org/wiki/Thermal_diffusivity">thermal diffusivity</a> is therefore <span class="js-maths">\kappa = k / (\rho c)</span>.
 </p>
 <p>
 Suppose the block is initially at zero temperature throughout.
 At time <span class="js-maths">t = 0</span>:
 </p>
 <ul>
-<li>Cram thermal energy per area <span class="js-maths">Q</span> into the plane <span class="js-maths">x = 0</span>
+<li>Cram thermal energy per area <span class="js-maths">Q</span> into the plane <span class="js-maths">x = 0</span>.
 </li>
 </ul>
 <p>
@@ -42,10 +43,57 @@ into a plane which has zero thickness?<br>
 <b>A.</b>
 It's an idealisation, like a point charge.
 In the case of a point charge,
-the charge density is infinite but the amount of charge is finite.
+the charge density is infinite but the amount of charge is <em>finite</em>.
 Here, the initial temperature of the plane <span class="js-maths">x = 0</span> is infinite,
-but the energy per area is finite.
+but the energy per area is <em>finite</em>.
 </p>
+<h2 id="quantities"><a class="permalink" href="#quantities" aria-label="Permalink"></a>Quantities</h2>
+<p>
+We find that it is convenient to define the constant
+</p>
+<div class="js-maths">Q' = \frac{Q}{\rho c},
+</div>
+<p>
+because the defining equations for this problem can be written
+in terms of the constants <span class="js-maths">Q'</span> and <span class="js-maths">\kappa</span> only
+(rather than <span class="js-maths">Q</span>, <span class="js-maths">\rho</span>, <span class="js-maths">c</span>, and <span class="js-maths">k</span>).
+Note that <span class="js-maths">Q'</span> is to <span class="js-maths">Q</span> as <span class="js-maths">\kappa</span> is to <span class="js-maths">k</span>.
+</p>
+<table>
+<thead>
+<tr>
+<th colspan="2">Independent variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="js-maths">x</span></td>
+<td>position (<span class="js-maths">-\infty &lt; x &lt; \infty</span>)</td>
+</tr>
+<tr>
+<td><span class="js-maths">t</span></td>
+<td>time (<span class="js-maths">t \ge 0</span>)</td>
+</tr>
+<tr>
+<th colspan="2">Dependent variable</th>
+</tr>
+<tr>
+<td><span class="js-maths">T</span></td>
+<td>temperature</td>
+</tr>
+<tr>
+<th colspan="2">Constants</th>
+</tr>
+<tr>
+<td><span class="js-maths">\kappa</span></td>
+<td><a href="https://en.wikipedia.org/wiki/Thermal_diffusivity">thermal diffusivity</a></td>
+</tr>
+<tr>
+<td><span class="js-maths">Q'</span></td>
+<td>energy per area divided by <span class="js-maths">\rho c</span></td>
+</tr>
+</tbody>
+</table>
 <div class="end">
 END
 </div>
