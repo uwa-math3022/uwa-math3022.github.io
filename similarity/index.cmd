@@ -335,7 +335,7 @@ Obviously
 ----
 $$
 \begin{aligned}
-  [T] &= \dimen{Temperature} \\
+  [T] &= \dimen{Temp} \\
   [x] &= \dimen{Length} \\
   [t] &= \dimen{Time}.
 \end{aligned}
@@ -352,7 +352,7 @@ and from the [conservation of energy](#conservation) condition,
 we see that
 ----
 $$
-  [Q'] = \dimen{Temperature} \cdot \dimen{Length}.
+  [Q'] = \dimen{Temp} \cdot \dimen{Length}.
 $$
 
 ----
@@ -360,7 +360,7 @@ You should be able to show that
 ----
 $$
 \begin{aligned}
-  \squarebr{\temp{\frac{Q'}{\sqrt{\kappa t}}}} &= \temp{\dimen{Temperature}} \\
+  \squarebr{\temp{\frac{Q'}{\sqrt{\kappa t}}}} &= \temp{\dimen{Temp}} \\
   \squarebr{\dimenless{\frac{x}{\sqrt{\kappa t}}}} &= \dimenless{\dimen{1}},
 \end{aligned}
 $$
@@ -395,14 +395,14 @@ __A.__
   for some indices $\ind{p}$, $\ind{q}$, $\ind{r}$, and $\ind{s}$.
   Then
   $$
-    \dimen{Temperature} =
+    \dimen{Temp} =
       \dimen{Length} ^ \ind{p}
         \cdot
       \dimen{Time} ^ \ind{q}
       \roundbr{\frac{\dimen{Length}^2}{\dimen{Time}}} ^ \ind{r}
-      \roundbr{\dimen{Temperature} \cdot \dimen{Length}} ^ \ind{s}.
+      \roundbr{\dimen{Temp} \cdot \dimen{Length}} ^ \ind{s}.
   $$
-  Equating powers of $\dimen{Length}$, $\dimen{Time}$, $\dimen{Temperature}$,
+  Equating powers of $\dimen{Length}$, $\dimen{Time}$, and $\dimen{Temp}$,
   we get the system of linear equations
   $$
   \begin{aligned}
