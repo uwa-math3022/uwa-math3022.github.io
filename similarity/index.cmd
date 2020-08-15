@@ -31,9 +31,8 @@ Source code for the (non-hand-drawn) images: [code.wl] \+
 ##{#problem} Problem ##
 
 ----
-Consider an infinite, uniform block of
-[density] $\rho$, [specific heat capacity] $c$,
-and [thermal conductivity] $k$.
+Consider an infinite, uniform block of [thermal conductivity] $k$,
+[density] $\rho$, and [specific heat capacity] $c$.
 Its [thermal diffusivity] is therefore $\kappa = k / (\rho c)$.
 ----
 ----
@@ -66,7 +65,7 @@ __A.__
   It's an idealisation, like a point charge.
   In the case of a point charge,
   the charge density is infinite but the amount of charge is *finite*.
-  Here, the initial temperature of the plane $x = 0$ is infinite,
+  Here, the initial temperature of the plane $x = 0$ will be infinite,
   but the energy per area is *finite*.
 ----
 
@@ -81,8 +80,8 @@ $$
 $$
 ----
 because the defining equations for this problem can be written
-in terms of the constants $Q'$ and $\kappa$ only
-(rather than $Q$, $\rho$, $c$, and $k$).
+in terms of the constants $\kappa$ and $Q'$ only
+(rather than $k$, $\rho$, $c$, and $Q$).
 Note that $Q'$ is to $Q$ as $\kappa$ is to $k$.
 ----
 
@@ -266,6 +265,175 @@ $${.important}
   \int_{-\infty}^\infty T \td x &= Q'
 \end{aligned}
 $$
+
+
+##{#scaling} Scaling ##
+
+----
+Normally there will be a length scale provided by the parameters.
+But in the current situation the only parameters are $\kappa$ and $Q'$,
+and:
+----
+====
+* The slab is of *infinite* extent
+* The initially heated slice ($x = 0$) has *zero* thickness
+====
+----
+Both infinity and zero are **scale-invariant**.
+THERE IS NO LENGTH SCALE.
+----
+
+||||{.qa}
+__Q.__
+  So how do we scale $x$?
+\+
+__A.__
+  Somehow a combination of the other quantities $t$, $\kappa$, and $Q'$
+  must form a length scale to compare against $x$.
+||||
+
+###{#dimensional-analysis} Dimensional analysis ###
+
+<##
+  Styles
+  * temperature: colour-g
+  * dimensionless: colour-v
+##>
+$
+  \gdef \temp #1 {\colg{#1}}
+  \gdef \dimenless #1 {\colv{#1}}
+$
+{% \[ temp / (.*?) / \] % [g/ \1 /] %}
+{% \[ dimenless / (.*?) / \] % [v/ \1 /] %}
+
+----
+The temperature $T$ can only depend on
+the independent variables $x$ and $t$
+and the constants $\kappa$ and $Q'$,
+because there are no other variables or physical constants
+in the defining equations:
+----
+$${.important}
+  T = T (x, t; \kappa, Q')
+$$
+
+----
+The only way this can make dimensional sense is if
+----
+$$
+  T = \temp{\mathcal{T}} \cdot \dimenless{\mathcal{L}},
+$$
+----
+where $\temp{\mathcal{T}}$ is a combination
+of $x$, $t$, $\kappa$, and $Q'$ which has dimensions of [temp/ temperature /],
+and $\dimenless{\mathcal{L}}$ is a combination
+of $x$, $t$, $\kappa$, and $Q'$ which is [dimenless/ dimensionless /].
+----
+
+----
+Obviously
+----
+$$
+\begin{aligned}
+  [T] &= \dimen{Temperature} \\
+  [x] &= \dimen{Length} \\
+  [t] &= \dimen{Time}.
+\end{aligned}
+$$
+
+----
+From the [PDE](#pde), we have
+----
+$$
+  [\kappa] = \frac{\dimen{Length}^2}{\dimen{Time}},
+$$
+----
+and from the [conservation of energy](#conservation) condition,
+we see that
+----
+$$
+  [Q'] = \dimen{Temperature} \cdot \dimen{Length}.
+$$
+
+----
+You should be able to show that
+----
+$$
+\begin{aligned}
+  \squarebr{\temp{\frac{Q'}{\sqrt{\kappa t}}}} &= \temp{\dimen{Temperature}} \\
+  \squarebr{\dimenless{\frac{x}{\sqrt{\kappa t}}}} &= \dimenless{\dimen{1}},
+\end{aligned}
+$$
+----
+and so $T$ must be of the form
+----
+$${.important}
+  T =
+    \temp{\frac{Q'}{\sqrt{\kappa t}}}
+      \cdot
+    U \roundbr{\dimenless{\frac{x}{\sqrt{\kappa t}}}},
+$$
+----
+where $U$ is some dimensionless function.
+We give the dimensionless group a name:
+----
+$${.important}
+  \dimenless{\xi} = \dimenless{\frac{x}{\sqrt{\kappa t}}}
+$$
+
+||||{.qa}
+__Q.__
+  Is there a systematic way of doing this?
+\+
+__A.__
+  Yes, read up on the [Buckingham pi theorem]. \+
+  In the present scenario, suppose that
+  $$
+    \gdef \ind #1 {\colr{#1}}
+    [T] = [x]^\ind{p} [t]^\ind{q} [\kappa]^\ind{r} [Q']^\ind{s}
+  $$
+  for some indices $\ind{p}$, $\ind{q}$, $\ind{r}$, and $\ind{s}$.
+  Then
+  $$
+    \dimen{Temperature} =
+      \dimen{Length} ^ \ind{p}
+        \cdot
+      \dimen{Time} ^ \ind{q}
+      \roundbr{\frac{\dimen{Length}^2}{\dimen{Time}}} ^ \ind{r}
+      \roundbr{\dimen{Temperature} \cdot \dimen{Length}} ^ \ind{s}.
+  $$
+  Equating powers of $\dimen{Length}$, $\dimen{Time}$, $\dimen{Temperature}$,
+  we get the system of linear equations
+  $$
+  \begin{aligned}
+    \ind{p} + 2 \ind{r} + \ind{s} &= 0 \\
+    \ind{q} - \ind{r} &= 0 \\
+    \ind{s} &= 1,
+  \end{aligned}
+  $$
+  which solves to give
+  $$
+    \begin{pmatrix} \ind{p} \\ \ind{q} \\ \ind{r} \\ \ind{s} \end{pmatrix}
+      =
+    \underbrace{
+      \begin{pmatrix} 0 \\ -1/2 \\ -1/2 \\ 1 \end{pmatrix}
+    }_{
+      \normalsize \temp{Q' / \sqrt{\kappa t}}
+    }
+      + a
+    \underbrace{
+      \begin{pmatrix} 1 \\ -1/2 \\ -1/2 \\ 0 \end{pmatrix}
+    }_{
+      \normalsize \dimenless{x / \sqrt{\kappa t}}
+    },
+  $$
+  where $a$ is a free variable.
+  Thus we obtain the temperature combination $\temp{Q' / \sqrt{\kappa t}}$
+  and the dimensionless group $\dimenless{x / \sqrt{\kappa t}}$.
+||||
+
+@[Buckingham pi theorem]
+  https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem @
 
 
 \END

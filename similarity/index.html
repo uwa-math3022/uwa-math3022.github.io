@@ -24,9 +24,8 @@ Source code for the (non-hand-drawn) images: <a href="https://github.com/uwa-mat
 </p>
 <h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
 <p>
-Consider an infinite, uniform block of
-<a href="https://en.wikipedia.org/wiki/Density">density</a> <span class="js-maths">\rho</span>, <a href="https://en.wikipedia.org/wiki/Specific_heat_capacity">specific heat capacity</a> <span class="js-maths">c</span>,
-and <a href="https://en.wikipedia.org/wiki/Thermal_conductivity">thermal conductivity</a> <span class="js-maths">k</span>.
+Consider an infinite, uniform block of <a href="https://en.wikipedia.org/wiki/Thermal_conductivity">thermal conductivity</a> <span class="js-maths">k</span>,
+<a href="https://en.wikipedia.org/wiki/Density">density</a> <span class="js-maths">\rho</span>, and <a href="https://en.wikipedia.org/wiki/Specific_heat_capacity">specific heat capacity</a> <span class="js-maths">c</span>.
 Its <a href="https://en.wikipedia.org/wiki/Thermal_diffusivity">thermal diffusivity</a> is therefore <span class="js-maths">\kappa = k / (\rho c)</span>.
 </p>
 <p>
@@ -51,7 +50,7 @@ into a plane which has zero thickness?<br>
 It's an idealisation, like a point charge.
 In the case of a point charge,
 the charge density is infinite but the amount of charge is <em>finite</em>.
-Here, the initial temperature of the plane <span class="js-maths">x = 0</span> is infinite,
+Here, the initial temperature of the plane <span class="js-maths">x = 0</span> will be infinite,
 but the energy per area is <em>finite</em>.
 </p>
 <h2 id="quantities"><a class="permalink" href="#quantities" aria-label="Permalink"></a>Quantities</h2>
@@ -62,8 +61,8 @@ We find that it is convenient to define the constant
 </div>
 <p>
 because the defining equations for this problem can be written
-in terms of the constants <span class="js-maths">Q'</span> and <span class="js-maths">\kappa</span> only
-(rather than <span class="js-maths">Q</span>, <span class="js-maths">\rho</span>, <span class="js-maths">c</span>, and <span class="js-maths">k</span>).
+in terms of the constants <span class="js-maths">\kappa</span> and <span class="js-maths">Q'</span> only
+(rather than <span class="js-maths">k</span>, <span class="js-maths">\rho</span>, <span class="js-maths">c</span>, and <span class="js-maths">Q</span>).
 Note that <span class="js-maths">Q'</span> is to <span class="js-maths">Q</span> as <span class="js-maths">\kappa</span> is to <span class="js-maths">k</span>.
 </p>
 <table>
@@ -218,6 +217,139 @@ so here are the defining equations again without the commentary:
     \\
   \int_{-\infty}^\infty T \td x &amp;= Q'
 \end{aligned}
+</div>
+<h2 id="scaling"><a class="permalink" href="#scaling" aria-label="Permalink"></a>Scaling</h2>
+<p>
+Normally there will be a length scale provided by the parameters.
+But in the current situation the only parameters are <span class="js-maths">\kappa</span> and <span class="js-maths">Q'</span>,
+and:
+</p>
+<ul>
+<li>The slab is of <em>infinite</em> extent
+</li>
+<li>The initially heated slice (<span class="js-maths">x = 0</span>) has <em>zero</em> thickness
+</li>
+</ul>
+<p>
+Both infinity and zero are <strong>scale-invariant</strong>.
+THERE IS NO LENGTH SCALE.
+</p>
+<div class="qa">
+<b>Q.</b>
+So how do we scale <span class="js-maths">x</span>?<br>
+<b>A.</b>
+Somehow a combination of the other quantities <span class="js-maths">t</span>, <span class="js-maths">\kappa</span>, and <span class="js-maths">Q'</span>
+must form a length scale to compare against <span class="js-maths">x</span>.
+</div>
+<h3 id="dimensional-analysis"><a class="permalink" href="#dimensional-analysis" aria-label="Permalink"></a>Dimensional analysis</h3>
+<span class="js-maths">\gdef \temp #1 {\colg{#1}}
+  \gdef \dimenless #1 {\colv{#1}}</span>
+<p>
+The temperature <span class="js-maths">T</span> can only depend on
+the independent variables <span class="js-maths">x</span> and <span class="js-maths">t</span>
+and the constants <span class="js-maths">\kappa</span> and <span class="js-maths">Q'</span>,
+because there are no other variables or physical constants
+in the defining equations:
+</p>
+<div class="js-maths important">T = T (x, t; \kappa, Q')
+</div>
+<p>
+The only way this can make dimensional sense is if
+</p>
+<div class="js-maths">T = \temp{\mathcal{T}} \cdot \dimenless{\mathcal{L}},
+</div>
+<p>
+where <span class="js-maths">\temp{\mathcal{T}}</span> is a combination
+of <span class="js-maths">x</span>, <span class="js-maths">t</span>, <span class="js-maths">\kappa</span>, and <span class="js-maths">Q'</span> which has dimensions of <span class="colour-g">temperature</span>,
+and <span class="js-maths">\dimenless{\mathcal{L}}</span> is a combination
+of <span class="js-maths">x</span>, <span class="js-maths">t</span>, <span class="js-maths">\kappa</span>, and <span class="js-maths">Q'</span> which is <span class="colour-v">dimensionless</span>.
+</p>
+<p>
+Obviously
+</p>
+<div class="js-maths">\begin{aligned}
+  [T] &amp;= \dimen{Temperature} \\
+  [x] &amp;= \dimen{Length} \\
+  [t] &amp;= \dimen{Time}.
+\end{aligned}
+</div>
+<p>
+From the <a href="#pde">PDE</a>, we have
+</p>
+<div class="js-maths">[\kappa] = \frac{\dimen{Length}^2}{\dimen{Time}},
+</div>
+<p>
+and from the <a href="#conservation">conservation of energy</a> condition,
+we see that
+</p>
+<div class="js-maths">[Q'] = \dimen{Temperature} \cdot \dimen{Length}.
+</div>
+<p>
+You should be able to show that
+</p>
+<div class="js-maths">\begin{aligned}
+  \squarebr{\temp{\frac{Q'}{\sqrt{\kappa t}}}} &amp;= \temp{\dimen{Temperature}} \\
+  \squarebr{\dimenless{\frac{x}{\sqrt{\kappa t}}}} &amp;= \dimenless{\dimen{1}},
+\end{aligned}
+</div>
+<p>
+and so <span class="js-maths">T</span> must be of the form
+</p>
+<div class="js-maths important">T =
+  \temp{\frac{Q'}{\sqrt{\kappa t}}}
+    \cdot
+  U \roundbr{\dimenless{\frac{x}{\sqrt{\kappa t}}}},
+</div>
+<p>
+where <span class="js-maths">U</span> is some dimensionless function.
+We give the dimensionless group a name:
+</p>
+<div class="js-maths important">\dimenless{\xi} = \dimenless{\frac{x}{\sqrt{\kappa t}}}
+</div>
+<div class="qa">
+<b>Q.</b>
+Is there a systematic way of doing this?<br>
+<b>A.</b>
+Yes, read up on the <a href="https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem">Buckingham pi theorem</a>.<br>
+In the present scenario, suppose that
+<div class="js-maths">\gdef \ind #1 {\colr{#1}}
+[T] = [x]^\ind{p} [t]^\ind{q} [\kappa]^\ind{r} [Q']^\ind{s}
+</div>
+for some indices <span class="js-maths">\ind{p}</span>, <span class="js-maths">\ind{q}</span>, <span class="js-maths">\ind{r}</span>, and <span class="js-maths">\ind{s}</span>.
+Then
+<div class="js-maths">\dimen{Temperature} =
+  \dimen{Length} ^ \ind{p}
+    \cdot
+  \dimen{Time} ^ \ind{q}
+  \roundbr{\frac{\dimen{Length}^2}{\dimen{Time}}} ^ \ind{r}
+  \roundbr{\dimen{Temperature} \cdot \dimen{Length}} ^ \ind{s}.
+</div>
+Equating powers of <span class="js-maths">\dimen{Length}</span>, <span class="js-maths">\dimen{Time}</span>, <span class="js-maths">\dimen{Temperature}</span>,
+we get the system of linear equations
+<div class="js-maths">\begin{aligned}
+  \ind{p} + 2 \ind{r} + \ind{s} &amp;= 0 \\
+  \ind{q} - \ind{r} &amp;= 0 \\
+  \ind{s} &amp;= 1,
+\end{aligned}
+</div>
+which solves to give
+<div class="js-maths">\begin{pmatrix} \ind{p} \\ \ind{q} \\ \ind{r} \\ \ind{s} \end{pmatrix}
+  =
+\underbrace{
+  \begin{pmatrix} 0 \\ -1/2 \\ -1/2 \\ 1 \end{pmatrix}
+}_{
+  \normalsize \temp{Q' / \sqrt{\kappa t}}
+}
+  + a
+\underbrace{
+  \begin{pmatrix} 1 \\ -1/2 \\ -1/2 \\ 0 \end{pmatrix}
+}_{
+  \normalsize \dimenless{x / \sqrt{\kappa t}}
+},
+</div>
+where <span class="js-maths">a</span> is a free variable.
+Thus we obtain the temperature combination <span class="js-maths">\temp{Q' / \sqrt{\kappa t}}</span>
+and the dimensionless group <span class="js-maths">\dimenless{x / \sqrt{\kappa t}}</span>.
 </div>
 <div class="end">
 END
