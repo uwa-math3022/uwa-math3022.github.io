@@ -717,7 +717,7 @@ we obtain (after a little algebra)
 $${.important}
   \frac{\new{\td^2} U}{\new{{\td \xi}^2}}
   + \frac{\new{\xi}}{2} \frac{\new{\td} U}{\new{\td \xi}}
-  + U / 2
+  + \frac{U}{2}
     = 0.
 $$
 ----
@@ -725,7 +725,7 @@ Thus we have reduced the [PDE](#pde) to an ODE.
 ----
 
 ###{#changing-boundary-condition}
-  Changing coordinates for the boundary/initial conditions
+  Change of coordinates for the boundary/initial conditions
 ###
 
 ----
@@ -754,6 +754,50 @@ if you prefer limit notation)
 takes care of both the [boundary condition](#boundary-condition)
 and the [initial condition](#initial-condition).
 ----
+
+###{#changing-conservation}
+  Change of coordinates for conservation of energy
+###
+
+----
+Writing the [integral condition for conservation of energy](#conservation)
+backwards, we have
+----
+$$
+\begin{aligned}
+  Q'
+    &= \int_{-\infty}^\infty T \td \old{x} \\[\tallspace]
+    &=
+      \int_{-\infty}^\infty
+        \frac{Q'}{\sqrt{\kappa \new{t}}} \cdot U (\new{\xi})
+      \td \old{x}
+      \\[\tallspace]
+    &=
+      \int_{\old{x} = -\infty} ^ {\old{x} = \infty}
+        Q' \cdot U (\new{\xi})
+      \td \roundbr{\frac{\old{x}}{\sqrt{\kappa \old{t}}}},
+\end{aligned}
+$$
+----
+where $\old{t}$ is held constant
+for the purposes of evaluating the integral.
+Since $\new{\xi} = \old{x} / \sqrt{\kappa \old{t}}$,
+if $\old{t}$ is held constant and $\old{x}$ runs from $-\infty$ to $\infty$,
+then $\new{\xi}$ will also run from $-\infty$ to $\infty$.
+Therefore
+----
+$$
+  Q' =
+    \int_{\new{\xi} = -\infty} ^ {\new{\xi} = \infty}
+      Q' \cdot U (\new{\xi})
+    \td \new{\xi},
+$$
+----
+i.e.
+----
+$${.important}
+  \int_{-\infty}^\infty U (\new{\xi}) \td\new{\xi} = 1.
+$$
 
 
 \END

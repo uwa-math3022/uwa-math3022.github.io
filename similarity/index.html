@@ -603,13 +603,13 @@ we obtain (after a little algebra)
 </p>
 <div class="js-maths important">\frac{\new{\td^2} U}{\new{{\td \xi}^2}}
 + \frac{\new{\xi}}{2} \frac{\new{\td} U}{\new{\td \xi}}
-+ U / 2
++ \frac{U}{2}
   = 0.
 </div>
 <p>
 Thus we have reduced the <a href="#pde">PDE</a> to an ODE.
 </p>
-<h3 id="changing-boundary-condition"><a class="permalink" href="#changing-boundary-condition" aria-label="Permalink"></a>Changing coordinates for the boundary/initial conditions</h3>
+<h3 id="changing-boundary-condition"><a class="permalink" href="#changing-boundary-condition" aria-label="Permalink"></a>Change of coordinates for the boundary/initial conditions</h3>
 <p>
 If you stare at the equations
 </p>
@@ -634,6 +634,43 @@ if you prefer limit notation)
 takes care of both the <a href="#boundary-condition">boundary condition</a>
 and the <a href="#initial-condition">initial condition</a>.
 </p>
+<h3 id="changing-conservation"><a class="permalink" href="#changing-conservation" aria-label="Permalink"></a>Change of coordinates for conservation of energy</h3>
+<p>
+Writing the <a href="#conservation">integral condition for conservation of energy</a>
+backwards, we have
+</p>
+<div class="js-maths">\begin{aligned}
+  Q'
+    &amp;= \int_{-\infty}^\infty T \td \old{x} \\[\tallspace]
+    &amp;=
+      \int_{-\infty}^\infty
+        \frac{Q'}{\sqrt{\kappa \new{t}}} \cdot U (\new{\xi})
+      \td \old{x}
+      \\[\tallspace]
+    &amp;=
+      \int_{\old{x} = -\infty} ^ {\old{x} = \infty}
+        Q' \cdot U (\new{\xi})
+      \td \roundbr{\frac{\old{x}}{\sqrt{\kappa \old{t}}}},
+\end{aligned}
+</div>
+<p>
+where <span class="js-maths">\old{t}</span> is held constant
+for the purposes of evaluating the integral.
+Since <span class="js-maths">\new{\xi} = \old{x} / \sqrt{\kappa \old{t}}</span>,
+if <span class="js-maths">\old{t}</span> is held constant and <span class="js-maths">\old{x}</span> runs from <span class="js-maths">-\infty</span> to <span class="js-maths">\infty</span>,
+then <span class="js-maths">\new{\xi}</span> will also run from <span class="js-maths">-\infty</span> to <span class="js-maths">\infty</span>.
+Therefore
+</p>
+<div class="js-maths">Q' =
+  \int_{\new{\xi} = -\infty} ^ {\new{\xi} = \infty}
+    Q' \cdot U (\new{\xi})
+  \td \new{\xi},
+</div>
+<p>
+i.e.
+</p>
+<div class="js-maths important">\int_{-\infty}^\infty U (\new{\xi}) \td\new{\xi} = 1.
+</div>
 <div class="end">
 END
 </div>
