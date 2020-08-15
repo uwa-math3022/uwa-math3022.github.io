@@ -886,6 +886,44 @@ $${.important}
 $$
 
 
+##{#result} Result ##
+
+----
+Putting everything together,
+the fundamental plane-source similarity solution is
+----
+$$
+  T (\new{\xi}, \new{t}) =
+    \frac{Q'}{\sqrt{\kappa \new{t}}}
+      \cdot
+    \frac{1}{2 \sqrt{\pi}} \exp \frac{-\new{\xi}^2}{4}
+$$
+----
+and therefore
+----
+$${.important}
+  T (\old{x}, \old{t}) =
+    \frac{Q'}{2 \sqrt{\pi \kappa \old{t}}}
+    \exp \frac{-\old{x}^2}{4 \kappa \old{t}}.
+$$
+----
+Note that the solution profile $T (x, t)$ has
+----
+====
+* maximum temperature (height) of order $Q' / \sqrt{\kappa t}$, and
+* width of order $\sqrt{\kappa t}$,
+====
+----
+so for small $t$ it is a tall, thin spike
+(corresponding to heat concentrated near $x = 0$)
+and for large $t$ it flattens out to a broad bump.
+----
+----
+At **all** times the area under the curve is $Q'$
+(see [conservation of energy](#conservation)).
+----
+
+
 \END
 
 ----

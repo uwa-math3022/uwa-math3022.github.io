@@ -746,6 +746,41 @@ Therefore:
 </p>
 <div class="js-maths important">U (\new{\xi}) = \frac{1}{2 \sqrt{\pi}} \exp \frac{-\new{\xi}^2}{4}.
 </div>
+<h2 id="result"><a class="permalink" href="#result" aria-label="Permalink"></a>Result</h2>
+<p>
+Putting everything together,
+the fundamental plane-source similarity solution is
+</p>
+<div class="js-maths">T (\new{\xi}, \new{t}) =
+  \frac{Q'}{\sqrt{\kappa \new{t}}}
+    \cdot
+  \frac{1}{2 \sqrt{\pi}} \exp \frac{-\new{\xi}^2}{4}
+</div>
+<p>
+and therefore
+</p>
+<div class="js-maths important">T (\old{x}, \old{t}) =
+  \frac{Q'}{2 \sqrt{\pi \kappa \old{t}}}
+  \exp \frac{-\old{x}^2}{4 \kappa \old{t}}.
+</div>
+<p>
+Note that the solution profile <span class="js-maths">T (x, t)</span> has
+</p>
+<ul>
+<li>maximum temperature (height) of order <span class="js-maths">Q' / \sqrt{\kappa t}</span>, and
+</li>
+<li>width of order <span class="js-maths">\sqrt{\kappa t}</span>,
+</li>
+</ul>
+<p>
+so for small <span class="js-maths">t</span> it is a tall, thin spike
+(corresponding to heat concentrated near <span class="js-maths">x = 0</span>)
+and for large <span class="js-maths">t</span> it flattens out to a broad bump.
+</p>
+<p>
+At <strong>all</strong> times the area under the curve is <span class="js-maths">Q'</span>
+(see <a href="#conservation">conservation of energy</a>).
+</p>
 <div class="end">
 END
 </div>
