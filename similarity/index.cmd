@@ -644,6 +644,81 @@ which variable is being held constant:
   is written $\new{\roundbr{\dfrac{\pd}{\pd t}}_\xi}$
 ====
 
+###{#changing-coordinates} Changing coordinates ###
+
+----
+Let us CAREFULLY apply the change of coordinates now.
+The coordinate transformation is given by
+----
+$$
+\begin{aligned}
+  \new{\xi} &= \frac{\old{x}}{\sqrt{\kappa \old{t}}} \\
+  \new{t} &= \old{t}.
+\end{aligned}
+$$
+----
+After a lot of algebra,
+the chain rule equations become
+----
+$${.important}
+\begin{aligned}
+  \old{\frac{\pd}{\pd x}} &=
+    \frac{1}{\sqrt{\kappa \new{t}}}
+    \new{\frac{\pd}{\pd\xi}}
+    \\[\tallspace]
+  \old{\roundbr{\frac{\pd}{\pd t}}_x} &=
+    -\frac{\new{\xi}}{2 \new{t}} \new{\frac{\pd}{\pd\xi}}
+    + \new{\roundbr{\frac{\pd}{\pd t}}_\xi}.
+\end{aligned}
+$$
+----
+We then apply the 1st of these twice, and the 2nd of these once,
+to the equation
+----
+$$
+  T (\old{x}, \old{t}) =
+    \frac{Q'}{\sqrt{\kappa \new{t}}}
+      \cdot
+    U (\new{\xi}).
+$$
+----
+After a lot of algebra,
+this gives us
+----
+$$
+\begin{aligned}
+  \old{\frac{\pd^2 T}{{\pd x}^2}} &=
+    \frac{Q'}{(\kappa \new{t}) ^ {3/2}}
+    \frac{\new{\td^2} U}{\new{{\td \xi}^2}}
+    \\[\tallspace]
+  \old{\roundbr{\frac{\pd T}{\pd t}}_x} &=
+    -
+      \frac{\new{\xi}}{2 \new{t}}
+      \frac{Q'}{\sqrt{\kappa \new{t}}}
+      \frac{\new{\td} U}{\new{\td \xi}}
+    +
+      \frac{Q'}{\sqrt{\kappa}}
+        \cdot
+      \frac{-1/2}{\new{t} ^ {3/2}}
+        \cdot
+      U.
+\end{aligned}
+$$
+----
+Finally, substituting these into the [heat equation](#pde),
+we obtain (after a little algebra)
+----
+$${.important}
+  \frac{\new{\td^2} U}{\new{{\td \xi}^2}}
+  + \frac{\new{\xi}}{2} \frac{\new{\td} U}{\new{\td \xi}}
+  + U / 2
+    = 0.
+$$
+----
+Thus we have reduced the [PDE](#pde) to an ODE.
+----
+
+
 \END
 
 ----
