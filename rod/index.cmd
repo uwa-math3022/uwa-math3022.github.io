@@ -490,14 +490,14 @@ This says that [time/ a function of $t$ only /]
 is equal to [pos/ a function of $x$ only /],
 and this is supposed to be true for all $\time{t}$ and all $\pos{x}$.
 ----
-----{.qa}
+||||{.qa}
 __Q.__
   How can [time/ a function of $t$ /] be equal to [pos/ a function of $x$ /]
   for all $\time{t}$ and all $\pos{x}$?
 \+
 __A.__
   Both must equal the [con/ *same* constant /]:
-----
+||||
 $${.important}
   \time{\frac{1}{Y} \frac{\td Y}{\td t}}
     =
@@ -505,7 +505,7 @@ $${.important}
     =
   \con{-\lambda^2}.
 $$
-----{.qa}
+||||{.qa}
 __Q.__
   Why can't the constant be zero or positive?
 \+
@@ -518,7 +518,7 @@ __A.__
   Just put $-\lambda^2$.
   (If separation of variables results in total derivatives with opposite signs,
   put $-\lambda^2$ for the ODE which has the homogeneous boundary conditions.)
-----
+||||
 ----
 Thus we have separated the PDE into two ODEs:
 ----
