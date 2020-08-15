@@ -503,11 +503,39 @@ Let us unpack the meaning:
 \end{aligned}
 </div>
 <p>
-Take note of what variable is held constant in each partial derivative.
-This is important because
-<strong>in the current problem, the time coordinate <span class="js-maths">t</span> appears in
-<em>both</em> the <span class="colour-b">old</span> and the <span class="colour-r">new</span> coordinate systems</strong>:
+Especially take note of what variable is held constant
+in each partial derivative, because:
 </p>
+<h3 id="ambiguity"><a class="permalink" href="#ambiguity" aria-label="Permalink"></a>Ambiguity</h3>
+<p>
+<strong>In the current problem, the time coordinate <span class="js-maths">t</span> appears in
+<em>both</em> the <span class="colour-b">old</span> and the <span class="colour-r">new</span> coordinate systems</strong>.
+We need to <strong>be VERY careful</strong>, because <span class="js-maths">\pd /{\pd t}</span> is ambiguous:
+</p>
+<ul>
+<li><span class="js-maths">\old{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-b">old coordinate system <span class="js-maths">(x, t)</span></span>
+is rate of change w.r.t. <span class="js-maths">\old{t}</span>, <strong>with <span class="js-maths">\old{x}</span> held constant</strong>
+</li>
+<li><span class="js-maths">\new{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-r">new coordinate system <span class="js-maths">(\xi, t)</span></span>
+is rate of change w.r.t. <span class="js-maths">\new{t}</span>, <strong>with <span class="js-maths">\new{\xi}</span> held constant</strong>
+</li>
+</ul>
+<p>
+These are NOT the same thing.
+</p>
+<p>
+To disambiguate between the two possible meanings of <span class="js-maths">\pd /{\pd t}</span>,
+it is common to use subscripts to indicate
+which variable is being held constant:
+</p>
+<ul>
+<li><span class="js-maths">\old{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-b">old coordinate system <span class="js-maths">(x, t)</span></span>
+is written <span class="js-maths">\old{\roundbr{\dfrac{\pd}{\pd t}}_x}</span>
+</li>
+<li><span class="js-maths">\new{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-r">new coordinate system <span class="js-maths">(\xi, t)</span></span>
+is written <span class="js-maths">\new{\roundbr{\dfrac{\pd}{\pd t}}_\xi}</span>
+</li>
+</ul>
 <div class="end">
 END
 </div>

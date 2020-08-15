@@ -612,11 +612,37 @@ $$
 \end{aligned}
 $$
 ----
-Take note of what variable is held constant in each partial derivative.
-This is important because
-**in the current problem, the time coordinate $t$ appears in
-*both* the [old/old/] and the [new/new/] coordinate systems**:
+Especially take note of what variable is held constant
+in each partial derivative, because:
 ----
+
+###{#ambiguity} Ambiguity ###
+
+----
+**In the current problem, the time coordinate $t$ appears in
+*both* the [old/old/] and the [new/new/] coordinate systems**.
+We need to **be VERY careful**, because $\pd /{\pd t}$ is ambiguous:
+----
+====
+* $\old{\dfrac{\pd}{\pd t}}$ in the [old/ old coordinate system $(x, t)$ /]
+  is rate of change w.r.t. $\old{t}$, **with $\old{x}$ held constant**
+* $\new{\dfrac{\pd}{\pd t}}$ in the [new/ new coordinate system $(\xi, t)$ /]
+  is rate of change w.r.t. $\new{t}$, **with $\new{\xi}$ held constant**
+====
+----
+These are NOT the same thing.
+----
+----
+To disambiguate between the two possible meanings of $\pd /{\pd t}$,
+it is common to use subscripts to indicate
+which variable is being held constant:
+----
+====
+* $\old{\dfrac{\pd}{\pd t}}$ in the [old/ old coordinate system $(x, t)$ /]
+  is written $\old{\roundbr{\dfrac{\pd}{\pd t}}_x}$
+* $\new{\dfrac{\pd}{\pd t}}$ in the [new/ new coordinate system $(\xi, t)$ /]
+  is written $\new{\roundbr{\dfrac{\pd}{\pd t}}_\xi}$
+====
 
 \END
 
