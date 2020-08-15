@@ -32,7 +32,7 @@ $
 
 ----
 Consider a uniform slab of thickness $2L$, [thermal conductivity][k] $k$,
-[specific heat capacity][c] $c$, and [density][rho] $\rho$ .
+[specific heat capacity][c] $c$, and [density][rho] $\rho$.
 ----
 ----
 Suppose the slab is initially at temperature $\TI$ throughout,
