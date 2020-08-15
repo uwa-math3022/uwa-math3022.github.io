@@ -242,6 +242,8 @@ Somehow a combination of the other quantities <span class="js-maths">t</span>, <
 must form a length scale to compare against <span class="js-maths">x</span>.
 </div>
 <h3 id="dimensional-analysis"><a class="permalink" href="#dimensional-analysis" aria-label="Permalink"></a>Dimensional analysis</h3>
+<span class="js-maths">\gdef \termnote #1 #2 {\underbrace{#1}_{\substack{\small #2}}}
+  \gdef \termnotetext #1 {\footnotesize \text{#1}}</span>
 <span class="js-maths">\gdef \temp #1 {\colg{#1}}
   \gdef \dimenless #1 {\colv{#1}}</span>
 <p>
@@ -335,22 +337,177 @@ we get the system of linear equations
 which solves to give
 <div class="js-maths">\begin{pmatrix} \ind{p} \\ \ind{q} \\ \ind{r} \\ \ind{s} \end{pmatrix}
   =
-\underbrace{
+\termnote{
   \begin{pmatrix} 0 \\ -1/2 \\ -1/2 \\ 1 \end{pmatrix}
-}_{
-  \normalsize \temp{Q' / \sqrt{\kappa t}}
+}{
+  \temp{Q' / \sqrt{\kappa t}}
 }
   + a
-\underbrace{
+\termnote{
   \begin{pmatrix} 1 \\ -1/2 \\ -1/2 \\ 0 \end{pmatrix}
-}_{
-  \normalsize \dimenless{x / \sqrt{\kappa t}}
+}{
+  \dimenless{x / \sqrt{\kappa t}}
 },
 </div>
 where <span class="js-maths">a</span> is a free variable.
 Thus we obtain the temperature combination <span class="js-maths">\temp{Q' / \sqrt{\kappa t}}</span>
 and the dimensionless group <span class="js-maths">\dimenless{x / \sqrt{\kappa t}}</span>.
 </div>
+<h2 id="change-of-coordinates"><a class="permalink" href="#change-of-coordinates" aria-label="Permalink"></a>Change of coordinates</h2>
+<span class="js-maths">\gdef \old #1 {\colb{#1}}
+  \gdef \new #1 {\colr{#1}}</span>
+<p>
+The result of the <a href="#dimensional-analysis">dimensional analysis</a> says that we should move
+from <span class="colour-b"><span class="js-maths">(x, t)</span> coordinates with dependent variable <span class="js-maths">T</span></span>, i.e.
+</p>
+<div class="js-maths">T (\old{x}, \old{t}) =
+  \frac{Q'}{\sqrt{\kappa \old{t}}}
+    \cdot
+  U \roundbr{\frac{\old{x}}{\sqrt{\kappa \old{t}}}}
+</div>
+<p>
+to <span class="colour-r"><span class="js-maths">(\xi, t)</span> coordinates with dependent variable <span class="js-maths">U</span></span>, i.e.
+</p>
+<div class="js-maths">T (\new{\xi}, \new{t}) =
+  \frac{Q'}{\sqrt{\kappa \new{t}}}
+    \cdot
+  U (\new{\xi}).
+</div>
+<p>
+To do this, we will need the chain rule:
+</p>
+<h3 id="chain-rule"><a class="permalink" href="#chain-rule" aria-label="Permalink"></a>Chain rule</h3>
+<p>
+Suppose we the change of coordinates
+from <span class="colour-b">old coordinates <span class="js-maths">(x, y)</span></span> to <span class="colour-r">new coordinates <span class="js-maths">(r, s)</span></span>
+is given by
+</p>
+<div class="js-maths">\begin{aligned}
+  \new{r} &amp;= \old{r (x, y)} \\
+  \new{s} &amp;= \old{s (x, y)}.
+\end{aligned}
+</div>
+<p>
+Then the chain rule says that
+the partial derivatives will transform thus:
+</p>
+<div class="js-maths important">\begin{aligned}
+  \old{\frac{\pd}{\pd x}} &amp;=
+    \old{\frac{\pd r}{\pd x}} \new{\frac{\pd}{\pd r}}
+      +
+    \old{\frac{\pd s}{\pd x}} \new{\frac{\pd}{\pd s}}
+    \\[\tallspace]
+  \old{\frac{\pd}{\pd y}} &amp;=
+    \old{\frac{\pd r}{\pd y}} \new{\frac{\pd}{\pd r}}
+      +
+    \old{\frac{\pd s}{\pd y}} \new{\frac{\pd}{\pd s}}
+\end{aligned}
+</div>
+<p>
+It is vital that you understand what the chain rule <em>means</em>,
+and not just what it <em>says</em>.
+Let us unpack the meaning:
+</p>
+<div class="js-maths">\begin{aligned}
+  \termnote{
+    \old{\frac{\pd}{\pd x}}
+  }{
+    \termnotetext{Derivative} \\
+    \termnotetext{w.r.t. $\old{x}$}, \\
+    \termnotetext{with $\old{y}$ held} \\
+    \termnotetext{constant}
+  } &amp;=
+    \termnote{
+      \old{\frac{\pd r}{\pd x}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{of $\old{r (x, y)}$} \\
+      \termnotetext{w.r.t. $\old{x}$}, \\
+      \termnotetext{with $\old{y}$ held} \\
+      \termnotetext{constant}
+    }
+      \cdot
+    \termnote{
+      \new{\frac{\pd}{\pd r}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{w.r.t. $\new{r}$}, \\
+      \termnotetext{with $\new{s}$ held} \\
+      \termnotetext{constant}
+    }
+      +
+    \termnote{
+      \old{\frac{\pd s}{\pd x}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{of $\old{s (x, y)}$} \\
+      \termnotetext{w.r.t. $\old{x}$}, \\
+      \termnotetext{with $\old{y}$ held} \\
+      \termnotetext{constant}
+    }
+      \cdot
+    \termnote{
+      \new{\frac{\pd}{\pd s}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{w.r.t. $\new{s}$}, \\
+      \termnotetext{with $\new{r}$ held} \\
+      \termnotetext{constant}
+    }
+    \\[6em]
+  \termnote{
+    \old{\frac{\pd}{\pd y}}
+  }{
+    \termnotetext{Derivative} \\
+    \termnotetext{w.r.t. $\old{y}$}, \\
+    \termnotetext{with $\old{x}$ held} \\
+    \termnotetext{constant}
+  } &amp;=
+    \termnote{
+      \old{\frac{\pd r}{\pd y}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{of $\old{r (x, y)}$} \\
+      \termnotetext{w.r.t. $\old{y}$}, \\
+      \termnotetext{with $\old{x}$ held} \\
+      \termnotetext{constant}
+    }
+      \cdot
+    \termnote{
+      \new{\frac{\pd}{\pd r}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{w.r.t. $\new{r}$}, \\
+      \termnotetext{with $\new{s}$ held} \\
+      \termnotetext{constant}
+    }
+      +
+    \termnote{
+      \old{\frac{\pd s}{\pd y}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{of $\old{s (x, y)}$} \\
+      \termnotetext{w.r.t. $\old{y}$}, \\
+      \termnotetext{with $\old{x}$ held} \\
+      \termnotetext{constant}
+    }
+      \cdot
+    \termnote{
+      \new{\frac{\pd}{\pd s}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{w.r.t. $\new{s}$}, \\
+      \termnotetext{with $\new{r}$ held} \\
+      \termnotetext{constant}
+    }
+\end{aligned}
+</div>
+<p>
+Take note of what variable is held constant in each partial derivative.
+This is important because
+<strong>in the current problem, the time coordinate <span class="js-maths">t</span> appears in
+<em>both</em> the <span class="colour-b">old</span> and the <span class="colour-r">new</span> coordinate systems</strong>:
+</p>
 <div class="end">
 END
 </div>

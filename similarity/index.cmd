@@ -294,6 +294,13 @@ __A.__
 
 ###{#dimensional-analysis} Dimensional analysis ###
 
+@[dimensional analysis] #dimensional-analysis @
+
+$
+  \gdef \termnote #1 #2 {\underbrace{#1}_{\substack{\small #2}}}
+  \gdef \termnotetext #1 {\footnotesize \text{#1}}
+$
+
 <##
   Styles
   * temperature: colour-g
@@ -415,16 +422,16 @@ __A.__
   $$
     \begin{pmatrix} \ind{p} \\ \ind{q} \\ \ind{r} \\ \ind{s} \end{pmatrix}
       =
-    \underbrace{
+    \termnote{
       \begin{pmatrix} 0 \\ -1/2 \\ -1/2 \\ 1 \end{pmatrix}
-    }_{
-      \normalsize \temp{Q' / \sqrt{\kappa t}}
+    }{
+      \temp{Q' / \sqrt{\kappa t}}
     }
       + a
-    \underbrace{
+    \termnote{
       \begin{pmatrix} 1 \\ -1/2 \\ -1/2 \\ 0 \end{pmatrix}
-    }_{
-      \normalsize \dimenless{x / \sqrt{\kappa t}}
+    }{
+      \dimenless{x / \sqrt{\kappa t}}
     },
   $$
   where $a$ is a free variable.
@@ -435,6 +442,181 @@ __A.__
 @[Buckingham pi theorem]
   https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem @
 
+
+##{#change-of-coordinates} Change of coordinates ##
+
+<##
+  Styles
+  * old coordinates: colour-b
+  * new coordinates: colour-r
+##>
+$
+  \gdef \old #1 {\colb{#1}}
+  \gdef \new #1 {\colr{#1}}
+$
+{% \[ old / (.*?) / \] % [b/ \1 /] %}
+{% \[ new / (.*?) / \] % [r/ \1 /] %}
+
+
+----
+The result of the [dimensional analysis] says that we should move
+from [old/ $(x, t)$ coordinates with dependent variable $T$ /], i.e.
+----
+$$
+  T (\old{x}, \old{t}) =
+    \frac{Q'}{\sqrt{\kappa \old{t}}}
+      \cdot
+    U \roundbr{\frac{\old{x}}{\sqrt{\kappa \old{t}}}}
+$$
+----
+to [new/ $(\xi, t)$ coordinates with dependent variable $U$ /], i.e.
+----
+$$
+  T (\new{\xi}, \new{t}) =
+    \frac{Q'}{\sqrt{\kappa \new{t}}}
+      \cdot
+    U (\new{\xi}).
+$$
+----
+To do this, we will need the chain rule:
+----
+
+###{#chain-rule} Chain rule ###
+
+----
+Suppose we the change of coordinates
+from [old/ old coordinates $(x, y)$ /] to [new/ new coordinates $(r, s)$ /]
+is given by
+----
+$$
+\begin{aligned}
+  \new{r} &= \old{r (x, y)} \\
+  \new{s} &= \old{s (x, y)}.
+\end{aligned}
+$$
+----
+Then the chain rule says that
+the partial derivatives will transform thus:
+----
+$${.important}
+\begin{aligned}
+  \old{\frac{\pd}{\pd x}} &=
+    \old{\frac{\pd r}{\pd x}} \new{\frac{\pd}{\pd r}}
+      +
+    \old{\frac{\pd s}{\pd x}} \new{\frac{\pd}{\pd s}}
+    \\[\tallspace]
+  \old{\frac{\pd}{\pd y}} &=
+    \old{\frac{\pd r}{\pd y}} \new{\frac{\pd}{\pd r}}
+      +
+    \old{\frac{\pd s}{\pd y}} \new{\frac{\pd}{\pd s}}
+\end{aligned}
+$$
+----
+It is vital that you understand what the chain rule *means*,
+and not just what it *says*.
+Let us unpack the meaning:
+----
+$$
+\begin{aligned}
+  \termnote{
+    \old{\frac{\pd}{\pd x}}
+  }{
+    \termnotetext{Derivative} \\
+    \termnotetext{w.r.t. $\old{x}$}, \\
+    \termnotetext{with $\old{y}$ held} \\
+    \termnotetext{constant}
+  } &=
+    \termnote{
+      \old{\frac{\pd r}{\pd x}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{of $\old{r (x, y)}$} \\
+      \termnotetext{w.r.t. $\old{x}$}, \\
+      \termnotetext{with $\old{y}$ held} \\
+      \termnotetext{constant}
+    }
+      \cdot
+    \termnote{
+      \new{\frac{\pd}{\pd r}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{w.r.t. $\new{r}$}, \\
+      \termnotetext{with $\new{s}$ held} \\
+      \termnotetext{constant}
+    }
+      +
+    \termnote{
+      \old{\frac{\pd s}{\pd x}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{of $\old{s (x, y)}$} \\
+      \termnotetext{w.r.t. $\old{x}$}, \\
+      \termnotetext{with $\old{y}$ held} \\
+      \termnotetext{constant}
+    }
+      \cdot
+    \termnote{
+      \new{\frac{\pd}{\pd s}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{w.r.t. $\new{s}$}, \\
+      \termnotetext{with $\new{r}$ held} \\
+      \termnotetext{constant}
+    }
+    \\[6em]
+  \termnote{
+    \old{\frac{\pd}{\pd y}}
+  }{
+    \termnotetext{Derivative} \\
+    \termnotetext{w.r.t. $\old{y}$}, \\
+    \termnotetext{with $\old{x}$ held} \\
+    \termnotetext{constant}
+  } &=
+    \termnote{
+      \old{\frac{\pd r}{\pd y}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{of $\old{r (x, y)}$} \\
+      \termnotetext{w.r.t. $\old{y}$}, \\
+      \termnotetext{with $\old{x}$ held} \\
+      \termnotetext{constant}
+    }
+      \cdot
+    \termnote{
+      \new{\frac{\pd}{\pd r}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{w.r.t. $\new{r}$}, \\
+      \termnotetext{with $\new{s}$ held} \\
+      \termnotetext{constant}
+    }
+      +
+    \termnote{
+      \old{\frac{\pd s}{\pd y}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{of $\old{s (x, y)}$} \\
+      \termnotetext{w.r.t. $\old{y}$}, \\
+      \termnotetext{with $\old{x}$ held} \\
+      \termnotetext{constant}
+    }
+      \cdot
+    \termnote{
+      \new{\frac{\pd}{\pd s}}
+    }{
+      \termnotetext{Derivative} \\
+      \termnotetext{w.r.t. $\new{s}$}, \\
+      \termnotetext{with $\new{r}$ held} \\
+      \termnotetext{constant}
+    }
+\end{aligned}
+$$
+----
+Take note of what variable is held constant in each partial derivative.
+This is important because
+**in the current problem, the time coordinate $t$ appears in
+*both* the [old/old/] and the [new/new/] coordinate systems**:
+----
 
 \END
 
