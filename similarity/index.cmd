@@ -4,6 +4,11 @@
   %title  Fundamental plane-source similarity solution
   %date-modified  2020-08-xx
   \resources:maths
+  %css a~~
+    .img-container {
+      text-align: center;
+    }
+  ~~
 %%
 
 
@@ -197,7 +202,7 @@ $${.important}
   \int_{-\infty}^\infty T \td x = Q'
 $$
 
-||||{.qa}
+||||||{.qa}
 __Q.__
   Why is the right hand side $Q'$?
 \+
@@ -207,7 +212,7 @@ __A.__
   but since energy is conserved,
   if we take an infinite cylinder (aligned with the $x$-axis)
   with cross-sectional area $A$,
-  the total energy in it will be $Q \cdot A$.
+  the total energy within it will be $Q \cdot A$.
   ----
   Now recall that $\textq{Energy} = m c \textq{Temperature}$.
   Therefore the energy in the cylinder is
@@ -215,8 +220,11 @@ __A.__
   $$
     Q \cdot A = \int c T \td m.
   $$
+  ||||{.img-container}
+    ![Slice of the cylinder of thickness dx](slice.png)
+  ||||
   Taking each mass element to be a slice of thickness $\td x$,
-  the differential mass is $\td m = \rho A \td x$.
+  each differential mass is $\td m = \rho A \td x$.
   Therefore
   $$
     Q \cdot A = \int_{-\infty}^\infty c T \rho A \td x,
@@ -225,7 +233,7 @@ __A.__
   $$
     \int_{-\infty}^\infty T \td x = \frac{Q}{\rho c} = Q'.
   $$
-||||
+||||||
 
 
 \END

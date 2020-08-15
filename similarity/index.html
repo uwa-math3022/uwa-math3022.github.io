@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
 <title>Fundamental plane-source similarity solution | UWA MATH3022</title>
+<style>.img-container {
+text-align: center;
+}</style>
 </head>
 <body>
 <h1>Fundamental plane-source similarity solution</h1>
@@ -170,15 +173,18 @@ Subsequently the energy will spread out in the <span class="js-maths">x</span>-d
 but since energy is conserved,
 if we take an infinite cylinder (aligned with the <span class="js-maths">x</span>-axis)
 with cross-sectional area <span class="js-maths">A</span>,
-the total energy in it will be <span class="js-maths">Q \cdot A</span>.
+the total energy within it will be <span class="js-maths">Q \cdot A</span>.
 <p>
 Now recall that <span class="js-maths">\textq{Energy} = m c \textq{Temperature}</span>.
 Therefore the energy in the cylinder is
 </p>
 <div class="js-maths">Q \cdot A = \int c T \td m.
 </div>
+<div class="img-container">
+<img alt="Slice of the cylinder of thickness dx" src="slice.png">
+</div>
 Taking each mass element to be a slice of thickness <span class="js-maths">\td x</span>,
-the differential mass is <span class="js-maths">\td m = \rho A \td x</span>.
+each differential mass is <span class="js-maths">\td m = \rho A \td x</span>.
 Therefore
 <div class="js-maths">Q \cdot A = \int_{-\infty}^\infty c T \rho A \td x,
 </div>
