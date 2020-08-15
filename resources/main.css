@@ -42,6 +42,13 @@
   padding-left: 1.5em;
 }
 
+.qa {
+  border: 1px dotted grey;
+  padding: 0.5em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+
 blockquote {
   background: lightyellow;
   border-left: 2px solid grey;

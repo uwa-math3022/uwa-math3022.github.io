@@ -490,7 +490,7 @@ This says that [time/ a function of $t$ only /]
 is equal to [pos/ a function of $x$ only /],
 and this is supposed to be true for all $\time{t}$ and all $\pos{x}$.
 ----
-----
+----{.qa}
 __Q.__
   How can [time/ a function of $t$ /] be equal to [pos/ a function of $x$ /]
   for all $\time{t}$ and all $\pos{x}$?
@@ -505,7 +505,7 @@ $${.important}
     =
   \con{-\lambda^2}.
 $$
-----
+----{.qa}
 __Q.__
   Why can't the constant be zero or positive?
 \+
