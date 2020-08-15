@@ -245,6 +245,29 @@ __A.__
 ||||||
 
 
+###{#defining-equations-summary} Summary ###
+
+----
+That was a lot to process,
+so here are the defining equations again without the commentary:
+----
+$${.important}
+\begin{aligned}
+  \frac{\pd T}{\pd t} &= \kappa \frac{\pd^2 T}{{\pd x}^2}
+    \\[\tallspace]
+    \eval{T}_{x = \pm\infty} &= 0
+      \\
+    \eval{T}_{t = 0} &=
+      \begin{cases}
+        \infty, & x = 0 \\
+        0, & x \ne 0
+      \end{cases}
+    \\
+  \int_{-\infty}^\infty T \td x &= Q'
+\end{aligned}
+$$
+
+
 \END
 
 ----
