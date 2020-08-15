@@ -30,7 +30,7 @@ Suppose the block is initially at zero temperature throughout.
 At time <span class="js-maths">t = 0</span>:
 </p>
 <ul>
-<li>Cram thermal energy per area <span class="js-maths">Q</span> into the plane <span class="js-maths">x = 0</span>.
+<li>Inject thermal energy per area <span class="js-maths">Q</span> into the plane <span class="js-maths">x = 0</span>.
 </li>
 </ul>
 <p>
@@ -94,6 +94,98 @@ Note that <span class="js-maths">Q'</span> is to <span class="js-maths">Q</span>
 </tr>
 </tbody>
 </table>
+<h2 id="defining-equations"><a class="permalink" href="#defining-equations" aria-label="Permalink"></a>Defining equations</h2>
+<h3 id="pde"><a class="permalink" href="#pde" aria-label="Permalink"></a>Partial differential equation (PDE)</h3>
+<p>
+<b>Heat equation</b> in <span class="js-maths">T = T (x, t)</span>, throughout the block, for all time:
+</p>
+<div class="js-maths important">\frac{\pd T}{\pd t} = \kappa \frac{\pd^2 T}{{\pd x}^2}
+</div>
+<h3 id="boundary-condition"><a class="permalink" href="#boundary-condition" aria-label="Permalink"></a>Boundary condition (BC)</h3>
+<p>
+Nothing happens at (spatial) infinity, for all time:
+</p>
+<div class="js-maths important">\eval{T}_{x = \pm\infty} = 0
+</div>
+<p>
+If you prefer limits:
+</p>
+<div class="js-maths">\lim_{x \to \pm\infty} T (x, t) = 0
+</div>
+<h3 id="initial-condition"><a class="permalink" href="#initial-condition" aria-label="Permalink"></a>Initial condition (IC)</h3>
+<span class="js-maths">\gdef \dimen #1 {\textsf{#1}}</span>
+<p>
+All of the thermal energy is concentrated in the slice <span class="js-maths">x = 0</span>, initially:
+</p>
+<div class="js-maths important">\eval{T}_{t = 0} =
+  \begin{cases}
+    \infty, &amp; x = 0 \\
+    0, &amp; x \ne 0
+  \end{cases}
+</div>
+<div class="qa">
+<b>Q.</b>
+What nonsense is this?<br>
+<b>A.</b>
+The formal way to write this initial condition is
+<div class="js-maths">\eval{T}_{t = 0} = Q' \cdot \delta (x).
+</div>
+The <span class="js-maths">Q'</span> factor arises from the
+<a href="#conservation">conservation of energy condition</a>.
+<p>
+Here <span class="js-maths">\delta (x)</span> is the <b>unit impulse</b>
+or <a href="https://en.wikipedia.org/wiki/Dirac_delta_function"><b>Dirac delta function</b></a>.
+(Mathematicians prefer to call it a "generalised function"
+or a "distribution".)
+Basically <span class="js-maths">\delta (x)</span> zero everywhere except at <span class="js-maths">x = 0</span>,
+where it is infinity, in such a way that the area under the curve is <span class="js-maths">1</span>:
+</p>
+<div class="js-maths">\begin{aligned}
+  \delta (x) =
+    \begin{cases}
+      \infty, &amp; x = 0 \\
+      0, &amp; x \ne 0
+    \end{cases}
+    \\
+  \int_{-\infty}^\infty \delta (x) \td x = 1
+\end{aligned}
+</div>
+The easiest way to think of <span class="js-maths">\delta (x)</span> is as a normal distribution
+with a standard deviation of zero,
+or an infinitely tall and thin spike with area <span class="js-maths">1</span>.
+Note that <span class="js-maths">\delta (x)</span> has dimensions of <span class="js-maths">1 / \dimen{Length}</span>.
+</div>
+<h3 id="conservation"><a class="permalink" href="#conservation" aria-label="Permalink"></a>Conservation of energy</h3>
+<p>
+Energy is conserved, for all time:
+</p>
+<div class="js-maths important">\int_{-\infty}^\infty T \td x = Q'
+</div>
+<div class="qa">
+<b>Q.</b>
+Why is the right hand side <span class="js-maths">Q'</span>?<br>
+<b>A.</b>
+The initial injection has energy per area <span class="js-maths">Q</span> in the plane <span class="js-maths">x = 0</span>.
+Subsequently the energy will spread out in the <span class="js-maths">x</span>-direction,
+but since energy is conserved,
+if we take an infinite cylinder (aligned with the <span class="js-maths">x</span>-axis)
+with cross-sectional area <span class="js-maths">A</span>,
+the total energy in it will be <span class="js-maths">Q \cdot A</span>.
+<p>
+Now recall that <span class="js-maths">\textq{Energy} = m c \textq{Temperature}</span>.
+Therefore the energy in the cylinder is
+</p>
+<div class="js-maths">Q \cdot A = \int c T \td m.
+</div>
+Taking each mass element to be a slice of thickness <span class="js-maths">\td x</span>,
+the differential mass is <span class="js-maths">\td m = \rho A \td x</span>.
+Therefore
+<div class="js-maths">Q \cdot A = \int_{-\infty}^\infty c T \rho A \td x,
+</div>
+or
+<div class="js-maths">\int_{-\infty}^\infty T \td x = \frac{Q}{\rho c} = Q'.
+</div>
+</div>
 <div class="end">
 END
 </div>
