@@ -21,7 +21,7 @@
 ----
 
 ----
-Source code for the images: [code.wl] \+
+Source code for the (non-hand-drawn) images: [code.wl] \+
 \home
 ----
 @[code.wl]
@@ -109,7 +109,7 @@ Note that $Q'$ is to $Q$ as $\kappa$ is to $k$.
   , [thermal diffusivity]
 ==
   , $Q'$
-  , energy per area divided by $\rho c$
+  , initial energy per area divided by $\rho c$
 ''''
 
 
@@ -174,7 +174,7 @@ __A.__
   or [__Dirac delta function__][delta].
   (Mathematicians prefer to call it a "generalised function"
   or a "distribution".)
-  Basically $\delta (x)$ zero everywhere except at $x = 0$,
+  Basically $\delta (x)$ is zero everywhere except at $x = 0$,
   where it is infinity, in such a way that the area under the curve is $1$:
   ----
   $$
@@ -190,7 +190,7 @@ __A.__
   $$
   The easiest way to think of $\delta (x)$ is as a normal distribution
   with a standard deviation of zero,
-  or an infinitely tall and thin spike with area $1$.
+  or as an infinitely tall and thin spike with area $1$.
   Note that $\delta (x)$ has dimensions of $1 / \dimen{Length}$.
 ||||
 
@@ -213,11 +213,15 @@ __Q.__
 \+
 __A.__
   The initial injection has energy per area $Q$ in the plane $x = 0$.
+  In other words if we take a portion of that plane with area $A$,
+  the total energy within that portion will be $Q \cdot A$.
+  ----
   Subsequently the energy will spread out in the $x$-direction,
   but since energy is conserved,
   if we take an infinite cylinder (aligned with the $x$-axis)
   with cross-sectional area $A$,
-  the total energy within it will be $Q \cdot A$.
+  the total energy within that cylinder will still be $Q \cdot A$.
+  ----
   ----
   Now recall that $\textq{Energy} = m c \textq{Temperature}$.
   Therefore the energy in the cylinder is
