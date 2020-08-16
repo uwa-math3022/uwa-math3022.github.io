@@ -26,7 +26,7 @@ Source code for the (non-hand-drawn) images: [code.wl] \+
 ----
 @[code.wl]
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
-    plane/code.wl @
+    similarity/code.wl @
 
 ##{#problem} Problem ##
 
@@ -938,6 +938,34 @@ and for large $t$ it flattens out to a broad bump.
 ----
 At **all** times the area under the curve is $Q'$
 (see [conservation of energy](#conservation)).
+----
+
+###{#visualising} Visualising the solution ###
+
+----
+Since the similarity solution is scale-invariant,
+in order to plot the solution we need to introduce an arbitrary length scale.
+Calling the length scale $x_0$, we define the dimensionless variables
+----
+$$
+\begin{aligned}
+  x' &= x / x_0 \\
+  t' &= \kappa t / {x_0}^2 \\
+  T' &= x_0 T / Q'.
+\end{aligned}
+$$
+----
+Substituting these, we get
+----
+$$
+  T' (x', t') = \frac{1}{2 \sqrt{\pi t'}} \exp \frac{-{x'}^2}{4 t'}.
+$$
+----
+Having removed the parameters $\kappa$ and $Q'$,
+we can now plot the solution:
+----
+----
+![Animation of temperature profile](animation.gif)
 ----
 
 

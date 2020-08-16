@@ -19,7 +19,7 @@ text-align: center;
 <strong>Your work doesn't need to be as detailed as this.</strong>
 </p>
 <p>
-Source code for the (non-hand-drawn) images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/plane/code.wl">code.wl</a><br>
+Source code for the (non-hand-drawn) images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/similarity/code.wl">code.wl</a><br>
 <a href="/">Return to the home page.</a>
 </p>
 <h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
@@ -795,6 +795,30 @@ and for large <span class="js-maths">t</span> it flattens out to a broad bump.
 <p>
 At <strong>all</strong> times the area under the curve is <span class="js-maths">Q'</span>
 (see <a href="#conservation">conservation of energy</a>).
+</p>
+<h3 id="visualising"><a class="permalink" href="#visualising" aria-label="Permalink"></a>Visualising the solution</h3>
+<p>
+Since the similarity solution is scale-invariant,
+in order to plot the solution we need to introduce an arbitrary length scale.
+Calling the length scale <span class="js-maths">x_0</span>, we define the dimensionless variables
+</p>
+<div class="js-maths">\begin{aligned}
+  x' &amp;= x / x_0 \\
+  t' &amp;= \kappa t / {x_0}^2 \\
+  T' &amp;= x_0 T / Q'.
+\end{aligned}
+</div>
+<p>
+Substituting these, we get
+</p>
+<div class="js-maths">T' (x', t') = \frac{1}{2 \sqrt{\pi t'}} \exp \frac{-{x'}^2}{4 t'}.
+</div>
+<p>
+Having removed the parameters <span class="js-maths">\kappa</span> and <span class="js-maths">Q'</span>,
+we can now plot the solution:
+</p>
+<p>
+<img alt="Animation of temperature profile" src="animation.gif">
 </p>
 <div class="end">
 END

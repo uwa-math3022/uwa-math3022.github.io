@@ -34,3 +34,56 @@ Module[
   FileNameJoin @ {NotebookDirectory[], "u-solution.png"},
   #
 ] &
+
+
+(* ::Section:: *)
+(*Animation*)
+
+
+Module[
+  {
+    symbol,
+    tempPrime,
+    xPrimeMax, tempPrimeMax,
+    tPrimeMin, tPrimeMax, tPrimeStep, tPrimeValues,
+    frameList,
+    dummyForTrailingCommas
+  },
+  (* Style functions *)
+  symbol[expr_] := Style[expr, Italic];
+  (* Scaled similarity solution *)
+  tempPrime[xPrime_, tPrime_] :=
+    1 / (2 Sqrt[Pi * tPrime]) Exp[-xPrime^2 / (4 tPrime)];
+  (* Plot range *)
+  xPrimeMax = 5;
+  tempPrimeMax = 1;
+  (* Values of scaled time *)
+  tPrimeMin = 0;
+  tPrimeMax = 2;
+  tPrimeStep = 0.05;
+  tPrimeValues = Range[tPrimeMin, tPrimeMax, tPrimeStep];
+  (* List of frames *)
+  frameList =
+    Table[
+      Plot[
+        tempPrime[xPrime, tPrime],
+        {xPrime, -xPrimeMax, xPrimeMax}
+        , AxesLabel -> (#' &) /@ symbol /@ {"x", "T"}
+        , ColorFunctionScaling -> False
+        , ColorFunction -> "TemperatureMap"
+        , Filling -> 0
+        , ImageSize -> 240 (* so that the GIF file size isn't too big *)
+        , LabelStyle -> Directive[Black, 15]
+        , PlotLabel -> Framed[
+            symbol["t"]' == NumberForm[N[tPrime], {Infinity, 2}]
+          ]
+        , PlotRange -> {{-xPrimeMax, xPrimeMax}, {0, tempPrimeMax}}
+      ]
+    , {tPrime, tPrimeValues}];
+  Export[
+    FileNameJoin @ {NotebookDirectory[], "animation.gif"},
+    frameList
+    , "AnimationRepetitions" -> Infinity
+    , "DisplayDurations" -> 0.1
+  ]
+]
