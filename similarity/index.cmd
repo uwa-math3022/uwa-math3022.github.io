@@ -156,10 +156,13 @@ $$
 If you prefer limit notation:
 $
   \lim_{t \to 0^+} T (x, t) =
-    \begin{cases}
+    \footnotesize
+    \left\{
+    \begin{matrix}
       \infty, & x = 0 \\
       0, & x \ne 0
-    \end{cases}
+    \end{matrix}
+    \right.
 $.
 ----
 
