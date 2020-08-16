@@ -662,8 +662,8 @@ $$
   \new{t} &= \old{t}.
 \end{aligned}
 $$
-----
-After a lot of algebra,
+----{#algebra-chain-rule}
+After [a lot of algebra](algebra#chain-rule),
 the chain rule equations become
 ----
 $${.important}
@@ -687,8 +687,8 @@ $$
       \cdot
     U (\new{\xi}).
 $$
-----
-After a lot of algebra,
+----{#algebra-derivatives}
+After [a lot of algebra](algebra#derivatives),
 this gives us
 ----
 $$
@@ -710,9 +710,9 @@ $$
       U.
 \end{aligned}
 $$
-----
+----{#algebra-heat-equation}
 Finally, substituting these into the [heat equation](#pde),
-we obtain (after a little algebra)
+we obtain (after [a little algebra](algebra#heat-equation))
 ----
 $${.important}
   \frac{\new{\td^2} U}{\new{{\td \xi}^2}}

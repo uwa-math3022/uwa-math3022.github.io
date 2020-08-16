@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/main.min.css">
+<script defer src="/resources/maths.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
+<title>Algebra for "Fundamental plane-source similarity solution" | UWA MATH3022</title>
+</head>
+<body>
+<h1>Algebra for "Fundamental plane-source similarity solution"</h1>
+<noscript>Enable JavaScript for equation rendering to work.</noscript>
+<p>
+<a href="/similarity/">Return to "Fundamental plane-source similarity solution"</a>
+</p>
+<span class="js-maths">\gdef \old #1 {\colb{#1}}
+  \gdef \new #1 {\colr{#1}}</span>
+<h2 id="chain-rule"><a class="permalink" href="#chain-rule" aria-label="Permalink"></a>Chain rule</h2>
+<p>
+The coordinate transformation is given by
+</p>
+<div class="js-maths">\begin{aligned}
+  \new{\xi} &amp;= \frac{\old{x}}{\sqrt{\kappa \old{t}}} \\
+  \new{t} &amp;= \old{t}.
+\end{aligned}
+</div>
+<p>
+By the chain rule, we have
+</p>
+<div class="js-maths">\begin{aligned}
+  \old{\frac{\pd}{\pd x}}
+    &amp;=
+      \old{\frac{\pd \xi}{\pd x}}
+      \new{\frac{\pd}{\pd \xi}}
+        +
+      \old{\frac{\pd t}{\pd x}}
+      \new{\roundbr{\frac{\pd}{\pd t}}_\xi}
+      \\[\tallspace]
+    &amp;=
+      \roundbr{
+        \old{\frac{\pd}{\pd x}}
+        \squarebr{
+          \frac{\old{x}}{\sqrt{\kappa \old{t}}}
+        }
+      }
+        \cdot
+      \new{\frac{\pd}{\pd \xi}}
+        +
+      \old{0}
+        \cdot
+      \new{\roundbr{\frac{\pd}{\pd t}}_\xi}
+      \\[\tallspace]
+    &amp;=
+      \frac{1}{\sqrt{\kappa \old{t}}}
+      \new{\frac{\pd}{\pd \xi}}
+      \\[\tallspace]
+    &amp;=
+      \frac{1}{\sqrt{\kappa \new{t}}}
+      \new{\frac{\pd}{\pd \xi}}
+\end{aligned}
+</div>
+<p>
+and
+</p>
+<div class="js-maths">\begin{aligned}
+  \old{\roundbr{\frac{\pd}{\pd t}}_x}
+    &amp;=
+      \old{\roundbr{\frac{\pd \xi}{\pd t}}_x}
+        \cdot
+      \new{\frac{\pd}{\pd \xi}}
+        +
+      \old{\roundbr{\frac{\pd t}{\pd t}}_x}
+        \cdot
+      \new{\roundbr{\frac{\pd}{\pd t}}_\xi}
+      \\[\tallspace]
+    &amp;=
+      \roundbr{
+        \old{\frac{\pd}{\pd t}}
+        \squarebr{
+          \frac{\old{x}}{\sqrt{\kappa \old{t}}}
+        }
+      }_{\old{x}}
+        \cdot
+      \new{\frac{\pd}{\pd \xi}}
+        +
+      \old{1}
+        \cdot
+      \new{\roundbr{\frac{\pd}{\pd t}}_\xi}
+      \\[\tallspace]
+    &amp;=
+      \frac{\old{x}}{\sqrt{\kappa}}
+        \cdot
+      \frac{-1/2}{\old{t}^{3/2}}
+        \cdot
+      \new{\frac{\pd}{\pd \xi}}
+        +
+      \new{\roundbr{\frac{\pd}{\pd t}}_\xi}
+      \\[\tallspace]
+    &amp;=
+      -\frac{\old{x}}{\sqrt{\kappa \old{t}}}
+        \cdot
+      \frac{1}{2 \old{t}}
+        \cdot
+      \new{\frac{\pd}{\pd \xi}}
+        +
+      \new{\roundbr{\frac{\pd}{\pd t}}_\xi}
+      \\[\tallspace]
+    &amp;=
+      -\new{\xi}
+        \cdot
+      \frac{1}{2 \new{t}}
+        \cdot
+      \new{\frac{\pd}{\pd \xi}}
+        +
+      \new{\roundbr{\frac{\pd}{\pd t}}_\xi}.
+\end{aligned}
+</div>
+<p>
+Therefore
+</p>
+<div class="js-maths important">\begin{aligned}
+  \old{\frac{\pd}{\pd x}} &amp;=
+    \frac{1}{\sqrt{\kappa \new{t}}}
+    \new{\frac{\pd}{\pd\xi}}
+    \\[\tallspace]
+  \old{\roundbr{\frac{\pd}{\pd t}}_x} &amp;=
+    -\frac{\new{\xi}}{2 \new{t}} \new{\frac{\pd}{\pd\xi}}
+    + \new{\roundbr{\frac{\pd}{\pd t}}_\xi}.
+\end{aligned}
+</div>
+<p>
+<a href="/similarity/#algebra-chain-rule">Return to the corresponding line in "Fundamental plane-source similarity solution".</a>
+</p>
+<h2 id="derivatives"><a class="permalink" href="#derivatives" aria-label="Permalink"></a>Derivatives of temperature</h2>
+<p>
+We have
+</p>
+<div class="js-maths">T (\old{x}, \old{t}) =
+  \frac{Q'}{\sqrt{\kappa \new{t}}}
+    \cdot
+  U (\new{\xi}).
+</div>
+<p>
+Applying
+<span class="js-maths">\old{\pd / {\pd x}} =
+    \roundbr{1 / \sqrt{\kappa \new{t}}}
+    \new{\pd / {\pd\xi}}</span>
+(the chain-rule result for the position derivative),
+we get
+</p>
+<div class="js-maths">\begin{aligned}
+  \old{\frac{\pd T}{\pd x}}
+    &amp;=
+      \frac{1}{\sqrt{\kappa \new{t}}}
+      \new{\frac{\pd}{\pd\xi}}
+      \squarebr{
+        \frac{Q'}{\sqrt{\kappa \new{t}}}
+          \cdot
+        U (\new{\xi})
+      }
+      \\[\tallspace]
+    &amp;=
+      \frac{Q'}{\kappa \new{t}}
+      \frac{\new{\td} U}{\new{\td \xi}}.
+\end{aligned}
+</div>
+<p>
+Applying it a second time, we get
+</p>
+<div class="js-maths">\begin{aligned}
+  \old{\frac{\pd^2 T}{{\pd x}^2}}
+    &amp;=
+      \frac{1}{\sqrt{\kappa \new{t}}}
+      \new{\frac{\pd}{\pd\xi}}
+      \squarebr{
+        \frac{Q'}{\kappa \new{t}}
+        \frac{\new{\td} U}{\new{\td \xi}}
+      }
+      \\[\tallspace]
+    &amp;=
+      \frac{Q'}{(\kappa \new{t}) ^ {3/2}}
+      \frac{\new{\td^2} U}{\new{{\td \xi}^2}}.
+\end{aligned}
+</div>
+<p>
+Start again from
+</p>
+<div class="js-maths">T (\old{x}, \old{t}) =
+  \frac{Q'}{\sqrt{\kappa \new{t}}}
+    \cdot
+  U (\new{\xi}).
+</div>
+<p>
+Applying
+<span class="js-maths">\old{\roundbr{\pd / {\pd t}}_x} =
+    \roundbr{-\new{\xi} / (2 \new{t})}
+    \new{\pd / {\pd\xi}}
+      +
+    \new{\roundbr{\pd / {\pd t}}_\xi}</span>
+(the chain-rule result for the time derivative),
+we get
+</p>
+<div class="js-maths">\begin{aligned}
+  \old{\roundbr{\frac{\pd T}{\pd t}}_x}
+    &amp;=
+      -\frac{\new{\xi}}{2 \new{t}}
+      \new{\frac{\pd}{\pd\xi}}
+      \squarebr{
+        \frac{Q'}{\sqrt{\kappa \new{t}}}
+          \cdot
+        U (\new{\xi})
+      }
+        +
+      \roundbr{
+        \new{\frac{\pd}{\pd t}}
+        \squarebr{
+          \frac{Q'}{\sqrt{\kappa \new{t}}}
+            \cdot
+          U (\new{\xi})
+        }
+      }_{\new{\xi}}
+      \\[\tallspace]
+    &amp;=
+      -\frac{\new{\xi}}{2 \new{t}}
+      \frac{Q'}{\sqrt{\kappa \new{t}}}
+      \frac{\new{\td} U}{\new{\td\xi}}
+        +
+      \frac{Q'}{\sqrt{\kappa}}
+        \cdot
+      \frac{-1/2}{\new{t} ^ {3/2}}
+        \cdot
+      U.
+\end{aligned}
+</div>
+<p>
+Therefore
+</p>
+<div class="js-maths important">\begin{aligned}
+  \old{\frac{\pd^2 T}{{\pd x}^2}} &amp;=
+    \frac{Q'}{(\kappa \new{t}) ^ {3/2}}
+    \frac{\new{\td^2} U}{\new{{\td \xi}^2}}
+    \\[\tallspace]
+  \old{\roundbr{\frac{\pd T}{\pd t}}_x} &amp;=
+    -
+      \frac{\new{\xi}}{2 \new{t}}
+      \frac{Q'}{\sqrt{\kappa \new{t}}}
+      \frac{\new{\td} U}{\new{\td \xi}}
+    +
+      \frac{Q'}{\sqrt{\kappa}}
+        \cdot
+      \frac{-1/2}{\new{t} ^ {3/2}}
+        \cdot
+      U.
+\end{aligned}
+</div>
+<p>
+<a href="/similarity/#algebra-derivatives">Return to the corresponding line in "Fundamental plane-source similarity solution".</a>
+</p>
+<h2 id="heat-equation"><a class="permalink" href="#heat-equation" aria-label="Permalink"></a>Heat equation</h2>
+<p>
+The heat equation says that
+</p>
+<div class="js-maths">\old{\roundbr{\frac{\pd T}{\pd t}}_x}
+  =
+\kappa
+\old{\frac{\pd^2 T}{{\pd x}^2}}.
+</div>
+<p>
+Substituting the results for the derivatives of temperature,
+this becomes
+</p>
+<div class="js-maths">\begin{aligned}
+  -\frac{\new{\xi}}{2 \new{t}}
+  \frac{Q'}{\sqrt{\kappa \new{t}}}
+  \frac{\new{\td} U}{\new{\td\xi}}
+    +
+  \frac{Q'}{\sqrt{\kappa}}
+    \cdot
+  \frac{-1/2}{\new{t} ^ {3/2}}
+    \cdot
+  U
+    &amp;=
+  \kappa
+    \cdot
+  \frac{Q'}{(\kappa \new{t}) ^ {3/2}}
+  \frac{\new{\td^2} U}{\new{{\td \xi}^2}}
+    \\[\tallspace]
+  \cancel{
+    \frac{Q'}{\sqrt{\kappa} \cdot \new{t}^{3/2}}
+  }
+  \squarebr{
+    -\frac{\new{\xi}}{2}
+    \frac{\new{\td} U}{\new{\td\xi}}
+      -
+    \frac{U}{2}
+  }
+    &amp;=
+  \cancel{
+    \frac{Q'}{\sqrt{\kappa} \cdot \new{t}^{3/2}}
+  }
+  \squarebr{
+    \frac{\new{\td^2} U}{\new{{\td \xi}^2}}
+  }
+\end{aligned}
+</div>
+<p>
+Therefore
+</p>
+<div class="js-maths important">\frac{\new{\td^2} U}{\new{{\td \xi}^2}}
++ \frac{\new{\xi}}{2} \frac{\new{\td} U}{\new{\td \xi}}
++ \frac{U}{2}
+  = 0.
+</div>
+<p>
+<a href="/similarity/#algebra-heat-equation">Return to the corresponding line in "Fundamental plane-source similarity solution".</a>
+</p>
+<div class="end">
+END
+</div>
+<p>
+<a href="/">Return to the home page.</a>
+</p>
+<footer>
+Last modified: 2020-08-16<br>
+Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
+Mistakes/queries:
+<a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.
+</footer>
+</body>
+</html>
