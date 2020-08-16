@@ -846,6 +846,10 @@ where $\erfi$ is the imagniary [error function].
 @[error function] https://en.wikipedia.org/wiki/Error_function @
 
 ----
+![Odd and even solutions to the ODE](u-solution.png)
+----
+
+----
 There are several reasons why $\Uodd$ does not work
 for the plane-source problem:
 ----
