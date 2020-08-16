@@ -55,12 +55,12 @@ but the energy per area is <em>finite</em>.
 </p>
 <h2 id="quantities"><a class="permalink" href="#quantities" aria-label="Permalink"></a>Quantities</h2>
 <p>
-We find that it is convenient to define the constant
+We find that by defining
 </p>
 <div class="js-maths">Q' = \frac{Q}{\rho c},
 </div>
 <p>
-because the defining equations for this problem can be written
+the equations for this problem can be written
 in terms of the constants <span class="js-maths">\kappa</span> and <span class="js-maths">Q'</span> only
 (rather than <span class="js-maths">k</span>, <span class="js-maths">\rho</span>, <span class="js-maths">c</span>, and <span class="js-maths">Q</span>).
 Note that <span class="js-maths">Q'</span> is to <span class="js-maths">Q</span> as <span class="js-maths">\kappa</span> is to <span class="js-maths">k</span>.
@@ -179,27 +179,27 @@ Why is the right hand side <span class="js-maths">Q'</span>?<br>
 <b>A.</b>
 The initial injection has energy per area <span class="js-maths">Q</span> in the plane <span class="js-maths">x = 0</span>.
 In other words if we take a portion of that plane with area <span class="js-maths">A</span>,
-the total energy within that portion will be <span class="js-maths">Q \cdot A</span>.
+the total energy within that portion will be <span class="js-maths">Q A</span>.
 <p>
 Subsequently the energy will spread out in the <span class="js-maths">x</span>-direction,
 but since energy is conserved,
 if we take an infinite cylinder (aligned with the <span class="js-maths">x</span>-axis)
 with cross-sectional area <span class="js-maths">A</span>,
-the total energy within that cylinder will still be <span class="js-maths">Q \cdot A</span>.
+the total energy within that cylinder will still be <span class="js-maths">Q A</span>.
 </p>
 <p>
 Now recall that <span class="js-maths">\textq{Energy} = m c \textq{Temperature}</span>.
 Therefore the energy in the cylinder is
 </p>
-<div class="js-maths">Q \cdot A = \int c T \td m.
+<div class="js-maths">Q A = \int c T \td m.
 </div>
 <div class="img-container">
 <img alt="Slice of the cylinder of thickness dx" src="slice.png">
 </div>
 Taking each mass element to be a slice of thickness <span class="js-maths">\td x</span>,
-each differential mass is <span class="js-maths">\td m = \rho A \td x</span>.
+the differential mass is <span class="js-maths">\td m = \rho A \td x</span>.
 Therefore
-<div class="js-maths">Q \cdot A = \int_{-\infty}^\infty c T \rho A \td x,
+<div class="js-maths">Q A = \int_{-\infty}^\infty c T \rho A \td x,
 </div>
 or
 <div class="js-maths">\int_{-\infty}^\infty T \td x = \frac{Q}{\rho c} = Q'.
@@ -267,10 +267,10 @@ The only way this can make dimensional sense is if
 <div class="js-maths">T = \temp{\mathcal{T}} \cdot \dimenless{\mathcal{L}},
 </div>
 <p>
-where <span class="js-maths">\temp{\mathcal{T}}</span> is a combination
-of <span class="js-maths">x</span>, <span class="js-maths">t</span>, <span class="js-maths">\kappa</span>, and <span class="js-maths">Q'</span> which has dimensions of <span class="colour-g">temperature</span>,
+where <span class="js-maths">\temp{\mathcal{T}}</span> is a combination (of <span class="js-maths">x</span>, <span class="js-maths">t</span>, <span class="js-maths">\kappa</span>, and <span class="js-maths">Q'</span>)
+which has dimensions of <span class="colour-g">temperature</span>,
 and <span class="js-maths">\dimenless{\mathcal{L}}</span> is a combination
-of <span class="js-maths">x</span>, <span class="js-maths">t</span>, <span class="js-maths">\kappa</span>, and <span class="js-maths">Q'</span> which is <span class="colour-v">dimensionless</span>.
+which is <span class="colour-v">dimensionless</span>.
 </p>
 <p>
 Obviously
@@ -297,11 +297,11 @@ You should be able to show that
 </p>
 <div class="js-maths">\begin{aligned}
   \squarebr{\temp{\frac{Q'}{\sqrt{\kappa t}}}} &amp;= \temp{\dimen{Temp}} \\
-  \squarebr{\dimenless{\frac{x}{\sqrt{\kappa t}}}} &amp;= \dimenless{\dimen{1}},
+  \squarebr{\dimenless{\frac{x}{\sqrt{\kappa t}}}} &amp;= \dimenless{\dimen{1}}.
 \end{aligned}
 </div>
 <p>
-and so <span class="js-maths">T</span> must be of the form
+Therefore <span class="js-maths">T</span> must be of the form
 </p>
 <div class="js-maths important">T =
   \temp{\frac{Q'}{\sqrt{\kappa t}}}
@@ -384,7 +384,7 @@ To do this, we will need the chain rule:
 </p>
 <h3 id="chain-rule"><a class="permalink" href="#chain-rule" aria-label="Permalink"></a>Chain rule</h3>
 <p>
-Suppose we the change of coordinates
+Suppose the change of coordinates
 from <span class="colour-b">old coordinates <span class="js-maths">(x, y)</span></span> to <span class="colour-r">new coordinates <span class="js-maths">(r, s)</span></span>
 is given by
 </p>
@@ -656,9 +656,10 @@ backwards, we have
 <p>
 where <span class="js-maths">\old{t}</span> is held constant
 for the purposes of evaluating the integral.
-Since <span class="js-maths">\new{\xi} = \old{x} / \sqrt{\kappa \old{t}}</span>,
-if <span class="js-maths">\old{t}</span> is held constant and <span class="js-maths">\old{x}</span> runs from <span class="js-maths">-\infty</span> to <span class="js-maths">\infty</span>,
-then <span class="js-maths">\new{\xi}</span> will also run from <span class="js-maths">-\infty</span> to <span class="js-maths">\infty</span>.
+Now <span class="js-maths">\new{\xi} = \old{x} / \sqrt{\kappa \old{t}}</span>.
+With <span class="js-maths">\old{t}</span> held constant
+and <span class="js-maths">\old{x}</span> running from <span class="js-maths">-\infty</span> to <span class="js-maths">\infty</span>,
+the variable <span class="js-maths">\new{\xi}</span> will also run from <span class="js-maths">-\infty</span> to <span class="js-maths">\infty</span>.
 Therefore
 </p>
 <div class="js-maths">Q' =
@@ -706,7 +707,7 @@ This gives the linearly independent solutions
 \end{aligned}
 </div>
 <p>
-where <span class="js-maths">\erfi</span> is the imagniary <a href="https://en.wikipedia.org/wiki/Error_function">error function</a>.
+where <span class="js-maths">\erfi</span> is the imaginary <a href="https://en.wikipedia.org/wiki/Error_function">error function</a>.
 </p>
 <p>
 <img alt="Odd and even solutions to the ODE" src="u-solution.png">
@@ -732,7 +733,8 @@ Therefore the solution must consist of the even term only, i.e.
 <div class="js-maths important">U (\new{\xi}) = C \exp \frac{-\new{\xi}^2}{4}.
 </div>
 <p>
-The constant <span class="js-maths">C</span> is determined by the integral condition
+The constant <span class="js-maths">C</span> is determined by the integral condition,
+which becomes
 </p>
 <div class="js-maths">\int_{-\infty}^\infty
   C \exp \frac{-\new{\xi}^2}{4}
@@ -740,7 +742,7 @@ The constant <span class="js-maths">C</span> is determined by the integral condi
   = 1,
 </div>
 <p>
-which gives
+giving
 </p>
 <div class="js-maths">C
   =
@@ -782,7 +784,7 @@ and therefore
 Note that the solution profile <span class="js-maths">T (x, t)</span> has
 </p>
 <ul>
-<li>maximum temperature (height) of order <span class="js-maths">Q' / \sqrt{\kappa t}</span>, and
+<li>height (maximum temperature) of order <span class="js-maths">Q' / \sqrt{\kappa t}</span>, and
 </li>
 <li>width of order <span class="js-maths">\sqrt{\kappa t}</span>,
 </li>
@@ -877,7 +879,7 @@ from <span class="js-maths">\window{t^*} = 0</span> up to <span class="js-maths"
 and therefore the overall temperature profile is
 </p>
 <div class="js-maths">T (x, t) =
-  \int_0 ^ {\min (t, \tend)}
+  \int _ {\small 0} ^ {\small \min (t, \tend)}
     \frac{\window{Q' / \tend}}{2 \sqrt{\pi (\delay{t - t^*})}}
     \exp \frac{-x^2}{4 \kappa (\delay{t - t^*})}
   \window{\td t^*}.

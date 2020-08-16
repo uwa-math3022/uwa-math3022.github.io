@@ -73,13 +73,13 @@ __A.__
 ##{#quantities} Quantities ##
 
 ----
-We find that it is convenient to define the constant
+We find that by defining
 ----
 $$
   Q' = \frac{Q}{\rho c},
 $$
 ----
-because the defining equations for this problem can be written
+the equations for this problem can be written
 in terms of the constants $\kappa$ and $Q'$ only
 (rather than $k$, $\rho$, $c$, and $Q$).
 Note that $Q'$ is to $Q$ as $\kappa$ is to $k$.
@@ -219,29 +219,29 @@ __Q.__
 __A.__
   The initial injection has energy per area $Q$ in the plane $x = 0$.
   In other words if we take a portion of that plane with area $A$,
-  the total energy within that portion will be $Q \cdot A$.
+  the total energy within that portion will be $Q A$.
   ----
   Subsequently the energy will spread out in the $x$-direction,
   but since energy is conserved,
   if we take an infinite cylinder (aligned with the $x$-axis)
   with cross-sectional area $A$,
-  the total energy within that cylinder will still be $Q \cdot A$.
+  the total energy within that cylinder will still be $Q A$.
   ----
   ----
   Now recall that $\textq{Energy} = m c \textq{Temperature}$.
   Therefore the energy in the cylinder is
   ----
   $$
-    Q \cdot A = \int c T \td m.
+    Q A = \int c T \td m.
   $$
   ||||{.img-container}
     ![Slice of the cylinder of thickness dx](slice.png)
   ||||
   Taking each mass element to be a slice of thickness $\td x$,
-  each differential mass is $\td m = \rho A \td x$.
+  the differential mass is $\td m = \rho A \td x$.
   Therefore
   $$
-    Q \cdot A = \int_{-\infty}^\infty c T \rho A \td x,
+    Q A = \int_{-\infty}^\infty c T \rho A \td x,
   $$
   or
   $$
@@ -337,10 +337,10 @@ $$
   T = \temp{\mathcal{T}} \cdot \dimenless{\mathcal{L}},
 $$
 ----
-where $\temp{\mathcal{T}}$ is a combination
-of $x$, $t$, $\kappa$, and $Q'$ which has dimensions of [temp/ temperature /],
+where $\temp{\mathcal{T}}$ is a combination (of $x$, $t$, $\kappa$, and $Q'$)
+which has dimensions of [temp/ temperature /],
 and $\dimenless{\mathcal{L}}$ is a combination
-of $x$, $t$, $\kappa$, and $Q'$ which is [dimenless/ dimensionless /].
+which is [dimenless/ dimensionless /].
 ----
 
 ----
@@ -374,11 +374,11 @@ You should be able to show that
 $$
 \begin{aligned}
   \squarebr{\temp{\frac{Q'}{\sqrt{\kappa t}}}} &= \temp{\dimen{Temp}} \\
-  \squarebr{\dimenless{\frac{x}{\sqrt{\kappa t}}}} &= \dimenless{\dimen{1}},
+  \squarebr{\dimenless{\frac{x}{\sqrt{\kappa t}}}} &= \dimenless{\dimen{1}}.
 \end{aligned}
 $$
 ----
-and so $T$ must be of the form
+Therefore $T$ must be of the form
 ----
 $${.important}
   T =
@@ -490,7 +490,7 @@ To do this, we will need the chain rule:
 ###{#chain-rule} Chain rule ###
 
 ----
-Suppose we the change of coordinates
+Suppose the change of coordinates
 from [old/ old coordinates $(x, y)$ /] to [new/ new coordinates $(r, s)$ /]
 is given by
 ----
@@ -781,9 +781,10 @@ $$
 ----
 where $\old{t}$ is held constant
 for the purposes of evaluating the integral.
-Since $\new{\xi} = \old{x} / \sqrt{\kappa \old{t}}$,
-if $\old{t}$ is held constant and $\old{x}$ runs from $-\infty$ to $\infty$,
-then $\new{\xi}$ will also run from $-\infty$ to $\infty$.
+Now $\new{\xi} = \old{x} / \sqrt{\kappa \old{t}}$.
+With $\old{t}$ held constant
+and $\old{x}$ running from $-\infty$ to $\infty$,
+the variable $\new{\xi}$ will also run from $-\infty$ to $\infty$.
 Therefore
 ----
 $$
@@ -840,7 +841,7 @@ $$
 \end{aligned}
 $$
 ----
-where $\erfi$ is the imagniary [error function].
+where $\erfi$ is the imaginary [error function].
 ----
 
 @[error function] https://en.wikipedia.org/wiki/Error_function @
@@ -868,7 +869,8 @@ $${.important}
   U (\new{\xi}) = C \exp \frac{-\new{\xi}^2}{4}.
 $$
 ----
-The constant $C$ is determined by the integral condition
+The constant $C$ is determined by the integral condition,
+which becomes
 ----
 $$
   \int_{-\infty}^\infty
@@ -877,7 +879,7 @@ $$
     = 1,
 $$
 ----
-which gives
+giving
 ----
 $$
   C
@@ -927,7 +929,7 @@ $$
 Note that the solution profile $T (x, t)$ has
 ----
 ====
-* maximum temperature (height) of order $Q' / \sqrt{\kappa t}$, and
+* height (maximum temperature) of order $Q' / \sqrt{\kappa t}$, and
 * width of order $\sqrt{\kappa t}$,
 ====
 ----
@@ -1034,7 +1036,7 @@ and therefore the overall temperature profile is
 ----
 $$
   T (x, t) =
-    \int_0 ^ {\min (t, \tend)}
+    \int _ {\small 0} ^ {\small \min (t, \tend)}
       \frac{\window{Q' / \tend}}{2 \sqrt{\pi (\delay{t - t^*})}}
       \exp \frac{-x^2}{4 \kappa (\delay{t - t^*})}
     \window{\td t^*}.
