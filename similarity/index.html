@@ -709,7 +709,7 @@ This gives the linearly independent solutions
 where <span class="js-maths">\erfi</span> is the imagniary <a href="https://en.wikipedia.org/wiki/Error_function">error function</a>.
 </p>
 <p>
-There are reasons why <span class="js-maths">\Uodd</span> does not work
+There are several reasons why <span class="js-maths">\Uodd</span> does not work
 for the plane-source problem:
 </p>
 <ul>
@@ -737,10 +737,22 @@ The constant <span class="js-maths">C</span> is determined by the integral condi
   = 1,
 </div>
 <p>
-which (using Mathematica to evaluate the integral) gives us
+which gives
 </p>
-<div class="js-maths">C = \frac{1}{2 \sqrt{\pi}}.
+<div class="js-maths">C
+  =
+    \left.
+      1
+    \middle/
+      \int_{-\infty}^\infty \exp \frac{-\new{\xi}^2}{4} \td\new{\xi}
+    \right.
+  = \frac{1}{2 \sqrt{\pi}}
 </div>
+<p>
+courtesy of Mathematica:
+</p>
+<pre><code>1 / Integrate[Exp[-xi^2 / 4], {xi, -Infinity, Infinity}]
+</code></pre>
 <p>
 Therefore:
 </p>

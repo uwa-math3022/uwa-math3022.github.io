@@ -846,7 +846,7 @@ where $\erfi$ is the imagniary [error function].
 @[error function] https://en.wikipedia.org/wiki/Error_function @
 
 ----
-There are reasons why $\Uodd$ does not work
+There are several reasons why $\Uodd$ does not work
 for the plane-source problem:
 ----
 ====
@@ -873,11 +873,24 @@ $$
     = 1,
 $$
 ----
-which (using Mathematica to evaluate the integral) gives us
+which gives
 ----
 $$
-  C = \frac{1}{2 \sqrt{\pi}}.
+  C
+    =
+      \left.
+        1
+      \middle/
+        \int_{-\infty}^\infty \exp \frac{-\new{\xi}^2}{4} \td\new{\xi}
+      \right.
+    = \frac{1}{2 \sqrt{\pi}}
 $$
+----
+courtesy of Mathematica:
+----
+````
+1 / Integrate[Exp[-xi^2 / 4], {xi, -Infinity, Infinity}]
+````
 ----
 Therefore:
 ----
