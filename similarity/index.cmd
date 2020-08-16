@@ -1000,13 +1000,13 @@ Now, observe that:
 ====
 ----
 So if we have a problem where the injection of heat
-*isn't* instantaneous or in plane of zero thickness,
-we can get the answer by superposition.
+*isn't* instantaneous or in a plane of zero thickness,
+**we can use superposition** to get the answer.
 ----
 ----
 For example,
 suppose that the injection of energy per area $Q'$ is spread out uniformly
-over a time interval $0 \le t \le \tend$
+over a time interval $0 \le t \le \tend$,
 rather than an instantaneous injection.
 Subdividing the time interval into [window/ infinitesimal windows /]
 from time $\window{t^*}$ to $\window{t^* + \td t^*}$,
