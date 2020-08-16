@@ -968,6 +968,83 @@ we can now plot the solution:
 ![Animation of temperature profile](animation.gif)
 ----
 
+###{#whats-the-point} What's the point ###
+
+<##
+  Styles
+  * delay: colour-b
+  * window: colour-r
+##>
+$
+  \gdef \tend {t_\mathrm{end}}
+  \gdef \delay #1 {\colb{#1}}
+  \gdef \window #1 {\colr{#1}}
+$
+{% \[ delay / (.*?) / \] % [b/ \1 /] %}
+{% \[ window / (.*?) / \] % [r/ \1 /] %}
+
+----
+The similarity solution gives the temperature profile
+for an *instantaneous* injection of heat in an plane of *zero* thickness:
+**at** time $t = 0$ and **at** $x = 0$.
+Now, observe that:
+----
+====
+* The heat equation is invariant with respect to translations in $x$ and $t$
+* The heat equation is linear
+====
+----
+So if we have a problem where the injection of heat
+*isn't* instantaneous or in plane of zero thickness,
+we can get the answer by superposition.
+----
+----
+For example,
+suppose that the injection of energy per area $Q'$ is spread out uniformly
+over a time interval $0 \le t \le \tend$
+rather than an instantaneous injection.
+Subdividing the time interval into [window/ infinitesimal windows /]
+from time $\window{t^*}$ to $\window{t^* + \td t^*}$,
+each [window/ infinitesimal window /] is effectively
+an instantaneous input at time $\delay{t = t^*}$
+contributing an energy per area of $\window{Q' \td t^* / \tend}$.
+Thus each [window/ window /] contributes
+the [delay/ delayed /] temperature profile
+----
+$$
+  \td T =
+    \frac{\window{Q' \td t^* / \tend}}{2 \sqrt{\pi (\delay{t - t^*})}}
+    \exp \frac{-x^2}{4 \kappa (\delay{t - t^*})}.
+$$
+----
+Now, observe that:
+----
+====
+* If the injection interval *hasn't* ended yet
+  (i.e.~if the current time $t$ is less than $\tend$),
+  we need to sum all of the contributions up to the current time $t$
+* If the injection interval has *already* ended
+  (i.e.~if the current time $t$ is at least $\tend$),
+  we only need to sum the contributions up to the end time $\tend$.
+====
+----
+Thus we need to sum the contributions
+from $\window{t^*} = 0$ up to $\window{t^*} = \min (t, \tend)$,
+and therefore the overall temperature profile is
+----
+$$
+  T (x, t) =
+    \int_0 ^ {\min (t, \tend)}
+      \frac{\window{Q' / \tend}}{2 \sqrt{\pi (\delay{t - t^*})}}
+      \exp \frac{-x^2}{4 \kappa (\delay{t - t^*})}
+    \window{\td t^*}.
+$$
+
+----
+A similar superposition can be constructed
+if the heat injection is spread out over space rather than time.
+----
+
 
 \END
 

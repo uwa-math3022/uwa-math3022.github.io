@@ -820,6 +820,72 @@ we can now plot the solution:
 <p>
 <img alt="Animation of temperature profile" src="animation.gif">
 </p>
+<h3 id="whats-the-point"><a class="permalink" href="#whats-the-point" aria-label="Permalink"></a>What's the point</h3>
+<span class="js-maths">\gdef \tend {t_\mathrm{end}}
+  \gdef \delay #1 {\colb{#1}}
+  \gdef \window #1 {\colr{#1}}</span>
+<p>
+The similarity solution gives the temperature profile
+for an <em>instantaneous</em> injection of heat in an plane of <em>zero</em> thickness:
+<strong>at</strong> time <span class="js-maths">t = 0</span> and <strong>at</strong> <span class="js-maths">x = 0</span>.
+Now, observe that:
+</p>
+<ul>
+<li>The heat equation is invariant with respect to translations in <span class="js-maths">x</span> and <span class="js-maths">t</span>
+</li>
+<li>The heat equation is linear
+</li>
+</ul>
+<p>
+So if we have a problem where the injection of heat
+<em>isn't</em> instantaneous or in plane of zero thickness,
+we can get the answer by superposition.
+</p>
+<p>
+For example,
+suppose that the injection of energy per area <span class="js-maths">Q'</span> is spread out uniformly
+over a time interval <span class="js-maths">0 \le t \le \tend</span>
+rather than an instantaneous injection.
+Subdividing the time interval into <span class="colour-r">infinitesimal windows</span>
+from time <span class="js-maths">\window{t^*}</span> to <span class="js-maths">\window{t^* + \td t^*}</span>,
+each <span class="colour-r">infinitesimal window</span> is effectively
+an instantaneous input at time <span class="js-maths">\delay{t = t^*}</span>
+contributing an energy per area of <span class="js-maths">\window{Q' \td t^* / \tend}</span>.
+Thus each <span class="colour-r">window</span> contributes
+the <span class="colour-b">delayed</span> temperature profile
+</p>
+<div class="js-maths">\td T =
+  \frac{\window{Q' \td t^* / \tend}}{2 \sqrt{\pi (\delay{t - t^*})}}
+  \exp \frac{-x^2}{4 \kappa (\delay{t - t^*})}.
+</div>
+<p>
+Now, observe that:
+</p>
+<ul>
+<li>If the injection interval <em>hasn't</em> ended yet
+(i.e.&nbsp;if the current time <span class="js-maths">t</span> is less than <span class="js-maths">\tend</span>),
+we need to sum all of the contributions up to the current time <span class="js-maths">t</span>
+</li>
+<li>If the injection interval has <em>already</em> ended
+(i.e.&nbsp;if the current time <span class="js-maths">t</span> is at least <span class="js-maths">\tend</span>),
+we only need to sum the contributions up to the end time <span class="js-maths">\tend</span>.
+</li>
+</ul>
+<p>
+Thus we need to sum the contributions
+from <span class="js-maths">\window{t^*} = 0</span> up to <span class="js-maths">\window{t^*} = \min (t, \tend)</span>,
+and therefore the overall temperature profile is
+</p>
+<div class="js-maths">T (x, t) =
+  \int_0 ^ {\min (t, \tend)}
+    \frac{\window{Q' / \tend}}{2 \sqrt{\pi (\delay{t - t^*})}}
+    \exp \frac{-x^2}{4 \kappa (\delay{t - t^*})}
+  \window{\td t^*}.
+</div>
+<p>
+A similar superposition can be constructed
+if the heat injection is spread out over space rather than time.
+</p>
 <div class="end">
 END
 </div>
