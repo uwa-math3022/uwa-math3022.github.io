@@ -1050,6 +1050,13 @@ A similar superposition can be constructed
 if the heat injection is spread out over space rather than time.
 ----
 
+----
+In general, the __similarity solution__ method
+can be used for any problem which is __scale invariant__,
+e.g.~a __line source__ (cylindrical coordinates)
+or a __point source__ (spherical coordinates).
+----
+
 
 \END
 
