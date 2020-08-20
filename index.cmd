@@ -17,6 +17,7 @@
 
 ====
 * [Remarks on notation](/notation)
+* [ODEs you must be able to solve](/ode)
 ====
 
 ##{#mathematica-intro} Introduction to Mathematica ##

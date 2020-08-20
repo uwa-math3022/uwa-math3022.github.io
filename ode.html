@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/main.min.css">
+<script defer src="/resources/maths.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
+<title>ODEs you must be able to solve | UWA MATH3022</title>
+</head>
+<body>
+<h1>ODEs you must be able to solve</h1>
+<noscript>Enable JavaScript for equation rendering to work.</noscript>
+<p>
+<a href="/">Return to the home page.</a>
+</p>
+<p>
+You <em>must</em> be able to solve the following ODEs.
+You <strong>should</strong> be able to <strong>immediately write down</strong> the general solution
+in each case:
+</p>
+<h2 id="decay"><a class="permalink" href="#decay" aria-label="Permalink"></a>First order: exponential decay</h2>
+<h3>ODE</h3>
+<div class="js-maths important">\frac{\td Y}{\td t} = -\mu Y
+</div>
+<h3>Solution</h3>
+<div class="js-maths">Y (t) = A \ee ^ {-\mu t}
+</div>
+<h2 id="trigonometric"><a class="permalink" href="#trigonometric" aria-label="Permalink"></a>Second order: trigonometric</h2>
+<h3>ODE</h3>
+<div class="js-maths important">\frac{\td^2 Y}{{\td x}^2} = -\lambda^2 Y
+</div>
+<h3>Solution</h3>
+<div class="js-maths">Y (x) = A \cos (\lambda x) + B \sin (\lambda x)
+</div>
+<p>
+Note that <span class="js-maths">\cos</span> is an even function and <span class="js-maths">\sin</span> is an odd function:
+</p>
+<ul>
+<li>If <span class="js-maths">Y</span> is zero at <span class="js-maths">x = 0</span>, you only want <span class="js-maths">\sin</span>
+</li>
+<li>If <span class="js-maths">Y</span> has zero slope at <span class="js-maths">x = 0</span>, you only want <span class="js-maths">\cos</span>.
+</li>
+</ul>
+<h2 id="hyperbolic"><a class="permalink" href="#hyperbolic" aria-label="Permalink"></a>Second order: hyperbolic (or exponential)</h2>
+<h3>ODE</h3>
+<div class="js-maths important">\frac{\td^2 Y}{{\td x}^2} = +\lambda^2 Y
+</div>
+<h3>Solution</h3>
+<div class="js-maths">Y (x) = A \cosh (\lambda x) + B \sinh (\lambda x)
+</div>
+<p>
+OR
+</p>
+<div class="js-maths">Y (x) = C \ee^ {\lambda x} + D \ee ^ {-\lambda x}
+</div>
+<p>
+When solving boundary value problems,
+the first form with the <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions">hyperbolic functions</a> <span class="js-maths">\cosh</span> and <span class="js-maths">\sinh</span>
+is much nicer to work with
+because <span class="js-maths">\cosh</span> is an even function and <span class="js-maths">\sinh</span> is an odd function:
+</p>
+<ul>
+<li>If <span class="js-maths">Y</span> is zero at <span class="js-maths">x = 0</span>, you only want <span class="js-maths">\sinh</span>
+</li>
+<li>If <span class="js-maths">Y</span> has zero slope at <span class="js-maths">x = 0</span>, you only want <span class="js-maths">\cosh</span>.
+</li>
+</ul>
+<div class="end">
+END
+</div>
+<p>
+<a href="/">Return to the home page.</a>
+</p>
+<footer>
+Last modified: 2020-08-20<br>
+Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
+Mistakes/queries:
+<a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.
+</footer>
+</body>
+</html>
