@@ -3,7 +3,7 @@
 %%
   %title  UWA MATH3022
   %title-suffix  <## nothing ##>
-  %date-modified  2020-08-16
+  %date-modified  2020-08-20
   \resources:no-maths
 %%
 
@@ -31,6 +31,11 @@ For details see the [`mathematica-intro` repository][m intro].
 ====
 * [Heating a rod](/rod/)
 * [A slab cooling](/slab/)
+====
+
+##{#similarity} Similarity solution ##
+
+====
 * [Fundamental plane-source similarity solution](/similarity/)
 ====
 
