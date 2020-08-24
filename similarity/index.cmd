@@ -2,7 +2,7 @@
 
 %%
   %title  Fundamental plane-source similarity solution
-  %date-modified  2020-08-16
+  %date-modified  2020-08-24
   \resources:maths
   %css a~~
     .img-container {
@@ -1008,6 +1008,11 @@ For example,
 suppose that the injection of energy per area $Q'$ is spread out uniformly
 over a time interval $0 \le t \le \tend$,
 rather than an instantaneous injection.
+----
+----
+![Plot of heat input as a function of time](timed-input.png)
+----
+----
 Subdividing the time interval into [window/ infinitesimal windows /]
 from time $\window{t^*}$ to $\window{t^* + \td t^*}$,
 each [window/ infinitesimal window /] is effectively

@@ -87,3 +87,100 @@ Module[
     , "DisplayDurations" -> 0.1
   ]
 ]
+
+
+(* ::Section:: *)
+(*Timed input*)
+
+
+Module[
+  {
+    symbol,
+    tEndSymbol, tStarSymbol, qPrimeSymbol,
+    qPrimeOverTEnd, tEnd,
+    tMin, tMax, rateMin, rateMax,
+    tStar, dtStar,
+    windowArrowVerticalCoordinate,
+    mainStyle, windowStyle, windowFontSize, windowArrowStyle,
+    dummyForTrailingCommas
+  },
+  (* Symbols *)
+  symbol[expr_] := Style[expr, Italic];
+  tEndSymbol = Subscript[symbol["t"], "end"];
+  tStarSymbol = Superscript[symbol["t"], "*"];
+  (* Constants *)
+  tEnd = 5;
+  qPrimeOverTEnd = 2;
+  qPrimeSymbol = symbol["Q'"];
+  (* Plot range *)
+  tMin = -0.1 tEnd;
+  tMax = 1.4 tEnd;
+  rateMin = 0;
+  rateMax = 1.3 qPrimeOverTEnd;
+  (* Window *)
+  tStar = 0.23 tEnd;
+  dtStar = 0.1 tEnd;
+  windowArrowVerticalCoordinate = 1.075 qPrimeOverTEnd;
+  (* Styles *)
+  mainStyle = Orange;
+  windowStyle = Red;
+  windowFontSize = 10;
+  windowArrowStyle = Arrowheads[0.025 {-1, 1}];
+  (* Plot *)
+  Plot[
+    Piecewise @ {{qPrimeOverTEnd, 0 <= t <= tEnd}},
+    {t, tMin, tMax}
+    , AspectRatio -> Automatic
+    , AxesLabel -> {
+        symbol["t"],
+        {"Energy", "per area", "per time"}
+          // Column[#, Alignment -> Center] &
+          // Style[#, 12] &
+      }
+    , Epilog -> {
+        windowStyle,
+          Rectangle[{tStar, 0}, {tStar + dtStar, qPrimeOverTEnd}],
+          Text[
+            Row @ {Spacer[6], "d", tStarSymbol}
+              // Style[#, 16] &
+            , {tStar + dtStar / 2, qPrimeOverTEnd}
+            , {0, -1.75}
+          ],
+        windowArrowStyle,
+          Arrow[{#, windowArrowVerticalCoordinate} & /@ {tStar, tStar + dtStar}],
+        {}
+      }
+    , Exclusions -> None
+    , Filling -> 0
+    , LabelStyle -> Directive[Black, 18]
+    , PlotRange -> {rateMin, rateMax}
+    , PlotRangeClipping -> False
+    , PlotStyle -> mainStyle
+    , Ticks -> {
+        {
+          0,
+          {tEnd, tEndSymbol, 0},
+          {tStar, tStarSymbol // Style[#, windowStyle] &, 0},
+          {
+            tStar + dtStar,
+            Row @ {
+              Spacer[40],
+              tStarSymbol,
+              "+\[ThinSpace]",
+              Row @ {"d", tStarSymbol}
+            }
+              // Style[#, windowStyle] &
+            , 0
+          },
+          Nothing
+        },
+        {
+          {qPrimeOverTEnd, Row @ {qPrimeSymbol, "/", tEndSymbol}},
+          Nothing
+        }
+      }
+  ]
+] // Export[
+  FileNameJoin @ {NotebookDirectory[], "timed-input.png"},
+  #
+] &
