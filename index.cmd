@@ -9,9 +9,9 @@
 
 # %title #
 
-||||
-(Scientific and Industrial Modelling)
-||||
+----
+Supplementary material for MATH3022 Scientific and Industrial Modelling.
+----
 
 ##{#general} General ##
 
