@@ -2,7 +2,7 @@
 
 %%
   %title  Heat equation: Heating a rod
-  %date-modified  2020-08-08
+  %date-modified  2020-08-29
   \resources:maths
 %%
 
@@ -507,17 +507,15 @@ $${.important}
 $$
 ||||{.qa}
 __Q.__
-  Why can't the constant be zero or positive?
+  Why can't the constant be positive?
 \+
 __A.__
-  Because those cases don't give useful solutions.
+  Because a positive constant doesn't yield useful solutions.
   In other units at UWA you're probably expected to show this every time,
   but here at MATH3022 we don't like wasting your time.
-  Convince yourself why the zero and positive cases don't work
-  (in your own time) and never do it again in this unit.
-  Just put $-\lambda^2$.
-  (If separation of variables results in total derivatives with opposite signs,
-  put $-\lambda^2$ for the ODE which has the homogeneous boundary conditions.)
+  **Just put $-\lambda^2$
+  for the ODE which has the homogeneous boundary conditions.**
+  This ensures oscillatory solutions in that direction.
 ||||
 ----
 Thus we have separated the PDE into two ODEs:
