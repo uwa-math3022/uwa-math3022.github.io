@@ -2,7 +2,7 @@
 
 %%
   %title  Fundamental plane-source similarity solution
-  %date-modified  2020-08-24
+  %date-modified  2020-09-10
   \resources:maths
   %css a~~
     .img-container {
@@ -1023,7 +1023,7 @@ the [delay/ delayed /] temperature profile
 ----
 $$
   \td T =
-    \frac{\window{Q' \td t^* / \tend}}{2 \sqrt{\pi (\delay{t - t^*})}}
+    \frac{\window{Q' \td t^* / \tend}}{2 \sqrt{\pi \kappa (\delay{t - t^*})}}
     \exp \frac{-x^2}{4 \kappa (\delay{t - t^*})}.
 $$
 ----
@@ -1045,7 +1045,7 @@ and therefore the overall temperature profile is
 $$
   T (x, t) =
     \int _ {\small 0} ^ {\small \min (t, \tend)}
-      \frac{\window{Q' / \tend}}{2 \sqrt{\pi (\delay{t - t^*})}}
+      \frac{\window{Q' / \tend}}{2 \sqrt{\pi \kappa (\delay{t - t^*})}}
       \exp \frac{-x^2}{4 \kappa (\delay{t - t^*})}
     \window{\td t^*}.
 $$
