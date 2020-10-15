@@ -92,7 +92,7 @@ densityColour[density_] := Blend[{LightRed, LightBlue}, density];
 
 
 (* ::Subsection:: *)
-(*Main spacetime diagram*)
+(*Spacetime diagram plot range*)
 
 
 (* Plot range *)
@@ -100,8 +100,19 @@ xMax = 8/10 laneHalfLength;
 tMax = 2 xMax;
 
 
+(* ::Subsection:: *)
+(*Main options*)
+
+
+mainOptions = {
+  ImageSize -> 240,
+  PlotRange -> All,
+  {}
+};
+
+
 (* ::Section:: *)
-(*Graphics*)
+(*Graphics objects*)
 
 
 (* ::Subsection:: *)
@@ -139,20 +150,6 @@ spacetimeAxes = Graphics @ {
   ],
   {}
 };
-
-
-(* ::Subsection:: *)
-(*Combined static graphics*)
-
-
-combinedStaticGraphics =
-  Show[
-    spacetimeAxes,
-    lane,
-    {}
-    , ImageSize -> 240
-    , PlotRange -> All
-  ];
 
 
 (* ::Section:: *)
@@ -194,7 +191,8 @@ Module[
   frameList =
     Table[
       Show[
-        combinedStaticGraphics,
+        (* Lane *)
+        lane,
         (* Density *)
         DensityPlot[
           densityFunction[t, x]
@@ -203,7 +201,10 @@ Module[
           , ColorFunction -> densityColour
           , Exclusions -> None
         ],
+        (* Spacetime axes *)
+        spacetimeAxes,
         {}
+        , mainOptions
       ]
       , {time, {0}}
     ];
@@ -246,8 +247,12 @@ Module[
   frameList =
     Table[
       Show[
-        combinedStaticGraphics,
+        (* Lane *)
+        lane,
+        (* Spacetime axes *)
+        spacetimeAxes,
         {}
+        , mainOptions
       ]
       , {time, {0}}
     ];
