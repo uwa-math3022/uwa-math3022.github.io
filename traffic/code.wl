@@ -71,7 +71,7 @@ laneHalfLength = 12 carLength;
 laneHalfWidth = 1 carWidth;
 
 
-laneVerticalOffset = -4 laneHalfWidth;
+laneVerticalOffset = -2 laneHalfWidth;
 applyLaneVerticalOffset[primitives_] := Translate[primitives, {0, laneVerticalOffset}];
 
 
@@ -140,8 +140,8 @@ timePrePaddingProportion = 1/20;
 
 
 mainOptions = {
-  ImageSize -> 240,
-  PlotRange -> {{-1.1 xMax, 1.5 xMax}, Automatic},
+  ImageSize -> 144,
+  PlotRange -> {1.5 {-xMax, xMax}, Automatic},
   {}
 };
 
@@ -242,14 +242,14 @@ spacetimeAxes = Graphics @ {
   Text[
     symbol["x"] // applyTextStyle
     , {xMax + axesPadding, 0}
-    , {-3, 0}
+    , {-1, -1}
   ],
   (* t-axis *)
   Arrow @ {{-xMax, 0}, {-xMax, tMax + axesPadding}},
   Text[
     symbol["t"] // applyTextStyle
     , {-xMax, tMax + axesPadding}
-    , {0, -1.25}
+    , {-2.5, 0}
   ],
   {}
 };
