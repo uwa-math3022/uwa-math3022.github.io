@@ -85,7 +85,7 @@ symbol[char_] := Style[char, Italic];
 applyTextStyle[text_] := Style[text, 16];
 
 
-laneStyle = Gray;
+laneStyle = GrayLevel[2/3];
 
 
 densityColour[Indeterminate] = White;
