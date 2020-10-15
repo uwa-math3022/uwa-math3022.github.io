@@ -217,6 +217,7 @@ Module[
     x0BeforeList, x0AfterList,
     xTrajectory, xTrajectoryList,
     density, trajectories, characteristics,
+    stopLine, laneArrowMarking,
     timeStart, timeEnd,
     frameList,
     dummyForTrailingCommas
@@ -287,6 +288,16 @@ Module[
       , PlotStyle -> characteristicStyle
       , RegionFunction -> spacetimeRegionFunction
     ];
+  stopLine = Graphics @ {
+    Directive[Thick, White],
+    Line @ {{carMaxDensityBuffer, -laneHalfWidth}, {carMaxDensityBuffer, laneHalfWidth}}
+      // applyLaneVerticalOffset
+  };
+  laneArrowMarking = Graphics @ {
+    Directive[Thick, White],
+    Arrow @ {{-3/2 carMaxDensityDisplacement, 0}, {0, 0}}
+      // applyLaneVerticalOffset
+  };
   (* Build list of frames *)
   timeStart = -timePrePaddingProportion * tMax;
   timeEnd = tMax;
@@ -295,6 +306,8 @@ Module[
       Show[
         (* Static *)
         lane,
+        stopLine,
+        laneArrowMarking,
         density,
         characteristics,
         trajectories,
