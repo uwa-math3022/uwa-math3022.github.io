@@ -193,7 +193,7 @@ Module[
   (* Values of p (proportion) to plot for the transition fan *)
   pValues = Subdivide[8];
   (* Density function *)
-  densityFunction[t_, x_] :=
+  densityFunction[x_, t_] :=
     Piecewise @ {
       {nBefore, x < xCharacteristicBefore[0][t]},
       {nAfter, x > xCharacteristicAfter[0][t]},
@@ -211,7 +211,7 @@ Module[
         lane,
         (* Density *)
         DensityPlot[
-          densityFunction[t, x]
+          densityFunction[x, t]
           , {x, -xMax, xMax}
           , {t, 0, tMax}
           , ColorFunction -> densityColour
