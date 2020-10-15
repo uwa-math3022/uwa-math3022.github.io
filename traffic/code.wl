@@ -126,7 +126,7 @@ spacetimeRegionFunction = Function[{x, t}, -xMax < x < xMax && 0 < t < tMax];
 (*Animation frame rate*)
 
 
-framesPerSecond = 24;
+framesPerSecond = 12;
 tMaxInSeconds = 4;
 timeStep = tMax / (tMaxInSeconds * framesPerSecond);
 
@@ -396,7 +396,12 @@ Module[
       ]
       , {time, timeStart, timeEnd, timeStep}
     ];
-  frameList
+  Export[
+    FileNameJoin @ {NotebookDirectory[], "traffic-light.gif"},
+    frameList
+    , "AnimationRepetitions" -> Infinity
+    , "DisplayDurations" -> 1 / framesPerSecond
+  ]
 ]
 
 
