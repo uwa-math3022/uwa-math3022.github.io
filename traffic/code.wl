@@ -88,7 +88,7 @@ applyTextStyle[text_] := Style[text, 16];
 laneStyle = Gray;
 
 
-densityColour[density_] := Blend[{LightRed, LightBlue}, density];
+densityColour[density_] := Blend[{LightBlue, LightRed}, density];
 characteristicStyle = RGBColor["darkviolet"];
 
 
