@@ -89,7 +89,7 @@ laneStyle = Gray;
 
 
 densityColour[Indeterminate] = White;
-densityColour[density_] := Blend[{LightBlue, LightRed}, density];
+densityColour[density_] := ColorData["LightTemperatureMap"][density];
 characteristicStyle = RGBColor["darkviolet"];
 trajectoryStyle = Yellow;
 timeSliceStyle = Red;
