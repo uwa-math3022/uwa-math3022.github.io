@@ -71,8 +71,8 @@ laneHalfLength = 10 carLength;
 laneHalfWidth = 3/2 carWidth;
 
 
-laneVerticalOffset = 4 laneHalfWidth;
-applyLaneVerticalOffset[primitives_] := Translate[primitives, {0, -laneVerticalOffset}];
+laneVerticalOffset = -4 laneHalfWidth;
+applyLaneVerticalOffset[primitives_] := Translate[primitives, {0, laneVerticalOffset}];
 
 
 (* ::Subsection:: *)
@@ -125,6 +125,18 @@ mainOptions = {
 
 (* ::Section:: *)
 (*Graphics objects*)
+
+
+(* ::Subsection:: *)
+(*Car*)
+
+
+car[x_, t_] := Graphics @ {
+  Rectangle[
+    {-carLength, -carWidth/2},
+    {0, carWidth/2}
+  ] // Translate[#, {x, t}] &
+};
 
 
 (* ::Subsection:: *)
@@ -228,7 +240,7 @@ Module[
       , {t, 0, tMax}
     ];
   xTrajectoryList = Table[xTrajectory[x0], {x0, x0BeforeList}];
-  (* Generate static plots *)
+  (* Static graphics *)
   density =
     DensityPlot[
       densityFunction[x, t]
@@ -262,11 +274,16 @@ Module[
   frameList =
     Table[
       Show[
+        (* Static *)
         lane,
         density,
         trajectories,
         characteristics,
         spacetimeAxes,
+        (* Cars along trajectories *)
+        Table[car[x[time], time], {x, xTrajectoryList}],
+        (* Cars along road *)
+        Table[car[x[time], laneVerticalOffset], {x, xTrajectoryList}],
         {}
         , mainOptions
       ]
