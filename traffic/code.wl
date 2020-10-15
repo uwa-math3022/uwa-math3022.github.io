@@ -176,6 +176,7 @@ Module[
     numberOfCars,
     x0BeforeList, x0AfterList,
     xTrajectory, xTrajectoryList,
+    density, trajectories, characteristics,
     frameList,
     dummyForTrailingCommas
   },
@@ -217,40 +218,42 @@ Module[
       , {t, 0, tMax}
     ];
   xTrajectoryList = Table[xTrajectory[x0], {x0, x0BeforeList}];
+  (* Generate static plots *)
+  density =
+    DensityPlot[
+      densityFunction[x, t]
+      , {x, -xMax, xMax}
+      , {t, 0, tMax}
+      , ColorFunction -> densityColour
+      , Exclusions -> None
+    ];
+  trajectories =
+    ParametricPlot[
+      Table[{x[t], t}, {x, xTrajectoryList}]
+      , {t, 0, tMax}
+      , PlotStyle -> trajectoryStyle
+      , RegionFunction -> spacetimeRegionFunction
+    ];
+  characteristics =
+    ParametricPlot[
+      {
+        Table[{xCharacteristicBefore[x0][t], t}, {x0, x0BeforeList}],
+        Table[{xCharacteristicAfter[x0][t], t}, {x0, x0AfterList}],
+        Table[{xCharacteristicFan[p][t], t}, {p, pValues}],
+        Nothing
+      }
+      , {t, 0, tMax}
+      , PlotStyle -> characteristicStyle
+      , RegionFunction -> spacetimeRegionFunction
+    ];
   (* Build list of frames *)
   frameList =
     Table[
       Show[
-        (* Lane *)
         lane,
-        (* Density *)
-        DensityPlot[
-          densityFunction[x, t]
-          , {x, -xMax, xMax}
-          , {t, 0, tMax}
-          , ColorFunction -> densityColour
-          , Exclusions -> None
-        ],
-        (* Trajectories *)
-        ParametricPlot[
-          Table[{x[t], t}, {x, xTrajectoryList}]
-          , {t, 0, tMax}
-          , PlotStyle -> trajectoryStyle
-          , RegionFunction -> spacetimeRegionFunction
-        ],
-        (* Characteristic curves *)
-        ParametricPlot[
-          {
-            Table[{xCharacteristicBefore[x0][t], t}, {x0, x0BeforeList}],
-            Table[{xCharacteristicAfter[x0][t], t}, {x0, x0AfterList}],
-            Table[{xCharacteristicFan[p][t], t}, {p, pValues}],
-            Nothing
-          }
-          , {t, 0, tMax}
-          , PlotStyle -> characteristicStyle
-          , RegionFunction -> spacetimeRegionFunction
-        ],
-        (* Spacetime axes *)
+        density,
+        trajectories,
+        characteristics,
         spacetimeAxes,
         {}
         , mainOptions
