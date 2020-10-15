@@ -121,19 +121,20 @@ lane = Graphics @ {
 (*Spacetime axes*)
 
 
+axesPadding = 1.5 carLength;
 spacetimeAxes = Graphics @ {
   (* x-axis *)
-  Arrow @ {{-xMax, 0}, {xMax, 0}},
+  Arrow @ {{-xMax, 0}, {xMax + axesPadding, 0}},
   Text[
     symbol["x"] // applyTextStyle
-    , {xMax, 0}
+    , {xMax + axesPadding, 0}
     , {-3, 0}
   ],
   (* t-axis *)
-  Arrow @ {{-xMax, 0}, {-xMax, tMax}},
+  Arrow @ {{-xMax, 0}, {-xMax, tMax + axesPadding}},
   Text[
     symbol["t"] // applyTextStyle
-    , {-xMax, tMax}
+    , {-xMax, tMax + axesPadding}
     , {0, -1.25}
   ],
   {}
