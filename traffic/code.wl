@@ -146,6 +146,7 @@ combinedStaticGraphics =
     spacetimeAxes,
     lane,
     {}
+    , ImageSize -> 240
     , PlotRange -> All
   ];
 
@@ -164,6 +165,7 @@ Module[
   {
     nBefore, nAfter,
     vBefore, vAfter,
+    frameList,
     dummyForTrailingCommas
   },
   (* Densities *)
@@ -172,6 +174,16 @@ Module[
   (* Speeds *)
   vBefore = preferredSpeed[nBefore];
   vAfter = preferredSpeed[nAfter];
+  (* Build list of frames *)
+  frameList =
+    Table[
+      Show[
+        combinedStaticGraphics,
+        {}
+      ]
+      , {time, {0}}
+    ];
+  frameList
 ]
 
 
@@ -192,6 +204,7 @@ Module[
     vBefore, vAfter,
     fBefore, fAfter,
     vShockwave,
+    frameList,
     dummyForTrailingCommas
   },
   (* Densities *)
@@ -205,4 +218,14 @@ Module[
   fAfter = carriedFlux[nAfter];
   (* Shockwave speed *)
   vShockwave = (fBefore - fAfter) / (nBefore - nAfter);
+  (* Build list of frames *)
+  frameList =
+    Table[
+      Show[
+        combinedStaticGraphics,
+        {}
+      ]
+      , {time, {0}}
+    ];
+  frameList
 ]
