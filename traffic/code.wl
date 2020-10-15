@@ -92,6 +92,7 @@ densityColour[Indeterminate] = White;
 densityColour[density_] := Blend[{LightBlue, LightRed}, density];
 characteristicStyle = RGBColor["darkviolet"];
 trajectoryStyle = Yellow;
+timeSliceStyle = Red;
 carBorderStyle = EdgeForm[Black];
 
 
@@ -128,6 +129,16 @@ mainOptions = {
 
 (* ::Section:: *)
 (*Graphics objects*)
+
+
+(* ::Subsection:: *)
+(*Time slice*)
+
+
+timeSlice[t_] := Graphics @ {
+  timeSliceStyle,
+  Line @ {{-laneHalfLength, t}, {laneHalfLength, t}}
+};
 
 
 (* ::Subsection:: *)
@@ -285,6 +296,8 @@ Module[
         characteristics,
         trajectories,
         spacetimeAxes,
+        (* Current slice of time *)
+        timeSlice[time],
         (* Cars along trajectories *)
         Table[
           car[x[time], time, densityFunction[x[time], time]]
