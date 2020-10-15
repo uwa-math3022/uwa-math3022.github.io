@@ -221,7 +221,7 @@ Module[
   xCharacteristicAfter[x0_][t_] := x0 + cAfter * t;
   xCharacteristicFan[p_][t_] := Rescale[p, {0, 1}, {cBefore, cAfter}] t;
   (* Values of p (proportion) to plot for the transition fan *)
-  pValues = Subdivide[8];
+  pValues = Subdivide[8] // Rest;
   (* Density function *)
   densityFunction[x_, t_] :=
     Piecewise @ {
@@ -232,7 +232,7 @@ Module[
     };
   (* Initial positions for characteristics and trajectories *)
   numberOfCars = laneHalfLength / carLength // Floor;
-  x0BeforeList = Table[-n * carMaxDensityDisplacement, {n, numberOfCars}];
+  x0BeforeList = Table[-n * carMaxDensityDisplacement, {n, 0, numberOfCars}];
   x0AfterList = Table[n * carMaxDensityDisplacement, {n, numberOfCars}];
   (* Trajectories *)
   xTrajectory[x0_] :=
@@ -282,8 +282,8 @@ Module[
         (* Static *)
         lane,
         density,
-        trajectories,
         characteristics,
+        trajectories,
         spacetimeAxes,
         (* Cars along trajectories *)
         Table[car[x[time], time, densityFunction], {x, xTrajectoryList}],
