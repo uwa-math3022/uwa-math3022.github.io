@@ -51,3 +51,61 @@ signalSpeed[density_] := carriedFlux'[density] // Evaluate;
 
 styleDense = LightCyan;
 styleSparse = LightPink;
+
+
+(* ::Section:: *)
+(*Case 1: Traffic light*)
+
+
+(*
+  {before}  -->  {after}
+  N == 1    -->  N == 0
+  V == 0    -->  V == 1
+  F == 0    -->  F == 0
+*)
+Module[
+  {
+    nBefore, nAfter,
+    vBefore, vAfter,
+    dummyForTrailingCommas
+  },
+  (* Densities *)
+  nBefore = 1;
+  nAfter = 0;
+  (* Speeds *)
+  vBefore = preferredSpeed[nBefore];
+  vAfter = preferredSpeed[nAfter];
+]
+
+
+(* ::Section:: *)
+(*Case 2: Pile up*)
+
+
+(*
+  {before}  -->  {after}
+  N == 1/3  -->  N == 1
+  V == 2/3  -->  V == 0
+  F == 2/9  -->  F == 0
+  V{shock} == (F{before} - F{after}) / (N{before} - N{after}) == -1/3
+*)
+Module[
+  {
+    nBefore, nAfter,
+    vBefore, vAfter,
+    fBefore, fAfter,
+    vShockwave,
+    dummyForTrailingCommas
+  },
+  (* Densities *)
+  nBefore = 1/3;
+  nAfter = 1;
+  (* Speeds *)
+  vBefore = preferredSpeed[nBefore];
+  vAfter = preferredSpeed[nAfter];
+  (* Fluxes *)
+  fBefore = carriedFlux[nBefore];
+  fAfter = carriedFlux[nAfter];
+  (* Shockwave speed *)
+  vShockwave = (fBefore - fAfter) / (nBefore - nAfter);
+]
