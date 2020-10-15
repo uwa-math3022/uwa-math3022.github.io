@@ -68,7 +68,7 @@ carMaxDensityDisplacement = carLength + carMaxDensityBuffer;
 
 (* Road half-length *)
 laneHalfLength = 10 carLength;
-laneHalfWidth = 3/2 carWidth;
+laneHalfWidth = 1 carWidth;
 
 
 laneVerticalOffset = -4 laneHalfWidth;
