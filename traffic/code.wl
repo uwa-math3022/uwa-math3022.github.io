@@ -278,7 +278,6 @@ Module[
     vBefore, vAfter,
     fBefore, fAfter,
     vShockwave,
-    frameList,
     dummyForTrailingCommas
   },
   (* Densities *)
@@ -292,18 +291,4 @@ Module[
   fAfter = carriedFlux[nAfter];
   (* Shockwave speed *)
   vShockwave = (fBefore - fAfter) / (nBefore - nAfter);
-  (* Build list of frames *)
-  frameList =
-    Table[
-      Show[
-        (* Lane *)
-        lane,
-        (* Spacetime axes *)
-        spacetimeAxes,
-        {}
-        , mainOptions
-      ]
-      , {time, {0}}
-    ];
-  frameList
 ]
