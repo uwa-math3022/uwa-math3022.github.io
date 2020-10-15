@@ -240,7 +240,7 @@ Module[
   (* Density function *)
   densityFunction[x_, t_] :=
     Piecewise @ {
-      {Mean @ {nBefore, nAfter}, x == t == 0},
+      {nBefore, x == t == 0},
       {nBefore, x < xCharacteristicBefore[0][t]},
       {nAfter, x > xCharacteristicAfter[0][t]},
       {Rescale[x, {cBefore * t, cAfter * t}, {nBefore, nAfter}], True}
