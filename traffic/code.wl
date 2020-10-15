@@ -123,10 +123,9 @@ timePrePaddingProportion = 1/20;
 (*Main options*)
 
 
-xMaxWithPadding = 1.1 xMax;
 mainOptions = {
   ImageSize -> 240,
-  PlotRange -> {{-xMaxWithPadding, xMaxWithPadding}, Automatic},
+  PlotRange -> {{-1.1 xMax, 1.5 xMax}, Automatic},
   {}
 };
 
