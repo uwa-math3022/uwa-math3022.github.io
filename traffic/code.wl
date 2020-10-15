@@ -85,7 +85,7 @@ symbol[char_] := Style[char, Italic];
 applyTextStyle[text_] := Style[text, 16];
 
 
-styleLane = Gray;
+laneStyle = Gray;
 
 
 (* ::Subsection:: *)
@@ -106,7 +106,7 @@ tMax = 2 xMax;
 
 
 lane = Graphics @ {
-  styleLane,
+  laneStyle,
   Rectangle[
     {-laneHalfLength, -laneHalfWidth},
     {laneHalfLength, laneHalfWidth}
