@@ -134,9 +134,9 @@ mainOptions = {
 (*Car*)
 
 
-car[x_, t_, densityFunction_: (Indeterminate &)] := Graphics @ {
+car[x_, t_, density_: Indeterminate] := Graphics @ {
   carBorderStyle,
-  densityColour @ densityFunction[x, t],
+  densityColour @ density,
   Rectangle[
     {-carLength, -carWidth/2},
     {0, carWidth/2}
@@ -286,9 +286,15 @@ Module[
         trajectories,
         spacetimeAxes,
         (* Cars along trajectories *)
-        Table[car[x[time], time, densityFunction], {x, xTrajectoryList}],
+        Table[
+          car[x[time], time, densityFunction[x[time], time]]
+          , {x, xTrajectoryList}
+        ],
         (* Cars along road *)
-        Table[car[x[time], laneVerticalOffset, densityFunction], {x, xTrajectoryList}],
+        Table[
+          car[x[time], laneVerticalOffset, densityFunction[x[time], time]]
+          , {x, xTrajectoryList}
+        ],
         {}
         , mainOptions
       ]
