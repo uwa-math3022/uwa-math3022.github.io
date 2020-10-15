@@ -88,9 +88,11 @@ applyTextStyle[text_] := Style[text, 16];
 laneStyle = Gray;
 
 
+densityColour[Indeterminate] = White;
 densityColour[density_] := Blend[{LightBlue, LightRed}, density];
 characteristicStyle = RGBColor["darkviolet"];
 trajectoryStyle = Yellow;
+carBorderStyle = EdgeForm[Black];
 
 
 (* ::Subsection:: *)
@@ -131,7 +133,9 @@ mainOptions = {
 (*Car*)
 
 
-car[x_, t_] := Graphics @ {
+car[x_, t_, densityFunction_: (Indeterminate &)] := Graphics @ {
+  carBorderStyle,
+  densityColour @ densityFunction[x, t],
   Rectangle[
     {-carLength, -carWidth/2},
     {0, carWidth/2}
@@ -281,9 +285,9 @@ Module[
         characteristics,
         spacetimeAxes,
         (* Cars along trajectories *)
-        Table[car[x[time], time], {x, xTrajectoryList}],
+        Table[car[x[time], time, densityFunction], {x, xTrajectoryList}],
         (* Cars along road *)
-        Table[car[x[time], laneVerticalOffset], {x, xTrajectoryList}],
+        Table[car[x[time], laneVerticalOffset, densityFunction], {x, xTrajectoryList}],
         {}
         , mainOptions
       ]
