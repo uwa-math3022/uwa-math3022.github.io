@@ -89,6 +89,7 @@ laneStyle = Gray;
 
 
 densityColour[density_] := Blend[{LightRed, LightBlue}, density];
+characteristicStyle = RGBColor["darkviolet"];
 
 
 (* ::Subsection:: *)
@@ -98,6 +99,7 @@ densityColour[density_] := Blend[{LightRed, LightBlue}, density];
 (* Plot range *)
 xMax = 8/10 laneHalfLength;
 tMax = 2 xMax;
+spacetimeRegionFunction = Function[{x, t}, -xMax < x < xMax && 0 < t < tMax];
 
 
 (* ::Subsection:: *)
@@ -167,7 +169,11 @@ Module[
     nBefore, nAfter,
     vBefore, vAfter,
     cBefore, cAfter,
+    xCharacteristicBefore, xCharacteristicAfter,
+    xCharacteristicFan, pValues,
     densityFunction,
+    numberOfCars,
+    x0Before, x0After,
     frameList,
     dummyForTrailingCommas
   },
@@ -180,13 +186,23 @@ Module[
   (* Signal speeds *)
   cBefore = signalSpeed[nBefore];
   cAfter = signalSpeed[nAfter];
+  (* Characteristic curves *)
+  xCharacteristicBefore[x0_][t_] := x0 + cBefore * t;
+  xCharacteristicAfter[x0_][t_] := x0 + cAfter * t;
+  xCharacteristicFan[p_][t_] := Rescale[p, {0, 1}, {cBefore, cAfter}] t;
+  (* Values of p (proportion) to plot for the transition fan *)
+  pValues = Subdivide[8];
   (* Density function *)
   densityFunction[t_, x_] :=
     Piecewise @ {
-      {nBefore, x < cBefore * t},
-      {nAfter, x > cAfter * t},
+      {nBefore, x < xCharacteristicBefore[0][t]},
+      {nAfter, x > xCharacteristicAfter[0][t]},
       {Rescale[x, {cBefore * t, cAfter * t}, {nBefore, nAfter}], True}
     };
+  (* Initial positions for characteristics and trajectories *)
+  numberOfCars = laneHalfLength / carLength // Floor;
+  x0Before = Table[-n * carMaxDensityDisplacement, {n, numberOfCars}];
+  x0After = Table[n * carMaxDensityDisplacement, {n, numberOfCars}];
   (* Build list of frames *)
   frameList =
     Table[
@@ -200,6 +216,18 @@ Module[
           , {t, 0, tMax}
           , ColorFunction -> densityColour
           , Exclusions -> None
+        ],
+        (* Characteristic curves *)
+        ParametricPlot[
+          {
+            Table[{xCharacteristicBefore[x0][t], t}, {x0, x0Before}],
+            Table[{xCharacteristicAfter[x0][t], t}, {x0, x0After}],
+            Table[{xCharacteristicFan[p][t], t}, {p, pValues}],
+            Nothing
+          }
+          , {t, 0, tMax}
+          , PlotStyle -> characteristicStyle
+          , RegionFunction -> spacetimeRegionFunction
         ],
         (* Spacetime axes *)
         spacetimeAxes,
