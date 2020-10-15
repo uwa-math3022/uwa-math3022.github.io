@@ -75,8 +75,35 @@ laneWidth = 3 carWidth;
 (*Styles*)
 
 
+symbol[char_] := Style[char, Italic];
+
+
+labelStyle = Directive[Black, 16];
+
+
 styleDense = LightCyan;
 styleSparse = LightPink;
+
+
+(* ::Subsection:: *)
+(*Main spacetime diagram*)
+
+
+(* Plot range *)
+xMax = 8/10 laneHalfLength;
+tMax = 2 xMax;
+
+
+spacetimeDiagram =
+  Plot[Indeterminate
+    , {x, -xMax, xMax}
+    , AspectRatio -> Automatic
+    , AxesLabel -> symbol /@ {"x", "t"}
+    , AxesOrigin -> {-xMax, 0}
+    , LabelStyle -> labelStyle
+    , PlotRange -> {{-xMax, xMax}, {0, tMax}}
+    , Ticks -> None
+  ];
 
 
 (* ::Section:: *)
