@@ -88,6 +88,9 @@ applyTextStyle[text_] := Style[text, 16];
 laneStyle = Gray;
 
 
+densityColour[density_] := Blend[{LightRed, LightBlue}, density];
+
+
 (* ::Subsection:: *)
 (*Main spacetime diagram*)
 
@@ -165,6 +168,8 @@ Module[
   {
     nBefore, nAfter,
     vBefore, vAfter,
+    cBefore, cAfter,
+    densityFunction,
     frameList,
     dummyForTrailingCommas
   },
@@ -174,11 +179,29 @@ Module[
   (* Speeds *)
   vBefore = preferredSpeed[nBefore];
   vAfter = preferredSpeed[nAfter];
+  (* Signal speeds *)
+  cBefore = signalSpeed[nBefore];
+  cAfter = signalSpeed[nAfter];
+  (* Density function *)
+  densityFunction[t_, x_] :=
+    Piecewise @ {
+      {nBefore, x < cBefore * t},
+      {nAfter, x > cAfter * t},
+      {Rescale[x, {cBefore * t, cAfter * t}, {nBefore, nAfter}], True}
+    };
   (* Build list of frames *)
   frameList =
     Table[
       Show[
         combinedStaticGraphics,
+        (* Density *)
+        DensityPlot[
+          densityFunction[t, x]
+          , {x, -xMax, xMax}
+          , {t, 0, tMax}
+          , ColorFunction -> densityColour
+          , Exclusions -> None
+        ],
         {}
       ]
       , {time, {0}}
