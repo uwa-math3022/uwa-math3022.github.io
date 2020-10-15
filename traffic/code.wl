@@ -46,7 +46,7 @@ signalSpeed[density_] := carriedFlux'[density] // Evaluate;
 
 
 (* ::Section:: *)
-(*Graphics*)
+(*Graphics constants*)
 
 
 (* ::Subsection:: *)
@@ -68,7 +68,7 @@ carMaxDensityDisplacement = carLength + carMaxDensityBuffer;
 
 (* Road half-length *)
 laneHalfLength = 10 carLength;
-laneWidth = 3 carWidth;
+laneHalfWidth = 3/2 carWidth;
 
 
 (* ::Subsection:: *)
@@ -79,6 +79,9 @@ symbol[char_] := Style[char, Italic];
 
 
 labelStyle = Directive[Black, 16];
+
+
+styleLane = Gray;
 
 
 styleDense = LightCyan;
@@ -92,6 +95,27 @@ styleSparse = LightPink;
 (* Plot range *)
 xMax = 8/10 laneHalfLength;
 tMax = 2 xMax;
+
+
+(* ::Section:: *)
+(*Graphics*)
+
+
+(* ::Subsection:: *)
+(*Lane*)
+
+
+lane = Graphics @ {
+  styleLane,
+  Rectangle[
+    {-laneHalfLength, -laneHalfWidth},
+    {laneHalfLength, laneHalfWidth}
+  ]
+};
+
+
+(* ::Subsection:: *)
+(*Main spacetime diagram*)
 
 
 spacetimeDiagram =
