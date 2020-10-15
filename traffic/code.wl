@@ -67,7 +67,7 @@ carMaxDensityDisplacement = carLength + carMaxDensityBuffer;
 
 
 (* Road half-length *)
-laneHalfLength = 10 carLength;
+laneHalfLength = 12 carLength;
 laneHalfWidth = 1 carWidth;
 
 
@@ -101,7 +101,7 @@ carBorderStyle = EdgeForm[Black];
 
 
 (* Plot range *)
-xMax = 8/10 laneHalfLength;
+xMax = 2/3 laneHalfLength;
 tMax = 2 xMax;
 spacetimeRegionFunction = Function[{x, t}, -xMax < x < xMax && 0 < t < tMax];
 
