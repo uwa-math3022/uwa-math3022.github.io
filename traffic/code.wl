@@ -115,6 +115,10 @@ tMaxInSeconds = 4;
 timeStep = tMax / (tMaxInSeconds * framesPerSecond);
 
 
+(* Padding before time == 0 *)
+timePrePaddingProportion = 1/20;
+
+
 (* ::Subsection:: *)
 (*Main options*)
 
@@ -285,7 +289,7 @@ Module[
       , RegionFunction -> spacetimeRegionFunction
     ];
   (* Build list of frames *)
-  timeStart = 0;
+  timeStart = -timePrePaddingProportion * tMax;
   timeEnd = tMax;
   frameList =
     Table[
@@ -300,12 +304,14 @@ Module[
         timeSlice[time],
         (* Cars along trajectories *)
         Table[
-          car[x[time], time, densityFunction[x[time], time]]
+          car[x[#], #, densityFunction[x[#], #]] &
+            @ Max[time, 0]
           , {x, xTrajectoryList}
         ],
         (* Cars along road *)
         Table[
-          car[x[time], laneVerticalOffset, densityFunction[x[time], time]]
+          car[x[#], laneVerticalOffset, densityFunction[x[#], #]] &
+            @ Max[time, 0]
           , {x, xTrajectoryList}
         ],
         {}
