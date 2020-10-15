@@ -104,6 +104,15 @@ spacetimeRegionFunction = Function[{x, t}, -xMax < x < xMax && 0 < t < tMax];
 
 
 (* ::Subsection:: *)
+(*Animation frame rate*)
+
+
+framesPerSecond = 24;
+tMaxInSeconds = 4;
+timeStep = tMax / (tMaxInSeconds * framesPerSecond);
+
+
+(* ::Subsection:: *)
 (*Main options*)
 
 
@@ -177,6 +186,7 @@ Module[
     x0BeforeList, x0AfterList,
     xTrajectory, xTrajectoryList,
     density, trajectories, characteristics,
+    timeStart, timeEnd,
     frameList,
     dummyForTrailingCommas
   },
@@ -247,6 +257,8 @@ Module[
       , RegionFunction -> spacetimeRegionFunction
     ];
   (* Build list of frames *)
+  timeStart = 0;
+  timeEnd = tMax;
   frameList =
     Table[
       Show[
@@ -258,7 +270,7 @@ Module[
         {}
         , mainOptions
       ]
-      , {time, {0}}
+      , {time, timeStart, timeEnd, timeStep}
     ];
   frameList
 ]
