@@ -46,6 +46,32 @@ signalSpeed[density_] := carriedFlux'[density] // Evaluate;
 
 
 (* ::Section:: *)
+(*Graphics*)
+
+
+(* ::Subsection:: *)
+(*Cars*)
+
+
+(* Car dimensions *)
+carLength = 1;
+carWidth = 1/2 carLength;
+(* Buffer drivers leave between cars at maximum density *)
+carMaxDensityBuffer = 1/5 carLength;
+(* Displacement between cars at maximum density *)
+carMaxDensityDisplacement = carLength + carMaxDensityBuffer;
+
+
+(* ::Subsection:: *)
+(*Lane*)
+
+
+(* Road half-length *)
+laneHalfLength = 10 carLength;
+laneWidth = 3 carWidth;
+
+
+(* ::Subsection:: *)
 (*Styles*)
 
 
