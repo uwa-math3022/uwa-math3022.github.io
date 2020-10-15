@@ -216,10 +216,10 @@ Module[
 
 (*
   {before}  -->  {after}
-  N == 1/3  -->  N == 1
-  V == 2/3  -->  V == 0
-  F == 2/9  -->  F == 0
-  V{shock} == (F{before} - F{after}) / (N{before} - N{after}) == -1/3
+  N == 1/3  -->  N == 7/8
+  V == 2/3  -->  V == 1/8
+  F == 2/9  -->  F == 7/64
+  V{shock} == (F{before} - F{after}) / (N{before} - N{after}) == -5/24
 *)
 Module[
   {
@@ -232,7 +232,7 @@ Module[
   },
   (* Densities *)
   nBefore = 1/3;
-  nAfter = 1;
+  nAfter = 7/8;
   (* Speeds *)
   vBefore = preferredSpeed[nBefore];
   vAfter = preferredSpeed[nAfter];
