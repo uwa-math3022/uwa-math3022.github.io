@@ -71,6 +71,10 @@ laneHalfLength = 10 carLength;
 laneHalfWidth = 3/2 carWidth;
 
 
+laneVerticalOffset = 4 laneHalfWidth;
+applyLaneVerticalOffset[primitives_] := Translate[primitives, {0, -laneVerticalOffset}];
+
+
 (* ::Subsection:: *)
 (*Styles*)
 
@@ -78,14 +82,10 @@ laneHalfWidth = 3/2 carWidth;
 symbol[char_] := Style[char, Italic];
 
 
-labelStyle = Directive[Black, 16];
+applyTextStyle[text_] := Style[text, 16];
 
 
 styleLane = Gray;
-
-
-styleDense = LightCyan;
-styleSparse = LightPink;
 
 
 (* ::Subsection:: *)
@@ -110,23 +110,43 @@ lane = Graphics @ {
   Rectangle[
     {-laneHalfLength, -laneHalfWidth},
     {laneHalfLength, laneHalfWidth}
-  ]
+  ] // applyLaneVerticalOffset
 };
 
 
 (* ::Subsection:: *)
-(*Main spacetime diagram*)
+(*Spacetime axes*)
 
 
-spacetimeDiagram =
-  Plot[Indeterminate
-    , {x, -xMax, xMax}
-    , AspectRatio -> Automatic
-    , AxesLabel -> symbol /@ {"x", "t"}
-    , AxesOrigin -> {-xMax, 0}
-    , LabelStyle -> labelStyle
-    , PlotRange -> {{-xMax, xMax}, {0, tMax}}
-    , Ticks -> None
+spacetimeAxes = Graphics @ {
+  (* x-axis *)
+  Arrow @ {{-xMax, 0}, {xMax, 0}},
+  Text[
+    symbol["x"] // applyTextStyle
+    , {xMax, 0}
+    , {-3, 0}
+  ],
+  (* t-axis *)
+  Arrow @ {{-xMax, 0}, {-xMax, tMax}},
+  Text[
+    symbol["t"] // applyTextStyle
+    , {-xMax, tMax}
+    , {0, -1.25}
+  ],
+  {}
+};
+
+
+(* ::Subsection:: *)
+(*Combined static graphics*)
+
+
+combinedStaticGraphics =
+  Show[
+    spacetimeAxes,
+    lane,
+    {}
+    , PlotRange -> All
   ];
 
 
