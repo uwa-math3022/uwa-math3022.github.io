@@ -90,6 +90,7 @@ laneStyle = Gray;
 
 densityColour[density_] := Blend[{LightBlue, LightRed}, density];
 characteristicStyle = RGBColor["darkviolet"];
+trajectoryStyle = Yellow;
 
 
 (* ::Subsection:: *)
@@ -173,7 +174,8 @@ Module[
     xCharacteristicFan, pValues,
     densityFunction,
     numberOfCars,
-    x0Before, x0After,
+    x0BeforeList, x0AfterList,
+    xTrajectory, xTrajectoryList,
     frameList,
     dummyForTrailingCommas
   },
@@ -195,14 +197,26 @@ Module[
   (* Density function *)
   densityFunction[x_, t_] :=
     Piecewise @ {
+      {Mean @ {nBefore, nAfter}, x == t == 0},
       {nBefore, x < xCharacteristicBefore[0][t]},
       {nAfter, x > xCharacteristicAfter[0][t]},
       {Rescale[x, {cBefore * t, cAfter * t}, {nBefore, nAfter}], True}
     };
   (* Initial positions for characteristics and trajectories *)
   numberOfCars = laneHalfLength / carLength // Floor;
-  x0Before = Table[-n * carMaxDensityDisplacement, {n, numberOfCars}];
-  x0After = Table[n * carMaxDensityDisplacement, {n, numberOfCars}];
+  x0BeforeList = Table[-n * carMaxDensityDisplacement, {n, numberOfCars}];
+  x0AfterList = Table[n * carMaxDensityDisplacement, {n, numberOfCars}];
+  (* Trajectories *)
+  xTrajectory[x0_] :=
+    NDSolveValue[
+      {
+        \[FormalX]'[t] == preferredSpeed @ densityFunction[\[FormalX][t], t],
+        \[FormalX][0] == x0
+      }
+      , \[FormalX]
+      , {t, 0, tMax}
+    ];
+  xTrajectoryList = Table[xTrajectory[x0], {x0, x0BeforeList}];
   (* Build list of frames *)
   frameList =
     Table[
@@ -217,11 +231,18 @@ Module[
           , ColorFunction -> densityColour
           , Exclusions -> None
         ],
+        (* Trajectories *)
+        ParametricPlot[
+          Table[{x[t], t}, {x, xTrajectoryList}]
+          , {t, 0, tMax}
+          , PlotStyle -> trajectoryStyle
+          , RegionFunction -> spacetimeRegionFunction
+        ],
         (* Characteristic curves *)
         ParametricPlot[
           {
-            Table[{xCharacteristicBefore[x0][t], t}, {x0, x0Before}],
-            Table[{xCharacteristicAfter[x0][t], t}, {x0, x0After}],
+            Table[{xCharacteristicBefore[x0][t], t}, {x0, x0BeforeList}],
+            Table[{xCharacteristicAfter[x0][t], t}, {x0, x0AfterList}],
             Table[{xCharacteristicFan[p][t], t}, {p, pValues}],
             Nothing
           }
