@@ -76,6 +76,20 @@ applyLaneVerticalOffset[primitives_] := Translate[primitives, {0, laneVerticalOf
 
 
 (* ::Subsection:: *)
+(*Traffic light*)
+
+
+trafficLightAspectRadius = 4/5 carLength;
+trafficLightAspectDisplacement = (2 + 1/2) trafficLightAspectRadius;
+trafficLightPadding = 2/3 trafficLightAspectRadius;
+trafficLightRoundingRadius = 2/3 trafficLightAspectRadius;
+
+
+trafficLightHalfWidth = trafficLightAspectRadius + trafficLightPadding;
+trafficLightHalfHeight = trafficLightPadding + trafficLightAspectRadius + trafficLightAspectDisplacement;
+
+
+(* ::Subsection:: *)
 (*Styles*)
 
 
@@ -94,6 +108,8 @@ characteristicStyle = RGBColor["darkviolet"];
 trajectoryStyle = Yellow;
 timeSliceStyle = Red;
 carBorderStyle = EdgeForm[Black];
+trafficLightMountStyle = Black;
+trafficLightAspectBorderStyle = Directive[Thick, White];
 
 
 (* ::Subsection:: *)
@@ -168,6 +184,50 @@ lane = Graphics @ {
     {-laneHalfLength, -laneHalfWidth},
     {laneHalfLength, laneHalfWidth}
   ] // applyLaneVerticalOffset
+};
+
+
+(* ::Subsection:: *)
+(*Traffic light*)
+
+
+trafficLightHorizontalOffset = 5/4 xMax;
+trafficLightVerticalOffset = 1/2 tMax;
+applyTrafficLightOffset[primitives_] :=
+  Translate[primitives, {trafficLightHorizontalOffset, trafficLightVerticalOffset}];
+
+
+trafficLight[colour_] := Graphics @ applyTrafficLightOffset @ {
+  (* Mount *)
+  trafficLightMountStyle,
+  Rectangle[
+    {-trafficLightHalfWidth, -trafficLightHalfHeight},
+    {trafficLightHalfWidth, trafficLightHalfHeight}
+    , RoundingRadius -> trafficLightRoundingRadius
+  ],
+  (* Active aspect *)
+  Which[
+    colour == "red", {
+      Red,
+      Disk[{0, trafficLightAspectDisplacement}, trafficLightAspectRadius]
+    },
+    colour == "amber", {
+      Yellow,
+      Disk[{0, 0}, trafficLightAspectRadius]
+    },
+    colour == "green", {
+      Green,
+      Disk[{0, -trafficLightAspectDisplacement}, trafficLightAspectRadius]
+    },
+    True, {}
+  ],
+  (* Aspect borders *)
+  trafficLightAspectBorderStyle,
+  Table[
+    Circle[{0, n * trafficLightAspectDisplacement}, trafficLightAspectRadius]
+    , {n, -1, 1}
+  ],
+  {}
 };
 
 
@@ -326,6 +386,11 @@ Module[
             @ Max[time, 0]
           , {x, xTrajectoryList}
         ],
+        (* Traffic light *)
+        trafficLight @ Piecewise @ {
+          {"red", time < 0},
+          {"green", True}
+        },
         {}
         , mainOptions
       ]
