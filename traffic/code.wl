@@ -96,7 +96,7 @@ trafficLightHalfHeight = trafficLightPadding + trafficLightAspectRadius + traffi
 symbol[char_] := Style[char, Italic];
 
 
-applyTextStyle[text_] := Style[text, 16];
+applyTextStyle[text_] := Style[text, 14];
 
 
 laneStyle = GrayLevel[2/3];
@@ -235,21 +235,21 @@ trafficLight[colour_] := Graphics @ applyTrafficLightOffset @ {
 (*Spacetime axes*)
 
 
-axesPadding = 1.5 carLength;
+axesPadding = 1.75 carLength;
 spacetimeAxes = Graphics @ {
   (* x-axis *)
   Arrow @ {{-xMax, 0}, {xMax + axesPadding, 0}},
   Text[
     symbol["x"] // applyTextStyle
     , {xMax + axesPadding, 0}
-    , {-1, -1}
+    , {0, -1}
   ],
   (* t-axis *)
   Arrow @ {{-xMax, 0}, {-xMax, tMax + axesPadding}},
   Text[
     symbol["t"] // applyTextStyle
     , {-xMax, tMax + axesPadding}
-    , {-2.5, 0}
+    , {-3, 0}
   ],
   {}
 };
