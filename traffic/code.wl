@@ -118,9 +118,10 @@ timeStep = tMax / (tMaxInSeconds * framesPerSecond);
 (*Main options*)
 
 
+xMaxWithPadding = 1.1 xMax;
 mainOptions = {
   ImageSize -> 240,
-  PlotRange -> All,
+  PlotRange -> {{-xMaxWithPadding, xMaxWithPadding}, Automatic},
   {}
 };
 
