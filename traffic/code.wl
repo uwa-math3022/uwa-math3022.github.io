@@ -527,7 +527,7 @@ Module[
     {}
   };
   (* Build list of frames *)
-  timeStart = -timePrePaddingProportion * tMax;
+  timeStart = 0;
   timeEnd = tMax;
   frameList =
     Table[
