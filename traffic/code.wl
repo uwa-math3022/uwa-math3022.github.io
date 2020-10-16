@@ -330,6 +330,7 @@ Module[
       , ColorFunction -> densityColour
       , ColorFunctionScaling -> False
       , Exclusions -> None
+      , PlotPoints -> 50
     ];
   trajectories =
     ParametricPlot[
