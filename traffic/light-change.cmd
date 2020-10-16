@@ -78,8 +78,14 @@ $$
 Thus the [charac/ characteristics /] are straight lines with slope $-\Vmax$,
 and so the left half of the $x$-axis extends into a
 [dense/ lower-left triangular region~◣/]
-with full density and zero speed.
+with full density and zero speed:
 ----
+$${.important}
+  N (x, t) =
+    \begin{cases}
+      \Nmax, & x < -\Vmax t
+    \end{cases}
+$$
 
 ###{#empty-region} Empty region ###
 
@@ -99,8 +105,14 @@ $$
 ----
 Thus the [charac/ characteristics /] are straight lines with slope $+\Vmax$,
 and so the right half of the $x$-axis extends into a
-[sparse/ lower-right triangular region~◢ with zero density /].
+[sparse/ lower-right triangular region~◢ with zero density /]:
 ----
+$${.important}
+  N (x, t) =
+    \begin{cases}
+      0, & x > +\Vmax t
+    \end{cases}
+$$
 
 ###{#transition-fan} Transition fan ###
 $
@@ -136,14 +148,15 @@ $$
   }.
 $$
 ----
-Therefore we have
+Therefore for the central triangular region~▼ we have
 ----
+$${.important}
+  N (x, t) =
+    \begin{cases}
+      \dfrac{\Nmax}{2} \roundbr{1 - \dfrac{x}{\Vmax t}},
+      & -\Vmax t < x < +\Vmax t
+    \end{cases}.
 $$
-  N (x, t) = \frac{\Nmax}{2} \roundbr{1 - \frac{x}{\Vmax t}}
-$$
-----
-in the central triangular region~▼.
-----
 
 
 ##{#remarks} Remarks ##

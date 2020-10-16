@@ -65,8 +65,13 @@ Here we have
 Thus the <span class="colour-v">characteristics</span> are straight lines with slope <span class="js-maths">-\Vmax</span>,
 and so the left half of the <span class="js-maths">x</span>-axis extends into a
 <span class="colour-r">lower-left triangular region&nbsp;◣</span>
-with full density and zero speed.
+with full density and zero speed:
 </p>
+<div class="js-maths important">N (x, t) =
+  \begin{cases}
+    \Nmax, &amp; x &lt; -\Vmax t
+  \end{cases}
+</div>
 <h3 id="empty-region"><a class="permalink" href="#empty-region" aria-label="Permalink"></a>Empty region</h3>
 <p>
 Next consider <span class="js-maths">t = 0</span>, <span class="js-maths">x &gt; 0</span>,
@@ -83,8 +88,13 @@ Here we have
 <p>
 Thus the <span class="colour-v">characteristics</span> are straight lines with slope <span class="js-maths">+\Vmax</span>,
 and so the right half of the <span class="js-maths">x</span>-axis extends into a
-<span class="colour-b">lower-right triangular region&nbsp;◢ with zero density</span>.
+<span class="colour-b">lower-right triangular region&nbsp;◢ with zero density</span>:
 </p>
+<div class="js-maths important">N (x, t) =
+  \begin{cases}
+    0, &amp; x &gt; +\Vmax t
+  \end{cases}
+</div>
 <h3 id="transition-fan"><a class="permalink" href="#transition-fan" aria-label="Permalink"></a>Transition fan</h3>
 <span class="js-maths">\gdef \charac #1 {\colv{#1}}
   \gdef \xc {x_\mathrm{c}}</span>
@@ -114,13 +124,14 @@ In particular, the characteristic for a given density <span class="js-maths">N</
 }.
 </div>
 <p>
-Therefore we have
+Therefore for the central triangular region&nbsp;▼ we have
 </p>
-<div class="js-maths">N (x, t) = \frac{\Nmax}{2} \roundbr{1 - \frac{x}{\Vmax t}}
+<div class="js-maths important">N (x, t) =
+  \begin{cases}
+    \dfrac{\Nmax}{2} \roundbr{1 - \dfrac{x}{\Vmax t}},
+    &amp; -\Vmax t &lt; x &lt; +\Vmax t
+  \end{cases}.
 </div>
-<p>
-in the central triangular region&nbsp;▼.
-</p>
 <h2 id="remarks"><a class="permalink" href="#remarks" aria-label="Permalink"></a>Remarks</h2>
 <p>
 <img alt="Animation for traffic light change (again)" width="240" src="light-change.gif">
