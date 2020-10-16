@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/main.min.css">
+<script defer src="/resources/maths.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
+<title>Traffic light change | UWA MATH3022</title>
+</head>
+<body>
+<h1>Traffic light change</h1>
+<noscript>Enable JavaScript for equation rendering to work.</noscript>
+<p>
+<a href="/traffic/">Return to traffic model summary</a>
+</p>
+<h2 id="initial-conditions"><a class="permalink" href="#initial-conditions" aria-label="Permalink"></a>Initial conditions</h2>
+<span class="js-maths">\gdef \Vmax {V_\mathrm{max}}
+  \gdef \Nmax {N_\mathrm{max}}
+  \gdef \Fmax {F_\mathrm{max}}</span>
+<p>
+Cars lined bumper-to-bumper wait at a red traffic light
+which turns green at <span class="js-maths">t = 0</span>.
+In symbols,
+</p>
+<div class="js-maths">\eval{N}_{t = 0} =
+  \begin{cases}
+    \Nmax, &amp; x &lt; 0 \\
+    0, &amp; x &gt; 0
+  \end{cases}.
+</div>
+<p>
+What happens?
+</p>
+<h2 id="animation"><a class="permalink" href="#animation" aria-label="Permalink"></a>Animation</h2>
+<p>
+<img alt="Traffic light change animation" width="240" src="light-change.gif">
+</p>
+<ul>
+<li><span class="colour-v">Characteristics in purple</span>
+</li>
+<li><span class="colour-r">Dense/slow regions in red</span>
+</li>
+<li><span class="colour-b">Sparse/fast regions in blue</span>
+</li>
+<li>Trajectories in yellow
+</li>
+</ul>
+<h2 id="characteristics"><a class="permalink" href="#characteristics" aria-label="Permalink"></a>Characteristics</h2>
+<h3 id="dense-region"><a class="permalink" href="#dense-region" aria-label="Permalink"></a>Dense region</h3>
+<p>
+First consider <span class="js-maths">t = 0</span>, <span class="js-maths">x &lt; 0</span>,
+i.e.&nbsp;the left half of the <span class="js-maths">x</span>-axis,
+where the cars are waiting at full density.
+Here we have
+</p>
+<div class="js-maths">\begin{aligned}
+  N &amp;= \Nmax \\
+  V &amp;= 0 \\
+  \frac{\td F}{\td N} &amp;= -\Vmax.
+\end{aligned}
+</div>
+<p>
+Thus the characteristics are straight lines with slope <span class="js-maths">-\Vmax</span>,
+and so the left half of the <span class="js-maths">x</span>-axis extends into a
+<span class="colour-r">triangular region with full density <span class="js-maths">N = \Nmax</span></span>.
+</p>
+<h3 id="empty-region"><a class="permalink" href="#empty-region" aria-label="Permalink"></a>Empty region</h3>
+<p>
+Next consider <span class="js-maths">t = 0</span>, <span class="js-maths">x &gt; 0</span>,
+i.e.&nbsp;the right half of the <span class="js-maths">x</span>-axis,
+which is initially empty.
+Here we have
+</p>
+<div class="js-maths">\begin{aligned}
+  N &amp;= 0 \\
+  V &amp;= \Vmax \\
+  \frac{\td F}{\td N} &amp;= +\Vmax.
+\end{aligned}
+</div>
+<p>
+Thus the characteristics are straight lines with slope <span class="js-maths">+\Vmax</span>,
+and so the right half of the <span class="js-maths">x</span>-axis extends into a
+<span class="colour-b">triangular region with zero density</span>.
+</p>
+<div class="end">
+END
+</div>
+<p>
+<a href="/">Return to the home page.</a>
+</p>
+<footer>
+Last modified: 2020-10-16<br>
+Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
+Mistakes/queries:
+<a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.
+</footer>
+</body>
+</html>
