@@ -66,7 +66,7 @@ carMaxDensityDisplacement = carLength + carMaxDensityBuffer;
 (*Lane*)
 
 
-(* Road half-length *)
+(* Lane half-length *)
 laneHalfLength = 12 carLength;
 laneHalfWidth = 1 carWidth;
 
@@ -380,7 +380,7 @@ Module[
             @ Max[time, 0]
           , {x, xTrajectoryList}
         ],
-        (* Cars along road *)
+        (* Cars along lane *)
         Table[
           car[x[#], laneVerticalOffset, densityFunction[x[#], #]] &
             @ Max[time, 0]
