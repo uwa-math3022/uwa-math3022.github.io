@@ -106,6 +106,7 @@ densityColour[Indeterminate] = White;
 densityColour[density_] := ColorData["LightTemperatureMap"][density];
 characteristicStyle = RGBColor["darkviolet"];
 trajectoryStyle = Yellow;
+shockwaveStyle = Directive[Dashed, White];
 timeSliceStyle = Red;
 carBorderStyle = EdgeForm[Black];
 trafficLightMountStyle = Black;
@@ -421,7 +422,15 @@ Module[
     nBefore, nAfter,
     vBefore, vAfter,
     fBefore, fAfter,
-    vShockwave,
+    cBefore, cAfter,
+    vShockwave, xShockwave,
+    xCharacteristicBefore, xCharacteristicAfter,
+    tShockBefore, tShockAfter,
+    densityFunction,
+    numberOfCars,
+    x0BeforeList, x0AfterList,
+    density, shockwaveInterface, characteristics,
+    frameList,
     dummyForTrailingCommas
   },
   (* Densities *)
@@ -433,6 +442,83 @@ Module[
   (* Fluxes *)
   fBefore = carriedFlux[nBefore];
   fAfter = carriedFlux[nAfter];
+  (* Signal speeds *)
+  cBefore = signalSpeed[nBefore];
+  cAfter = signalSpeed[nAfter];
   (* Shockwave speed *)
   vShockwave = (fBefore - fAfter) / (nBefore - nAfter);
+  (* Shockwave interface *)
+  xShockwave[t_] := vShockwave * t;
+  (* Characteristic curves *)
+  xCharacteristicBefore[x0_][t_] := x0 + cBefore * t;
+  xCharacteristicAfter[x0_][t_] := x0 + cAfter * t;
+  (* Shock time (when characteristics meet the interface) *)
+  tShockBefore[x0_] := x0 / (vShockwave - cBefore);
+  tShockAfter[x0_] := x0 / (vShockwave - cAfter);
+  (* Density function *)
+  densityFunction[x_, t_] :=
+    Piecewise @ {
+      {nBefore, x < xShockwave[t]},
+      {nAfter, True}
+    };
+  (* Initial positions for characteristics and trajectories *)
+  numberOfCars = laneHalfLength / carLength // Floor;
+  x0BeforeList = Table[-n * carMaxDensityDisplacement / nBefore, {n, numberOfCars}];
+  x0AfterList = Table[n * carMaxDensityDisplacement / nAfter, {n, 0, numberOfCars}];
+  (* Static graphics *)
+  density =
+    DensityPlot[
+      densityFunction[x, t]
+      , {x, -xMax, xMax}
+      , {t, 0, tMax}
+      , ColorFunction -> densityColour
+      , Exclusions -> None
+    ];
+  shockwaveInterface =
+    ParametricPlot[
+      {xShockwave[t], t}
+      , {t, 0, tMax}
+      , PlotStyle -> shockwaveStyle
+    ];
+  characteristics = {
+    Table[
+      ParametricPlot[
+        {xCharacteristicBefore[x0][t], t}
+        , {t, 0, tShockBefore[x0]}
+        , PlotStyle -> characteristicStyle
+        , RegionFunction -> spacetimeRegionFunction
+      ]
+      , {x0, x0BeforeList}
+    ],
+    Table[
+      ParametricPlot[
+        {xCharacteristicAfter[x0][t], t}
+        , {t, 0, tShockAfter[x0]}
+        , PlotStyle -> characteristicStyle
+        , RegionFunction -> spacetimeRegionFunction
+      ]
+      , {x0, x0AfterList // Rest}
+    ],
+    {}
+  };
+  (* Build list of frames *)
+  frameList =
+    Table[
+      Show[
+        (* Static *)
+        lane,
+        density,
+        shockwaveInterface,
+        characteristics,
+        spacetimeAxes,
+        (* Current slice of time *)
+        (* Cars along trajectories *)
+        (* Cars along lane *)
+        (* Traffic light *)
+        {}
+        , mainOptions
+      ]
+      , {time, {0}}
+    ];
+  frameList
 ]
