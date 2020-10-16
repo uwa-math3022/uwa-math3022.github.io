@@ -105,7 +105,8 @@ $$
 ----
 Thus the [charac/ characteristics /] are straight lines with slope $+\Vmax$,
 and so the right half of the $x$-axis extends into a
-[sparse/ lower-right triangular region~◢ with zero density /]:
+[sparse/ lower-right triangular region~◢/]
+with zero density and full speed:
 ----
 $${.important}
   N (x, t) =
@@ -198,6 +199,10 @@ The main results are:
 
 
 \END
+
+----
+[Return to traffic model summary](/traffic/)
+----
 
 ----
 \home

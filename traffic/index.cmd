@@ -271,7 +271,7 @@ while "slow" trajectories are near-vertical.
 ----
 
 ----
-See:
+See also:
 ----
 ====
 * [Light change example](light-change)
