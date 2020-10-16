@@ -196,7 +196,7 @@ lane = Graphics @ {
 signal[x_, t_] := Graphics @ {
   signalStyle,
   Line @ {
-    {x, t},
+    {x, t + carWidth / 2},
     {x, laneVerticalOffset - laneHalfWidth}
   }
 };
