@@ -572,6 +572,9 @@ Module[
             @ Max[time, 0]
           , {x, xTrajectoryList}
         ],
+        (* Shockwave *)
+        signal[xShockwave[#] - xPlottingOffset, #]&
+          @ Max[time, 0],
         {}
         , mainOptions
       ]
