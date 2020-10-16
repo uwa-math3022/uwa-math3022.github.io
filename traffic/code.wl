@@ -429,8 +429,9 @@ Module[
     densityFunction,
     numberOfCars,
     x0BeforeList, x0AfterList,
+    xTrajectory, xTrajectoryList,
     xPlottingOffset,
-    density, shockwaveInterface, characteristics,
+    density, shockwaveInterface, trajectories, characteristics,
     frameList,
     dummyForTrailingCommas
   },
@@ -466,6 +467,17 @@ Module[
   numberOfCars = laneHalfLength / carLength // Floor;
   x0BeforeList = Table[-n * carMaxDensityDisplacement / nBefore, {n, numberOfCars}];
   x0AfterList = Table[n * carMaxDensityDisplacement / nAfter, {n, 0, numberOfCars}];
+  (* Trajectories *)
+  xTrajectory[x0_] :=
+    NDSolveValue[
+      {
+        \[FormalX]'[t] == preferredSpeed @ densityFunction[\[FormalX][t], t],
+        \[FormalX][0] == x0
+      }
+      , \[FormalX]
+      , {t, 0, tMax}
+    ];
+  xTrajectoryList = Table[xTrajectory[x0], {x0, Join[x0BeforeList, x0AfterList]}];
   (* Offset so that shockwave interface is centred *)
   xPlottingOffset = vShockwave * tMax / 2;
   (* Static graphics *)
@@ -482,6 +494,13 @@ Module[
       {xShockwave[t] - xPlottingOffset, t}
       , {t, 0, tMax}
       , PlotStyle -> shockwaveStyle
+    ];
+  trajectories =
+    ParametricPlot[
+      Table[{x[t] - xPlottingOffset, t}, {x, xTrajectoryList}]
+      , {t, 0, tMax}
+      , PlotStyle -> trajectoryStyle
+      , RegionFunction -> spacetimeRegionFunction
     ];
   characteristics = {
     Table[
@@ -512,6 +531,7 @@ Module[
         lane,
         density,
         shockwaveInterface,
+        trajectories,
         characteristics,
         spacetimeAxes,
         (* Current slice of time *)
