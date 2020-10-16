@@ -94,9 +94,17 @@ trafficLightHalfHeight = trafficLightPadding + trafficLightAspectRadius + traffi
 
 
 symbol[char_] := Style[char, Italic];
+symbolDifferential[char_] := Row @ {"d", symbol[char]};
+symbolSubscript[char_, sub_] := Subscript[symbol[char], sub];
+rowDivide[num_, den_] := Row[{num, den}, "/"];
 
 
 applyTextStyle[text_] := Style[text, 14];
+
+
+theoryImageSize = 180;
+theoryLabelStyle = Directive[Black, 14];
+theoryCurveStyle = Thickness[0.025];
 
 
 laneStyle = GrayLevel[2/3];
@@ -104,12 +112,18 @@ laneStyle = GrayLevel[2/3];
 
 densityColour[Indeterminate] = White;
 densityColour[density_] := ColorData["LightTemperatureMap"][density];
+
+
 characteristicStyle = RGBColor["darkviolet"];
 trajectoryStyle = Yellow;
 shockwaveStyle = Red;
 timeSliceStyle = Red;
 signalStyle = Green;
+
+
 carBorderStyle = EdgeForm[Black];
+
+
 trafficLightMountStyle = Black;
 trafficLightAspectBorderStyle = Directive[Thick, White];
 
@@ -268,6 +282,91 @@ spacetimeAxes = Graphics @ {
   ],
   {}
 };
+
+
+(* ::Section:: *)
+(*Traffic curves*)
+
+
+(* ::Subsection:: *)
+(*Preferred speed*)
+
+
+ParametricPlot[
+  {density, preferredSpeed[density]}
+  , {density, 0, 1}
+  , AspectRatio -> 1
+  , AxesLabel -> {
+      rowDivide[symbol["N"], symbolSubscript["N", "max"]],
+      Automatic
+    }
+  , ColorFunction -> densityColour
+  , ColorFunctionScaling -> False
+  , ImageSize -> theoryImageSize
+  , LabelStyle -> theoryLabelStyle
+  , PlotLabel -> rowDivide[symbol["V"], symbolSubscript["V", "max"]]
+  , PlotStyle -> theoryCurveStyle
+  , Ticks -> {{1}, {1}}
+] // Export[
+  FileNameJoin @ {NotebookDirectory[], "preferred-speed.png"},
+  #
+] &
+
+
+(* ::Subsection:: *)
+(*Carried flux*)
+
+
+ParametricPlot[
+  {density, carriedFlux[density]}
+  , {density, 0, 1}
+  , AspectRatio -> 1 / Sqrt[2]
+  , AxesLabel -> {
+      rowDivide[symbol["N"], symbolSubscript["N", "max"]],
+      Automatic
+    }
+  , ColorFunction -> densityColour
+  , ColorFunctionScaling -> False
+  , ImageSize -> theoryImageSize
+  , LabelStyle -> theoryLabelStyle
+  , PlotLabel -> rowDivide[
+      symbol["F"],
+      Row @ {symbolSubscript["N", "max"], symbolSubscript["V", "max"]} // ""
+    ]
+  , PlotStyle -> theoryCurveStyle
+  , Ticks -> {{1}, {1/4}}
+] // Export[
+  FileNameJoin @ {NotebookDirectory[], "carried-flux.png"},
+  #
+] &
+
+
+(* ::Subsection:: *)
+(*Signal speed*)
+
+
+ParametricPlot[
+  {density, signalSpeed[density]}
+  , {density, 0, 1}
+  , AspectRatio -> 1
+  , AxesLabel -> {
+      rowDivide[symbol["N"], symbolSubscript["N", "max"]],
+      Automatic
+    }
+  , ColorFunction -> densityColour
+  , ColorFunctionScaling -> False
+  , ImageSize -> theoryImageSize
+  , LabelStyle -> theoryLabelStyle
+  , PlotLabel -> rowDivide[
+      symbolDifferential["F"] / symbolDifferential["N"],
+      symbolSubscript["V", "max"]
+    ]
+  , PlotStyle -> theoryCurveStyle
+  , Ticks -> {{1}, {-1, 1}}
+] // Export[
+  FileNameJoin @ {NotebookDirectory[], "signal-speed.png"},
+  #
+] &
 
 
 (* ::Section:: *)
