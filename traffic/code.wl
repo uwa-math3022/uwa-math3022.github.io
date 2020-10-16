@@ -535,8 +535,8 @@ Module[
         lane,
         density,
         shockwaveInterface,
-        trajectories,
         characteristics,
+        trajectories,
         spacetimeAxes,
         (* Current slice of time *)
         timeSlice[time],
