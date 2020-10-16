@@ -557,5 +557,10 @@ Module[
       ]
       , {time, timeStart, timeEnd, timeStep}
     ];
-  frameList
+  Export[
+    FileNameJoin @ {NotebookDirectory[], "pile-up.gif"},
+    frameList
+    , "AnimationRepetitions" -> Infinity
+    , "DisplayDurations" -> 1 / framesPerSecond
+  ]
 ]
