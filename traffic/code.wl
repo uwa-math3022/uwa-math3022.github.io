@@ -296,17 +296,16 @@ ParametricPlot[
   {density, preferredSpeed[density]}
   , {density, 0, 1}
   , AspectRatio -> 1
-  , AxesLabel -> {
-      rowDivide[symbol["N"], symbolSubscript["N", "max"]],
-      Automatic
-    }
+  , AxesLabel -> symbol /@ {"N", "V"}
   , ColorFunction -> densityColour
   , ColorFunctionScaling -> False
   , ImageSize -> theoryImageSize
   , LabelStyle -> theoryLabelStyle
-  , PlotLabel -> rowDivide[symbol["V"], symbolSubscript["V", "max"]]
   , PlotStyle -> theoryCurveStyle
-  , Ticks -> {{1}, {1}}
+  , Ticks -> {
+      {{1, symbolSubscript["N", "max"]}},
+      {{1, symbolSubscript["V", "max"]}}
+    }
 ] // Export[
   FileNameJoin @ {NotebookDirectory[], "preferred-speed.png"},
   #
@@ -321,20 +320,16 @@ ParametricPlot[
   {density, carriedFlux[density]}
   , {density, 0, 1}
   , AspectRatio -> 1 / Sqrt[2]
-  , AxesLabel -> {
-      rowDivide[symbol["N"], symbolSubscript["N", "max"]],
-      Automatic
-    }
+  , AxesLabel -> symbol /@ {"N", "F"}
   , ColorFunction -> densityColour
   , ColorFunctionScaling -> False
   , ImageSize -> theoryImageSize
   , LabelStyle -> theoryLabelStyle
-  , PlotLabel -> rowDivide[
-      symbol["F"],
-      Row @ {symbolSubscript["N", "max"], symbolSubscript["V", "max"]} // ""
-    ]
   , PlotStyle -> theoryCurveStyle
-  , Ticks -> {{1}, {1/4}}
+  , Ticks -> {
+      {{1, symbolSubscript["N", "max"]}},
+      {{1/4, symbolSubscript["F", "max"]}}
+    }
 ] // Export[
   FileNameJoin @ {NotebookDirectory[], "carried-flux.png"},
   #
@@ -349,20 +344,16 @@ ParametricPlot[
   {density, signalSpeed[density]}
   , {density, 0, 1}
   , AspectRatio -> 1
-  , AxesLabel -> {
-      rowDivide[symbol["N"], symbolSubscript["N", "max"]],
-      Automatic
-    }
+  , AxesLabel -> {symbol["N"], symbolDifferential["F"] / symbolDifferential["N"]}
   , ColorFunction -> densityColour
   , ColorFunctionScaling -> False
   , ImageSize -> theoryImageSize
   , LabelStyle -> theoryLabelStyle
-  , PlotLabel -> rowDivide[
-      symbolDifferential["F"] / symbolDifferential["N"],
-      symbolSubscript["V", "max"]
-    ]
   , PlotStyle -> theoryCurveStyle
-  , Ticks -> {{1}, {-1, 1}}
+  , Ticks -> {
+      {{1/2, symbolSubscript["N", "max"] / 2}, {1, symbolSubscript["N", "max"]}},
+      {{-1, -symbolSubscript["V", "max"]}, {1, symbolSubscript["V", "max"]}}
+    }
 ] // Export[
   FileNameJoin @ {NotebookDirectory[], "signal-speed.png"},
   #
