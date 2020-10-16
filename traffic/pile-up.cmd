@@ -1,7 +1,7 @@
 {+ resources/syntax.cmd +}
 
 %%
-  %title  Traffic pile up
+  %title  Traffic: pile up
   %date-modified  2020-10-17
   \resources:maths
 %%

@@ -1,7 +1,7 @@
 {+ resources/syntax.cmd +}
 
 %%
-  %title  Traffic light change
+  %title  Traffic: light change
   %date-modified  2020-10-17
   \resources:maths
 %%

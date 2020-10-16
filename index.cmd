@@ -40,6 +40,14 @@ For details see the [`mathematica-intro` repository][m intro].
 * [Fundamental plane-source similarity solution](/similarity/)
 ====
 
+##{#traffic} Traffic dynamics ##
+
+====
+* [Single-lane traffic model](/traffic/)
+* Example: [light change](/traffic/light-change)
+* Example: [pile up](/traffic/pile-up)
+====
+
 @[intro.nb]
   https://github.com/uwa-math3022/mathematica-intro/\
     releases/download/v0.1.2/intro.nb @
