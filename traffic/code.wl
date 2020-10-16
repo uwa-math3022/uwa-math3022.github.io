@@ -257,7 +257,7 @@ spacetimeAxes = Graphics @ {
 
 
 (* ::Section:: *)
-(*Case 1: Traffic light*)
+(*Case 1: Light change*)
 
 
 (*
@@ -398,7 +398,7 @@ Module[
       , {time, timeStart, timeEnd, timeStep}
     ];
   Export[
-    FileNameJoin @ {NotebookDirectory[], "traffic-light.gif"},
+    FileNameJoin @ {NotebookDirectory[], "light-change.gif"},
     frameList
     , "AnimationRepetitions" -> Infinity
     , "DisplayDurations" -> 1 / framesPerSecond
