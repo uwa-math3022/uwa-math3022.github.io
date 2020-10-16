@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/main.min.css">
+<script defer src="/resources/maths.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
+<title>Traffic: pile up | UWA MATH3022</title>
+</head>
+<body>
+<h1>Traffic: pile up</h1>
+<noscript>Enable JavaScript for equation rendering to work.</noscript>
+<p>
+Source code for images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/traffic/code.wl">code.wl</a><br>
+<a href="/traffic/">Return to traffic model summary</a>
+</p>
+<h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
+<span class="js-maths">\gdef \Vmax {V_\mathrm{max}}
+  \gdef \Nmax {N_\mathrm{max}}
+  \gdef \Fmax {F_\mathrm{max}}
+  \gdef \Vsh  {V_\mathrm{shock}}
+  \gdef \Vb   {V_\mathrm{before}}
+  \gdef \Va   {V_\mathrm{after}}
+  \gdef \Nb   {N_\mathrm{before}}
+  \gdef \Na   {N_\mathrm{after}}
+  \gdef \Fb   {F_\mathrm{before}}
+  \gdef \Fa   {F_\mathrm{after}}</span>
+<p>
+Cars travelling at 60% maximum density (40% of the speed limit)
+are faced with a denser &amp; slower region ahead,
+at 80% maximum density (20% of the speed limit).
+In symbols,
+</p>
+<div class="js-maths">\eval{N}_{t = 0} =
+  \begin{cases}
+    0.6 \Nmax, &amp; x &lt; 0 \\
+    0.8 \Nmax, &amp; x &gt; 0
+  \end{cases}.
+</div>
+<p>
+What happens?
+</p>
+<h2 id="animation"><a class="permalink" href="#animation" aria-label="Permalink"></a>Animation</h2>
+<p>
+<img alt="Animation for pile up" width="240" src="pile-up.gif">
+</p>
+<ul>
+<li><span class="colour-v">Characteristics in purple</span>
+</li>
+<li><span class="colour-r">Shockwave in red</span>
+</li>
+<li>Trajectories in yellow
+</li>
+</ul>
+<h2 id="characteristics"><a class="permalink" href="#characteristics" aria-label="Permalink"></a>Characteristics</h2>
+<p>
+We have the following:
+</p>
+<table>
+<thead>
+<tr>
+<th>Qty</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="js-maths">N</span></td>
+<td><span class="js-maths">0.6 \Nmax</span></td>
+<td><span class="js-maths">0.8 \Nmax</span></td>
+</tr>
+<tr>
+<td><span class="js-maths">V</span></td>
+<td><span class="js-maths">0.4 \Vmax</span></td>
+<td><span class="js-maths">0.2 \Vmax</span></td>
+</tr>
+<tr>
+<td><span class="js-maths">F</span></td>
+<td><span class="js-maths">0.24 \Nmax\Vmax</span></td>
+<td><span class="js-maths">0.16 \Nmax\Vmax</span></td>
+</tr>
+<tr>
+<td><span class="js-maths">\frac{\td F}{\td N}</span></td>
+<td><span class="js-maths">-0.2 \Vmax</span></td>
+<td><span class="js-maths">-0.6 \Vmax</span></td>
+</tr>
+</tbody>
+</table>
+<p>
+Thus we have characteristics…
+</p>
+<ul>
+<li>… with slope <span class="js-maths">-0.2 \Vmax</span> from the left half of the <span class="js-maths">x</span>-axis
+(the 'before' portion)
+</li>
+<li>… with slope <span class="js-maths">-0.6 \Vmax</span> from the right half of the <span class="js-maths">x</span>-axis
+(the 'after' portion).
+</li>
+</ul>
+<p>
+We have a problem:
+the 'after' characteristics (slow &amp; dense) have a higher signal speed
+than the 'before' characteristics (fast &amp; sparse),
+so eventually they will collide.
+What happens?
+</p>
+<h2 id="shockwave"><a class="permalink" href="#shockwave" aria-label="Permalink"></a>Shockwave</h2>
+<span class="js-maths">\gdef \shock #1 {\colr{#1}}</span>
+<p>
+Unlike the <a href="light-change">traffic light example</a>
+where we had a transition fan (moving from slow &amp; dense to fast &amp; sparse),
+here we have a <b>shockwave</b> at the interface
+where fast &amp; sparse abruptly becomes slow &amp; dense.
+</p>
+<p>
+Suppose the <span class="colour-r">shockwave interface</span> travels at velocity <span class="js-maths">\Vsh</span>.
+The relative velocity of cars is <span class="js-maths">\Vb - \Vsh</span> on the 'before' side
+and <span class="js-maths">\Va - \Vsh</span> on the 'after' side.
+Since flux (density times velocity) must be conserved,
+we have
+</p>
+<div class="js-maths">\Nb (\Vb - \Vsh) = \Na (\Va - \Vsh)
+</div>
+<p>
+and therefore the <span class="colour-r">shockwave speed</span> is
+</p>
+<div class="js-maths important">\begin{aligned}
+  \shock{\Vsh}
+  &amp;= \frac{\Na \Va - \Nb \Vb}{\Na - \Nb} \\[\tallspace]
+  &amp;= \frac{\Fa - \Fb}{\Na - \Nb}
+\end{aligned}
+</div>
+<p>
+Note that this is the slope of the secant line
+through the points <span class="js-maths">(\Nb, \Fb)</span> and <span class="js-maths">(\Na, \Fa)</span>
+on the <a href="/traffic/#flux">flux–density parabola</a>.
+</p>
+<p>
+For the current problem we get <span class="js-maths">\shock{\Vsh = -0.4 \Vmax}</span>,
+and so the shockwave interface is the line <span class="js-maths">x = \shock{-0.4 \Vmax} t</span>.
+This separates the 'before' region (fast &amp; sparse)
+and the 'after' region (slow &amp; dense).
+</p>
+<h2 id="result"><a class="permalink" href="#result" aria-label="Permalink"></a>Result</h2>
+<div class="js-maths important">N (x, t) =
+  \begin{cases}
+    0.6 \Nmax, &amp; x &lt; -0.4 \Vmax t \\
+    0.8 \Nmax, &amp; x &gt; -0.4 \Vmax t
+  \end{cases}
+</div>
+<h2 id="remarks"><a class="permalink" href="#remarks" aria-label="Permalink"></a>Remarks</h2>
+<p>
+<img alt="Animation for pile up (again)" width="240" src="pile-up.gif">
+</p>
+<ul>
+<li><span class="colour-v">Characteristics in purple</span>
+</li>
+<li><span class="colour-r">Shockwave in red</span>
+</li>
+<li>Trajectories in yellow
+</li>
+</ul>
+<p>
+In real life we obviously don't brake instantly,
+but abrupt reductions in speed <em>do</em> propagate backward in a shockwave,
+e.g.&nbsp;when an idiot doesn't get up to speed before doing a merge.
+</p>
+<div class="end">
+END
+</div>
+<p>
+<a href="/traffic/">Return to traffic model summary</a>
+</p>
+<p>
+<a href="/">Return to the home page.</a>
+</p>
+<footer>
+Last modified: 2020-10-17<br>
+Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
+Mistakes/queries:
+<a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.
+</footer>
+</body>
+</html>
