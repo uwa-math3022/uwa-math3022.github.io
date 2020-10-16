@@ -52,7 +52,7 @@ What happens?
 <p>
 First consider <span class="js-maths">t = 0</span>, <span class="js-maths">x &lt; 0</span>,
 i.e.&nbsp;the left half of the <span class="js-maths">x</span>-axis,
-where the cars are initially waiting at <span class="colour-r">full density, <span class="js-maths">N = \Nmax</span></span>.
+where the cars are initially waiting at <span class="colour-r">full density</span>.
 Here we have
 </p>
 <div class="js-maths">\begin{aligned}
@@ -64,13 +64,14 @@ Here we have
 <p>
 Thus the <span class="colour-v">characteristics</span> are straight lines with slope <span class="js-maths">-\Vmax</span>,
 and so the left half of the <span class="js-maths">x</span>-axis extends into a
-<span class="colour-r">lower-left triangular region&nbsp;◣ with full density <span class="js-maths">N = \Nmax</span></span>.
+<span class="colour-r">lower-left triangular region&nbsp;◣</span>
+with full density and zero speed.
 </p>
 <h3 id="empty-region"><a class="permalink" href="#empty-region" aria-label="Permalink"></a>Empty region</h3>
 <p>
 Next consider <span class="js-maths">t = 0</span>, <span class="js-maths">x &gt; 0</span>,
 i.e.&nbsp;the right half of the <span class="js-maths">x</span>-axis,
-which is initially <span class="colour-b">empty, <span class="js-maths">N = 0</span></span>.
+which is initially <span class="colour-b">empty</span>.
 Here we have
 </p>
 <div class="js-maths">\begin{aligned}
@@ -83,6 +84,38 @@ Here we have
 Thus the <span class="colour-v">characteristics</span> are straight lines with slope <span class="js-maths">+\Vmax</span>,
 and so the right half of the <span class="js-maths">x</span>-axis extends into a
 <span class="colour-b">lower-right triangular region&nbsp;◢ with zero density</span>.
+</p>
+<h3 id="transition-fan"><a class="permalink" href="#transition-fan" aria-label="Permalink"></a>Transition fan</h3>
+<span class="js-maths">\gdef \charac #1 {\colv{#1}}
+  \gdef \xc {x_\mathrm{c}}</span>
+<p>
+What about the remaining triangular region&nbsp;▼ in the middle?
+</p>
+<p>
+Well, we haven't yet looked at the origin <span class="js-maths">t = 0</span>, <span class="js-maths">x = 0</span>.
+There we have an instantaneous jump from <span class="colour-r">maximum density</span>
+to <span class="colour-b">zero density</span>, so we have
+</p>
+<div class="js-maths">\begin{alignedat}{1}
+  \Nmax &amp;\ge N \ge 0 \\
+  0 &amp;\le V \le \Vmax \\
+  -\Vmax &amp;\le \frac{\td F}{\td N} \le +\Vmax.
+\end{alignedat}
+</div>
+<p>
+Thus we get a fan of <span class="colour-v">characteristics</span> emanating from the origin,
+with slopes running from <span class="js-maths">-\Vmax</span> up to <span class="js-maths">+\Vmax</span>.
+In particular, the characteristic for a given density <span class="js-maths">N</span> is given by
+</p>
+<div class="js-maths">\charac{\xc (t) = \Vmax \roundbr{1 - \frac{2 N}{\Nmax}} t}.
+</div>
+<p>
+Therefore we have
+</p>
+<div class="js-maths">N (x, t) = \frac{\Nmax}{2} \roundbr{1 - \frac{x}{\Vmax t}}
+</div>
+<p>
+in the central triangular region&nbsp;▼.
 </p>
 <div class="end">
 END

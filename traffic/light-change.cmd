@@ -64,7 +64,7 @@ What happens?
 ----
 First consider $t = 0$, $x < 0$,
 i.e.~the left half of the $x$-axis,
-where the cars are initially waiting at [dense/ full density, $N = \Nmax$ /].
+where the cars are initially waiting at [dense/ full density /].
 Here we have
 ----
 $$
@@ -77,7 +77,8 @@ $$
 ----
 Thus the [charac/ characteristics /] are straight lines with slope $-\Vmax$,
 and so the left half of the $x$-axis extends into a
-[dense/ lower-left triangular region~◣ with full density $N = \Nmax$ /].
+[dense/ lower-left triangular region~◣/]
+with full density and zero speed.
 ----
 
 ###{#empty-region} Empty region ###
@@ -85,7 +86,7 @@ and so the left half of the $x$-axis extends into a
 ----
 Next consider $t = 0$, $x > 0$,
 i.e.~the right half of the $x$-axis,
-which is initially [sparse/ empty, $N = 0$ /].
+which is initially [sparse/ empty /].
 Here we have
 ----
 $$
@@ -99,6 +100,45 @@ $$
 Thus the [charac/ characteristics /] are straight lines with slope $+\Vmax$,
 and so the right half of the $x$-axis extends into a
 [sparse/ lower-right triangular region~◢ with zero density /].
+----
+
+###{#transition-fan} Transition fan ###
+$
+  \gdef \charac #1 {\colv{#1}}
+  \gdef \xc {x_\mathrm{c}}
+$
+
+----
+What about the remaining triangular region~▼ in the middle?
+----
+----
+Well, we haven't yet looked at the origin $t = 0$, $x = 0$.
+There we have an instantaneous jump from [dense/ maximum density /]
+to [sparse/ zero density /], so we have
+----
+$$
+\begin{alignedat}{1}
+  \Nmax &\ge N \ge 0 \\
+  0 &\le V \le \Vmax \\
+  -\Vmax &\le \frac{\td F}{\td N} \le +\Vmax.
+\end{alignedat}
+$$
+----
+Thus we get a fan of [charac/ characteristics /] emanating from the origin,
+with slopes running from $-\Vmax$ up to $+\Vmax$.
+In particular, the characteristic for a given density $N$ is given by
+----
+$$
+  \charac{\xc (t) = \Vmax \roundbr{1 - \frac{2 N}{\Nmax}} t}.
+$$
+----
+Therefore we have
+----
+$$
+  N (x, t) = \frac{\Nmax}{2} \roundbr{1 - \frac{x}{\Vmax t}}
+$$
+----
+in the central triangular region~▼.
 ----
 
 
