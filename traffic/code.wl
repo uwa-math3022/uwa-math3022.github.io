@@ -108,6 +108,7 @@ characteristicStyle = RGBColor["darkviolet"];
 trajectoryStyle = Yellow;
 shockwaveStyle = Red;
 timeSliceStyle = Red;
+signalStyle = Green;
 carBorderStyle = EdgeForm[Black];
 trafficLightMountStyle = Black;
 trafficLightAspectBorderStyle = Directive[Thick, White];
@@ -185,6 +186,19 @@ lane = Graphics @ {
     {-laneHalfLength, -laneHalfWidth},
     {laneHalfLength, laneHalfWidth}
   ] // applyLaneVerticalOffset
+};
+
+
+(* ::Subsection:: *)
+(*Signal line*)
+
+
+signal[x_, t_] := Graphics @ {
+  signalStyle,
+  Line @ {
+    {x, t},
+    {x, laneVerticalOffset - laneHalfWidth}
+  }
 };
 
 
@@ -389,6 +403,9 @@ Module[
             @ Max[time, 0]
           , {x, xTrajectoryList}
         ],
+        (* Signal to go *)
+        signal[xCharacteristicBefore[0][#], #] &
+          @ Max[time, 0],
         (* Traffic light *)
         trafficLight @ Piecewise @ {
           {"red", time < 0},
