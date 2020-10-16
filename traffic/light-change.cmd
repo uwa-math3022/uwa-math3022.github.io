@@ -64,7 +64,7 @@ What happens?
 ----
 First consider $t = 0$, $x < 0$,
 i.e.~the left half of the $x$-axis,
-where the cars are waiting at full density.
+where the cars are initially waiting at [dense/ full density, $N = \Nmax$ /].
 Here we have
 ----
 $$
@@ -75,9 +75,9 @@ $$
 \end{aligned}
 $$
 ----
-Thus the characteristics are straight lines with slope $-\Vmax$,
+Thus the [charac/ characteristics /] are straight lines with slope $-\Vmax$,
 and so the left half of the $x$-axis extends into a
-[dense/ triangular region with full density $N = \Nmax$ /].
+[dense/ lower-left triangular region~◣ with full density $N = \Nmax$ /].
 ----
 
 ###{#empty-region} Empty region ###
@@ -85,7 +85,7 @@ and so the left half of the $x$-axis extends into a
 ----
 Next consider $t = 0$, $x > 0$,
 i.e.~the right half of the $x$-axis,
-which is initially empty.
+which is initially [sparse/ empty, $N = 0$ /].
 Here we have
 ----
 $$
@@ -96,9 +96,9 @@ $$
 \end{aligned}
 $$
 ----
-Thus the characteristics are straight lines with slope $+\Vmax$,
+Thus the [charac/ characteristics /] are straight lines with slope $+\Vmax$,
 and so the right half of the $x$-axis extends into a
-[sparse/ triangular region with zero density /].
+[sparse/ lower-right triangular region~◢ with zero density /].
 ----
 
 
