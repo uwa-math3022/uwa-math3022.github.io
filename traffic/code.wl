@@ -328,6 +328,7 @@ Module[
       , {x, -xMax, xMax}
       , {t, 0, tMax}
       , ColorFunction -> densityColour
+      , ColorFunctionScaling -> False
       , Exclusions -> None
     ];
   trajectories =
