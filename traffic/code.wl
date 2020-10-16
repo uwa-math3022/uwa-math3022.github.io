@@ -106,7 +106,7 @@ densityColour[Indeterminate] = White;
 densityColour[density_] := ColorData["LightTemperatureMap"][density];
 characteristicStyle = RGBColor["darkviolet"];
 trajectoryStyle = Yellow;
-shockwaveStyle = Directive[Dashed, White];
+shockwaveStyle = Red;
 timeSliceStyle = Red;
 carBorderStyle = EdgeForm[Black];
 trafficLightMountStyle = Black;
@@ -491,6 +491,7 @@ Module[
       , ColorFunction -> densityColour
       , ColorFunctionScaling -> False
       , Exclusions -> None
+      , PlotPoints -> 50
     ];
   shockwaveInterface =
     ParametricPlot[
@@ -535,9 +536,9 @@ Module[
         (* Static *)
         lane,
         density,
-        shockwaveInterface,
         characteristics,
         trajectories,
+        shockwaveInterface,
         spacetimeAxes,
         (* Current slice of time *)
         timeSlice[time],
