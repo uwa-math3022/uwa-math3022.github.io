@@ -429,6 +429,7 @@ Module[
     densityFunction,
     numberOfCars,
     x0BeforeList, x0AfterList,
+    xPlottingOffset,
     density, shockwaveInterface, characteristics,
     frameList,
     dummyForTrailingCommas
@@ -465,10 +466,12 @@ Module[
   numberOfCars = laneHalfLength / carLength // Floor;
   x0BeforeList = Table[-n * carMaxDensityDisplacement / nBefore, {n, numberOfCars}];
   x0AfterList = Table[n * carMaxDensityDisplacement / nAfter, {n, 0, numberOfCars}];
+  (* Offset so that shockwave interface is centred *)
+  xPlottingOffset = vShockwave * tMax / 2;
   (* Static graphics *)
   density =
     DensityPlot[
-      densityFunction[x, t]
+      densityFunction[x + xPlottingOffset, t]
       , {x, -xMax, xMax}
       , {t, 0, tMax}
       , ColorFunction -> densityColour
@@ -476,14 +479,14 @@ Module[
     ];
   shockwaveInterface =
     ParametricPlot[
-      {xShockwave[t], t}
+      {xShockwave[t] - xPlottingOffset, t}
       , {t, 0, tMax}
       , PlotStyle -> shockwaveStyle
     ];
   characteristics = {
     Table[
       ParametricPlot[
-        {xCharacteristicBefore[x0][t], t}
+        {xCharacteristicBefore[x0][t] - xPlottingOffset, t}
         , {t, 0, tShockBefore[x0]}
         , PlotStyle -> characteristicStyle
         , RegionFunction -> spacetimeRegionFunction
@@ -492,7 +495,7 @@ Module[
     ],
     Table[
       ParametricPlot[
-        {xCharacteristicAfter[x0][t], t}
+        {xCharacteristicAfter[x0][t] - xPlottingOffset, t}
         , {t, 0, tShockAfter[x0]}
         , PlotStyle -> characteristicStyle
         , RegionFunction -> spacetimeRegionFunction
