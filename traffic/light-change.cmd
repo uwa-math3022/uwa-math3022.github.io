@@ -2,7 +2,7 @@
 
 %%
   %title  Traffic light change
-  %date-modified  2020-10-16
+  %date-modified  2020-10-17
   \resources:maths
 %%
 
@@ -19,7 +19,7 @@ Source code for images: [code.wl] \+
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
     traffic/code.wl @
 
-##{#initial-conditions} Initial conditions ##
+##{#problem} Problem ##
 $
   \gdef \Vmax {V_\mathrm{max}}
   \gdef \Nmax {N_\mathrm{max}}
@@ -126,7 +126,7 @@ $
 $
 
 ----
-What about the remaining triangular region~▼ in the middle?
+What about the remaining triangular region~▽ in the middle?
 ----
 ----
 Well, we haven't yet looked at the origin $t = 0$, $x = 0$.
@@ -153,7 +153,7 @@ $$
   }.
 $$
 ----
-Therefore for the central triangular region~▼ we have
+Therefore for the central triangular region~▽ we have
 ----
 $${.important}
   N (x, t) =
@@ -213,7 +213,7 @@ The main results are:
   from zero to the speed limit;
   this isn't possible in real life.
   If you're not first-in-line though, the model is pretty fair;
-  in my experience I am usually in second or third gear
+  in my experience I am usually in second gear
   by the time I pass the stop line for a traffic light in a 60kph zone.
   ----
 ====

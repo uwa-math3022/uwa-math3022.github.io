@@ -16,7 +16,7 @@
 Source code for images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/traffic/code.wl">code.wl</a><br>
 <a href="/traffic/">Return to traffic model summary</a>
 </p>
-<h2 id="initial-conditions"><a class="permalink" href="#initial-conditions" aria-label="Permalink"></a>Initial conditions</h2>
+<h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
 <span class="js-maths">\gdef \Vmax {V_\mathrm{max}}
   \gdef \Nmax {N_\mathrm{max}}
   \gdef \Fmax {F_\mathrm{max}}
@@ -105,7 +105,7 @@ We have a problem:
 the 'after' characteristics (slow &amp; dense) have a higher signal speed
 than the 'before' characteristics (fast &amp; sparse),
 so eventually they will collide.
-How does that work?
+What happens?
 </p>
 <h2 id="shockwave"><a class="permalink" href="#shockwave" aria-label="Permalink"></a>Shockwave</h2>
 <span class="js-maths">\gdef \shock #1 {\colr{#1}}</span>
@@ -140,10 +140,9 @@ on the <a href="/traffic/#flux">flux–density parabola</a>.
 </p>
 <p>
 For the current problem we get <span class="js-maths">\shock{\Vsh = -0.4 \Vmax}</span>,
-and so the shockwave interface is the line <span class="js-maths">x = \shock{-0.4 \Vmax} t</span>,
-separating the fast &amp; sparse 'before' region
-and the slow &amp; dense 'after' region.
-Therefore:
+and so the shockwave interface is the line <span class="js-maths">x = \shock{-0.4 \Vmax} t</span>.
+This separates the 'before' region (fast &amp; sparse)
+and the 'after' region (slow &amp; dense).
 </p>
 <h2 id="result"><a class="permalink" href="#result" aria-label="Permalink"></a>Result</h2>
 <div class="js-maths important">N (x, t) =
@@ -179,7 +178,7 @@ END
 <a href="/">Return to the home page.</a>
 </p>
 <footer>
-Last modified: 2020-10-16<br>
+Last modified: 2020-10-17<br>
 Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
 Mistakes/queries:
 <a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.

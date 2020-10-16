@@ -134,7 +134,7 @@ this becomes the <b>traffic equation</b>
 <h3 id="signal-speed"><a class="permalink" href="#signal-speed" aria-label="Permalink"></a>Signal speed</h3>
 <p>
 The quantity <span class="js-maths">\td F / {\td N}</span> has dimensions of speed, and varies linearly
-from <span class="js-maths">\Vmax</span> at zero density to <span class="js-maths">-\Vmax</span> at maximum density:
+from <span class="js-maths">+\Vmax</span> at zero density to <span class="js-maths">-\Vmax</span> at maximum density:
 </p>
 <div class="js-maths important">\frac{\td F}{\td N} = \Vmax \roundbr{1 - \frac{2N}{\Nmax}}
 </div>
@@ -142,8 +142,8 @@ from <span class="js-maths">\Vmax</span> at zero density to <span class="js-math
 <img alt="Signal speed vs density curve" src="signal-speed.png">
 </p>
 <p>
-We find that <span class="js-maths">\td F / {\td N}</span> is the <b>signal speed</b>
-in the analysis below:
+It turns out that <span class="js-maths">\td F / {\td N}</span> is the <b>signal speed</b>
+for the local density:
 </p>
 <h2 id="characteristics"><a class="permalink" href="#characteristics" aria-label="Permalink"></a>Method of characteristics</h2>
 <span class="js-maths">\gdef \charac #1 {\colv{#1}}</span>
@@ -187,7 +187,7 @@ they are curves along which density is constant.
 Given a traffic problem:
 </p>
 <ol>
-<li>Draw out a spacetime diagram with position <span class="js-maths">x</span> on the horizontal axis
+<li>Draw a spacetime diagram with position <span class="js-maths">x</span> on the horizontal axis
 and time <span class="js-maths">t</span> on the vertical axis.
 </li>
 <li>Mark the locations in spacetime
@@ -219,8 +219,8 @@ using the <a href="#speed">speed vs density relationship</a>.
 </li>
 <li>Solve the ODE <span class="js-maths">\td x / {\td t} = V (x, t)</span>.
 We could also proceed graphically;
-simply sketch the trajectories so that their speed matches
-the determined velocity field <span class="js-maths">V (x, t)</span>.
+simply sketch the trajectories so that the slope (which is the speed)
+matches <span class="js-maths">V (x, t)</span>.
 </li>
 </ol>
 <p>
@@ -229,7 +229,7 @@ remember that "fast" trajectories are near-horizontal
 while "slow" trajectories are near-vertical.
 </p>
 <p>
-See also:
+Examples:
 </p>
 <ul>
 <li><a href="light-change">Light change example</a>
@@ -244,7 +244,7 @@ END
 <a href="/">Return to the home page.</a>
 </p>
 <footer>
-Last modified: 2020-10-16<br>
+Last modified: 2020-10-17<br>
 Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
 Mistakes/queries:
 <a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.

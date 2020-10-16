@@ -2,7 +2,7 @@
 
 %%
   %title  Single-lane traffic model
-  %date-modified  2020-10-16
+  %date-modified  2020-10-17
   \resources:maths
 %%
 
@@ -157,7 +157,7 @@ $$
 
 ----
 The quantity $\td F / {\td N}$ has dimensions of speed, and varies linearly
-from $\Vmax$ at zero density to $-\Vmax$ at maximum density:
+from $+\Vmax$ at zero density to $-\Vmax$ at maximum density:
 ----
 $${.important}
   \frac{\td F}{\td N} = \Vmax \roundbr{1 - \frac{2N}{\Nmax}}
@@ -168,8 +168,8 @@ $$
 ----
 
 ----
-We find that $\td F / {\td N}$ is the __signal speed__
-in the analysis below:
+It turns out that $\td F / {\td N}$ is the __signal speed__
+for the local density:
 ----
 
 
@@ -233,7 +233,7 @@ they are curves along which density is constant.
 Given a traffic problem:
 ----
 ++++++++
-1. Draw out a spacetime diagram with position $x$ on the horizontal axis
+1. Draw a spacetime diagram with position $x$ on the horizontal axis
    and time $t$ on the vertical axis.
 2. Mark the locations in spacetime
    where the density $N$ is given by the boundary and initial conditions.
@@ -260,8 +260,8 @@ we would:
    using the [speed vs density relationship](#speed).
 2. Solve the ODE $\td x / {\td t} = V (x, t)$.
    We could also proceed graphically;
-   simply sketch the trajectories so that their speed matches
-   the determined velocity field $V (x, t)$.
+   simply sketch the trajectories so that the slope (which is the speed)
+   matches $V (x, t)$.
 ++++++++
 
 ----
@@ -271,7 +271,7 @@ while "slow" trajectories are near-vertical.
 ----
 
 ----
-See also:
+Examples:
 ----
 ====
 * [Light change example](light-change)

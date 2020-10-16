@@ -2,7 +2,7 @@
 
 %%
   %title  Traffic pile up
-  %date-modified  2020-10-16
+  %date-modified  2020-10-17
   \resources:maths
 %%
 
@@ -19,7 +19,7 @@ Source code for images: [code.wl] \+
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
     traffic/code.wl @
 
-##{#initial-conditions} Initial conditions ##
+##{#problem} Problem ##
 $
   \gdef \Vmax {V_\mathrm{max}}
   \gdef \Nmax {N_\mathrm{max}}
@@ -112,7 +112,7 @@ We have a problem:
 the 'after' characteristics (slow \& dense) have a higher signal speed
 than the 'before' characteristics (fast \& sparse),
 so eventually they will collide.
-How does that work?
+What happens?
 ----
 
 
@@ -154,10 +154,9 @@ on the [flux--density parabola](/traffic/#flux).
 ----
 ----
 For the current problem we get $\shock{\Vsh = -0.4 \Vmax}$,
-and so the shockwave interface is the line $x = \shock{-0.4 \Vmax} t$,
-separating the fast \& sparse 'before' region
-and the slow \& dense 'after' region.
-Therefore:
+and so the shockwave interface is the line $x = \shock{-0.4 \Vmax} t$.
+This separates the 'before' region (fast \& sparse)
+and the 'after' region (slow \& dense).
 ----
 
 ##{#result} Result ##
