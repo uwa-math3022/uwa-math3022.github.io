@@ -12,8 +12,12 @@
 \noscript
 
 ----
+Source code for images: [code.wl] \+
 [Return to traffic model summary](/traffic/)
 ----
+@[code.wl]
+  https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
+    traffic/code.wl @
 
 ##{#initial-conditions} Initial conditions ##
 $
@@ -64,7 +68,7 @@ What happens?
 ----
 First consider $t = 0$, $x < 0$,
 i.e.~the left half of the $x$-axis,
-where the cars are initially waiting at [dense/ full density /].
+where the cars are initially waiting at [dense/ maximum density /].
 Here we have
 ----
 $$
@@ -78,7 +82,7 @@ $$
 Thus the [charac/ characteristics /] are straight lines with slope $-\Vmax$,
 and so the left half of the $x$-axis extends into a
 [dense/ lower-left triangular region~◣/]
-with full density and zero speed:
+with maximum density and zero speed:
 ----
 $${.important}
   N (x, t) =
@@ -157,6 +161,23 @@ $${.important}
       \dfrac{\Nmax}{2} \roundbr{1 - \dfrac{x}{\Vmax t}},
       & -\Vmax t < x < +\Vmax t
     \end{cases}.
+$$
+
+##{#result} Result ##
+
+----
+Altogether:
+----
+$${.important}
+  N (x, t) =
+    \begin{cases}
+      \Nmax, & x < -\Vmax t
+        \\
+      \frac{\Nmax}{2} \roundbr{1 - \frac{x}{\Vmax t}},
+        & -\Vmax t < x < +\Vmax t
+        \\
+      0, & x > +\Vmax t
+    \end{cases}
 $$
 
 

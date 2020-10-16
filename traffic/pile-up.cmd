@@ -12,8 +12,12 @@
 \noscript
 
 ----
+Source code for images: [code.wl] \+
 [Return to traffic model summary](/traffic/)
 ----
+@[code.wl]
+  https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
+    traffic/code.wl @
 
 ##{#initial-conditions} Initial conditions ##
 $
@@ -163,7 +167,7 @@ $${.important}
     \begin{cases}
       0.6 \Nmax, & x < -0.4 \Vmax t \\
       0.8 \Nmax, & x > -0.4 \Vmax t
-    \end{cases}.
+    \end{cases}
 $$
 
 
