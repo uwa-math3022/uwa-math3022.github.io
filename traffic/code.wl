@@ -487,6 +487,7 @@ Module[
       , {x, -xMax, xMax}
       , {t, 0, tMax}
       , ColorFunction -> densityColour
+      , ColorFunctionScaling -> False
       , Exclusions -> None
     ];
   shockwaveInterface =
@@ -535,9 +536,19 @@ Module[
         characteristics,
         spacetimeAxes,
         (* Current slice of time *)
+        timeSlice[time],
         (* Cars along trajectories *)
+        Table[
+          car[x[#] - xPlottingOffset, #, densityFunction[x[#], #]] &
+            @ Max[time, 0]
+          , {x, xTrajectoryList}
+        ],
         (* Cars along lane *)
-        (* Traffic light *)
+        Table[
+          car[x[#] - xPlottingOffset, laneVerticalOffset, densityFunction[x[#], #]] &
+            @ Max[time, 0]
+          , {x, xTrajectoryList}
+        ],
         {}
         , mainOptions
       ]
