@@ -432,6 +432,7 @@ Module[
     xTrajectory, xTrajectoryList,
     xPlottingOffset,
     density, shockwaveInterface, trajectories, characteristics,
+    timeStart, timeEnd,
     frameList,
     dummyForTrailingCommas
   },
@@ -525,6 +526,8 @@ Module[
     {}
   };
   (* Build list of frames *)
+  timeStart = -timePrePaddingProportion * tMax;
+  timeEnd = tMax;
   frameList =
     Table[
       Show[
@@ -552,7 +555,7 @@ Module[
         {}
         , mainOptions
       ]
-      , {time, {0}}
+      , {time, timeStart, timeEnd, timeStep}
     ];
   frameList
 ]
