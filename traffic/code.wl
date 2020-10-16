@@ -539,7 +539,6 @@ Module[
     numberOfCars,
     x0BeforeList, x0AfterList,
     xTrajectory, xTrajectoryList,
-    xPlottingOffset,
     density, shockwaveInterface, trajectories, characteristics,
     timeStart, timeEnd,
     frameList,
@@ -588,12 +587,10 @@ Module[
       , {t, 0, tMax}
     ];
   xTrajectoryList = Table[xTrajectory[x0], {x0, Join[x0BeforeList, x0AfterList]}];
-  (* Offset so that shockwave interface is centred *)
-  xPlottingOffset = vShockwave * tMax / 2;
   (* Static graphics *)
   density =
     DensityPlot[
-      densityFunction[x + xPlottingOffset, t]
+      densityFunction[x, t]
       , {x, -xMax, xMax}
       , {t, 0, tMax}
       , ColorFunction -> densityColour
@@ -603,13 +600,13 @@ Module[
     ];
   shockwaveInterface =
     ParametricPlot[
-      {xShockwave[t] - xPlottingOffset, t}
+      {xShockwave[t], t}
       , {t, 0, tMax}
       , PlotStyle -> shockwaveStyle
     ];
   trajectories =
     ParametricPlot[
-      Table[{x[t] - xPlottingOffset, t}, {x, xTrajectoryList}]
+      Table[{x[t], t}, {x, xTrajectoryList}]
       , {t, 0, tMax}
       , PlotStyle -> trajectoryStyle
       , RegionFunction -> spacetimeRegionFunction
@@ -617,7 +614,7 @@ Module[
   characteristics = {
     Table[
       ParametricPlot[
-        {xCharacteristicBefore[x0][t] - xPlottingOffset, t}
+        {xCharacteristicBefore[x0][t], t}
         , {t, 0, tShockBefore[x0]}
         , PlotStyle -> characteristicStyle
         , RegionFunction -> spacetimeRegionFunction
@@ -626,7 +623,7 @@ Module[
     ],
     Table[
       ParametricPlot[
-        {xCharacteristicAfter[x0][t] - xPlottingOffset, t}
+        {xCharacteristicAfter[x0][t], t}
         , {t, 0, tShockAfter[x0]}
         , PlotStyle -> characteristicStyle
         , RegionFunction -> spacetimeRegionFunction
@@ -652,18 +649,18 @@ Module[
         timeSlice[time],
         (* Cars along trajectories *)
         Table[
-          car[x[#] - xPlottingOffset, #, densityFunction[x[#], #]] &
+          car[x[#], #, densityFunction[x[#], #]] &
             @ Max[time, 0]
           , {x, xTrajectoryList}
         ],
         (* Cars along lane *)
         Table[
-          car[x[#] - xPlottingOffset, laneVerticalOffset, densityFunction[x[#], #]] &
+          car[x[#], laneVerticalOffset, densityFunction[x[#], #]] &
             @ Max[time, 0]
           , {x, xTrajectoryList}
         ],
         (* Shockwave *)
-        signal[xShockwave[#] - xPlottingOffset, #]&
+        signal[xShockwave[#], #]&
           @ Max[time, 0],
         {}
         , mainOptions
