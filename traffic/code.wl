@@ -412,10 +412,10 @@ Module[
 
 (*
   {before}  -->  {after}
-  N == 1/3  -->  N == 7/8
-  V == 2/3  -->  V == 1/8
-  F == 2/9  -->  F == 7/64
-  V{shock} == (F{before} - F{after}) / (N{before} - N{after}) == -5/24
+  N == 3/5  -->  N == 9/10
+  V == 2/5  -->  V == 1/10
+  F == 6/25 -->  F == 9/100
+  V{shock} == (F{before} - F{after}) / (N{before} - N{after}) == -1/2
 *)
 Module[
   {
@@ -434,8 +434,8 @@ Module[
     dummyForTrailingCommas
   },
   (* Densities *)
-  nBefore = 1/3;
-  nAfter = 7/8;
+  nBefore = 3/5;
+  nAfter = 9/10;
   (* Speeds *)
   vBefore = preferredSpeed[nBefore];
   vAfter = preferredSpeed[nAfter];
