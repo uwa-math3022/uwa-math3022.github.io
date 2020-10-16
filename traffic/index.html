@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/main.min.css">
+<script defer src="/resources/maths.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
+<title>Single-lane traffic model | UWA MATH3022</title>
+</head>
+<body>
+<h1>Single-lane traffic model</h1>
+<noscript>Enable JavaScript for equation rendering to work.</noscript>
+<p>
+Source code for images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/traffic/code.wl">code.wl</a><br>
+<a href="/">Return to the home page.</a>
+</p>
+<p>
+This page summarises the simple continuum model for single-lane traffic.
+For some cool animations, see the following:
+</p>
+<ul>
+<li><a href="light-change">Light change example</a>
+</li>
+<li><a href="pile-up">Pile up example</a>
+</li>
+</ul>
+<h2 id="curves"><a class="permalink" href="#curves" aria-label="Permalink"></a>Curves for the simple model</h2>
+<span class="js-maths">\gdef \Vmax {V_\mathrm{max}}
+  \gdef \Nmax {N_\mathrm{max}}
+  \gdef \Fmax {F_\mathrm{max}}</span>
+<h3 id="speed"><a class="permalink" href="#speed" aria-label="Permalink"></a>Speed vs density</h3>
+<p>
+With the exception of tailgaters,
+drivers tend to go slower when the traffic is denser.
+The simplest model is a linear relationship
+between the <b>density</b> <span class="js-maths">N</span> (amount of vehicle per length of road)
+and the <b>preferred speed</b> <span class="js-maths">V</span>:
+</p>
+<div class="js-maths important">V = \Vmax \roundbr{1 - \frac{N}{\Nmax}}
+</div>
+<p>
+<img alt="Preferred speed vs density curve" src="preferred-speed.png">
+</p>
+<ul>
+<li>When there is no traffic (<span class="colour-b"><span class="js-maths">N = 0</span></span>),
+drivers will go at the speed limit (<span class="colour-b"><span class="js-maths">V = \Vmax</span></span>).
+</li>
+<li>When there is bumper-to-bumper traffic (<span class="colour-r"><span class="js-maths">N = \Nmax</span></span>),
+drivers will halt (<span class="colour-r"><span class="js-maths">V = 0</span></span>).
+</li>
+</ul>
+<p>
+We also assume that drivers are able to adjust their speed <em>instantly</em>
+when the density changes.
+This might not seem realistic,
+but remember we are constructing a <em>model</em>.
+(Also note that in real life,
+most drivers are happy to do the speed limit
+even when the density <em>isn't</em> zero,
+by keeping at a 2-second separation to the vehicle ahead.)
+</p>
+<h3 id="flux"><a class="permalink" href="#flux" aria-label="Permalink"></a>Flux vs density</h3>
+<p>
+Traffic engineers generally want to maximise the <b>flux</b> of traffic,
+which is the product of density and speed:
+</p>
+<div class="js-maths important">\begin{aligned}
+  F &amp;= N V \\
+    &amp;= N \Vmax \roundbr{1 - \frac{N}{\Nmax}}
+\end{aligned}
+</div>
+<p>
+<img alt="Carried flux vs density curve" src="carried-flux.png">
+</p>
+<p>
+In our current model this is a parabolic relationship:
+</p>
+<ul>
+<li>Maximum flux <span class="js-maths">\Fmax = \Nmax \Vmax / 4</span> is obtained
+with traffic at <em>half</em> the maximum density going at <em>half</em> the speed limit.
+</li>
+<li>The flux is <em>zero</em> in both the empty-street case <span class="js-maths">N = 0</span>, <span class="js-maths">V = \Vmax</span>
+(because there are no cars)
+and in the bumper-to-bumper case <span class="js-maths">N = \Nmax</span>, <span class="js-maths">V = 0</span>
+(because the cars aren't moving).
+</li>
+</ul>
+<p>
+Note that there are two ways to achieve a given flux <span class="js-maths">F &lt; \Fmax</span>:
+<span class="colour-b">fast &amp; sparse</span>, and <span class="colour-r">slow &amp; dense</span>
+(with the former being preferable to drivers).
+</p>
+<h2 id="equation"><a class="permalink" href="#equation" aria-label="Permalink"></a>Traffic equation</h2>
+<h3 id="quantities"><a class="permalink" href="#quantities" aria-label="Permalink"></a>Quantities</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2">Independent variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="js-maths">x</span></td>
+<td>position</td>
+</tr>
+<tr>
+<td><span class="js-maths">t</span></td>
+<td>time</td>
+</tr>
+<tr>
+<th colspan="2">Dependent variable</th>
+</tr>
+<tr>
+<td><span class="js-maths">N</span></td>
+<td>density</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservation"><a class="permalink" href="#conservation" aria-label="Permalink"></a>Conservation</h3>
+<p>
+After doing the usual conservation analysis (here, "conservation of vehicle"),
+we obtain the continuity equation
+</p>
+<div class="js-maths">\frac{\pd N}{\pd t} + \frac{\pd F}{\pd x} = 0,
+</div>
+<p>
+and since we have a direct relationship <span class="js-maths">F = F (N)</span> between flux and density,
+this becomes the <b>traffic equation</b>
+</p>
+<div class="js-maths important">\frac{\pd N}{\pd t} + \frac{\td F}{\td N} \frac{\pd N}{\pd x} = 0.
+</div>
+<h3 id="signal-speed"><a class="permalink" href="#signal-speed" aria-label="Permalink"></a>Signal speed</h3>
+<p>
+The quantity <span class="js-maths">\td F / {\td N}</span> has dimensions of speed, and varies linearly
+from <span class="js-maths">\Vmax</span> at zero density to <span class="js-maths">-\Vmax</span> at maximum density:
+</p>
+<div class="js-maths important">\frac{\td F}{\td N} = \Vmax \roundbr{1 - \frac{2N}{\Nmax}}
+</div>
+<p>
+<img alt="Signal speed vs density curve" src="signal-speed.png">
+</p>
+<p>
+We find that <span class="js-maths">\td F / {\td N}</span> is the <b>signal speed</b>
+in the analysis below:
+</p>
+<h2 id="characteristics"><a class="permalink" href="#characteristics" aria-label="Permalink"></a>Method of characteristics</h2>
+<span class="js-maths">\gdef \charac #1 {\colv{#1}}</span>
+<span class="js-maths">\gdef \xc {x_\mathrm{c}}</span>
+<p>
+Unlike the heat equation, the traffic equation is a <b>hyperbolic PDE</b>.
+Instead of separation of variables, we use the <b>method of characteristics</b>.
+</p>
+<p>
+We seek <span class="colour-v"><b>characteristic curves</b> <span class="js-maths">x = \xc (t)</span></span>
+along which the density <span class="js-maths">N (x, t)</span> is constant, i.e.
+</p>
+<div class="js-maths">N (\charac{\xc (t)}, t) = \const.
+</div>
+<p>
+By definition <span class="js-maths">\td N = 0</span> along a characteristic,
+and using the chain rule we have
+</p>
+<div class="js-maths">\frac{\pd N}{\pd t} + \charac{\frac{\td \xc}{\td t}} \frac{\pd N}{\pd x} = 0.
+</div>
+<p>
+Comparing this with the traffic equation
+</p>
+<div class="js-maths">\frac{\pd N}{\pd t} + \charac{\frac{\td F}{\td N}} \frac{\pd N}{\pd x} = 0,
+</div>
+<p>
+we see that the characterstics are given by
+</p>
+<div class="js-maths important">\charac{\frac{\td \xc}{\td t} = \frac{\td F}{\td N}}.
+</div>
+<p>
+Thus the characteristics are straight lines in spacetime
+with slope equal to the <b>signal speed</b> <span class="js-maths">\td F / {\td N}</span>.
+</p>
+<p>
+Note that <strong>characteristics are NOT the trajectories of the cars</strong>;
+they are curves along which density is constant.
+</p>
+<h3 id="steps"><a class="permalink" href="#steps" aria-label="Permalink"></a>Steps</h3>
+<p>
+Given a traffic problem:
+</p>
+<ol>
+<li>Draw out a spacetime diagram with position <span class="js-maths">x</span> on the horizontal axis
+and time <span class="js-maths">t</span> on the vertical axis.
+</li>
+<li>Mark the locations in spacetime
+where the density <span class="js-maths">N</span> is given by the boundary and initial conditions.
+</li>
+<li>For a bunch of these locations:
+<ol>
+<li>Work out the signal speed <span class="js-maths">\td F / {\td N}</span> for the given value of <span class="js-maths">N</span>.
+</li>
+<li>Draw the associated characteristic curve through this location
+(the straight line with slope <span class="js-maths">\td F / {\td N}</span>).
+</li>
+</ol>
+</li>
+</ol>
+<p>
+Since characteristics are curves with constant density <span class="js-maths">N</span>,
+this procedure "extends" the boundary/initial values of <span class="js-maths">N</span>
+to all of spacetime.
+In other words, we've solved for <span class="js-maths">N (x, t)</span>. That's all there is to do.
+</p>
+<p>
+If we wanted to find the actual trajectories <span class="js-maths">x = x (t)</span> of the cars,
+we would:
+</p>
+<ol>
+<li>Determine <span class="js-maths">V (x, t)</span> from <span class="js-maths">N (x, t)</span>
+using the <a href="#speed">speed vs density relationship</a>.
+</li>
+<li>Solve the ODE <span class="js-maths">\td x / {\td t} = V (x, t)</span>.
+We could also proceed graphically;
+simply sketch the trajectories so that their speed matches
+the determined velocity field <span class="js-maths">V (x, t)</span>.
+</li>
+</ol>
+<p>
+Finally, since time is on the vertical axis,
+remember that "fast" trajectories are near-horizontal
+while "slow" trajectories are near-vertical.
+</p>
+<p>
+See:
+</p>
+<ul>
+<li><a href="light-change">Light change example</a>
+</li>
+<li><a href="pile-up">Pile up example</a>
+</li>
+</ul>
+<div class="end">
+END
+</div>
+<p>
+<a href="/">Return to the home page.</a>
+</p>
+<footer>
+Last modified: 2020-10-16<br>
+Content on this site is <a href="https://creativecommons.org/publicdomain/zero/1.0/">released into the public domain</a>.<br>
+Mistakes/queries:
+<a href="mailto:conway.li@research.uwa.edu.au">email me</a>, <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/issues">raise an issue</a>, or <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/pulls">make a pull request</a>.
+</footer>
+</body>
+</html>
