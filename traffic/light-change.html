@@ -20,7 +20,7 @@
   \gdef \Nmax {N_\mathrm{max}}
   \gdef \Fmax {F_\mathrm{max}}</span>
 <p>
-Cars lined bumper-to-bumper wait at a red traffic light
+Cars queued bumper-to-bumper wait at a red traffic light
 which turns green at <span class="js-maths">t = 0</span>.
 In symbols,
 </p>
@@ -35,7 +35,7 @@ What happens?
 </p>
 <h2 id="animation"><a class="permalink" href="#animation" aria-label="Permalink"></a>Animation</h2>
 <p>
-<img alt="Traffic light change animation" width="240" src="light-change.gif">
+<img alt="Animation for traffic light change" width="240" src="light-change.gif">
 </p>
 <ul>
 <li><span class="colour-v">Characteristics in purple</span>
@@ -107,7 +107,11 @@ Thus we get a fan of <span class="colour-v">characteristics</span> emanating fro
 with slopes running from <span class="js-maths">-\Vmax</span> up to <span class="js-maths">+\Vmax</span>.
 In particular, the characteristic for a given density <span class="js-maths">N</span> is given by
 </p>
-<div class="js-maths">\charac{\xc (t) = \Vmax \roundbr{1 - \frac{2 N}{\Nmax}} t}.
+<div class="js-maths">\charac{
+  \xc (t)
+  = \frac{\td F}{\td N} \cdot t
+  = \Vmax \roundbr{1 - \frac{2 N}{\Nmax}} t
+}.
 </div>
 <p>
 Therefore we have
@@ -117,6 +121,46 @@ Therefore we have
 <p>
 in the central triangular region&nbsp;▼.
 </p>
+<h2 id="remarks"><a class="permalink" href="#remarks" aria-label="Permalink"></a>Remarks</h2>
+<p>
+<img alt="Animation for traffic light change (again)" width="240" src="light-change.gif">
+</p>
+<ul>
+<li><span class="colour-v">Characteristics in purple</span>
+</li>
+<li><span class="colour-r">Dense/slow regions in red</span>
+</li>
+<li><span class="colour-b">Sparse/fast regions in blue</span>
+</li>
+<li>Trajectories in yellow
+</li>
+</ul>
+<p>
+The main results are:
+</p>
+<ul>
+<li><strong>The 'signal to go' propagates backwards at the speed limit</strong>,
+along the <span class="colour-v">characteristic <span class="js-maths">\xc (t) = -\Vmax t</span></span>.
+<p>
+Does this happen in real life?<br>
+Yes, the further back you are in the queue,
+the longer you need to wait before you can go.
+</p>
+</li>
+<li><strong>All cars pass the stop line at half the speed limit</strong>,
+corresponding to the <span class="colour-v">characteristic <span class="js-maths">\xc (t) = 0</span></span>
+for <span class="js-maths">N = \Nmax / 2</span>, <span class="js-maths">V = \Vmax / 2</span>.
+<p>
+Does this happen in real life?<br>
+Well, roughly. In the model, the first car is able to accelerate instantly
+from zero to the speed limit;
+this isn't possible in real life.
+If you're not first-in-line though, the model is pretty fair;
+in my experience I am usually in second or third gear
+by the time I pass the stop line for a traffic light in a 60kph zone.
+</p>
+</li>
+</ul>
 <div class="end">
 END
 </div>

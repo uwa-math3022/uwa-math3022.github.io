@@ -23,7 +23,7 @@ $
 $
 
 ----
-Cars lined bumper-to-bumper wait at a red traffic light
+Cars queued bumper-to-bumper wait at a red traffic light
 which turns green at $t = 0$.
 In symbols,
 ----
@@ -45,7 +45,7 @@ What happens?
 {% \[ dense  / (.*?) / \] % [r/ \1 /] %}
 
 ----
-![Traffic light change animation][animation]
+![Animation for traffic light change][animation]
 ----
 @[animation]{w240} light-change.gif @
 
@@ -129,7 +129,11 @@ with slopes running from $-\Vmax$ up to $+\Vmax$.
 In particular, the characteristic for a given density $N$ is given by
 ----
 $$
-  \charac{\xc (t) = \Vmax \roundbr{1 - \frac{2 N}{\Nmax}} t}.
+  \charac{
+    \xc (t)
+    = \frac{\td F}{\td N} \cdot t
+    = \Vmax \roundbr{1 - \frac{2 N}{\Nmax}} t
+  }.
 $$
 ----
 Therefore we have
@@ -140,6 +144,44 @@ $$
 ----
 in the central triangular region~▼.
 ----
+
+
+##{#remarks} Remarks ##
+
+----
+![Animation for traffic light change (again)][animation]
+----
+====
+* [charac/ Characteristics in purple /]
+* [dense/ Dense/slow regions in red /]
+* [sparse/ Sparse/fast regions in blue /]
+* Trajectories in yellow
+====
+
+----
+The main results are:
+----
+====
+* **The 'signal to go' propagates backwards at the speed limit**,
+  along the [charac/ characteristic $\xc (t) = -\Vmax t$ /].
+  ----
+  Does this happen in real life? \+
+  Yes, the further back you are in the queue,
+  the longer you need to wait before you can go.
+  ----
+* **All cars pass the stop line at half the speed limit**,
+  corresponding to the [charac/ characteristic $\xc (t) = 0$ /]
+  for $N = \Nmax / 2$, $V = \Vmax / 2$.
+  ----
+  Does this happen in real life? \+
+  Well, roughly. In the model, the first car is able to accelerate instantly
+  from zero to the speed limit;
+  this isn't possible in real life.
+  If you're not first-in-line though, the model is pretty fair;
+  in my experience I am usually in second or third gear
+  by the time I pass the stop line for a traffic light in a 60kph zone.
+  ----
+====
 
 
 \END
