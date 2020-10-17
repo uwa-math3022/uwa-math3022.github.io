@@ -141,8 +141,8 @@ $$
 \end{alignedat}
 $$
 ----
-Thus we get a fan of [charac/ characteristics /] emanating from the origin,
-with slopes running from $-\Vmax$ up to $+\Vmax$.
+Thus we get a __fan of [charac/ characteristics /]__ emanating from the origin,
+with slopes running through all values from $-\Vmax$ up to $+\Vmax$.
 In particular, the characteristic for a given density $N$ is given by
 ----
 $$
