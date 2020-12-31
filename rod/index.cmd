@@ -645,7 +645,7 @@ Recall that:
 ++++
 1. The **heat equation is linear**
 2. The **boundary conditions** for $\Ttr$ at $x = 0$ and $x = 1$
- \/**are homogeneous** because we subtracted out the equilibrium solution
+   **are homogeneous** because we subtracted out the equilibrium solution
 ++++
 ----
 Therefore, linear combinations of the product
