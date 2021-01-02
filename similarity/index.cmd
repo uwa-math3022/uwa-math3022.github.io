@@ -406,17 +406,17 @@ __A.__
   In the present scenario, suppose that
   $$
     \gdef \ind #1 {\colr{#1}}
-    [T] = [x]^\ind{p} [t]^\ind{q} [\kappa]^\ind{r} [Q']^\ind{s}
+    [T] = [x]^{\ind{p}} [t]^{\ind{q}} [\kappa]^{\ind{r}} [Q']^{\ind{s}}
   $$
   for some indices $\ind{p}$, $\ind{q}$, $\ind{r}$, and $\ind{s}$.
   Then
   $$
     \dimen{Temp} =
-      \dimen{Length} ^ \ind{p}
+      \dimen{Length} ^ {\ind{p}}
         \cdot
-      \dimen{Time} ^ \ind{q}
-      \roundbr{\frac{\dimen{Length}^2}{\dimen{Time}}} ^ \ind{r}
-      \roundbr{\dimen{Temp} \cdot \dimen{Length}} ^ \ind{s}.
+      \dimen{Time} ^ {\ind{q}}
+      \roundbr{\frac{\dimen{Length}^2}{\dimen{Time}}} ^ {\ind{r}}
+      \roundbr{\dimen{Temp} \cdot \dimen{Length}} ^ {\ind{s}}.
   $$
   Equating powers of $\dimen{Length}$, $\dimen{Time}$, and $\dimen{Temp}$,
   we get the system of linear equations

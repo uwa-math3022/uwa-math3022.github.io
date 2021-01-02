@@ -412,7 +412,7 @@ $$
 ###{#eigenvalues} Eigenvalues ###
 
 $
-  \gdef \lam #1 {\lambda_\con{#1}}
+  \gdef \lam #1 {\lambda_{\con{#1}}}
 $
 
 ----
@@ -506,21 +506,21 @@ By linearity, we have
 $${.important}
   T (x, t) =
     \sum_{\con{n} = 1}^{\infty}
-      A_\con{n} \ee ^ {-{\lam{n}}^2 t} \cos (\lam{n} x).
+      A_{\con{n}} \ee ^ {-{\lam{n}}^2 t} \cos (\lam{n} x).
 $$
 ----
 The coefficients are determined from the initial condition,
 ----
 $$
   \eval{T}_{t = 0}
-    = \sum_{\con{n} = 1}^{\infty} A_\con{n} \cos (\lam{n} x)
+    = \sum_{\con{n} = 1}^{\infty} A_{\con{n}} \cos (\lam{n} x)
     = 1.
 $$
 ----
 Therefore
 ----
 $${.important}
-  A_\con{n} =
+  A_{\con{n}} =
     \frac{
       \int_0^1 1 \cdot \cos (\lam{n} x) \td x
     }{

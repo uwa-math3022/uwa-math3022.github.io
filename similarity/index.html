@@ -324,16 +324,16 @@ Is there a systematic way of doing this?<br>
 Yes, read up on the <a href="https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem">Buckingham pi theorem</a>.<br>
 In the present scenario, suppose that
 <div class="js-maths">\gdef \ind #1 {\colr{#1}}
-[T] = [x]^\ind{p} [t]^\ind{q} [\kappa]^\ind{r} [Q']^\ind{s}
+[T] = [x]^{\ind{p}} [t]^{\ind{q}} [\kappa]^{\ind{r}} [Q']^{\ind{s}}
 </div>
 for some indices <span class="js-maths">\ind{p}</span>, <span class="js-maths">\ind{q}</span>, <span class="js-maths">\ind{r}</span>, and <span class="js-maths">\ind{s}</span>.
 Then
 <div class="js-maths">\dimen{Temp} =
-  \dimen{Length} ^ \ind{p}
+  \dimen{Length} ^ {\ind{p}}
     \cdot
-  \dimen{Time} ^ \ind{q}
-  \roundbr{\frac{\dimen{Length}^2}{\dimen{Time}}} ^ \ind{r}
-  \roundbr{\dimen{Temp} \cdot \dimen{Length}} ^ \ind{s}.
+  \dimen{Time} ^ {\ind{q}}
+  \roundbr{\frac{\dimen{Length}^2}{\dimen{Time}}} ^ {\ind{r}}
+  \roundbr{\dimen{Temp} \cdot \dimen{Length}} ^ {\ind{s}}.
 </div>
 Equating powers of <span class="js-maths">\dimen{Length}</span>, <span class="js-maths">\dimen{Time}</span>, and <span class="js-maths">\dimen{Temp}</span>,
 we get the system of linear equations
