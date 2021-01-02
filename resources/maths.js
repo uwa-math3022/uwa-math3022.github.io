@@ -83,7 +83,7 @@ function renderMaths() {
     // Epsilon
     '\\eps': '\\varepsilon',
     
-  }
+  };
   
   let mathsElements = document.getElementsByClassName("js-maths");
   
