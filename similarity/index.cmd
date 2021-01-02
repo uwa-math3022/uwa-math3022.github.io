@@ -186,7 +186,7 @@ __A.__
   where it is infinity, in such a way that the area under the curve is $1$:
   ----
   $$
-  \begin{aligned}
+  \begin{gathered}
     \delta (x) =
       \begin{cases}
         \infty, & x = 0 \\
@@ -194,7 +194,7 @@ __A.__
       \end{cases}
       \\
     \int_{-\infty}^\infty \delta (x) \td x = 1
-  \end{aligned}
+  \end{gathered}
   $$
   The easiest way to think of $\delta (x)$ is as a normal distribution
   with a standard deviation of zero,
