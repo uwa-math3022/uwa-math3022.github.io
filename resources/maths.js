@@ -75,10 +75,10 @@ function renderMaths() {
     '\\order': '\\mathopspace O',
     
     // Colours
-    '\\colr': '\\textcolor{ee0000}{#1}',
-    '\\colg': '\\textcolor{green}{#1}',
-    '\\colb': '\\textcolor{blue}{#1}',
-    '\\colv': '\\textcolor{darkviolet}{#1}',
+    '\\colr': '\\htmlClass{colour-r}{#1}',
+    '\\colg': '\\htmlClass{colour-g}{#1}',
+    '\\colb': '\\htmlClass{colour-b}{#1}',
+    '\\colv': '\\htmlClass{colour-v}{#1}',
     
     // Epsilon
     '\\eps': '\\varepsilon',
@@ -95,6 +95,7 @@ function renderMaths() {
       {
         displayMode: elem.tagName === "DIV",
         macros: macros,
+        trust: (context) => context.command === '\\htmlClass',
         throwOnError: false,
       }
     )
