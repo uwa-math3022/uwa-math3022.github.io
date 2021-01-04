@@ -3,7 +3,7 @@
 %%
   %title  UWA MATH3022
   %title-suffix  <## nothing ##>
-  %date-modified  2020-10-17
+  %date-modified  2021-01-04
   \resources:no-maths
 %%
 
@@ -11,6 +11,12 @@
 
 ----
 Supplementary material for MATH3022 Scientific and Industrial Modelling.
+----
+
+----
+Source code for this site: [github.com/uwa-math3022/uwa-math3022.github.io](
+  https://github.com/uwa-math3022/uwa-math3022.github.io
+)
 ----
 
 ##{#general} General ##
