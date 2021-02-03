@@ -55,13 +55,22 @@ blockquote {
 }
 
 body {
+  background: white;
   line-height: 1.4;
+  margin: 0;
+  padding: 0.2em 1.3em 0.7em;
 }
 
 footer {
   border-top: 1px solid black;
   margin-top: 1.5em;
   padding-top: 0.5em;
+}
+
+html {
+  background: #bfb;
+  margin: 0 auto;
+  max-width: 45em;
 }
 
 img {
