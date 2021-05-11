@@ -6,7 +6,7 @@ at the University of Western Australia (UWA).
 PDFs are a pain to read on small screens,
 and also equations don't look terribly good on LMS.
 
-Pages are written in a stupid variant of markdown called [CMD].
+Pages are written in a stupid variant of Markdown called [CMD].
 If you use Windows,
 be careful not to run the `.cmd` files by accident;
 they might break your computer.
