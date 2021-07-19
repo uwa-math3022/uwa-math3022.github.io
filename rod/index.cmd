@@ -1,4 +1,4 @@
-{+ resources/syntax.cmd +}
+{+ /resources/syntax.cmd +}
 
 %%
   %title  Heat equation: Heating a rod

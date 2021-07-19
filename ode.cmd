@@ -1,4 +1,4 @@
-{+ resources/syntax.cmd +}
+{+ /resources/syntax.cmd +}
 
 %%
   %title  ODEs you must be able to solve

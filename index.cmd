@@ -1,4 +1,4 @@
-{+ resources/syntax.cmd +}
+{+ /resources/syntax.cmd +}
 
 %%
   %title  UWA MATH3022

@@ -1,4 +1,4 @@
-{+ resources/syntax.cmd +}
+{+ /resources/syntax.cmd +}
 
 %%
   %title  Page not found
