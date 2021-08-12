@@ -65,10 +65,10 @@ p{::
 ##>
 
 
-Z{:: \noscript ::
-  a~~
-    <noscript>Enable JavaScript for equation rendering to work.</noscript>
-  ~~
+c{:: \noscript ::
+  <noscript>\
+    **{.noscript} Enable JavaScript for equation rendering to work.**\
+  </noscript>
 ::}
 
 

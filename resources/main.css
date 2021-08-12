@@ -34,6 +34,10 @@
   padding-bottom: 0.25em;
 }
 
+.noscript {
+  color: crimson;
+}
+
 .permalink {
   background-image: url(/resources/permalink.svg);
   background-position: center left;
@@ -80,11 +84,6 @@ img {
 
 li {
   margin-bottom: 0.2em;
-}
-
-noscript {
-  color: crimson;
-  font-weight: bold;
 }
 
 pre {
