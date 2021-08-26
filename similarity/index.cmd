@@ -2,7 +2,7 @@
 
 %%
   %title  Fundamental plane-source similarity solution
-  %date-modified  2020-09-10
+  %date-modified  2021-08-26
   \resources:maths
   %css a~~
     .img-container {
