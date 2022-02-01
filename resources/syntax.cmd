@@ -154,7 +154,7 @@ p{%
     Mistakes/queries:
     [email me] or [raise an issue].
   </footer>
-  @@[email me] mailto:conway.li@research.uwa.edu.au @@
+  @@[email me] mailto:z7ea7fso@duck.com @@
   @[raise an issue]
     https://github.com/uwa-math3022/uwa-math3022.github.io/issues @
 %}
