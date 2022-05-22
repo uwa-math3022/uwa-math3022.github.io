@@ -1,12 +1,21 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  Remarks on notation
-  %date-modified  2020-08-14
-  \resources:maths
-%%
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> Remarks on notation
+* %date-modified --> 2020-08-14
+* %head-elements-after-viewport --> \resources:maths
 
-# %title #
+RegexDictionaryReplacement: #coloured-text
+- queue_position: BEFORE #coloured-spans
+* \[ unscaled / (.*?) / \] --> [g/ \1 /]
+* \[ scaled / (.*?) / \] --> [v/ \1 /]
+* \[ scale / (.*?) / \] --> [b/ \1 /]
+
+%%%
+
+
+# %title
 
 \noscript
 
@@ -26,9 +35,6 @@ $
   \gdef \scaled #1 {\colv{#1'}}
   \gdef \scale #1 {\colb{#1}}
 $
-{% \[ unscaled / (.*?) / \] % [g/ \1 /] %}
-{% \[ scaled / (.*?) / \] % [v/ \1 /] %}
-{% \[ scale / (.*?) / \] % [b/ \1 /] %}
 
 ----
 You may have noticed two ways to write derivatives:
@@ -41,20 +47,20 @@ E.g.~for $T (x, t)$:
 
 ''''
 |^
-==
+//
   ; Subscripts
   ; Fractions
 |:
-==
+//
   , $T_x$
   , $\dfrac{\pd T}{\pd x}$
-==
+//
   , $T_x (0, t)$
   , $\eval{\dfrac{\pd T}{\pd x}}_{x = 0}$
-==
+//
   , $T_x (x, 0)$
   , $\eval{\dfrac{\pd T}{\pd x}}_{t = 0}$
-==
+//
   , $T_{xx}$
   , $\dfrac{\pd^2 T}{{\pd x}^2}$
 ''''
@@ -157,7 +163,7 @@ For a rough analogy,
 --- even though they have been expressed in terms of different units.
 ----
 
-@[sh] https://sites.science.oregonstate.edu/math/bridge/ideas/functions/ @
+[sh]: https://sites.science.oregonstate.edu/math/bridge/ideas/functions/
 
 \END
 
