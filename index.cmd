@@ -1,13 +1,15 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  UWA MATH3022
-  %title-suffix  <## nothing ##>
-  %date-modified  2021-01-04
-  \resources:no-maths
-%%
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> UWA MATH3022
+* %date-modified --> 2021-01-04
+* %head-elements-after-viewport --> \resources:no-maths
 
-# %title #
+%%%
+
+
+# %title
 
 ----
 Supplementary material for MATH3022 Scientific and Industrial Modelling.
@@ -54,7 +56,7 @@ For details see the [`mathematica-intro` repository][m intro].
 * Example: [pile up](/traffic/pile-up)
 ====
 
-@[intro.nb]
+[intro.nb]:
   https://github.com/uwa-math3022/mathematica-intro/\
-    releases/download/v0.1.2/intro.nb @
-@[m intro] https://github.com/uwa-math3022/mathematica-intro @
+    releases/download/v0.1.2/intro.nb
+[m intro]: https://github.com/uwa-math3022/mathematica-intro

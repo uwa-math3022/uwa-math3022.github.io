@@ -1,6 +1,8 @@
 OrdinaryDictionaryReplacement: #title-suffix
 - queue_position: BEFORE #boilerplate-protect
+- apply_mode: SEQUENTIAL
 * </title> --> ' | UWA MATH3022</title>'
+* UWA MATH3022 | UWA MATH3022 --> UWA MATH3022
 
 OrdinaryDictionaryReplacement: #resources
 - queue_position: BEFORE #boilerplate-protect
@@ -23,6 +25,18 @@ OrdinaryDictionaryReplacement: #resources
       onload="renderMaths()"></script>
 * \resources:no-maths -->
     <link rel="stylesheet" href="/resources/main.min.css">
+
+RegexDictionaryReplacement: #heading-permalinks
+- queue_position: BEFORE #headings
+* (?P<opening_hashes_etc>
+    [#]{2,6}
+    \{
+      [#] (?P<id_> [\S]+ )
+    \}
+    [\s]+
+  )
+    -->
+  \g<opening_hashes_etc> []{.permalink aria-label=Permalink}(#\g<id_>)
 
 OrdinaryDictionaryReplacement: #home-link
 - queue_position: BEFORE #specified-links
