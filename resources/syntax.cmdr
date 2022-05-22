@@ -1,0 +1,46 @@
+OrdinaryDictionaryReplacement: #title-suffix
+- queue_position: BEFORE #boilerplate-protect
+* </title> --> ' | UWA MATH3022</title>'
+
+OrdinaryDictionaryReplacement: #resources
+- queue_position: BEFORE #boilerplate-protect
+- apply_mode: SEQUENTIAL
+* \resources:maths -->
+    \resources:no-maths
+    <script defer src="/resources/maths.min.js"></script>
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+      integrity="sha384-\
+        AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X\
+      "
+      crossorigin="anonymous">
+    <script defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
+      integrity="sha384-\
+        g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4\
+      "
+      crossorigin="anonymous"
+      onload="renderMaths()"></script>
+* \resources:no-maths -->
+    <link rel="stylesheet" href="/resources/main.min.css">
+
+OrdinaryDictionaryReplacement: #home-link
+- queue_position: BEFORE #specified-links
+* \home --> [Return to the home page.](/)
+
+RegexDictionaryReplacement: #footer
+- queue_position: BEFORE #boilerplate
+* \Z -->
+    <footer>
+      Last modified: %date-modified
+        <br>
+      Content on this site is [released into the public domain][cc0].
+        <br>
+      Mistakes/queries:
+      [email me] or [raise an issue].
+    </footer>
+    [cc0]: https://creativecommons.org/publicdomain/zero/1.0/
+    [email me]: mailto:z7ea7fso@duck.com
+    [raise an issue]:
+      https://github.com/uwa-math3022/uwa-math3022.github.io/issues
+    \n
