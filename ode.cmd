@@ -1,10 +1,13 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  ODEs you must be able to solve
-  %date-modified  2020-08-20
-  \resources:maths
-%%
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> ODEs you must be able to solve
+* %date-modified --> 2020-08-20
+* %head-elements-after-viewport --> \resources:maths
+
+%%%
+
 
 # %title #
 
@@ -90,7 +93,7 @@ because $\cosh$ is an even function and $\sinh$ is an odd function:
 * If $Y$ has zero slope at $x = 0$, you only want $\cosh$.
 ====
 
-@[hyperbolic functions] https://en.wikipedia.org/wiki/Hyperbolic_functions @
+[hyperbolic functions]: https://en.wikipedia.org/wiki/Hyperbolic_functions
 
 
 \END
