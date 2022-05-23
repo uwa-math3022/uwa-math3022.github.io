@@ -23,7 +23,7 @@ RegexDictionaryReplacement: #coloured-text
 \home
 ----
 
-##{#derivatives} Derivatives ##
+##{#derivatives} Derivatives
 
 <##
   Styles
@@ -108,7 +108,7 @@ which doesn't affect the derivative
 --- the derivative of an added constant is zero.)
 ----
 
-##{#functions} Functions ##
+##{#functions} Functions
 
 ----
 You may also have noticed that I regularly omit the variables

@@ -9,7 +9,7 @@ OrdinaryDictionaryReplacement: #boilerplate-properties-override
 %%%
 
 
-# %title #
+# %title
 
 \noscript
 
@@ -24,30 +24,30 @@ in each case:
 ----
 
 
-##{#decay} First order: exponential decay ##
+##{#decay} First order: exponential decay
 
-### ODE ###
+### ODE
 
 $${.important}
   \frac{\td Y}{\td t} = -\mu Y
 $$
 
-### Solution ###
+### Solution
 
 $$
   Y (t) = A \ee ^ {-\mu t}
 $$
 
 
-##{#trigonometric} Second order: trigonometric ##
+##{#trigonometric} Second order: trigonometric
 
-### ODE ###
+### ODE
 
 $${.important}
   \frac{\td^2 Y}{{\td x}^2} = -\lambda^2 Y
 $$
 
-### Solution ###
+### Solution
 
 $$
   Y (x) = A \cos (\lambda x) + B \sin (\lambda x)
@@ -62,15 +62,15 @@ Note that $\cos$ is an even function and $\sin$ is an odd function:
 ====
 
 
-##{#hyperbolic} Second order: hyperbolic (or exponential) ##
+##{#hyperbolic} Second order: hyperbolic (or exponential)
 
-### ODE ###
+### ODE
 
 $${.important}
   \frac{\td^2 Y}{{\td x}^2} = +\lambda^2 Y
 $$
 
-### Solution ###
+### Solution
 
 $$
   Y (x) = A \cosh (\lambda x) + B \sinh (\lambda x)
