@@ -62,6 +62,7 @@ ExtensibleFenceReplacement: #inline-maths
 OrdinaryDictionaryReplacement: #typography
 - queue_position: BEFORE #whitespace
 * ~ --> &nbsp;
+* ... --> …
 * --- --> —
 * -- --> –
 * \0 --> &numsp;
