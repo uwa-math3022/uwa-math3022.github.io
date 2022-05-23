@@ -1,18 +1,26 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  Fundamental plane-source similarity solution
-  %date-modified  2021-08-26
-  \resources:maths
-  %css a~~
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> Fundamental plane-source similarity solution
+* %date-modified --> 2021-08-26
+* %head-elements-after-viewport --> \resources:maths
+* %styles -->
     .img-container {
       text-align: center;
     }
-  ~~
-%%
+
+RegexDictionaryReplacement: #coloured-text
+- queue_position: BEFORE #coloured-spans
+* \[ temp / (.*?) / \] --> [g/ \1 /]
+* \[ dimenless / (.*?) / \] --> [v/ \1 /]
+* \[ old / (.*?) / \] --> [b/ \1 /]
+* \[ new / (.*?) / \] --> [r/ \1 /]
+
+%%%
 
 
-# %title #
+# %title
 
 \noscript
 
@@ -21,14 +29,14 @@
 ----
 
 ----
-Source code for the (non-hand-drawn) images: [code.wl] \+
+Source code for the (non-hand-drawn) images: [code.wl] <br>
 \home
 ----
-@[code.wl]
+[code.wl]:
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
-    similarity/code.wl @
+    similarity/code.wl
 
-##{#problem} Problem ##
+##{#problem} Problem
 
 ----
 Consider an infinite, uniform block of [thermal conductivity] $k$,
@@ -46,11 +54,11 @@ At time $t = 0$:
 What happens?
 ----
 
-@[density] https://en.wikipedia.org/wiki/Density @
-@[specific heat capacity]
-  https://en.wikipedia.org/wiki/Specific_heat_capacity @
-@[thermal conductivity] https://en.wikipedia.org/wiki/Thermal_conductivity @
-@[thermal diffusivity] https://en.wikipedia.org/wiki/Thermal_diffusivity @
+[density]: https://en.wikipedia.org/wiki/Density
+[specific heat capacity]:
+  https://en.wikipedia.org/wiki/Specific_heat_capacity
+[thermal conductivity]: https://en.wikipedia.org/wiki/Thermal_conductivity
+[thermal diffusivity]: https://en.wikipedia.org/wiki/Thermal_diffusivity
 
 ----
 ![Diagram for fundamental plane-source problem](diagram.png)
@@ -60,7 +68,7 @@ What happens?
 __Q.__
   How can you put a non-zero amount of thermal energy
   into a plane which has zero thickness?
-\+
+<br>
 __A.__
   It's an idealisation, like a point charge.
   In the case of a point charge,
@@ -70,7 +78,7 @@ __A.__
 ----
 
 
-##{#quantities} Quantities ##
+##{#quantities} Quantities
 
 ----
 We find that by defining
@@ -87,34 +95,34 @@ Note that $Q'$ is to $Q$ as $\kappa$ is to $k$.
 
 ''''
 |^
-==
+//
   ;{c2} Independent variables
 |:
-==
+//
   , $x$
   , position ($-\infty < x < \infty$)
-==
+//
   , $t$
   , time ($t \ge 0$)
-==
+//
   ;{c2} Dependent variable
-==
+//
   , $T$
   , temperature
-==
+//
   ;{c2} Constants
-==
+//
   , $\kappa$
   , [thermal diffusivity]
-==
+//
   , $Q'$
   , initial energy per area divided by $\rho c$
 ''''
 
 
-##{#defining-equations} Defining equations ##
+##{#defining-equations} Defining equations
 
-###{#pde} Partial differential equation (PDE) ###
+###{#pde} Partial differential equation (PDE)
 
 ----
 __Heat equation__ in $T = T (x, t)$, throughout the block, for all time:
@@ -124,7 +132,7 @@ $${.important}
   \frac{\pd T}{\pd t} = \kappa \frac{\pd^2 T}{{\pd x}^2}
 $$
 
-###{#boundary-condition} Boundary condition (BC) ###
+###{#boundary-condition} Boundary condition (BC)
 
 ----
 Nothing happens at (spatial) infinity, for all time:
@@ -137,7 +145,7 @@ $$
 If you prefer limit notation: $\lim_{x \to \pm\infty} T (x, t) = 0$.
 ----
 
-###{#initial-condition} Initial condition (IC) ###
+###{#initial-condition} Initial condition (IC)
 
 $\gdef \dimen #1 {\textsf{#1}}$
 
@@ -169,7 +177,7 @@ $.
 ||||{.qa}
 __Q.__
   What nonsense is this?
-\+
+<br>
 __A.__
   The formal way to write this initial condition is
   $$
@@ -202,10 +210,10 @@ __A.__
   Note that $\delta (x)$ has dimensions of $1 / \dimen{Length}$.
 ||||
 
-@[delta] https://en.wikipedia.org/wiki/Dirac_delta_function @
+[delta]: https://en.wikipedia.org/wiki/Dirac_delta_function
 
 
-###{#conservation} Conservation of energy ###
+###{#conservation} Conservation of energy
 
 ----
 Energy is conserved, for all time:
@@ -218,7 +226,7 @@ $$
 ||||||{.qa}
 __Q.__
   Why is the right hand side $Q'$?
-\+
+<br>
 __A.__
   The initial injection has energy per area $Q$ in the plane $x = 0$.
   In other words if we take a portion of that plane with area $A$,
@@ -253,7 +261,7 @@ __A.__
 ||||||
 
 
-###{#defining-equations-summary} Summary ###
+###{#defining-equations-summary} Summary
 
 ----
 That was a lot to process,
@@ -276,7 +284,7 @@ $${.important}
 $$
 
 
-##{#scaling} Scaling ##
+##{#scaling} Scaling
 
 ----
 Normally there will be a length scale provided by the parameters.
@@ -295,15 +303,15 @@ THERE IS NO LENGTH SCALE.
 ||||{.qa}
 __Q.__
   So how do we scale $x$?
-\+
+<br>
 __A.__
   Somehow a combination of the other quantities $t$, $\kappa$, and $Q'$
   must form a length scale to compare against $x$.
 ||||
 
-###{#dimensional-analysis} Dimensional analysis ###
+###{#dimensional-analysis} Dimensional analysis
 
-@[dimensional analysis] #dimensional-analysis @
+[dimensional analysis]: #dimensional-analysis
 
 $
   \gdef \termnote #1 #2 {\underbrace{#1}_{\substack{\small #2}}}
@@ -319,8 +327,6 @@ $
   \gdef \temp #1 {\colg{#1}}
   \gdef \dimenless #1 {\colv{#1}}
 $
-{% \[ temp / (.*?) / \] % [g/ \1 /] %}
-{% \[ dimenless / (.*?) / \] % [v/ \1 /] %}
 
 ----
 The temperature $T$ can only depend on
@@ -400,9 +406,9 @@ $$
 ||||{.qa}
 __Q.__
   Is there a systematic way of doing this?
-\+
+<br>
 __A.__
-  Yes, read up on the [Buckingham pi theorem]. \+
+  Yes, read up on the [Buckingham pi theorem]. <br>
   In the present scenario, suppose that
   $$
     \gdef \ind #1 {\colr{#1}}
@@ -448,11 +454,11 @@ __A.__
   and the dimensionless group $\dimenless{x / \sqrt{\kappa t}}$.
 ||||
 
-@[Buckingham pi theorem]
-  https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem @
+[Buckingham pi theorem]:
+  https://en.wikipedia.org/wiki/Buckingham_%CF%80_theorem
 
 
-##{#change-of-coordinates} Change of coordinates ##
+##{#change-of-coordinates} Change of coordinates
 
 <##
   Styles
@@ -463,8 +469,6 @@ $
   \gdef \old #1 {\colb{#1}}
   \gdef \new #1 {\colr{#1}}
 $
-{% \[ old / (.*?) / \] % [b/ \1 /] %}
-{% \[ new / (.*?) / \] % [r/ \1 /] %}
 
 
 ----
@@ -490,7 +494,7 @@ $$
 To do this, we will need the chain rule:
 ----
 
-###{#chain-rule} Chain rule ###
+###{#chain-rule} Chain rule
 
 ----
 Suppose the change of coordinates
@@ -625,7 +629,7 @@ Especially take note of what variable is held constant
 in each partial derivative, because:
 ----
 
-###{#ambiguity} Ambiguity ###
+###{#ambiguity} Ambiguity
 
 ----
 **In the current problem, the time coordinate $t$ appears in
@@ -653,7 +657,7 @@ which variable is being held constant:
   is written $\new{\roundbr{\dfrac{\pd}{\pd t}}_\xi}$
 ====
 
-###{#changing-coordinates} Changing coordinates ###
+###{#changing-coordinates} Changing coordinates
 
 ----
 Let us CAREFULLY apply the change of coordinates now.
@@ -729,7 +733,6 @@ Thus we have reduced the [PDE](#pde) to an ODE.
 
 ###{#changing-boundary-condition}
   Change of coordinates for the boundary/initial conditions
-###
 
 ----
 If you stare at the equations
@@ -760,7 +763,6 @@ and the [initial condition](#initial-condition).
 
 ###{#changing-conservation}
   Change of coordinates for conservation of energy
-###
 
 ----
 Writing the [integral condition for conservation of energy](#conservation)
@@ -804,7 +806,7 @@ $${.important}
 $$
 
 
-##{#ode} Solution to the ODE ##
+##{#ode} Solution to the ODE
 
 ----
 To recap, we have reduced the problem to an ODE,
@@ -847,7 +849,7 @@ $$
 where $\erfi$ is the imaginary [error function].
 ----
 
-@[error function] https://en.wikipedia.org/wiki/Error_function @
+[error function]: https://en.wikipedia.org/wiki/Error_function
 
 ----
 ![Odd and even solutions to the ODE](u-solution.png)
@@ -908,7 +910,7 @@ $${.important}
 $$
 
 
-##{#result} Result ##
+##{#result} Result
 
 ----
 Putting everything together,
@@ -945,7 +947,7 @@ At **all** times the area under the curve is $Q'$
 (see [conservation of energy](#conservation)).
 ----
 
-###{#visualising} Visualising the solution ###
+###{#visualising} Visualising the solution
 
 ----
 Since the similarity solution is scale-invariant,

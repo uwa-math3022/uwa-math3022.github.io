@@ -8,9 +8,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous" onload="renderMaths()"></script>
 <title>Fundamental plane-source similarity solution | UWA MATH3022</title>
-<style>.img-container {
+<style>
+.img-container {
 text-align: center;
-}</style>
+}
+</style>
 </head>
 <body>
 <h1>Fundamental plane-source similarity solution</h1>
@@ -22,7 +24,7 @@ text-align: center;
 Source code for the (non-hand-drawn) images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/similarity/code.wl">code.wl</a><br>
 <a href="/">Return to the home page.</a>
 </p>
-<h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
+<h2 id="problem"><a href="#problem" class="permalink" aria-label="Permalink"></a>Problem</h2>
 <p>
 Consider an infinite, uniform block of <a href="https://en.wikipedia.org/wiki/Thermal_conductivity">thermal conductivity</a> <span class="js-maths">k</span>,
 <a href="https://en.wikipedia.org/wiki/Density">density</a> <span class="js-maths">\rho</span>, and <a href="https://en.wikipedia.org/wiki/Specific_heat_capacity">specific heat capacity</a> <span class="js-maths">c</span>.
@@ -33,7 +35,8 @@ Suppose the block is initially at zero temperature throughout.
 At time <span class="js-maths">t = 0</span>:
 </p>
 <ul>
-<li>Inject thermal energy per area, <span class="js-maths">Q</span>, into the plane <span class="js-maths">x = 0</span>.
+<li>
+Inject thermal energy per area, <span class="js-maths">Q</span>, into the plane <span class="js-maths">x = 0</span>.
 </li>
 </ul>
 <p>
@@ -53,7 +56,7 @@ the charge density is infinite but the amount of charge is <em>finite</em>.
 Here, the initial temperature of the plane <span class="js-maths">x = 0</span> will be infinite,
 but the energy per area is <em>finite</em>.
 </p>
-<h2 id="quantities"><a class="permalink" href="#quantities" aria-label="Permalink"></a>Quantities</h2>
+<h2 id="quantities"><a href="#quantities" class="permalink" aria-label="Permalink"></a>Quantities</h2>
 <p>
 We find that by defining
 </p>
@@ -100,14 +103,14 @@ Note that <span class="js-maths">Q'</span> is to <span class="js-maths">Q</span>
 </tr>
 </tbody>
 </table>
-<h2 id="defining-equations"><a class="permalink" href="#defining-equations" aria-label="Permalink"></a>Defining equations</h2>
-<h3 id="pde"><a class="permalink" href="#pde" aria-label="Permalink"></a>Partial differential equation (PDE)</h3>
+<h2 id="defining-equations"><a href="#defining-equations" class="permalink" aria-label="Permalink"></a>Defining equations</h2>
+<h3 id="pde"><a href="#pde" class="permalink" aria-label="Permalink"></a>Partial differential equation (PDE)</h3>
 <p>
 <b>Heat equation</b> in <span class="js-maths">T = T (x, t)</span>, throughout the block, for all time:
 </p>
 <div class="js-maths important">\frac{\pd T}{\pd t} = \kappa \frac{\pd^2 T}{{\pd x}^2}
 </div>
-<h3 id="boundary-condition"><a class="permalink" href="#boundary-condition" aria-label="Permalink"></a>Boundary condition (BC)</h3>
+<h3 id="boundary-condition"><a href="#boundary-condition" class="permalink" aria-label="Permalink"></a>Boundary condition (BC)</h3>
 <p>
 Nothing happens at (spatial) infinity, for all time:
 </p>
@@ -116,7 +119,7 @@ Nothing happens at (spatial) infinity, for all time:
 <p>
 If you prefer limit notation: <span class="js-maths">\lim_{x \to \pm\infty} T (x, t) = 0</span>.
 </p>
-<h3 id="initial-condition"><a class="permalink" href="#initial-condition" aria-label="Permalink"></a>Initial condition (IC)</h3>
+<h3 id="initial-condition"><a href="#initial-condition" class="permalink" aria-label="Permalink"></a>Initial condition (IC)</h3>
 <span class="js-maths">\gdef \dimen #1 {\textsf{#1}}</span>
 <p>
 All of the thermal energy is concentrated in the slice <span class="js-maths">x = 0</span>, initially:
@@ -170,7 +173,7 @@ with a standard deviation of zero,
 or as an infinitely tall and thin spike with area <span class="js-maths">1</span>.
 Note that <span class="js-maths">\delta (x)</span> has dimensions of <span class="js-maths">1 / \dimen{Length}</span>.
 </div>
-<h3 id="conservation"><a class="permalink" href="#conservation" aria-label="Permalink"></a>Conservation of energy</h3>
+<h3 id="conservation"><a href="#conservation" class="permalink" aria-label="Permalink"></a>Conservation of energy</h3>
 <p>
 Energy is conserved, for all time:
 </p>
@@ -208,7 +211,7 @@ or
 <div class="js-maths">\int_{-\infty}^\infty T \td x = \frac{Q}{\rho c} = Q'.
 </div>
 </div>
-<h3 id="defining-equations-summary"><a class="permalink" href="#defining-equations-summary" aria-label="Permalink"></a>Summary</h3>
+<h3 id="defining-equations-summary"><a href="#defining-equations-summary" class="permalink" aria-label="Permalink"></a>Summary</h3>
 <p>
 That was a lot to process,
 so here are the defining equations again without the commentary:
@@ -227,16 +230,18 @@ so here are the defining equations again without the commentary:
   \int_{-\infty}^\infty T \td x &amp;= Q'
 \end{aligned}
 </div>
-<h2 id="scaling"><a class="permalink" href="#scaling" aria-label="Permalink"></a>Scaling</h2>
+<h2 id="scaling"><a href="#scaling" class="permalink" aria-label="Permalink"></a>Scaling</h2>
 <p>
 Normally there will be a length scale provided by the parameters.
 But in the current situation the only parameters are <span class="js-maths">\kappa</span> and <span class="js-maths">Q'</span>,
 and:
 </p>
 <ul>
-<li>The slab is of <em>infinite</em> extent
+<li>
+The slab is of <em>infinite</em> extent
 </li>
-<li>The initially heated slice (<span class="js-maths">x = 0</span>) has <em>zero</em> thickness
+<li>
+The initially heated slice (<span class="js-maths">x = 0</span>) has <em>zero</em> thickness
 </li>
 </ul>
 <p>
@@ -250,7 +255,7 @@ So how do we scale <span class="js-maths">x</span>?<br>
 Somehow a combination of the other quantities <span class="js-maths">t</span>, <span class="js-maths">\kappa</span>, and <span class="js-maths">Q'</span>
 must form a length scale to compare against <span class="js-maths">x</span>.
 </div>
-<h3 id="dimensional-analysis"><a class="permalink" href="#dimensional-analysis" aria-label="Permalink"></a>Dimensional analysis</h3>
+<h3 id="dimensional-analysis"><a href="#dimensional-analysis" class="permalink" aria-label="Permalink"></a>Dimensional analysis</h3>
 <span class="js-maths">\gdef \termnote #1 #2 {\underbrace{#1}_{\substack{\small #2}}}
   \gdef \termnotetext #1 {\footnotesize \text{#1}}</span>
 <span class="js-maths">\gdef \temp #1 {\colg{#1}}
@@ -362,7 +367,7 @@ where <span class="js-maths">a</span> is a free variable.
 Thus we obtain the temperature combination <span class="js-maths">\temp{Q' / \sqrt{\kappa t}}</span>
 and the dimensionless group <span class="js-maths">\dimenless{x / \sqrt{\kappa t}}</span>.
 </div>
-<h2 id="change-of-coordinates"><a class="permalink" href="#change-of-coordinates" aria-label="Permalink"></a>Change of coordinates</h2>
+<h2 id="change-of-coordinates"><a href="#change-of-coordinates" class="permalink" aria-label="Permalink"></a>Change of coordinates</h2>
 <span class="js-maths">\gdef \old #1 {\colb{#1}}
   \gdef \new #1 {\colr{#1}}</span>
 <p>
@@ -385,7 +390,7 @@ to <span class="colour-r"><span class="js-maths">(\xi, t)</span> coordinates wit
 <p>
 To do this, we will need the chain rule:
 </p>
-<h3 id="chain-rule"><a class="permalink" href="#chain-rule" aria-label="Permalink"></a>Chain rule</h3>
+<h3 id="chain-rule"><a href="#chain-rule" class="permalink" aria-label="Permalink"></a>Chain rule</h3>
 <p>
 Suppose the change of coordinates
 from <span class="colour-b">old coordinates <span class="js-maths">(x, y)</span></span> to <span class="colour-r">new coordinates <span class="js-maths">(r, s)</span></span>
@@ -515,17 +520,19 @@ Let us unpack the meaning:
 Especially take note of what variable is held constant
 in each partial derivative, because:
 </p>
-<h3 id="ambiguity"><a class="permalink" href="#ambiguity" aria-label="Permalink"></a>Ambiguity</h3>
+<h3 id="ambiguity"><a href="#ambiguity" class="permalink" aria-label="Permalink"></a>Ambiguity</h3>
 <p>
 <strong>In the current problem, the time coordinate <span class="js-maths">t</span> appears in
 <em>both</em> the <span class="colour-b">old</span> and the <span class="colour-r">new</span> coordinate systems</strong>.
 We need to <strong>be VERY careful</strong>, because <span class="js-maths">\pd /{\pd t}</span> is ambiguous:
 </p>
 <ul>
-<li><span class="js-maths">\old{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-b">old coordinate system <span class="js-maths">(x, t)</span></span>
+<li>
+<span class="js-maths">\old{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-b">old coordinate system <span class="js-maths">(x, t)</span></span>
 is rate of change w.r.t. <span class="js-maths">\old{t}</span>, <strong>with <span class="js-maths">\old{x}</span> held constant</strong>
 </li>
-<li><span class="js-maths">\new{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-r">new coordinate system <span class="js-maths">(\xi, t)</span></span>
+<li>
+<span class="js-maths">\new{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-r">new coordinate system <span class="js-maths">(\xi, t)</span></span>
 is rate of change w.r.t. <span class="js-maths">\new{t}</span>, <strong>with <span class="js-maths">\new{\xi}</span> held constant</strong>
 </li>
 </ul>
@@ -538,14 +545,16 @@ it is common to use subscripts to indicate
 which variable is being held constant:
 </p>
 <ul>
-<li><span class="js-maths">\old{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-b">old coordinate system <span class="js-maths">(x, t)</span></span>
+<li>
+<span class="js-maths">\old{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-b">old coordinate system <span class="js-maths">(x, t)</span></span>
 is written <span class="js-maths">\old{\roundbr{\dfrac{\pd}{\pd t}}_x}</span>
 </li>
-<li><span class="js-maths">\new{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-r">new coordinate system <span class="js-maths">(\xi, t)</span></span>
+<li>
+<span class="js-maths">\new{\dfrac{\pd}{\pd t}}</span> in the <span class="colour-r">new coordinate system <span class="js-maths">(\xi, t)</span></span>
 is written <span class="js-maths">\new{\roundbr{\dfrac{\pd}{\pd t}}_\xi}</span>
 </li>
 </ul>
-<h3 id="changing-coordinates"><a class="permalink" href="#changing-coordinates" aria-label="Permalink"></a>Changing coordinates</h3>
+<h3 id="changing-coordinates"><a href="#changing-coordinates" class="permalink" aria-label="Permalink"></a>Changing coordinates</h3>
 <p>
 Let us CAREFULLY apply the change of coordinates now.
 The coordinate transformation is given by
@@ -612,7 +621,8 @@ we obtain (after <a href="algebra#heat-equation">a little algebra</a>)
 <p>
 Thus we have reduced the <a href="#pde">PDE</a> to an ODE.
 </p>
-<h3 id="changing-boundary-condition"><a class="permalink" href="#changing-boundary-condition" aria-label="Permalink"></a>Change of coordinates for the boundary/initial conditions</h3>
+<h3 id="changing-boundary-condition">
+<a href="#changing-boundary-condition" class="permalink" aria-label="Permalink"></a>Change of coordinates for the boundary/initial conditions</h3>
 <p>
 If you stare at the equations
 </p>
@@ -637,7 +647,8 @@ if you prefer limit notation)
 takes care of both the <a href="#boundary-condition">boundary condition</a>
 and the <a href="#initial-condition">initial condition</a>.
 </p>
-<h3 id="changing-conservation"><a class="permalink" href="#changing-conservation" aria-label="Permalink"></a>Change of coordinates for conservation of energy</h3>
+<h3 id="changing-conservation">
+<a href="#changing-conservation" class="permalink" aria-label="Permalink"></a>Change of coordinates for conservation of energy</h3>
 <p>
 Writing the <a href="#conservation">integral condition for conservation of energy</a>
 backwards, we have
@@ -675,7 +686,7 @@ i.e.
 </p>
 <div class="js-maths important">\int_{-\infty}^\infty U (\new{\xi}) \td\new{\xi} = 1.
 </div>
-<h2 id="ode"><a class="permalink" href="#ode" aria-label="Permalink"></a>Solution to the ODE</h2>
+<h2 id="ode"><a href="#ode" class="permalink" aria-label="Permalink"></a>Solution to the ODE</h2>
 <p>
 To recap, we have reduced the problem to an ODE,
 an associated boundary condition,
@@ -720,13 +731,16 @@ There are several reasons why <span class="js-maths">\Uodd</span> does not work
 for the plane-source problem:
 </p>
 <ul>
-<li>The temperature profile must be symmetric about <span class="js-maths">x = 0</span>,
+<li>
+The temperature profile must be symmetric about <span class="js-maths">x = 0</span>,
 so <span class="js-maths">U</span> must be an even function
 </li>
-<li><span class="js-maths">\Uodd</span> goes negative when <span class="js-maths">\xi &lt; 0</span> (i.e.&nbsp;when <span class="js-maths">x &lt; 0</span>),
+<li>
+<span class="js-maths">\Uodd</span> goes negative when <span class="js-maths">\xi &lt; 0</span> (i.e.&nbsp;when <span class="js-maths">x &lt; 0</span>),
 but the initial temperature profile was non-negative
 </li>
-<li><span class="js-maths">\int_0^\infty \Uodd (\xi) \td\xi</span> does not converge,
+<li>
+<span class="js-maths">\int_0^\infty \Uodd (\xi) \td\xi</span> does not converge,
 so the integral condition cannot possibly be satisfied.
 </li>
 </ul>
@@ -766,7 +780,7 @@ Therefore:
 </p>
 <div class="js-maths important">U (\new{\xi}) = \frac{1}{2 \sqrt{\pi}} \exp \frac{-\new{\xi}^2}{4}.
 </div>
-<h2 id="result"><a class="permalink" href="#result" aria-label="Permalink"></a>Result</h2>
+<h2 id="result"><a href="#result" class="permalink" aria-label="Permalink"></a>Result</h2>
 <p>
 Putting everything together,
 the fundamental plane-source similarity solution is
@@ -787,9 +801,11 @@ and therefore
 Note that the solution profile <span class="js-maths">T (x, t)</span> has
 </p>
 <ul>
-<li>height (maximum temperature) of order <span class="js-maths">Q' / \sqrt{\kappa t}</span>, and
+<li>
+height (maximum temperature) of order <span class="js-maths">Q' / \sqrt{\kappa t}</span>, and
 </li>
-<li>width of order <span class="js-maths">\sqrt{\kappa t}</span>,
+<li>
+width of order <span class="js-maths">\sqrt{\kappa t}</span>,
 </li>
 </ul>
 <p>
@@ -801,7 +817,7 @@ and for large <span class="js-maths">t</span> it flattens out to a broad bump.
 At <strong>all</strong> times the area under the curve is <span class="js-maths">Q'</span>
 (see <a href="#conservation">conservation of energy</a>).
 </p>
-<h3 id="visualising"><a class="permalink" href="#visualising" aria-label="Permalink"></a>Visualising the solution</h3>
+<h3 id="visualising"><a href="#visualising" class="permalink" aria-label="Permalink"></a>Visualising the solution</h3>
 <p>
 Since the similarity solution is scale-invariant,
 in order to plot the solution we need to introduce an arbitrary length scale.
