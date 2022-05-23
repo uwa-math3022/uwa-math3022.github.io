@@ -16,7 +16,7 @@
 Source code for images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/traffic/code.wl">code.wl</a><br>
 <a href="/traffic/">Return to traffic model summary</a>
 </p>
-<h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
+<h2 id="problem"><a href="#problem" class="permalink" aria-label="Permalink"></a>Problem</h2>
 <span class="js-maths">\gdef \Vmax {V_\mathrm{max}}
   \gdef \Nmax {N_\mathrm{max}}
   \gdef \Fmax {F_\mathrm{max}}</span>
@@ -34,22 +34,26 @@ In symbols,
 <p>
 What happens?
 </p>
-<h2 id="animation"><a class="permalink" href="#animation" aria-label="Permalink"></a>Animation</h2>
+<h2 id="animation"><a href="#animation" class="permalink" aria-label="Permalink"></a>Animation</h2>
 <p>
-<img alt="Animation for traffic light change" width="240" src="light-change.gif">
+<img alt="Animation for traffic light change" src="light-change.gif" width="240">
 </p>
 <ul>
-<li><span class="colour-v">Characteristics in purple</span>
+<li>
+<span class="colour-v">Characteristics in purple</span>
 </li>
-<li><span class="colour-r">Dense/slow regions in red</span>
+<li>
+<span class="colour-r">Dense/slow regions in red</span>
 </li>
-<li><span class="colour-b">Sparse/fast regions in blue</span>
+<li>
+<span class="colour-b">Sparse/fast regions in blue</span>
 </li>
-<li>Trajectories in yellow
+<li>
+Trajectories in yellow
 </li>
 </ul>
-<h2 id="characteristics"><a class="permalink" href="#characteristics" aria-label="Permalink"></a>Characteristics</h2>
-<h3 id="dense-region"><a class="permalink" href="#dense-region" aria-label="Permalink"></a>Dense region</h3>
+<h2 id="characteristics"><a href="#characteristics" class="permalink" aria-label="Permalink"></a>Characteristics</h2>
+<h3 id="dense-region"><a href="#dense-region" class="permalink" aria-label="Permalink"></a>Dense region</h3>
 <p>
 First consider <span class="js-maths">t = 0</span>, <span class="js-maths">x &lt; 0</span>,
 i.e.&nbsp;the left half of the <span class="js-maths">x</span>-axis,
@@ -73,7 +77,7 @@ with maximum density and zero speed:
     \Nmax, &amp; x &lt; -\Vmax t
   \end{cases}
 </div>
-<h3 id="empty-region"><a class="permalink" href="#empty-region" aria-label="Permalink"></a>Empty region</h3>
+<h3 id="empty-region"><a href="#empty-region" class="permalink" aria-label="Permalink"></a>Empty region</h3>
 <p>
 Next consider <span class="js-maths">t = 0</span>, <span class="js-maths">x &gt; 0</span>,
 i.e.&nbsp;the right half of the <span class="js-maths">x</span>-axis,
@@ -97,7 +101,7 @@ with zero density and full speed:
     0, &amp; x &gt; +\Vmax t
   \end{cases}
 </div>
-<h3 id="transition-fan"><a class="permalink" href="#transition-fan" aria-label="Permalink"></a>Transition fan</h3>
+<h3 id="transition-fan"><a href="#transition-fan" class="permalink" aria-label="Permalink"></a>Transition fan</h3>
 <span class="js-maths">\gdef \charac #1 {\colv{#1}}
   \gdef \xc {x_\mathrm{c}}</span>
 <p>
@@ -134,7 +138,7 @@ Therefore for the central triangular region&nbsp;▽ we have
     &amp; -\Vmax t &lt; x &lt; +\Vmax t
   \end{cases}.
 </div>
-<h2 id="result"><a class="permalink" href="#result" aria-label="Permalink"></a>Result</h2>
+<h2 id="result"><a href="#result" class="permalink" aria-label="Permalink"></a>Result</h2>
 <p>
 Altogether:
 </p>
@@ -148,25 +152,30 @@ Altogether:
     0, &amp; x &gt; +\Vmax t
   \end{cases}
 </div>
-<h2 id="remarks"><a class="permalink" href="#remarks" aria-label="Permalink"></a>Remarks</h2>
+<h2 id="remarks"><a href="#remarks" class="permalink" aria-label="Permalink"></a>Remarks</h2>
 <p>
-<img alt="Animation for traffic light change (again)" width="240" src="light-change.gif">
+<img alt="Animation for traffic light change (again)" src="light-change.gif" width="240">
 </p>
 <ul>
-<li><span class="colour-v">Characteristics in purple</span>
+<li>
+<span class="colour-v">Characteristics in purple</span>
 </li>
-<li><span class="colour-r">Dense/slow regions in red</span>
+<li>
+<span class="colour-r">Dense/slow regions in red</span>
 </li>
-<li><span class="colour-b">Sparse/fast regions in blue</span>
+<li>
+<span class="colour-b">Sparse/fast regions in blue</span>
 </li>
-<li>Trajectories in yellow
+<li>
+Trajectories in yellow
 </li>
 </ul>
 <p>
 The main results are:
 </p>
 <ul>
-<li><strong>The 'signal to go' propagates backwards at the speed limit</strong>,
+<li>
+<strong>The 'signal to go' propagates backwards at the speed limit</strong>,
 along the <span class="colour-v">characteristic <span class="js-maths">\xc (t) = -\Vmax t</span></span>.
 <p>
 Does this happen in real life?<br>
@@ -174,7 +183,8 @@ Yes, the further back you are in the queue,
 the longer you need to wait before you can go.
 </p>
 </li>
-<li><strong>All cars pass the stop line at half the speed limit</strong>,
+<li>
+<strong>All cars pass the stop line at half the speed limit</strong>,
 corresponding to the <span class="colour-v">characteristic <span class="js-maths">\xc (t) = 0</span></span>
 for <span class="js-maths">N = \Nmax / 2</span>, <span class="js-maths">V = \Vmax / 2</span>.
 <p>

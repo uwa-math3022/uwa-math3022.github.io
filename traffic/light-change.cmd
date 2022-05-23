@@ -1,25 +1,33 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  Traffic: light change
-  %date-modified  2020-10-17
-  \resources:maths
-%%
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> Traffic: light change
+* %date-modified --> 2020-10-17
+* %head-elements-after-viewport --> \resources:maths
+
+RegexDictionaryReplacement: #coloured-text
+- queue_position: BEFORE #coloured-spans
+* \[ sparse / (.*?) / \] --> [b/ \1 /]
+* \[ dense / (.*?) / \] --> [r/ \1 /]
+* \[ charac / (.*?) / \] --> [v/ \1 /]
+
+%%%
 
 
-# %title #
+# %title
 
 \noscript
 
 ----
-Source code for images: [code.wl] \+
+Source code for images: [code.wl] <br>
 [Return to traffic model summary](/traffic/)
 ----
-@[code.wl]
+[code.wl]:
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
-    traffic/code.wl @
+    traffic/code.wl
 
-##{#problem} Problem ##
+##{#problem} Problem
 $
   \gdef \Vmax {V_\mathrm{max}}
   \gdef \Nmax {N_\mathrm{max}}
@@ -42,16 +50,12 @@ $$
 What happens?
 ----
 
-##{#animation} Animation ##
-
-{% \[ charac / (.*?) / \] % [v/ \1 /] %}
-{% \[ sparse / (.*?) / \] % [b/ \1 /] %}
-{% \[ dense  / (.*?) / \] % [r/ \1 /] %}
+##{#animation} Animation
 
 ----
 ![Animation for traffic light change][animation]
 ----
-@[animation]{w240} light-change.gif @
+[animation]{w=240}: light-change.gif
 
 ====
 * [charac/ Characteristics in purple /]
@@ -61,9 +65,9 @@ What happens?
 ====
 
 
-##{#characteristics} Characteristics ##
+##{#characteristics} Characteristics
 
-###{#dense-region} Dense region ###
+###{#dense-region} Dense region
 
 ----
 First consider $t = 0$, $x < 0$,
@@ -91,7 +95,7 @@ $${.important}
     \end{cases}
 $$
 
-###{#empty-region} Empty region ###
+###{#empty-region} Empty region
 
 ----
 Next consider $t = 0$, $x > 0$,
@@ -119,7 +123,7 @@ $${.important}
     \end{cases}
 $$
 
-###{#transition-fan} Transition fan ###
+###{#transition-fan} Transition fan
 $
   \gdef \charac #1 {\colv{#1}}
   \gdef \xc {x_\mathrm{c}}
@@ -163,7 +167,7 @@ $${.important}
     \end{cases}.
 $$
 
-##{#result} Result ##
+##{#result} Result
 
 ----
 Altogether:
@@ -181,7 +185,7 @@ $${.important}
 $$
 
 
-##{#remarks} Remarks ##
+##{#remarks} Remarks
 
 ----
 ![Animation for traffic light change (again)][animation]
@@ -200,7 +204,7 @@ The main results are:
 * **The 'signal to go' propagates backwards at the speed limit**,
   along the [charac/ characteristic $\xc (t) = -\Vmax t$ /].
   ----
-  Does this happen in real life? \+
+  Does this happen in real life? <br>
   Yes, the further back you are in the queue,
   the longer you need to wait before you can go.
   ----
@@ -208,7 +212,7 @@ The main results are:
   corresponding to the [charac/ characteristic $\xc (t) = 0$ /]
   for $N = \Nmax / 2$, $V = \Vmax / 2$.
   ----
-  Does this happen in real life? \+
+  Does this happen in real life? <br>
   Well, roughly. In the model, the first car is able to accelerate instantly
   from zero to the speed limit;
   this isn't possible in real life.
