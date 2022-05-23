@@ -63,6 +63,8 @@ OrdinaryDictionaryReplacement: #typography
 - queue_position: BEFORE #whitespace
 * ~ --> &nbsp;
 * --- --> —
+* -- --> –
+* \0 --> &numsp;
 
 RegexDictionaryReplacement: #heading-permalinks
 - queue_position: BEFORE #headings
