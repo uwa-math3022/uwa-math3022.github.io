@@ -1,13 +1,21 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  Heat equation: A slab cooling
-  %date-modified  2020-08-09
-  \resources:maths
-%%
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> Heat equation: A slab cooling
+* %date-modified --> 2020-08-09
+* %head-elements-after-viewport --> \resources:maths
+
+RegexDictionaryReplacement: #coloured-text
+- queue_position: BEFORE #coloured-spans
+* \[ unscaled / (.*?) / \] --> [g/ \1 /]
+* \[ scaled / (.*?) / \] --> [v/ \1 /]
+* \[ group / (.*?) / \] --> [r/ \1 /]
+
+%%%
 
 
-# %title #
+# %title
 
 \noscript
 
@@ -16,14 +24,14 @@
 ----
 
 ----
-Source code for the images: [code.wl] \+
+Source code for the images: [code.wl] <br>
 \home
 ----
-@[code.wl]
+[code.wl]:
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
-    slab/code.wl @
+    slab/code.wl
 
-##{#problem} Problem ##
+##{#problem} Problem
 
 $
   \gdef \TI {T_\mathrm{I}}
@@ -48,15 +56,15 @@ What happens?
 ![Diagram for slab cooling example](diagram.png)
 ----
 
-@[k] https://en.wikipedia.org/wiki/Thermal_conductivity @
-@[c] https://en.wikipedia.org/wiki/Specific_heat_capacity @
-@[rho] https://en.wikipedia.org/wiki/Density @
+[k]: https://en.wikipedia.org/wiki/Thermal_conductivity
+[c]: https://en.wikipedia.org/wiki/Specific_heat_capacity
+[rho]: https://en.wikipedia.org/wiki/Density
 
-@[newton] https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling @
-@[h] https://en.wikipedia.org/wiki/Heat_transfer_coefficient @
+[newton]: https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling
+[h]: https://en.wikipedia.org/wiki/Heat_transfer_coefficient
 
 
-##{#quantities} Quantities ##
+##{#quantities} Quantities
 
 ----
 Take the slab to be the region $-L \le x \le L$.
@@ -70,49 +78,49 @@ We have the following:
 
 ''''
 |^
-==
+//
   ;{c2} Independent variables
 |:
-==
+//
   , $x$
   , position ($0 \le x \le L$)
-==
+//
   , $t$
   , time ($t \ge 0$)
-==
+//
   ;{c2} Dependent variable
-==
+//
   , $T$
   , temperature
-==
+//
   ;{c2} Constants
-==
+//
   , $L$
   , semi-thickness
-==
+//
   , $k$
   , [thermal conductivity][k]
-==
+//
   , $c$
   , [specific heat capacity][c]
-==
+//
   , $\rho$
   , density
-==
+//
   , $\TI$
   , initial temperature
-==
+//
   , $\TE$
   , environment temperature
-==
+//
   , $h$
   , [heat transfer coefficient][h]
 ''''
 
 
-##{#defining-equations} Defining equations ##
+##{#defining-equations} Defining equations
 
-###{#pde} Partial differential equation (PDE) ###
+###{#pde} Partial differential equation (PDE)
 
 ----
 __Heat equation__ in $T = T (x, t)$, throughout the slab, for all time:
@@ -122,7 +130,7 @@ $${.important}
   \rho c \frac{\pd T}{\pd t} = k \frac{\pd^2 T}{{\pd x}^2}
 $$
 
-###{#boundary-conditions} Boundary conditions (BCs) ###
+###{#boundary-conditions} Boundary conditions (BCs)
 
 ----
 Symmetry along the central plane $x = 0$:
@@ -148,7 +156,7 @@ The [heat transfer coefficient][h] $h$ has dimensions of
 power per area per temperature.
 ----
 
-###{#initial-condition} Initial condition (IC) ###
+###{#initial-condition} Initial condition (IC)
 
 ----
 Temperature is $\TI$ throughout the slab, initially:
@@ -159,7 +167,7 @@ $${.important}
 $$
 
 
-##{#scaling} Scaling ##
+##{#scaling} Scaling
 
 <##
   Styles
@@ -170,10 +178,8 @@ $
   \gdef \unscaled #1 {\colg{#1}}
   \gdef \scaled #1 {\colv{#1'}}
 $
-{% \[ unscaled / (.*?) / \] % [g/ \1 /] %}
-{% \[ scaled / (.*?) / \] % [v/ \1 /] %}
 
-###{#scaling-temperature} Temperature ###
+###{#scaling-temperature} Temperature
 
 ----
 As in the [rod problem](/rod/#scaling-temperature)
@@ -189,13 +195,13 @@ so that the scaled initial temperature is $\scaled{T} = 1$
 and the scaled environment temperature is $\scaled{T} = 0$.
 ----
 
-###{#scaling-position} Position ###
+###{#scaling-position} Position
 
 $${.important}
   \unscaled{x} = L \scaled{x}
 $$
 
-###{#scaling-time} Time ###
+###{#scaling-time} Time
 
 ----
 As in the [rod problem](/rod/#scaling-time)
@@ -210,7 +216,7 @@ $$
 ----
 
 
-##{#dimensionless-groups} Dimensionless groups ##
+##{#dimensionless-groups} Dimensionless groups
 
 <##
   Styles
@@ -219,7 +225,6 @@ $$
 $
   \gdef \group #1 {\colr{\squarebr{#1}}}
 $
-{% \[ group / (.*?) / \] % [r/ \1 /] %}
 
 ----
 After moving from [unscaled/ unscaled /] to [scaled/ scaled /] variables,
@@ -275,7 +280,7 @@ $${.important}
   \gamma = \group{\frac{h L}{k}}
 $$
 
-@[gamma] https://en.wikipedia.org/wiki/Biot_number @
+[gamma]: https://en.wikipedia.org/wiki/Biot_number
 
 ----
 Finally we **drop the primes**:
@@ -298,7 +303,7 @@ $${.important}
 $$
 
 
-##{#equilibrium-solution} Equilibrium solution ##
+##{#equilibrium-solution} Equilibrium solution
 
 ----
 Unlike the [rod example](/rod/#transient-solution),
@@ -310,7 +315,7 @@ So we may proceed directly to separation of variables:
 ----
 
 
-##{#separation-of-variables} Separation of variables ##
+##{#separation-of-variables} Separation of variables
 
 <##
   Styles
@@ -340,9 +345,9 @@ $$
     \squarebr{A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)}.
 $$
 
-###{#separation-boundary-conditions} Boundary conditions ###
+###{#separation-boundary-conditions} Boundary conditions
 
-####{#separation-central-plane} Central plane ####
+####{#separation-central-plane} Central plane
 
 ----
 Along the plane of symmetry $x = 0$ we have symmetry (zero slope),
@@ -371,7 +376,7 @@ $$
   T = A \ee ^ {\con{-\lambda^2} t} \cos (\con{\lambda} x).
 $$
 
-####{#separation-right-face} Right face ####
+####{#separation-right-face} Right face
 
 ----
 Along the right face we have the Newtonian cooling condition.
@@ -409,7 +414,7 @@ $${.important}
 $$
 
 
-###{#eigenvalues} Eigenvalues ###
+###{#eigenvalues} Eigenvalues
 
 $
   \gdef \lam #1 {\lambda_{\con{#1}}}
@@ -420,8 +425,8 @@ The equation for $\con{\lambda}$ is [transcendental][tran],
 so the roots can only be determined numerically.
 ----
 
-@[tran] https://en.wikipedia.org/wiki/Transcendental_equation @
-@[SL] https://en.wikipedia.org/wiki/Sturm–Liouville_theory @
+[tran]: https://en.wikipedia.org/wiki/Transcendental_equation
+[SL]: https://en.wikipedia.org/wiki/Sturm–Liouville_theory
 
 ----
 ![Eigenvalues for gamma equals 2](eigenvalues.png)
@@ -463,23 +468,23 @@ gives the following:
 
 ''''
 |^
-==
+//
   ; $\con{n}$
   ; $\lam{n}$
 |:
-==
+//
   , 1
   , \01.07687
-==
+//
   , 2
   , \03.6436
-==
+//
   , 3
   , \06.57833
-==
+//
   , 4
   , \09.62956
-==
+//
   , 5
   , 12.7223
 ''''
@@ -494,10 +499,10 @@ Therefore, **always check the result of numerical root finding with a plot**
 to see if it makes sense.
 ----
 
-@[black box] https://en.wikipedia.org/wiki/Black_box @
+[black box]: https://en.wikipedia.org/wiki/Black_box
 
 
-###{#fourier-series} Fourier series ###
+###{#fourier-series} Fourier series
 
 ----
 Thus given any $\gamma$ we can find the $\lam{n}$ numerically.
@@ -532,7 +537,7 @@ and we are done.
 ----
 
 
-###{#equilibrium-time} How long to reach equilibrium? ###
+###{#equilibrium-time} How long to reach equilibrium?
 
 ----
 We restore the dropped primes lest we confuse ourselves.

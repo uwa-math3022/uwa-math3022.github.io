@@ -1,13 +1,26 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  Heat equation: Heating a rod
-  %date-modified  2020-08-29
-  \resources:maths
-%%
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> Heat equation: Heating a rod
+* %date-modified --> 2020-08-29
+* %head-elements-after-viewport --> \resources:maths
+
+RegexDictionaryReplacement: #coloured-text
+- queue_position: BEFORE #coloured-spans
+* \[ unscaled / (.*?) / \] --> [g/ \1 /]
+* \[ scaled / (.*?) / \] --> [v/ \1 /]
+* \[ pos / (.*?) / \] --> [g/ \1 /]
+* \[ time / (.*?) / \] --> [v/ \1 /]
+* \[ con / (.*?) / \] --> [b/ \1 /]
+* \[ group / (.*?) / \] --> [r/ \1 /]
+* \[ tr / (.*?) / \] --> [r/ \1 /]
+* \[ eq / (.*?) / \] --> [b/ \1 /]
+
+%%%
 
 
-# %title #
+# %title
 
 \noscript
 
@@ -16,14 +29,14 @@
 ----
 
 ----
-Source code for the images: [code.wl] \+
+Source code for the images: [code.wl] <br>
 \home
 ----
-@[code.wl]
+[code.wl]:
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
-    rod/code.wl @
+    rod/code.wl
 
-##{#problem} Problem ##
+##{#problem} Problem
 
 ----
 Consider a uniform rod of length $L$ and [thermal diffusivity] $\kappa$.
@@ -40,52 +53,52 @@ At time $t = 0$:
 What happens?
 ----
 
-@[thermal diffusivity]
-  https://en.wikipedia.org/wiki/Thermal_diffusivity @
+[thermal diffusivity]:
+  https://en.wikipedia.org/wiki/Thermal_diffusivity
 
 ----
 ![Diagram for heating a rod example](diagram.png)
 ----
 
 
-##{#quantities} Quantities ##
+##{#quantities} Quantities
 
 ''''
 |^
-==
+//
   ;{c2} Independent variables
 |:
-==
+//
   , $x$
   , position ($0 \le x \le L$)
-==
+//
   , $t$
   , time ($t \ge 0$)
-==
+//
   ;{c2} Dependent variable
-==
+//
   , $T$
   , temperature
-==
+//
   ;{c2} Constants
-==
+//
   , $L$
   , length
-==
+//
   , $\kappa$
   , [thermal diffusivity]
-==
+//
   , $T_0$
   , lower temperature
-==
+//
   , $T_1$
   , higher temperature
 ''''
 
 
-##{#defining-equations} Defining equations ##
+##{#defining-equations} Defining equations
 
-###{#pde} Partial differential equation (PDE) ###
+###{#pde} Partial differential equation (PDE)
 
 ----
 __Heat equation__ in $T = T (x, t)$, throughout the rod, for all time:
@@ -114,7 +127,7 @@ as time passes, bumps in the temperature profile are levelled out.
   (heat-equation.png)
 ----
 
-###{#boundary-conditions} Boundary conditions (BCs) ###
+###{#boundary-conditions} Boundary conditions (BCs)
 
 ----
 Fixed temperature at the two ends, for all time:
@@ -127,7 +140,7 @@ $${.important}
 \end{aligned}
 $$
 
-###{#initial-condition} Initial condition (IC) ###
+###{#initial-condition} Initial condition (IC)
 
 ----
 Temperature is $T_0$ throughout the rod, initially:
@@ -138,7 +151,7 @@ $${.important}
 $$
 
 
-##{#scaling} Scaling ##
+##{#scaling} Scaling
 
 <##
   Styles
@@ -149,8 +162,6 @@ $
   \gdef \unscaled #1 {\colg{#1}}
   \gdef \scaled #1 {\colv{#1'}}
 $
-{% \[ unscaled / (.*?) / \] % [g/ \1 /] %}
-{% \[ scaled / (.*?) / \] % [v/ \1 /] %}
 
 ----
 Units like metres and feet or Celsius and Fahrenheit are *arbitrary*,
@@ -162,7 +173,7 @@ We move from [unscaled/ dimensional (unscaled) /] variables
 to [scaled/ dimensionless (scaled) variables (marked with a prime) /]:
 ----
 
-###{#scaling-temperature} Temperature ###
+###{#scaling-temperature} Temperature
 
 ----
 The natural temperature scale in the problem is $T_1 - T_0$,
@@ -177,7 +188,7 @@ so that in scaled terms, the lower temperature is $\scaled{T} = 0$
 and the higher temperature is $\scaled{T} = 1$.
 ----
 
-###{#scaling-position} Position ###
+###{#scaling-position} Position
 
 ----
 The natural length scale in the problem is $L$, the length of the rod.
@@ -191,7 +202,7 @@ so that in scaled terms, the left end of the rod is $\scaled{x} = 0$
 and the right end of the rod is $\scaled{x} = 1$.
 ----
 
-###{#scaling-time} Time ###
+###{#scaling-time} Time
 
 ----
 The time scale isn't immediately obvious,
@@ -205,7 +216,7 @@ $$
 ----
 
 
-##{#dimensionless-groups} Dimensionless groups ##
+##{#dimensionless-groups} Dimensionless groups
 
 <##
   Styles
@@ -214,7 +225,6 @@ $$
 $
   \gdef \group #1 {\colr{\squarebr{#1}}}
 $
-{% \[ group / (.*?) / \] % [r/ \1 /] %}
 
 ----
 We take the heat equation
@@ -252,7 +262,7 @@ therefore the bracketed term is a [group/ dimensionsless group /],
 i.e.~just a number.
 ----
 
-###{#time-scale} Time scale ###
+###{#time-scale} Time scale
 
 ----
 Currently the time scale $\tau$ is *free*;
@@ -273,16 +283,16 @@ if a problem has *fewer* free scales than dimensionless groups,
 you won't be able to eliminate *all* of the dimensionless groups.)
 ----
 
-###{#making-sense} Making sense ###
+###{#making-sense} Making sense
 
 ----
 At this point we pause to check:
 does the time scale we have found make sense?
 ----
 ====
-* $\tau \propto L^2$ \+
+* $\tau \propto L^2$ <br>
   If the rod is longer, it takes a longer time to reach equilibrium.
-* $\tau \propto 1 / \kappa$ \+
+* $\tau \propto 1 / \kappa$ <br>
   If the rod is a better conductor, then $\kappa$ is larger,
   so $\tau$ is smaller and it takes a shorter time to reach equilibrium.
 ====
@@ -291,7 +301,7 @@ Yes this makes sense.
 ----
 
 
-##{#finish-scaling} Finish scaling ##
+##{#finish-scaling} Finish scaling
 
 ----
 Having eliminated the dimensionless group,
@@ -331,7 +341,7 @@ $${.important}
 $$
 
 
-##{#equilibrium-solution} Equilibrium solution ##
+##{#equilibrium-solution} Equilibrium solution
 
 <##
   Styles
@@ -344,8 +354,6 @@ $
   \gdef \Ttr {\trans{T_\mathrm{tr}}}
   \gdef \Teq {\equil{T_\mathrm{eq}}}
 $
-{% \[ tr / (.*?) / \] % [r/ \1 /] %}
-{% \[ eq / (.*?) / \] % [b/ \1 /] %}
 
 ----
 After a long time, the heat going in at the right end $x = 1$
@@ -382,9 +390,9 @@ $${.important}
 $$
 
 
-##{#transient-solution} Transient solution ##
+##{#transient-solution} Transient solution
 
-###{#subtract-out} Subtract out equilibrium solution ###
+###{#subtract-out} Subtract out equilibrium solution
 
 ----
 Since the equilibrium solution isn't zero,
@@ -435,7 +443,7 @@ $${.important}
 \end{gathered}
 $$
 
-###{#separation-of-variables} Separation of variables ###
+###{#separation-of-variables} Separation of variables
 
 <##
   Styles
@@ -448,9 +456,6 @@ $
   \gdef \time #1 {\colv{#1}}
   \gdef \con #1 {\colb{#1}}
 $
-{% \[ pos / (.*?) / \] % [g/ \1 /] %}
-{% \[ time / (.*?) / \] % [v/ \1 /] %}
-{% \[ con / (.*?) / \] % [b/ \1 /] %}
 
 ----
 Suppose that the [tr/ transient solution /]
@@ -494,7 +499,7 @@ and this is supposed to be true for all $\time{t}$ and all $\pos{x}$.
 __Q.__
   How can [time/ a function of $t$ /] be equal to [pos/ a function of $x$ /]
   for all $\time{t}$ and all $\pos{x}$?
-\+
+<br>
 __A.__
   Both must equal the [con/ *same* constant /]:
 ||||
@@ -508,7 +513,7 @@ $$
 ||||{.qa}
 __Q.__
   Why can't the constant be positive?
-\+
+<br>
 __A.__
   Because a positive constant doesn't yield useful solutions.
   In other units at UWA you're probably expected to show this every time,
@@ -521,7 +526,7 @@ __A.__
 Thus we have separated the PDE into two ODEs:
 ----
 
-####{#ode-time} Time ####
+####{#ode-time} Time
 
 $$
 \begin{aligned}
@@ -530,7 +535,7 @@ $$
 \end{aligned}
 $$
 
-####{#ode-position} Position ####
+####{#ode-position} Position
 
 $$
 \begin{aligned}
@@ -539,7 +544,7 @@ $$
 \end{aligned}
 $$
 
-####{#transient-product} Altogether ####
+####{#transient-product} Altogether
 
 $$
   \Ttr (x, t) =
@@ -550,13 +555,13 @@ $$
 (Here the constant $C$ has been absorbed into $A$ and $B$.)
 ----
 
-###{#transient-boundary-conditions} Boundary conditions ###
+###{#transient-boundary-conditions} Boundary conditions
 
 ----
 We then apply the boundary conditions at the two ends of the rod:
 ----
 
-####{#transient-left-end} Left end ####
+####{#transient-left-end} Left end
 
 ----
 We have
@@ -572,7 +577,7 @@ $$
   \Ttr (x, t) = B \ee ^ {\con{-\lambda^2} t} \sin (\con{\lambda} x).
 $$
 
-####{#transient-right-end} Right end ####
+####{#transient-right-end} Right end
 
 ----
 We have
@@ -593,7 +598,7 @@ $${.important}
   \con{\lambda} = \con{n} \pi, \quad n = 1, 2, 3, \dots.
 $$
 
-###{#physical-sense} Physical sense ###
+###{#physical-sense} Physical sense
 
 ----
 To recap, our transient solution is the product of
@@ -607,16 +612,16 @@ $$
 What does this mean physically?
 ----
 ====
-* __Large $\con{n}$__ \+
+* __Large $\con{n}$__ <br>
   Components which are highly oscillatory in position
   decay **very** quickly.
   (Note that the $\con{n^2}$ in the exponent
   increases *much* faster than the $\con{n}$ in the sine.)
-* __Small $\con{n}$__ \+
+* __Small $\con{n}$__ <br>
   Components which have long wavelength decay more slowly.
 ====
 
-###{#transient-initial-condition} Initial condition ###
+###{#transient-initial-condition} Initial condition
 
 ----
 So far our transient solution $\Ttr$
@@ -633,7 +638,7 @@ isn't going to work.
 We need something a bit more general:
 ----
 
-####{#fourier-series} Fourier series ####
+####{#fourier-series} Fourier series
 $
   \gdef \B #1 {B_{\con{#1}}}
   \gdef \sine #1 {\sin (\con{#1} \pi x)}
@@ -672,7 +677,7 @@ and we need to find a Fourier series for the function $-x$,
 i.e.~determine the coefficients $\B{1}, \B{2}, \dots$.
 ----
 
-####{#inner-products} Inner product spaces ####
+####{#inner-products} Inner product spaces
 $
   \gdef \innerp #1 #2 {\delimwrap{\langle}{#1,#2}{\rangle}}
   \gdef \vece #1 {\vec{e}_{\con{#1}}}
@@ -803,7 +808,7 @@ $$
 $$
 
 
-##{#result} Result ##
+##{#result} Result
 
 ----
 Putting everything together, the solution is
@@ -823,10 +828,10 @@ $${.important}
 $$
 
 
-###{#convergence} Remarks on convergence ###
+###{#convergence} Remarks on convergence
 
 ++++++++
-1. **This is an exact result, but it is an infinite series.** \+
+1. **This is an exact result, but it is an infinite series.** <br>
    Whether an infinite series is *useful* depends on how fast it converges
    (and how many terms you need for a given accuracy).
    ====
@@ -835,17 +840,17 @@ $$
    * Needs a hundred terms: crap
    ====
 
-2. **For $t = 0$, this series takes ages to converge.** \+
+2. **For $t = 0$, this series takes ages to converge.** <br>
    This is because there is no exponential decay when $t = 0$,
    and we have an alternating series with coefficients going like $1 / n$.
    Sure, it converges, but it is much too slow to be practical.
 
-3. **For moderate to large $t$, convergence is very fast.** \+
+3. **For moderate to large $t$, convergence is very fast.** <br>
    This is because $\ee ^ {-n^2 \pi^2 t}$ decays exponentially quickly.
    Only a few terms are needed (or even just one term).
 ++++++++
 
-###{#equilibrium-time} How long to reach equilibrium? ###
+###{#equilibrium-time} How long to reach equilibrium?
 
 ----
 While "infinity" is technically correct, it isn't a *useful* answer.
@@ -854,7 +859,7 @@ for nuclear radiation to clear out at [Maralinga],
 but a much more practical measure is the half-life of 24100~years
 for plutonium-239.
 ----
-@[Maralinga] https://en.wikipedia.org/wiki/British_nuclear_tests_at_Maralinga @ 
+[Maralinga]: https://en.wikipedia.org/wiki/British_nuclear_tests_at_Maralinga
 
 ----
 If you should learn anything from this page, it's that you should
@@ -893,7 +898,7 @@ $${.important}
     = \frac{4 L^2}{\pi^2 \kappa}.
 $$
 
-###{#visualising} Visualising the solution ###
+###{#visualising} Visualising the solution
 
 ----
 In summary, the rod is initially at temperature $T_0$ throughout,

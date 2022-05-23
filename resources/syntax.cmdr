@@ -1,0 +1,120 @@
+OrdinaryDictionaryReplacement: #title-suffix
+- queue_position: BEFORE #boilerplate-protect
+- apply_mode: SEQUENTIAL
+* </title> --> ' | UWA MATH3022</title>'
+* UWA MATH3022 | UWA MATH3022 --> UWA MATH3022
+
+OrdinaryDictionaryReplacement: #resources
+- queue_position: BEFORE #boilerplate-protect
+- apply_mode: SEQUENTIAL
+* \resources:maths -->
+    \resources:no-maths
+    <script defer src="/resources/maths.min.js"></script>
+    <link rel="stylesheet" \
+      href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" \
+      integrity="sha384-\
+        AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X\
+      " \
+      crossorigin="anonymous">
+    <script defer \
+      src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" \
+      integrity="sha384-\
+        g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4\
+      " \
+      crossorigin="anonymous" \
+      onload="renderMaths()"></script>
+* \resources:no-maths -->
+    <link rel="stylesheet" href="/resources/main.min.css">
+- concluding_replacements: #backslash-continuations
+
+OrdinaryDictionaryReplacement: #noscript
+- queue_position: BEFORE #backslash-continuations
+* \noscript -->
+    <noscript>\
+    **{.noscript} Enable JavaScript for equation rendering to work.**\
+    </noscript>
+
+ExtensibleFenceReplacement: #display-maths
+- queue_position: AFTER #comments
+- syntax_type: BLOCK
+- extensible_delimiter: $$
+- attribute_specifications: .js-maths
+- content_replacements:
+    #escape-html
+    #de-indent
+- tag_name: div
+- concluding_replacements:
+    #placeholder-protect
+
+ExtensibleFenceReplacement: #inline-maths
+- queue_position: AFTER #inline-code
+- syntax_type: INLINE
+- extensible_delimiter: $
+- attribute_specifications: .js-maths
+- prohibited_content: BLOCKS
+- content_replacements:
+    #escape-html
+    #trim-whitespace
+- tag_name: span
+- concluding_replacements:
+    #placeholder-protect
+
+OrdinaryDictionaryReplacement: #typography
+- queue_position: BEFORE #whitespace
+* ~ --> &nbsp;
+* ... --> …
+* --- --> —
+* -- --> –
+* \0 --> &numsp;
+
+RegexDictionaryReplacement: #heading-permalinks
+- queue_position: BEFORE #headings
+* (?P<opening_hashes_etc>
+    [#]{2,6}
+    \{
+      [#] (?P<id_> [\S]+ )
+    \}
+    [\s]+
+  )
+    -->
+  \g<opening_hashes_etc> []{.permalink aria-label=Permalink}(#\g<id_>)
+
+RegexDictionaryReplacement: #coloured-spans
+- queue_position: BEFORE #whitespace
+* \[ (?P<colour_letter> [rgbv] )
+    /
+      [\s]*
+      (?P<content> [\s\S] *? )
+      [\s]*
+    /
+  \]
+    -->
+  <span class="colour-\g<colour_letter>">\g<content></span>
+
+OrdinaryDictionaryReplacement: #end
+- queue_position: BEFORE #divisions
+* \END -->
+    ||||{.end}
+      END
+    ||||
+
+OrdinaryDictionaryReplacement: #home-link
+- queue_position: BEFORE #specified-links
+* \home --> [Return to the home page.](/)
+
+RegexDictionaryReplacement: #footer
+- queue_position: BEFORE #boilerplate
+* \Z -->
+    <footer>
+      Last modified: %date-modified
+        <br>
+      Content on this site is [released into the public domain][cc0].
+        <br>
+      Mistakes/queries:
+      [email me] or [raise an issue].
+    </footer>
+    [cc0]: https://creativecommons.org/publicdomain/zero/1.0/
+    [email me]: mailto:z7ea7fso@duck.com
+    [raise an issue]:
+      https://github.com/uwa-math3022/uwa-math3022.github.io/issues
+    \n

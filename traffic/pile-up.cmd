@@ -1,25 +1,32 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  Traffic: pile up
-  %date-modified  2020-10-17
-  \resources:maths
-%%
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> Traffic: pile up
+* %date-modified --> 2020-10-17
+* %head-elements-after-viewport --> \resources:maths
+
+RegexDictionaryReplacement: #coloured-text
+- queue_position: BEFORE #coloured-spans
+* \[ charac / (.*?) / \] --> [v/ \1 /]
+* \[ shock / (.*?) / \] --> [r/ \1 /]
+
+%%%
 
 
-# %title #
+# %title
 
 \noscript
 
 ----
-Source code for images: [code.wl] \+
+Source code for images: [code.wl] <br>
 [Return to traffic model summary](/traffic/)
 ----
-@[code.wl]
+[code.wl]:
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
-    traffic/code.wl @
+    traffic/code.wl
 
-##{#problem} Problem ##
+##{#problem} Problem
 $
   \gdef \Vmax {V_\mathrm{max}}
   \gdef \Nmax {N_\mathrm{max}}
@@ -50,15 +57,12 @@ $$
 What happens?
 ----
 
-##{#animation} Animation ##
-
-{% \[ charac / (.*?) / \] % [v/ \1 /] %}
-{% \[ shock  / (.*?) / \] % [r/ \1 /] %}
+##{#animation} Animation
 
 ----
 ![Animation for pile up][animation]
 ----
-@[animation]{w240} pile-up.gif @
+[animation]{w=240}: pile-up.gif
 
 ====
 * [charac/ Characteristics in purple /]
@@ -67,31 +71,31 @@ What happens?
 ====
 
 
-##{#characteristics} Characteristics ##
+##{#characteristics} Characteristics
 
 ----
 We have the following:
 ----
 ''''
 |^
-==
+//
   ; Qty
   ; Before
   ; After
 |:
-==
+//
   , $N$
   , $0.6 \Nmax$
   , $0.8 \Nmax$
-==
+//
   , $V$
   , $0.4 \Vmax$
   , $0.2 \Vmax$
-==
+//
   , $F$
   , $0.24 \Nmax\Vmax$
   , $0.16 \Nmax\Vmax$
-==
+//
   , $\frac{\td F}{\td N}$
   , $-0.2 \Vmax$
   , $-0.6 \Vmax$
@@ -116,7 +120,7 @@ What happens?
 ----
 
 
-##{#shockwave} Shockwave ##
+##{#shockwave} Shockwave
 $
   \gdef \shock #1 {\colr{#1}}
 $
@@ -159,7 +163,7 @@ This separates the 'before' region (fast \& sparse)
 and the 'after' region (slow \& dense).
 ----
 
-##{#result} Result ##
+##{#result} Result
 
 $${.important}
   N (x, t) =
@@ -170,7 +174,7 @@ $${.important}
 $$
 
 
-##{#remarks} Remarks ##
+##{#remarks} Remarks
 
 ----
 ![Animation for pile up (again)][animation]

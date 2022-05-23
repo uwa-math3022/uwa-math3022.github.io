@@ -1,23 +1,31 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  Single-lane traffic model
-  %date-modified  2020-10-17
-  \resources:maths
-%%
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> Single-lane traffic model
+* %date-modified --> 2020-10-17
+* %head-elements-after-viewport --> \resources:maths
+
+RegexDictionaryReplacement: #coloured-text
+- queue_position: BEFORE #coloured-spans
+* \[ sparse / (.*?) / \] --> [b/ \1 /]
+* \[ dense / (.*?) / \] --> [r/ \1 /]
+* \[ charac / (.*?) / \] --> [v/ \1 /]
+
+%%%
 
 
-# %title #
+# %title
 
 \noscript
 
 ----
-Source code for images: [code.wl] \+
+Source code for images: [code.wl] <br>
 \home
 ----
-@[code.wl]
+[code.wl]:
   https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/\
-    traffic/code.wl @
+    traffic/code.wl
 
 ----
 This page summarises the simple continuum model for single-lane traffic.
@@ -29,22 +37,20 @@ For some cool animations, see the following:
 ====
 
 
-##{#curves} Curves for the simple model ##
+##{#curves} Curves for the simple model
 
 <##
   Styles
   * sparse: colour-b
   * dense: colour-r
 ##>
-{% \[ sparse / (.*?) / \] % [b/ \1 /] %}
-{% \[ dense  / (.*?) / \] % [r/ \1 /] %}
 $
   \gdef \Vmax {V_\mathrm{max}}
   \gdef \Nmax {N_\mathrm{max}}
   \gdef \Fmax {F_\mathrm{max}}
 $
 
-###{#speed} Speed vs density ###
+###{#speed} Speed vs density
 
 ----
 With the exception of tailgaters,
@@ -79,7 +85,7 @@ even when the density *isn't* zero,
 by keeping at a 2-second separation to the vehicle ahead.)
 ----
 
-###{#flux} Flux vs density ###
+###{#flux} Flux vs density
 
 ----
 Traffic engineers generally want to maximise the __flux__ of traffic,
@@ -114,29 +120,29 @@ Note that there are two ways to achieve a given flux $F < \Fmax$:
 ----
 
 
-##{#equation} Traffic equation ##
+##{#equation} Traffic equation
 
-###{#quantities} Quantities ###
+###{#quantities} Quantities
 
 ''''
 |^
-==
+//
   ;{c2} Independent variables
 |:
-==
+//
   , $x$
   , position
-==
+//
   , $t$
   , time
-==
+//
   ;{c2} Dependent variable
-==
+//
   , $N$
   , density
 ''''
 
-###{#conservation} Conservation ###
+###{#conservation} Conservation
 
 ----
 After doing the usual conservation analysis (here, "conservation of vehicle"),
@@ -153,7 +159,7 @@ $${.important}
   \frac{\pd N}{\pd t} + \frac{\td F}{\td N} \frac{\pd N}{\pd x} = 0.
 $$
 
-###{#signal-speed} Signal speed ###
+###{#signal-speed} Signal speed
 
 ----
 The quantity $\td F / {\td N}$ has dimensions of speed, and varies linearly
@@ -173,7 +179,7 @@ for the local density:
 ----
 
 
-##{#characteristics} Method of characteristics ##
+##{#characteristics} Method of characteristics
 
 <##
   Styles
@@ -182,7 +188,6 @@ for the local density:
 $
   \gdef \charac #1 {\colv{#1}}
 $
-{% \[ charac / (.*?) / \] % [v/ \1 /] %}
 $
   \gdef \xc {x_\mathrm{c}}
 $
@@ -227,7 +232,7 @@ Note that **characteristics are NOT the trajectories of the cars**;
 they are curves along which density is constant.
 ----
 
-###{#steps} Steps ###
+###{#steps} Steps
 
 ----
 Given a traffic problem:

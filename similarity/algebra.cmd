@@ -1,20 +1,29 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-{: \title : "Fundamental plane-source similarity solution" :}
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> Algebra for %similarity-title
+* %date-modified --> 2020-08-16
+* %head-elements-after-viewport --> \resources:maths
 
-%%
-  %title  Algebra for \title
-  %date-modified  2020-08-16
-  \resources:maths
-%%
+OrdinaryDictionaryReplacement: #similarity-title
+- queue_position: BEFORE #boilerplate-properties
+* %similarity-title --> '"Fundamental plane-source similarity solution"'
+
+RegexDictionaryReplacement: #coloured-text
+- queue_position: BEFORE #coloured-spans
+* \[ old / (.*?) / \] --> [b/ \1 /]
+* \[ new / (.*?) / \] --> [r/ \1 /]
+
+%%%
 
 
-# %title #
+# %title
 
 \noscript
 
 ----
-[Return to \title](/similarity/)
+[Return to %similarity-title](/similarity/)
 ----
 
 <##
@@ -26,11 +35,9 @@ $
   \gdef \old #1 {\colb{#1}}
   \gdef \new #1 {\colr{#1}}
 $
-{% \[ old / (.*?) / \] % [b/ \1 /] %}
-{% \[ new / (.*?) / \] % [r/ \1 /] %}
 
 
-##{#chain-rule} Chain rule ##
+##{#chain-rule} Chain rule
 
 ----
 The coordinate transformation is given by
@@ -151,11 +158,12 @@ $${.important}
 $$
 
 ----
-[Return to the corresponding line in \title.](/similarity/#algebra-chain-rule)
+[Return to the corresponding line in %similarity-title.]\
+  (/similarity/#algebra-chain-rule)
 ----
 
 
-##{#derivatives} Derivatives of temperature ##
+##{#derivatives} Derivatives of temperature
 
 ----
 We have
@@ -291,11 +299,12 @@ $${.important}
 $$
 
 ----
-[Return to the corresponding line in \title.](/similarity/#algebra-derivatives)
+[Return to the corresponding line in %similarity-title.]\
+  (/similarity/#algebra-derivatives)
 ----
 
 
-##{#heat-equation} Heat equation ##
+##{#heat-equation} Heat equation
 
 ----
 The heat equation says that
@@ -356,7 +365,7 @@ $${.important}
 $$
 
 ----
-[Return to the corresponding line in \title.]\
+[Return to the corresponding line in %similarity-title.]\
   (/similarity/#algebra-heat-equation)
 ----
 

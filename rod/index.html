@@ -19,7 +19,7 @@
 Source code for the images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/rod/code.wl">code.wl</a><br>
 <a href="/">Return to the home page.</a>
 </p>
-<h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
+<h2 id="problem"><a href="#problem" class="permalink" aria-label="Permalink"></a>Problem</h2>
 <p>
 Consider a uniform rod of length <span class="js-maths">L</span> and <a href="https://en.wikipedia.org/wiki/Thermal_diffusivity">thermal diffusivity</a> <span class="js-maths">\kappa</span>.
 </p>
@@ -28,9 +28,11 @@ Suppose the rod is initially at temperature <span class="js-maths">T_0</span> th
 At time <span class="js-maths">t = 0</span>:
 </p>
 <ul>
-<li>Fix the left end at lower temperature <span class="js-maths">T = T_0</span> (e.g.&nbsp;ice)
+<li>
+Fix the left end at lower temperature <span class="js-maths">T = T_0</span> (e.g.&nbsp;ice)
 </li>
-<li>Fix the right end at higher temperature <span class="js-maths">T = T_1</span> (e.g.&nbsp;boiling water)
+<li>
+Fix the right end at higher temperature <span class="js-maths">T = T_1</span> (e.g.&nbsp;boiling water)
 </li>
 </ul>
 <p>
@@ -39,7 +41,7 @@ What happens?
 <p>
 <img alt="Diagram for heating a rod example" src="diagram.png">
 </p>
-<h2 id="quantities"><a class="permalink" href="#quantities" aria-label="Permalink"></a>Quantities</h2>
+<h2 id="quantities"><a href="#quantities" class="permalink" aria-label="Permalink"></a>Quantities</h2>
 <table>
 <thead>
 <tr>
@@ -83,8 +85,8 @@ What happens?
 </tr>
 </tbody>
 </table>
-<h2 id="defining-equations"><a class="permalink" href="#defining-equations" aria-label="Permalink"></a>Defining equations</h2>
-<h3 id="pde"><a class="permalink" href="#pde" aria-label="Permalink"></a>Partial differential equation (PDE)</h3>
+<h2 id="defining-equations"><a href="#defining-equations" class="permalink" aria-label="Permalink"></a>Defining equations</h2>
+<h3 id="pde"><a href="#pde" class="permalink" aria-label="Permalink"></a>Partial differential equation (PDE)</h3>
 <p>
 <b>Heat equation</b> in <span class="js-maths">T = T (x, t)</span>, throughout the rod, for all time:
 </p>
@@ -94,9 +96,11 @@ What happens?
 Before we do anything, we should understand what this means:
 </p>
 <ul>
-<li>The left hand side is the time rate of change of temperature.
+<li>
+The left hand side is the time rate of change of temperature.
 </li>
-<li>The right hand side is a linear version of curvature.
+<li>
+The right hand side is a linear version of curvature.
 In particular, <span class="js-maths">\pd^2 T / {\pd x}^2</span> is positive/negative
 if the temperature profile is concave up/down.
 </li>
@@ -108,7 +112,7 @@ as time passes, bumps in the temperature profile are levelled out.
 <p>
 <img alt="Diagram showing temperature profile levelling out with time" src="heat-equation.png">
 </p>
-<h3 id="boundary-conditions"><a class="permalink" href="#boundary-conditions" aria-label="Permalink"></a>Boundary conditions (BCs)</h3>
+<h3 id="boundary-conditions"><a href="#boundary-conditions" class="permalink" aria-label="Permalink"></a>Boundary conditions (BCs)</h3>
 <p>
 Fixed temperature at the two ends, for all time:
 </p>
@@ -117,13 +121,13 @@ Fixed temperature at the two ends, for all time:
   \eval{T}_{x = L} &amp;= T_1
 \end{aligned}
 </div>
-<h3 id="initial-condition"><a class="permalink" href="#initial-condition" aria-label="Permalink"></a>Initial condition (IC)</h3>
+<h3 id="initial-condition"><a href="#initial-condition" class="permalink" aria-label="Permalink"></a>Initial condition (IC)</h3>
 <p>
 Temperature is <span class="js-maths">T_0</span> throughout the rod, initially:
 </p>
 <div class="js-maths important">\eval{T}_{t = 0} = T_0
 </div>
-<h2 id="scaling"><a class="permalink" href="#scaling" aria-label="Permalink"></a>Scaling</h2>
+<h2 id="scaling"><a href="#scaling" class="permalink" aria-label="Permalink"></a>Scaling</h2>
 <span class="js-maths">\gdef \unscaled #1 {\colg{#1}}
   \gdef \scaled #1 {\colv{#1'}}</span>
 <p>
@@ -135,7 +139,7 @@ which arise from the physical constants provided in the problem.
 We move from <span class="colour-g">dimensional (unscaled)</span> variables
 to <span class="colour-v">dimensionless (scaled) variables (marked with a prime)</span>:
 </p>
-<h3 id="scaling-temperature"><a class="permalink" href="#scaling-temperature" aria-label="Permalink"></a>Temperature</h3>
+<h3 id="scaling-temperature"><a href="#scaling-temperature" class="permalink" aria-label="Permalink"></a>Temperature</h3>
 <p>
 The natural temperature scale in the problem is <span class="js-maths">T_1 - T_0</span>,
 the difference between the two prescribed temperatures.
@@ -147,7 +151,7 @@ Define scaled temperature <span class="js-maths">\scaled{T}</span> by
 so that in scaled terms, the lower temperature is <span class="js-maths">\scaled{T} = 0</span>
 and the higher temperature is <span class="js-maths">\scaled{T} = 1</span>.
 </p>
-<h3 id="scaling-position"><a class="permalink" href="#scaling-position" aria-label="Permalink"></a>Position</h3>
+<h3 id="scaling-position"><a href="#scaling-position" class="permalink" aria-label="Permalink"></a>Position</h3>
 <p>
 The natural length scale in the problem is <span class="js-maths">L</span>, the length of the rod.
 Define scaled position <span class="js-maths">\scaled{x}</span> by
@@ -158,7 +162,7 @@ Define scaled position <span class="js-maths">\scaled{x}</span> by
 so that in scaled terms, the left end of the rod is <span class="js-maths">\scaled{x} = 0</span>
 and the right end of the rod is <span class="js-maths">\scaled{x} = 1</span>.
 </p>
-<h3 id="scaling-time"><a class="permalink" href="#scaling-time" aria-label="Permalink"></a>Time</h3>
+<h3 id="scaling-time"><a href="#scaling-time" class="permalink" aria-label="Permalink"></a>Time</h3>
 <p>
 The time scale isn't immediately obvious,
 so define scaled time <span class="js-maths">\scaled{t}</span> by
@@ -168,7 +172,7 @@ so define scaled time <span class="js-maths">\scaled{t}</span> by
 <p>
 <strong>with the time scale <span class="js-maths">\tau</span> yet to be determined, i.e.&nbsp;<em>free</em></strong>.
 </p>
-<h2 id="dimensionless-groups"><a class="permalink" href="#dimensionless-groups" aria-label="Permalink"></a>Dimensionless groups</h2>
+<h2 id="dimensionless-groups"><a href="#dimensionless-groups" class="permalink" aria-label="Permalink"></a>Dimensionless groups</h2>
 <span class="js-maths">\gdef \group #1 {\colr{\squarebr{#1}}}</span>
 <p>
 We take the heat equation
@@ -200,7 +204,7 @@ All of the <span class="colour-v">scaled variables</span> are <span class="colou
 therefore the bracketed term is a <span class="colour-r">dimensionsless group</span>,
 i.e.&nbsp;just a number.
 </p>
-<h3 id="time-scale"><a class="permalink" href="#time-scale" aria-label="Permalink"></a>Time scale</h3>
+<h3 id="time-scale"><a href="#time-scale" class="permalink" aria-label="Permalink"></a>Time scale</h3>
 <p>
 Currently the time scale <span class="js-maths">\tau</span> is <em>free</em>;
 it is not prescribed in the problem and we haven't defined it yet.
@@ -217,16 +221,18 @@ and solving for <span class="js-maths">\tau</span>:
 if a problem has <em>fewer</em> free scales than dimensionless groups,
 you won't be able to eliminate <em>all</em> of the dimensionless groups.)
 </p>
-<h3 id="making-sense"><a class="permalink" href="#making-sense" aria-label="Permalink"></a>Making sense</h3>
+<h3 id="making-sense"><a href="#making-sense" class="permalink" aria-label="Permalink"></a>Making sense</h3>
 <p>
 At this point we pause to check:
 does the time scale we have found make sense?
 </p>
 <ul>
-<li><span class="js-maths">\tau \propto L^2</span><br>
+<li>
+<span class="js-maths">\tau \propto L^2</span><br>
 If the rod is longer, it takes a longer time to reach equilibrium.
 </li>
-<li><span class="js-maths">\tau \propto 1 / \kappa</span><br>
+<li>
+<span class="js-maths">\tau \propto 1 / \kappa</span><br>
 If the rod is a better conductor, then <span class="js-maths">\kappa</span> is larger,
 so <span class="js-maths">\tau</span> is smaller and it takes a shorter time to reach equilibrium.
 </li>
@@ -234,7 +240,7 @@ so <span class="js-maths">\tau</span> is smaller and it takes a shorter time to 
 <p>
 Yes this makes sense.
 </p>
-<h2 id="finish-scaling"><a class="permalink" href="#finish-scaling" aria-label="Permalink"></a>Finish scaling</h2>
+<h2 id="finish-scaling"><a href="#finish-scaling" class="permalink" aria-label="Permalink"></a>Finish scaling</h2>
 <p>
 Having eliminated the dimensionless group,
 our heat equation is now
@@ -266,7 +272,7 @@ Altogether:
   \eval{T}_{t = 0} = 0
 \end{gathered}
 </div>
-<h2 id="equilibrium-solution"><a class="permalink" href="#equilibrium-solution" aria-label="Permalink"></a>Equilibrium solution</h2>
+<h2 id="equilibrium-solution"><a href="#equilibrium-solution" class="permalink" aria-label="Permalink"></a>Equilibrium solution</h2>
 <span class="js-maths">\gdef \trans #1 {\colr{#1}}
   \gdef \equil #1 {\colb{#1}}
   \gdef \Ttr {\trans{T_\mathrm{tr}}}
@@ -300,8 +306,8 @@ so by inspection the equilibrium temperature profile is
 </p>
 <div class="js-maths important">\Teq (x) = x.
 </div>
-<h2 id="transient-solution"><a class="permalink" href="#transient-solution" aria-label="Permalink"></a>Transient solution</h2>
-<h3 id="subtract-out"><a class="permalink" href="#subtract-out" aria-label="Permalink"></a>Subtract out equilibrium solution</h3>
+<h2 id="transient-solution"><a href="#transient-solution" class="permalink" aria-label="Permalink"></a>Transient solution</h2>
+<h3 id="subtract-out"><a href="#subtract-out" class="permalink" aria-label="Permalink"></a>Subtract out equilibrium solution</h3>
 <p>
 Since the equilibrium solution isn't zero,
 this means that the PDE and boundary conditions aren't all <em>homogeneous</em>
@@ -345,7 +351,7 @@ Since <span class="js-maths">\eval{\Teq}_{t = 0} = \eval{x}_{t = 0} = x</span>, 
   \eval{\Ttr}_{t = 0} = -x.
 \end{gathered}
 </div>
-<h3 id="separation-of-variables"><a class="permalink" href="#separation-of-variables" aria-label="Permalink"></a>Separation of variables</h3>
+<h3 id="separation-of-variables"><a href="#separation-of-variables" class="permalink" aria-label="Permalink"></a>Separation of variables</h3>
 <span class="js-maths">\gdef \pos #1 {\colg{#1}}
   \gdef \time #1 {\colv{#1}}
   \gdef \con #1 {\colb{#1}}</span>
@@ -410,19 +416,19 @@ This ensures oscillatory solutions in that direction.
 <p>
 Thus we have separated the PDE into two ODEs:
 </p>
-<h4 id="ode-time"><a class="permalink" href="#ode-time" aria-label="Permalink"></a>Time</h4>
+<h4 id="ode-time"><a href="#ode-time" class="permalink" aria-label="Permalink"></a>Time</h4>
 <div class="js-maths">\begin{aligned}
   \time{\frac{\td Y}{\td t}} &amp;= \con{-\lambda^2} \time{Y} \\[\tallspace]
   \time{Y (t)} &amp;= C \ee ^ {\con{-\lambda^2} t}
 \end{aligned}
 </div>
-<h4 id="ode-position"><a class="permalink" href="#ode-position" aria-label="Permalink"></a>Position</h4>
+<h4 id="ode-position"><a href="#ode-position" class="permalink" aria-label="Permalink"></a>Position</h4>
 <div class="js-maths">\begin{aligned}
   \pos{\frac{\td^2 X}{{\td x}^2}} &amp;= \con{-\lambda^2} \pos{X} \\[\tallspace]
   \pos{X (x)} &amp;= A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)
 \end{aligned}
 </div>
-<h4 id="transient-product"><a class="permalink" href="#transient-product" aria-label="Permalink"></a>Altogether</h4>
+<h4 id="transient-product"><a href="#transient-product" class="permalink" aria-label="Permalink"></a>Altogether</h4>
 <div class="js-maths">\Ttr (x, t) =
   \ee ^ {\con{-\lambda^2} t}
   \squarebr{A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)}
@@ -430,11 +436,11 @@ Thus we have separated the PDE into two ODEs:
 <p>
 (Here the constant <span class="js-maths">C</span> has been absorbed into <span class="js-maths">A</span> and <span class="js-maths">B</span>.)
 </p>
-<h3 id="transient-boundary-conditions"><a class="permalink" href="#transient-boundary-conditions" aria-label="Permalink"></a>Boundary conditions</h3>
+<h3 id="transient-boundary-conditions"><a href="#transient-boundary-conditions" class="permalink" aria-label="Permalink"></a>Boundary conditions</h3>
 <p>
 We then apply the boundary conditions at the two ends of the rod:
 </p>
-<h4 id="transient-left-end"><a class="permalink" href="#transient-left-end" aria-label="Permalink"></a>Left end</h4>
+<h4 id="transient-left-end"><a href="#transient-left-end" class="permalink" aria-label="Permalink"></a>Left end</h4>
 <p>
 We have
 </p>
@@ -446,7 +452,7 @@ Therefore
 </p>
 <div class="js-maths">\Ttr (x, t) = B \ee ^ {\con{-\lambda^2} t} \sin (\con{\lambda} x).
 </div>
-<h4 id="transient-right-end"><a class="permalink" href="#transient-right-end" aria-label="Permalink"></a>Right end</h4>
+<h4 id="transient-right-end"><a href="#transient-right-end" class="permalink" aria-label="Permalink"></a>Right end</h4>
 <p>
 We have
 </p>
@@ -462,7 +468,7 @@ we must have
 </div>
 <div class="js-maths important">\con{\lambda} = \con{n} \pi, \quad n = 1, 2, 3, \dots.
 </div>
-<h3 id="physical-sense"><a class="permalink" href="#physical-sense" aria-label="Permalink"></a>Physical sense</h3>
+<h3 id="physical-sense"><a href="#physical-sense" class="permalink" aria-label="Permalink"></a>Physical sense</h3>
 <p>
 To recap, our transient solution is the product of
 an exponential decay in time and a sinusoid in position,
@@ -474,17 +480,19 @@ linked through the constant <span class="js-maths">\con{\lambda} = \con{n} \pi</
 What does this mean physically?
 </p>
 <ul>
-<li><b>Large <span class="js-maths">\con{n}</span></b><br>
+<li>
+<b>Large <span class="js-maths">\con{n}</span></b><br>
 Components which are highly oscillatory in position
 decay <strong>very</strong> quickly.
 (Note that the <span class="js-maths">\con{n^2}</span> in the exponent
 increases <em>much</em> faster than the <span class="js-maths">\con{n}</span> in the sine.)
 </li>
-<li><b>Small <span class="js-maths">\con{n}</span></b><br>
+<li>
+<b>Small <span class="js-maths">\con{n}</span></b><br>
 Components which have long wavelength decay more slowly.
 </li>
 </ul>
-<h3 id="transient-initial-condition"><a class="permalink" href="#transient-initial-condition" aria-label="Permalink"></a>Initial condition</h3>
+<h3 id="transient-initial-condition"><a href="#transient-initial-condition" class="permalink" aria-label="Permalink"></a>Initial condition</h3>
 <p>
 So far our transient solution <span class="js-maths">\Ttr</span>
 satisfies the PDE and boundary conditions.
@@ -498,16 +506,18 @@ Clearly the single product
 isn't going to work.
 We need something a bit more general:
 </p>
-<h4 id="fourier-series"><a class="permalink" href="#fourier-series" aria-label="Permalink"></a>Fourier series</h4>
+<h4 id="fourier-series"><a href="#fourier-series" class="permalink" aria-label="Permalink"></a>Fourier series</h4>
 <span class="js-maths">\gdef \B #1 {B_{\con{#1}}}
   \gdef \sine #1 {\sin (\con{#1} \pi x)}</span>
 <p>
 Recall that:
 </p>
 <ol>
-<li>The <strong>heat equation is linear</strong>
+<li>
+The <strong>heat equation is linear</strong>
 </li>
-<li>The <strong>boundary conditions</strong> for <span class="js-maths">\Ttr</span> at <span class="js-maths">x = 0</span> and <span class="js-maths">x = 1</span>
+<li>
+The <strong>boundary conditions</strong> for <span class="js-maths">\Ttr</span> at <span class="js-maths">x = 0</span> and <span class="js-maths">x = 1</span>
 <strong>are homogeneous</strong> because we subtracted out the equilibrium solution
 </li>
 </ol>
@@ -533,7 +543,7 @@ The initial condition becomes
 and we need to find a Fourier series for the function <span class="js-maths">-x</span>,
 i.e.&nbsp;determine the coefficients <span class="js-maths">\B{1}, \B{2}, \dots</span>.
 </p>
-<h4 id="inner-products"><a class="permalink" href="#inner-products" aria-label="Permalink"></a>Inner product spaces</h4>
+<h4 id="inner-products"><a href="#inner-products" class="permalink" aria-label="Permalink"></a>Inner product spaces</h4>
 <span class="js-maths">\gdef \innerp #1 #2 {\delimwrap{\langle}{#1,#2}{\rangle}}
   \gdef \vece #1 {\vec{e}_{\con{#1}}}</span>
 <p>
@@ -646,7 +656,7 @@ Thus
 </p>
 <div class="js-maths">\B{n} = \frac{2 (-1) ^ {\con{n}}}{\con{n} \pi}.
 </div>
-<h2 id="result"><a class="permalink" href="#result" aria-label="Permalink"></a>Result</h2>
+<h2 id="result"><a href="#result" class="permalink" aria-label="Permalink"></a>Result</h2>
 <p>
 Putting everything together, the solution is
 </p>
@@ -662,31 +672,37 @@ Putting everything together, the solution is
       }.
 \end{aligned}
 </div>
-<h3 id="convergence"><a class="permalink" href="#convergence" aria-label="Permalink"></a>Remarks on convergence</h3>
+<h3 id="convergence"><a href="#convergence" class="permalink" aria-label="Permalink"></a>Remarks on convergence</h3>
 <ol>
-<li><strong>This is an exact result, but it is an infinite series.</strong><br>
+<li>
+<strong>This is an exact result, but it is an infinite series.</strong><br>
 Whether an infinite series is <em>useful</em> depends on how fast it converges
 (and how many terms you need for a given accuracy).
 <ul>
-<li>Needs a few terms: good
+<li>
+Needs a few terms: good
 </li>
-<li>Needs a dozen terms: meh
+<li>
+Needs a dozen terms: meh
 </li>
-<li>Needs a hundred terms: crap
+<li>
+Needs a hundred terms: crap
 </li>
 </ul>
 </li>
-<li><strong>For <span class="js-maths">t = 0</span>, this series takes ages to converge.</strong><br>
+<li>
+<strong>For <span class="js-maths">t = 0</span>, this series takes ages to converge.</strong><br>
 This is because there is no exponential decay when <span class="js-maths">t = 0</span>,
 and we have an alternating series with coefficients going like <span class="js-maths">1 / n</span>.
 Sure, it converges, but it is much too slow to be practical.
 </li>
-<li><strong>For moderate to large <span class="js-maths">t</span>, convergence is very fast.</strong><br>
+<li>
+<strong>For moderate to large <span class="js-maths">t</span>, convergence is very fast.</strong><br>
 This is because <span class="js-maths">\ee ^ {-n^2 \pi^2 t}</span> decays exponentially quickly.
 Only a few terms are needed (or even just one term).
 </li>
 </ol>
-<h3 id="equilibrium-time"><a class="permalink" href="#equilibrium-time" aria-label="Permalink"></a>How long to reach equilibrium?</h3>
+<h3 id="equilibrium-time"><a href="#equilibrium-time" class="permalink" aria-label="Permalink"></a>How long to reach equilibrium?</h3>
 <p>
 While "infinity" is technically correct, it isn't a <em>useful</em> answer.
 For example, infinity is technically the time it takes
@@ -727,7 +743,7 @@ The <span class="colour-g">unscaled (dimensional)</span> equilibrium time is the
   \sim \frac{4 \tau}{\pi^2}
   = \frac{4 L^2}{\pi^2 \kappa}.
 </div>
-<h3 id="visualising"><a class="permalink" href="#visualising" aria-label="Permalink"></a>Visualising the solution</h3>
+<h3 id="visualising"><a href="#visualising" class="permalink" aria-label="Permalink"></a>Visualising the solution</h3>
 <p>
 In summary, the rod is initially at temperature <span class="js-maths">T_0</span> throughout,
 but has its right end raised to and held at a higher temperature <span class="js-maths">T_1</span>.

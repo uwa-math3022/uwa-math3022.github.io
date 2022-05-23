@@ -1,13 +1,15 @@
-{+ /resources/syntax.cmd +}
+< /resources/syntax.cmdr
 
-%%
-  %title  UWA MATH3022
-  %title-suffix  <## nothing ##>
-  %date-modified  2021-01-04
-  \resources:no-maths
-%%
+OrdinaryDictionaryReplacement: #boilerplate-properties-override
+- queue_position: BEFORE #boilerplate-properties
+* %title --> UWA MATH3022
+* %date-modified --> 2021-01-04
+* %head-elements-after-viewport --> \resources:no-maths
 
-# %title #
+%%%
+
+
+# %title
 
 ----
 Supplementary material for MATH3022 Scientific and Industrial Modelling.
@@ -19,34 +21,34 @@ Source code for this site: [github.com/uwa-math3022/uwa-math3022.github.io](
 )
 ----
 
-##{#general} General ##
+##{#general} General
 
 ====
 * [Remarks on notation](/notation)
 * [ODEs you must be able to solve](/ode)
 ====
 
-##{#mathematica-intro} Introduction to Mathematica ##
+##{#mathematica-intro} Introduction to Mathematica
 
 ----
 [Download `intro.nb`][intro.nb] and have a play around.
 For details see the [`mathematica-intro` repository][m intro].
 ----
 
-##{#heat-equation} Heat equation ##
+##{#heat-equation} Heat equation
 
 ====
 * [Heating a rod](/rod/)
 * [A slab cooling](/slab/)
 ====
 
-##{#similarity} Similarity solution ##
+##{#similarity} Similarity solution
 
 ====
 * [Fundamental plane-source similarity solution](/similarity/)
 ====
 
-##{#traffic} Traffic dynamics ##
+##{#traffic} Traffic dynamics
 
 ====
 * [Single-lane traffic model](/traffic/)
@@ -54,7 +56,7 @@ For details see the [`mathematica-intro` repository][m intro].
 * Example: [pile up](/traffic/pile-up)
 ====
 
-@[intro.nb]
+[intro.nb]:
   https://github.com/uwa-math3022/mathematica-intro/\
-    releases/download/v0.1.2/intro.nb @
-@[m intro] https://github.com/uwa-math3022/mathematica-intro @
+    releases/download/v0.1.2/intro.nb
+[m intro]: https://github.com/uwa-math3022/mathematica-intro

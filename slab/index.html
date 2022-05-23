@@ -19,7 +19,7 @@
 Source code for the images: <a href="https://github.com/uwa-math3022/uwa-math3022.github.io/blob/master/slab/code.wl">code.wl</a><br>
 <a href="/">Return to the home page.</a>
 </p>
-<h2 id="problem"><a class="permalink" href="#problem" aria-label="Permalink"></a>Problem</h2>
+<h2 id="problem"><a href="#problem" class="permalink" aria-label="Permalink"></a>Problem</h2>
 <span class="js-maths">\gdef \TI {T_\mathrm{I}}
   \gdef \TE {T_\mathrm{E}}</span>
 <p>
@@ -38,7 +38,7 @@ What happens?
 <p>
 <img alt="Diagram for slab cooling example" src="diagram.png">
 </p>
-<h2 id="quantities"><a class="permalink" href="#quantities" aria-label="Permalink"></a>Quantities</h2>
+<h2 id="quantities"><a href="#quantities" class="permalink" aria-label="Permalink"></a>Quantities</h2>
 <p>
 Take the slab to be the region <span class="js-maths">-L \le x \le L</span>.
 By symmetry, the temperature profile will be an even function of <span class="js-maths">x</span>,
@@ -103,14 +103,14 @@ We have the following:
 </tr>
 </tbody>
 </table>
-<h2 id="defining-equations"><a class="permalink" href="#defining-equations" aria-label="Permalink"></a>Defining equations</h2>
-<h3 id="pde"><a class="permalink" href="#pde" aria-label="Permalink"></a>Partial differential equation (PDE)</h3>
+<h2 id="defining-equations"><a href="#defining-equations" class="permalink" aria-label="Permalink"></a>Defining equations</h2>
+<h3 id="pde"><a href="#pde" class="permalink" aria-label="Permalink"></a>Partial differential equation (PDE)</h3>
 <p>
 <b>Heat equation</b> in <span class="js-maths">T = T (x, t)</span>, throughout the slab, for all time:
 </p>
 <div class="js-maths important">\rho c \frac{\pd T}{\pd t} = k \frac{\pd^2 T}{{\pd x}^2}
 </div>
-<h3 id="boundary-conditions"><a class="permalink" href="#boundary-conditions" aria-label="Permalink"></a>Boundary conditions (BCs)</h3>
+<h3 id="boundary-conditions"><a href="#boundary-conditions" class="permalink" aria-label="Permalink"></a>Boundary conditions (BCs)</h3>
 <p>
 Symmetry along the central plane <span class="js-maths">x = 0</span>:
 </p>
@@ -128,16 +128,16 @@ Both sides of the equation have dimensions of power per area.
 The <a href="https://en.wikipedia.org/wiki/Heat_transfer_coefficient">heat transfer coefficient</a> <span class="js-maths">h</span> has dimensions of
 power per area per temperature.
 </p>
-<h3 id="initial-condition"><a class="permalink" href="#initial-condition" aria-label="Permalink"></a>Initial condition (IC)</h3>
+<h3 id="initial-condition"><a href="#initial-condition" class="permalink" aria-label="Permalink"></a>Initial condition (IC)</h3>
 <p>
 Temperature is <span class="js-maths">\TI</span> throughout the slab, initially:
 </p>
 <div class="js-maths important">\eval{T}_{t = 0} = \TI
 </div>
-<h2 id="scaling"><a class="permalink" href="#scaling" aria-label="Permalink"></a>Scaling</h2>
+<h2 id="scaling"><a href="#scaling" class="permalink" aria-label="Permalink"></a>Scaling</h2>
 <span class="js-maths">\gdef \unscaled #1 {\colg{#1}}
   \gdef \scaled #1 {\colv{#1'}}</span>
-<h3 id="scaling-temperature"><a class="permalink" href="#scaling-temperature" aria-label="Permalink"></a>Temperature</h3>
+<h3 id="scaling-temperature"><a href="#scaling-temperature" class="permalink" aria-label="Permalink"></a>Temperature</h3>
 <p>
 As in the <a href="/rod/#scaling-temperature">rod problem</a>
 we are given two temperatures, in this case
@@ -150,10 +150,10 @@ We put
 so that the scaled initial temperature is <span class="js-maths">\scaled{T} = 1</span>
 and the scaled environment temperature is <span class="js-maths">\scaled{T} = 0</span>.
 </p>
-<h3 id="scaling-position"><a class="permalink" href="#scaling-position" aria-label="Permalink"></a>Position</h3>
+<h3 id="scaling-position"><a href="#scaling-position" class="permalink" aria-label="Permalink"></a>Position</h3>
 <div class="js-maths important">\unscaled{x} = L \scaled{x}
 </div>
-<h3 id="scaling-time"><a class="permalink" href="#scaling-time" aria-label="Permalink"></a>Time</h3>
+<h3 id="scaling-time"><a href="#scaling-time" class="permalink" aria-label="Permalink"></a>Time</h3>
 <p>
 As in the <a href="/rod/#scaling-time">rod problem</a>
 the time scale isn't immediately obvious,
@@ -164,7 +164,7 @@ so we put
 <p>
 <strong>with the time scale <span class="js-maths">\tau</span> yet to be determined, i.e.&nbsp;<em>free</em></strong>.
 </p>
-<h2 id="dimensionless-groups"><a class="permalink" href="#dimensionless-groups" aria-label="Permalink"></a>Dimensionless groups</h2>
+<h2 id="dimensionless-groups"><a href="#dimensionless-groups" class="permalink" aria-label="Permalink"></a>Dimensionless groups</h2>
 <span class="js-maths">\gdef \group #1 {\colr{\squarebr{#1}}}</span>
 <p>
 After moving from <span class="colour-g">unscaled</span> to <span class="colour-v">scaled</span> variables,
@@ -232,7 +232,7 @@ Finally we <strong>drop the primes</strong>:
   \end{aligned}
 \end{gathered}
 </div>
-<h2 id="equilibrium-solution"><a class="permalink" href="#equilibrium-solution" aria-label="Permalink"></a>Equilibrium solution</h2>
+<h2 id="equilibrium-solution"><a href="#equilibrium-solution" class="permalink" aria-label="Permalink"></a>Equilibrium solution</h2>
 <p>
 Unlike the <a href="/rod/#transient-solution">rod example</a>,
 here the PDE and the two boundary conditions are <em>already</em> homogeneous.
@@ -241,7 +241,7 @@ because the equilibrium solution is identically zero
 (corresponding to the slab completely cooling to the environment temperature).
 So we may proceed directly to separation of variables:
 </p>
-<h2 id="separation-of-variables"><a class="permalink" href="#separation-of-variables" aria-label="Permalink"></a>Separation of variables</h2>
+<h2 id="separation-of-variables"><a href="#separation-of-variables" class="permalink" aria-label="Permalink"></a>Separation of variables</h2>
 <span class="js-maths">\gdef \pos #1 {\colg{#1}}
   \gdef \time #1 {\colv{#1}}
   \gdef \con #1 {\colb{#1}}</span>
@@ -258,8 +258,8 @@ we obtain the form
   \ee ^ {\con{-\lambda^2} t}
   \squarebr{A \cos (\con{\lambda} x) + B \sin (\con{\lambda} x)}.
 </div>
-<h3 id="separation-boundary-conditions"><a class="permalink" href="#separation-boundary-conditions" aria-label="Permalink"></a>Boundary conditions</h3>
-<h4 id="separation-central-plane"><a class="permalink" href="#separation-central-plane" aria-label="Permalink"></a>Central plane</h4>
+<h3 id="separation-boundary-conditions"><a href="#separation-boundary-conditions" class="permalink" aria-label="Permalink"></a>Boundary conditions</h3>
+<h4 id="separation-central-plane"><a href="#separation-central-plane" class="permalink" aria-label="Permalink"></a>Central plane</h4>
 <p>
 Along the plane of symmetry <span class="js-maths">x = 0</span> we have symmetry (zero slope),
 </p>
@@ -284,7 +284,7 @@ Therefore
 </p>
 <div class="js-maths">T = A \ee ^ {\con{-\lambda^2} t} \cos (\con{\lambda} x).
 </div>
-<h4 id="separation-right-face"><a class="permalink" href="#separation-right-face" aria-label="Permalink"></a>Right face</h4>
+<h4 id="separation-right-face"><a href="#separation-right-face" class="permalink" aria-label="Permalink"></a>Right face</h4>
 <p>
 Along the right face we have the Newtonian cooling condition.
 The left hand side is
@@ -316,7 +316,7 @@ or
 </p>
 <div class="js-maths important">\tan\con{\lambda} = \frac{\gamma}{\con{\lambda}}.
 </div>
-<h3 id="eigenvalues"><a class="permalink" href="#eigenvalues" aria-label="Permalink"></a>Eigenvalues</h3>
+<h3 id="eigenvalues"><a href="#eigenvalues" class="permalink" aria-label="Permalink"></a>Eigenvalues</h3>
 <span class="js-maths">\gdef \lam #1 {\lambda_{\con{#1}}}</span>
 <p>
 The equation for <span class="js-maths">\con{\lambda}</span> is <a href="https://en.wikipedia.org/wiki/Transcendental_equation">transcendental</a>,
@@ -395,7 +395,7 @@ corresponding to a different value of <span class="js-maths">\con{n}</span>.
 Therefore, <strong>always check the result of numerical root finding with a plot</strong>
 to see if it makes sense.
 </p>
-<h3 id="fourier-series"><a class="permalink" href="#fourier-series" aria-label="Permalink"></a>Fourier series</h3>
+<h3 id="fourier-series"><a href="#fourier-series" class="permalink" aria-label="Permalink"></a>Fourier series</h3>
 <p>
 Thus given any <span class="js-maths">\gamma</span> we can find the <span class="js-maths">\lam{n}</span> numerically.
 By linearity, we have
@@ -424,7 +424,7 @@ Therefore
 <p>
 and we are done.
 </p>
-<h3 id="equilibrium-time"><a class="permalink" href="#equilibrium-time" aria-label="Permalink"></a>How long to reach equilibrium?</h3>
+<h3 id="equilibrium-time"><a href="#equilibrium-time" class="permalink" aria-label="Permalink"></a>How long to reach equilibrium?</h3>
 <p>
 We restore the dropped primes lest we confuse ourselves.
 At large times the solution will be dominated by the <span class="js-maths">\con{n} = 1</span> term
