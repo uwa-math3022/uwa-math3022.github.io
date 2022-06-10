@@ -1,13 +1,13 @@
 < /resources/syntax.cmdr
 
-OrdinaryDictionaryReplacement: #boilerplate-properties-override
+OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 - queue_position: BEFORE #boilerplate-properties
 * %title --> Remarks on notation
 * %date-modified --> 2020-08-14
 * %head-elements-after-viewport --> \resources:maths
 
-RegexDictionaryReplacement: #coloured-text
-- queue_position: BEFORE #coloured-spans
+RegexDictionaryReplacement: #.coloured-text
+- queue_position: BEFORE #.syntax.coloured-spans
 * \[ unscaled / (.*?) / \] --> [g/ \1 /]
 * \[ scaled / (.*?) / \] --> [v/ \1 /]
 * \[ scale / (.*?) / \] --> [b/ \1 /]

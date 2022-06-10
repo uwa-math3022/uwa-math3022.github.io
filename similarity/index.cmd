@@ -1,6 +1,6 @@
 < /resources/syntax.cmdr
 
-OrdinaryDictionaryReplacement: #boilerplate-properties-override
+OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 - queue_position: BEFORE #boilerplate-properties
 * %title --> Fundamental plane-source similarity solution
 * %date-modified --> 2021-08-26
@@ -10,8 +10,8 @@ OrdinaryDictionaryReplacement: #boilerplate-properties-override
       text-align: center;
     }
 
-RegexDictionaryReplacement: #coloured-text
-- queue_position: BEFORE #coloured-spans
+RegexDictionaryReplacement: #.coloured-text
+- queue_position: BEFORE #.syntax.coloured-spans
 * \[ temp / (.*?) / \] --> [g/ \1 /]
 * \[ dimenless / (.*?) / \] --> [v/ \1 /]
 * \[ old / (.*?) / \] --> [b/ \1 /]

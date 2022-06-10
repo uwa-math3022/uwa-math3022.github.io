@@ -1,10 +1,10 @@
-OrdinaryDictionaryReplacement: #title-suffix
+OrdinaryDictionaryReplacement: #.syntax.title-suffix
 - queue_position: BEFORE #boilerplate-protect
 - apply_mode: SEQUENTIAL
 * </title> --> ' | UWA MATH3022</title>'
 * UWA MATH3022 | UWA MATH3022 --> UWA MATH3022
 
-OrdinaryDictionaryReplacement: #resources
+OrdinaryDictionaryReplacement: #.syntax.resources
 - queue_position: BEFORE #boilerplate-protect
 - apply_mode: SEQUENTIAL
 * \resources:maths -->
@@ -27,14 +27,14 @@ OrdinaryDictionaryReplacement: #resources
     <link rel="stylesheet" href="/resources/main.min.css">
 - concluding_replacements: #backslash-continuations
 
-OrdinaryDictionaryReplacement: #noscript
+OrdinaryDictionaryReplacement: #.syntax.noscript
 - queue_position: BEFORE #backslash-continuations
 * \noscript -->
     <noscript>\
     **{.noscript} Enable JavaScript for equation rendering to work.**\
     </noscript>
 
-ExtensibleFenceReplacement: #display-maths
+ExtensibleFenceReplacement: #.syntax.display-maths
 - queue_position: AFTER #comments
 - syntax_type: BLOCK
 - extensible_delimiter: $$
@@ -46,7 +46,7 @@ ExtensibleFenceReplacement: #display-maths
 - concluding_replacements:
     #placeholder-protect
 
-ExtensibleFenceReplacement: #inline-maths
+ExtensibleFenceReplacement: #.syntax.inline-maths
 - queue_position: AFTER #inline-code
 - syntax_type: INLINE
 - extensible_delimiter: $
@@ -59,7 +59,7 @@ ExtensibleFenceReplacement: #inline-maths
 - concluding_replacements:
     #placeholder-protect
 
-OrdinaryDictionaryReplacement: #typography
+OrdinaryDictionaryReplacement: #.syntax.typography
 - queue_position: BEFORE #whitespace
 * ~ --> &nbsp;
 * ... --> …
@@ -67,7 +67,7 @@ OrdinaryDictionaryReplacement: #typography
 * -- --> –
 * \0 --> &numsp;
 
-RegexDictionaryReplacement: #heading-permalinks
+RegexDictionaryReplacement: #.syntax.heading-permalinks
 - queue_position: BEFORE #headings
 * (?P<opening_hashes_etc>
     [#]{2,6}
@@ -79,7 +79,7 @@ RegexDictionaryReplacement: #heading-permalinks
     -->
   \g<opening_hashes_etc> []{.permalink aria-label=Permalink}(#\g<id_>)
 
-RegexDictionaryReplacement: #coloured-spans
+RegexDictionaryReplacement: #.syntax.coloured-spans
 - queue_position: BEFORE #whitespace
 * \[ (?P<colour_letter> [rgbv] )
     /
@@ -91,18 +91,18 @@ RegexDictionaryReplacement: #coloured-spans
     -->
   <span class="colour-\g<colour_letter>">\g<content></span>
 
-OrdinaryDictionaryReplacement: #end
+OrdinaryDictionaryReplacement: #.syntax.end
 - queue_position: BEFORE #divisions
 * \END -->
     ||||{.end}
       END
     ||||
 
-OrdinaryDictionaryReplacement: #home-link
+OrdinaryDictionaryReplacement: #.syntax.home-link
 - queue_position: BEFORE #specified-links
 * \home --> [Return to the home page.](/)
 
-RegexDictionaryReplacement: #footer
+RegexDictionaryReplacement: #.syntax.footer
 - queue_position: BEFORE #boilerplate
 * \Z -->
     <footer>

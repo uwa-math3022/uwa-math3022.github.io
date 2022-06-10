@@ -1,17 +1,17 @@
 < /resources/syntax.cmdr
 
-OrdinaryDictionaryReplacement: #boilerplate-properties-override
+OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 - queue_position: BEFORE #boilerplate-properties
 * %title --> Algebra for %similarity-title
 * %date-modified --> 2020-08-16
 * %head-elements-after-viewport --> \resources:maths
 
-OrdinaryDictionaryReplacement: #similarity-title
+OrdinaryDictionaryReplacement: #.similarity-title
 - queue_position: BEFORE #boilerplate-properties
 * %similarity-title --> '"Fundamental plane-source similarity solution"'
 
-RegexDictionaryReplacement: #coloured-text
-- queue_position: BEFORE #coloured-spans
+RegexDictionaryReplacement: #.coloured-text
+- queue_position: BEFORE #.syntax.coloured-spans
 * \[ old / (.*?) / \] --> [b/ \1 /]
 * \[ new / (.*?) / \] --> [r/ \1 /]
 

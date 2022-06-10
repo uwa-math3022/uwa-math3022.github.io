@@ -1,13 +1,13 @@
 < /resources/syntax.cmdr
 
-OrdinaryDictionaryReplacement: #boilerplate-properties-override
+OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 - queue_position: BEFORE #boilerplate-properties
 * %title --> Heat equation: Heating a rod
 * %date-modified --> 2020-08-29
 * %head-elements-after-viewport --> \resources:maths
 
-RegexDictionaryReplacement: #coloured-text
-- queue_position: BEFORE #coloured-spans
+RegexDictionaryReplacement: #.coloured-text
+- queue_position: BEFORE #.syntax.coloured-spans
 * \[ unscaled / (.*?) / \] --> [g/ \1 /]
 * \[ scaled / (.*?) / \] --> [v/ \1 /]
 * \[ pos / (.*?) / \] --> [g/ \1 /]

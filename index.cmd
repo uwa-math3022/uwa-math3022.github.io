@@ -1,6 +1,6 @@
 < /resources/syntax.cmdr
 
-OrdinaryDictionaryReplacement: #boilerplate-properties-override
+OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 - queue_position: BEFORE #boilerplate-properties
 * %title --> UWA MATH3022
 * %date-modified --> 2021-01-04

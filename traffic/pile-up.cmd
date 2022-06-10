@@ -1,13 +1,13 @@
 < /resources/syntax.cmdr
 
-OrdinaryDictionaryReplacement: #boilerplate-properties-override
+OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 - queue_position: BEFORE #boilerplate-properties
 * %title --> Traffic: pile up
 * %date-modified --> 2020-10-17
 * %head-elements-after-viewport --> \resources:maths
 
-RegexDictionaryReplacement: #coloured-text
-- queue_position: BEFORE #coloured-spans
+RegexDictionaryReplacement: #.coloured-text
+- queue_position: BEFORE #.syntax.coloured-spans
 * \[ charac / (.*?) / \] --> [v/ \1 /]
 * \[ shock / (.*?) / \] --> [r/ \1 /]
 

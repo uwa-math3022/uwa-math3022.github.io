@@ -1,13 +1,13 @@
 < /resources/syntax.cmdr
 
-OrdinaryDictionaryReplacement: #boilerplate-properties-override
+OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 - queue_position: BEFORE #boilerplate-properties
 * %title --> Single-lane traffic model
 * %date-modified --> 2020-10-17
 * %head-elements-after-viewport --> \resources:maths
 
-RegexDictionaryReplacement: #coloured-text
-- queue_position: BEFORE #coloured-spans
+RegexDictionaryReplacement: #.coloured-text
+- queue_position: BEFORE #.syntax.coloured-spans
 * \[ sparse / (.*?) / \] --> [b/ \1 /]
 * \[ dense / (.*?) / \] --> [r/ \1 /]
 * \[ charac / (.*?) / \] --> [v/ \1 /]
